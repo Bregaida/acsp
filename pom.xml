@@ -58,7 +58,7 @@
 			<plugin>
 				<configuration>
 					<port>8080</port>
-					<configurationDir>C:\server\tomcat\apache-tomcat-6.0.35_QA</configurationDir>
+					<configurationDir>\Users\eduardobregaida\Desktop\apache-tomcat-7.0.41</configurationDir>
 				</configuration>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
