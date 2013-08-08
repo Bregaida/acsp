@@ -24,7 +24,6 @@ public class UtilTest {
 		aluno.setCodigoANAC(1777L);
 		aluno.setCpf(34915298876L);
 		aluno.setEscolaridade(Escolaridade.SUPERIOR);
-		aluno.setId(1L);
 		aluno.setNome("Eduardo");
 		aluno.setNomePista("Maverick");
 		aluno.setRg(222222222L);

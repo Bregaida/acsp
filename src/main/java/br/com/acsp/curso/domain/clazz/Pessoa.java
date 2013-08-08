@@ -3,6 +3,10 @@
  */
 package br.com.acsp.curso.domain.clazz;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import br.com.acsp.curso.domain.enumerator.Escolaridade;
 
 /**
@@ -16,6 +20,7 @@ public abstract class Pessoa {
 	private Long cpf;
 	private Long tituloEleitor;
 	private Long alistamentoMilitar;
+	@Enumerated(EnumType.STRING)
 	private Escolaridade escolaridade;
 	private boolean ativo;
 

@@ -8,7 +8,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import br.com.acsp.curso.domain.clazz.Aluno;
+import br.com.acsp.curso.util.HibernateUtil;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.RequestScoped;
 
@@ -30,7 +34,21 @@ public class AlunoDAOImpl implements AlunoDAO {
 	}
 	
 	public Boolean salvar(Aluno aluno) {
-		return alunos.add(aluno);
+		try{
+			Session sessao = null;  
+		    Transaction transacao = null;  
+		      
+		    sessao = HibernateUtil.getSessionFactory().openSession();//n‹o inicia a sess‹o no hibernate 4  
+		    transacao = sessao.beginTransaction();  
+		    sessao.save(aluno);  
+		    transacao.commit();  
+		      
+		    sessao.close();  
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 		
 	}
 
@@ -50,8 +68,10 @@ public class AlunoDAOImpl implements AlunoDAO {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Aluno> pesquisarTodos() {
-		return Collections.unmodifiableList(alunos);
+		 return HibernateUtil.getSessionFactory().openSession().createQuery("FROM " + Aluno.class.getName()).list();
+//		return Collections.unmodifiableList(alunos);
 	}
 
 }

@@ -2,11 +2,12 @@ Projeto Open Source para o ACSP
 
 Requisitos do Programa:
 
-    Maven - OK
-    Hibernate/JPA
+    Maven                          - OK
+    Hibernate/JPA                  - OK
+    Banco de Dados será PostgreSQL - OK
     @autowired (remover new)
     Implementar segurança
-    Banco de Dados será PostgreSQL
+	Gerar as querys
 
 Módulos CRUD:
 

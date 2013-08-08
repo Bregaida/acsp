@@ -3,12 +3,20 @@
  */
 package br.com.acsp.curso.domain.clazz;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * @author eduardobregaida
  * 
  */
+@Entity
 public class Aluno extends Pessoa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nomePista;
 	private Long cma;

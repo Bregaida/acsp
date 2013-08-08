@@ -5,6 +5,7 @@ package br.com.acsp.curso.test.dao;
 
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.acsp.curso.dao.AlunoDAO;
@@ -21,7 +22,7 @@ public class AlunoDAOTest {
 
 	@Test
 	public void deveriaSalvarAluno() {
-		assertNotNull(dao.salvar(UtilTest.populaAluno()));
+		Assert.assertTrue(dao.salvar(UtilTest.populaAluno()));
 	}
 
 	@Test
