@@ -5,9 +5,12 @@ Requisitos do Programa:
     Maven                          - OK
     Hibernate/JPA                  - OK
     Banco de Dados será PostgreSQL - OK
+	Gerar as querys                - OK
+	Gerar o Banco via Hibernate    - OK
     @autowired (remover new)
+	Adicionar Spring
     Implementar segurança
-	Gerar as querys
+	Criar Protótipos de Tela
 
 Módulos CRUD:
 
@@ -16,8 +19,8 @@ Módulos CRUD:
     Cadastro de Atendente - OK
     Cadastro de Aeronave - OK
     Cadastro de Sócios - OK
-
     Pessoa (Classe Abstrata) - OK
+	Agenda
 
     Agenda Regras para Agendar Horas de Vôo:
         Aluno só pode agendar horas de vôo do dia atual até no max 15 dias, ou seja do dia 01/07 até dia 14/07, do dia 15/07 até o dia 30, etc
