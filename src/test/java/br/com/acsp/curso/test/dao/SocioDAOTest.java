@@ -3,12 +3,12 @@
  */
 package br.com.acsp.curso.test.dao;
 
-import static org.junit.Assert.assertNotNull;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.acsp.curso.dao.SocioDAO;
 import br.com.acsp.curso.dao.SocioDAOImpl;
+import br.com.acsp.curso.domain.clazz.Socio;
 import br.com.acsp.curso.test.UtilTest;
 
 /**
@@ -21,22 +21,29 @@ public class SocioDAOTest {
 
 	@Test
 	public void deveriaSalvarSocio() {
-		assertNotNull(dao.salvar(UtilTest.populaSocio()));
+		Assert.assertTrue(dao.salvar(UtilTest.populaSocio()));
 	}
 
 	@Test
-	public void deveriaAlterarSocio() {
-		assertNotNull(dao.alterar(UtilTest.populaSocio()));
+	public void deveriaAtualizarSocio() {
+		Socio socio = new Socio();
+		socio = UtilTest.populaSocio();
+		socio.setId(dao.pesquisarTodos().iterator().next().getId());
+		socio.setNome("Airton");
+		Assert.assertTrue(dao.atualizar(socio));
 	}
 
 	@Test
 	public void deveriaExcluirSocio() {
-		assertNotNull(dao.excluir(UtilTest.populaSocio()));
+		Socio socio = new Socio();
+		socio = UtilTest.populaSocio();
+		socio.setId(dao.pesquisarTodos().iterator().next().getId());
+		Assert.assertTrue(dao.excluir(socio));
 	}
 
 	@Test
 	public void deveriaPesquisarTodosSocios() {
-		assertNotNull(dao.pesquisarTodos());
+		Assert.assertNotNull(dao.pesquisarTodos());
 	}
 
 }

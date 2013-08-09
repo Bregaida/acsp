@@ -5,7 +5,6 @@ package br.com.acsp.curso.service;
 
 import java.util.List;
 
-
 import br.com.acsp.curso.dao.AeronaveDAO;
 import br.com.acsp.curso.dao.AeronaveDAOImpl;
 import br.com.acsp.curso.domain.clazz.Aeronave;
@@ -26,8 +25,8 @@ public class AeronaveServiceImpl implements AeronaveService {
 		return dao.salvar(aeronave);
 	}
 
-	public Boolean alterar(Aeronave aeronave) {
-		return dao.alterar(aeronave);
+	public Boolean atualizar(Aeronave aeronave) {
+		return dao.atualizar(aeronave);
 	}
 
 	public Boolean excluir(Aeronave aeronave) {

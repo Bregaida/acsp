@@ -25,8 +25,8 @@ public class InstrutorServiceImpl implements InstrutorService {
 		return dao.salvar(instrutor);
 	}
 
-	public Boolean alterar(Instrutor instrutor) {
-		return dao.alterar(instrutor);
+	public Boolean atualizar(Instrutor instrutor) {
+		return dao.atualizar(instrutor);
 	}
 
 	public Boolean excluir(Instrutor instrutor) {

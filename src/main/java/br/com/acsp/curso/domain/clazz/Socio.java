@@ -3,12 +3,22 @@
  */
 package br.com.acsp.curso.domain.clazz;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
 /**
  * @author eduardobregaida
  * 
  */
+@Entity
 public class Socio extends Pessoa {
 
+	@Id
+	@SequenceGenerator(name = "idSequenceSocio", sequenceName = "idSequenceSocio ", allocationSize = 1, initialValue = 1)
+	@GeneratedValue(generator = "idSequenceSocio", strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String nomePista;
 	private Long cma;

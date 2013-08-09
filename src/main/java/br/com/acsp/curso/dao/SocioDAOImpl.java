@@ -3,12 +3,14 @@
  */
 package br.com.acsp.curso.dao;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import br.com.acsp.curso.domain.clazz.Socio;
+import br.com.acsp.curso.util.HibernateUtil;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.RequestScoped;
 
@@ -21,37 +23,85 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 @RequestScoped
 public class SocioDAOImpl implements SocioDAO {
 
-	private static List<Socio> socios;
-
-	public SocioDAOImpl() {
-		if (socios == null) {
-			socios = new ArrayList<Socio>();
-		}
-	}
+	private Logger logger = Logger.getLogger(SocioDAOImpl.class);
 
 	public Boolean salvar(Socio socio) {
-		return socios.add(socio);
-
-	}
-
-	public Boolean alterar(Socio socio) {
-		return socios.add(socio);
-	}
-
-	public Boolean excluir(Socio aluno) {
-		Iterator<Socio> it = socios.iterator();
-		while (it.hasNext()) {
-			Socio socioExistente = it.next();
-			if (socioExistente.getId().equals(socioExistente.getId())) {
-				it.remove();
-				return true;
-			}
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean salvou;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.save(socio);
+			transacao.commit();
+			salvou = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			salvou = false;
+			logger.info("Erro ao salvar Socio: " + e.getMessage());
+		} finally {
+			sessao.close();
 		}
-		return false;
+		return salvou;
 	}
 
+	public Boolean atualizar(Socio socio) {
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean atualizou;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.update(socio);
+			transacao.commit();
+			atualizou = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			atualizou = false;
+			logger.info("Erro ao atualizar Socio: " + e.getMessage());
+		} finally {
+			sessao.close();
+		}
+		return atualizou;
+	}
+
+	public Boolean excluir(Socio socio) {
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean excluiu;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.delete(socio);
+			transacao.commit();
+			excluiu = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			excluiu = false;
+			logger.info("Erro ao excluir Socio: " + e.getMessage());
+		} finally {
+			sessao.close();
+		}
+		return excluiu;
+	}
+
+	@SuppressWarnings("unchecked")
 	public List<Socio> pesquisarTodos() {
-		return Collections.unmodifiableList(socios);
+		Session sessao = null;
+		Transaction transacao = null;
+		List<Socio> socios = null;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			socios = sessao.createCriteria(Socio.class.getName()).list();
+			transacao.commit();
+		} catch (Exception e) {
+			transacao.rollback();
+			logger.info("Erro pesquisar todos Socios: " + e.getMessage());
+		} finally {
+			sessao.close();
+		}
+		return socios;
 	}
 
 }

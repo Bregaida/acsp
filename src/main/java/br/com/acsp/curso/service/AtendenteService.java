@@ -8,7 +8,7 @@ public interface AtendenteService {
 
 	public Boolean salvar(Atendente atendente);
 
-	public Boolean alterar(Atendente atendente);
+	public Boolean atualizar(Atendente atendente);
 
 	public Boolean excluir(Atendente atendente);
 

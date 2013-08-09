@@ -22,5 +22,9 @@
 		</property>
 		<mapping class="br.com.acsp.curso.domain.clazz.Pessoa"/>
 		<mapping class="br.com.acsp.curso.domain.clazz.Aluno"/>
+		<mapping class="br.com.acsp.curso.domain.clazz.Instrutor"/>
+		<mapping class="br.com.acsp.curso.domain.clazz.Socio"/>
+		<mapping class="br.com.acsp.curso.domain.clazz.Atendente"/>
+		<mapping class="br.com.acsp.curso.domain.clazz.Aeronave"/>
 	</session-factory>
 </hibernate-configuration> 

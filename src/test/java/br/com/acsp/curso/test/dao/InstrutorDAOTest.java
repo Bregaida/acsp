@@ -3,12 +3,12 @@
  */
 package br.com.acsp.curso.test.dao;
 
-import static org.junit.Assert.assertNotNull;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.acsp.curso.dao.InstrutorDAO;
 import br.com.acsp.curso.dao.InstrutorDAOImpl;
+import br.com.acsp.curso.domain.clazz.Instrutor;
 import br.com.acsp.curso.test.UtilTest;
 
 /**
@@ -21,22 +21,29 @@ public class InstrutorDAOTest {
 
 	@Test
 	public void deveriaSalvarInstrutor() {
-		assertNotNull(dao.salvar(UtilTest.populaInstrutor()));
+		Assert.assertTrue(dao.salvar(UtilTest.populaInstrutor()));
 	}
 
 	@Test
-	public void deveriaAlterarInstrutor() {
-		assertNotNull(dao.alterar(UtilTest.populaInstrutor()));
+	public void deveriaAtualizarInstrutor() {
+		Instrutor instrutor = new Instrutor();
+		instrutor = UtilTest.populaInstrutor();
+		instrutor.setId(dao.pesquisarTodos().iterator().next().getId());
+		instrutor.setNome("Airton");
+		Assert.assertTrue(dao.atualizar(instrutor));
 	}
 
 	@Test
 	public void deveriaExcluirInstrutor() {
-		assertNotNull(dao.excluir(UtilTest.populaInstrutor()));
+		Instrutor instrutor = new Instrutor();
+		instrutor = UtilTest.populaInstrutor();
+		instrutor.setId(dao.pesquisarTodos().iterator().next().getId());
+		Assert.assertTrue(dao.excluir(instrutor));
 	}
 
 	@Test
 	public void deveriaPesquisarTodosInstrutores() {
-		assertNotNull(dao.pesquisarTodos());
+		Assert.assertNotNull(dao.pesquisarTodos());
 	}
 
 }

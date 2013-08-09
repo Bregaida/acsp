@@ -16,7 +16,7 @@ public interface SocioDAO {
 
 	public Boolean salvar(Socio socio);
 
-	public Boolean alterar(Socio socio);
+	public Boolean atualizar(Socio socio);
 
 	public Boolean excluir(Socio socio);
 

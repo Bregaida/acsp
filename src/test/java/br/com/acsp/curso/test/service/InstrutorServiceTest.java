@@ -26,7 +26,7 @@ public class InstrutorServiceTest {
 
 	@Test
 	public void deveriaAlterarInstrutor() {
-		assertNotNull(service.alterar(UtilTest.populaInstrutor()));
+		assertNotNull(service.atualizar(UtilTest.populaInstrutor()));
 	}
 
 	@Test

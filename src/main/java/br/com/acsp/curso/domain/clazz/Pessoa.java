@@ -3,9 +3,9 @@
  */
 package br.com.acsp.curso.domain.clazz;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
 import br.com.acsp.curso.domain.enumerator.Escolaridade;
 
@@ -13,16 +13,31 @@ import br.com.acsp.curso.domain.enumerator.Escolaridade;
  * @author eduardobregaida
  * 
  */
+
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa {
+
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// private Long id;
 
 	private String nome;
 	private Long rg;
 	private Long cpf;
 	private Long tituloEleitor;
 	private Long alistamentoMilitar;
-	@Enumerated(EnumType.STRING)
+	// @Enumerated(EnumType.STRING)
 	private Escolaridade escolaridade;
 	private boolean ativo;
+
+	// public Long getId() {
+	// return id;
+	// }
+	//
+	// public void setId(Long id) {
+	// this.id = id;
+	// }
 
 	public String getNome() {
 		return nome;

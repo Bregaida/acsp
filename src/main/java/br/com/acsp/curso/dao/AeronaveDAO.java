@@ -15,7 +15,7 @@ public interface AeronaveDAO {
 
 	public Boolean salvar(Aeronave aeronave);
 
-	public Boolean alterar(Aeronave aeronave);
+	public Boolean atualizar(Aeronave aeronave);
 
 	public Boolean excluir(Aeronave aeronave);
 

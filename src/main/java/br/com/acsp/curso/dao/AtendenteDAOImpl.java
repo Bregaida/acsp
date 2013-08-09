@@ -3,12 +3,14 @@
  */
 package br.com.acsp.curso.dao;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import br.com.acsp.curso.domain.clazz.Atendente;
+import br.com.acsp.curso.util.HibernateUtil;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.RequestScoped;
 
@@ -20,36 +22,86 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 @RequestScoped
 public class AtendenteDAOImpl implements AtendenteDAO {
 
-	private static List<Atendente> atendentes;
-
-	public AtendenteDAOImpl() {
-		if (atendentes == null) {
-			atendentes = new ArrayList<Atendente>();
-		}
-	}
+	private Logger logger = Logger.getLogger(AtendenteDAOImpl.class);
 
 	public Boolean salvar(Atendente atendente) {
-		return atendentes.add(atendente);
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean salvou;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.save(atendente);
+			transacao.commit();
+			salvou = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			salvou = false;
+			logger.info("Erro ao salvar Atendente: " + e.getMessage());
+		} finally {
+			sessao.close();
+		}
+		return salvou;
 	}
 
-	public Boolean alterar(Atendente atendente) {
-		return atendentes.add(atendente);
+	public Boolean atualizar(Atendente atendente) {
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean atualizou;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.update(atendente);
+			transacao.commit();
+			atualizou = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			atualizou = false;
+			logger.info("Erro ao atualizar Atendente: " + e.getMessage());
+		} finally {
+			sessao.close();
+		}
+		return atualizou;
 	}
 
 	public Boolean excluir(Atendente atendente) {
-		Iterator<Atendente> it = atendentes.iterator();
-		while (it.hasNext()) {
-			Atendente atendenteExistente = it.next();
-			if (atendenteExistente.getId().equals(atendenteExistente.getId())) {
-				it.remove();
-				return true;
-			}
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean excluiu;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.delete(atendente);
+			transacao.commit();
+			excluiu = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			excluiu = false;
+			logger.info("Erro ao excluir Atendente: " + e.getMessage());
+		} finally {
+			sessao.close();
 		}
-		return false;
+		return excluiu;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Atendente> pesquisarTodos() {
-		return Collections.unmodifiableList(atendentes);
+		Session sessao = null;
+		Transaction transacao = null;
+		List<Atendente> atendentes = null;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			atendentes = sessao.createCriteria(Atendente.class.getName())
+					.list();
+			transacao.commit();
+		} catch (Exception e) {
+			transacao.rollback();
+			logger.info("Erro pesquisar todos Atendentes: " + e.getMessage());
+		} finally {
+			sessao.close();
+		}
+		return atendentes;
 	}
 
 }

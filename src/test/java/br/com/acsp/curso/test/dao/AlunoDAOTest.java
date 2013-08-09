@@ -3,13 +3,12 @@
  */
 package br.com.acsp.curso.test.dao;
 
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.acsp.curso.dao.AlunoDAO;
 import br.com.acsp.curso.dao.AlunoDAOImpl;
+import br.com.acsp.curso.domain.clazz.Aluno;
 import br.com.acsp.curso.test.UtilTest;
 
 /**
@@ -26,18 +25,25 @@ public class AlunoDAOTest {
 	}
 
 	@Test
-	public void deveriaAlterarAluno() {
-		assertNotNull(dao.alterar(UtilTest.populaAluno()));
+	public void deveriaAtualizarAluno() {
+		Aluno aluno = new Aluno();
+		aluno = UtilTest.populaAluno();
+		aluno.setId(dao.pesquisarTodos().iterator().next().getId());
+		aluno.setNome("Airton");
+		Assert.assertTrue(dao.atualizar(aluno));
 	}
 
 	@Test
 	public void deveriaExcluirAluno() {
-		assertNotNull(dao.excluir(UtilTest.populaAluno()));
+		Aluno aluno = new Aluno();
+		aluno = UtilTest.populaAluno();
+		aluno.setId(dao.pesquisarTodos().iterator().next().getId());
+		Assert.assertTrue(dao.excluir(aluno));
 	}
 
 	@Test
 	public void deveriaPesquisarTodosAlunos() {
-		assertNotNull(dao.pesquisarTodos());
+		Assert.assertNotNull(dao.pesquisarTodos());
 	}
 
 }

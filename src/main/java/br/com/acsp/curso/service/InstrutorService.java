@@ -15,7 +15,7 @@ public interface InstrutorService {
 
 	public Boolean salvar(Instrutor instrutor);
 
-	public Boolean alterar(Instrutor instrutor);
+	public Boolean atualizar(Instrutor instrutor);
 
 	public Boolean excluir(Instrutor instrutor);
 

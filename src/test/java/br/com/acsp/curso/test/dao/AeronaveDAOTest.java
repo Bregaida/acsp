@@ -3,12 +3,12 @@
  */
 package br.com.acsp.curso.test.dao;
 
-import static org.junit.Assert.assertNotNull;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.acsp.curso.dao.AeronaveDAO;
 import br.com.acsp.curso.dao.AeronaveDAOImpl;
+import br.com.acsp.curso.domain.clazz.Aeronave;
 import br.com.acsp.curso.test.UtilTest;
 
 /**
@@ -21,22 +21,29 @@ public class AeronaveDAOTest {
 
 	@Test
 	public void deveriaSalvarAeronave() {
-		assertNotNull(dao.salvar(UtilTest.populaAeronave()));
+		Assert.assertTrue(dao.salvar(UtilTest.populaAeronave()));
 	}
 
 	@Test
-	public void deveriaAlterarAeronave() {
-		assertNotNull(dao.alterar(UtilTest.populaAeronave()));
+	public void deveriaAtualizarAeronave() {
+		Aeronave aeronave = new Aeronave();
+		aeronave = UtilTest.populaAeronave();
+		aeronave.setId(dao.pesquisarTodos().iterator().next().getId());
+		aeronave.setModelo("Arrow");
+		Assert.assertTrue(dao.atualizar(aeronave));
 	}
 
 	@Test
 	public void deveriaExcluirAeronave() {
-		assertNotNull(dao.excluir(UtilTest.populaAeronave()));
+		Aeronave aeronave = new Aeronave();
+		aeronave = UtilTest.populaAeronave();
+		aeronave.setId(dao.pesquisarTodos().iterator().next().getId());
+		Assert.assertTrue(dao.excluir(aeronave));
 	}
 
 	@Test
-	public void deveriaPesquisarTodasAeronaves() {
-		assertNotNull(dao.pesquisarTodos());
+	public void deveriaPesquisarTodosAeronaves() {
+		Assert.assertNotNull(dao.pesquisarTodos());
 	}
 
 }

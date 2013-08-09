@@ -26,7 +26,7 @@ public class AeronaveServiceTest {
 
 	@Test
 	public void deveriaAlterarAeronave() {
-		assertNotNull(service.alterar(UtilTest.populaAeronave()));
+		assertNotNull(service.atualizar(UtilTest.populaAeronave()));
 	}
 
 	@Test
@@ -35,7 +35,7 @@ public class AeronaveServiceTest {
 	}
 
 	@Test
-	public void deveriaPesquisarTodasAeronaves() {
+	public void deveriaPesquisarTodosAeronaves() {
 		assertNotNull(service.pesquisarTodos());
 	}
 

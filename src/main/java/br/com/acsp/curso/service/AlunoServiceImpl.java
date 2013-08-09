@@ -25,8 +25,8 @@ public class AlunoServiceImpl implements AlunoService {
 		return dao.salvar(aluno);
 	}
 
-	public Boolean alterar(Aluno aluno) {
-		return dao.alterar(aluno);
+	public Boolean atualizar(Aluno aluno) {
+		return dao.atualizar(aluno);
 	}
 
 	public Boolean excluir(Aluno aluno) {

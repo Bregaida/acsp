@@ -26,7 +26,7 @@ public class AtendenteServiceTest {
 
 	@Test
 	public void deveriaAlterarAtendente() {
-		assertNotNull(service.alterar(UtilTest.populaAtendente()));
+		assertNotNull(service.atualizar(UtilTest.populaAtendente()));
 	}
 
 	@Test

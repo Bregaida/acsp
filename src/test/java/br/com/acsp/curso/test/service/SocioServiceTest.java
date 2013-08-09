@@ -26,7 +26,7 @@ public class SocioServiceTest {
 
 	@Test
 	public void deveriaAlterarSocio() {
-		assertNotNull(service.alterar(UtilTest.populaSocio()));
+		assertNotNull(service.atualizar(UtilTest.populaSocio()));
 	}
 
 	@Test

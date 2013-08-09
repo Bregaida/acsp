@@ -25,8 +25,8 @@ public class AtendenteServiceImpl implements AtendenteService {
 		return dao.salvar(atendente);
 	}
 
-	public Boolean alterar(Atendente atendente) {
-		return dao.alterar(atendente);
+	public Boolean atualizar(Atendente atendente) {
+		return dao.atualizar(atendente);
 	}
 
 	public Boolean excluir(Atendente atendente) {

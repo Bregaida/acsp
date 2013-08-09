@@ -3,11 +3,9 @@
  */
 package br.com.acsp.curso.dao;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -18,60 +16,92 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 
 /**
  * @author eduardobregaida
- *
+ * 
  */
 
 @Component
 @RequestScoped
 public class AlunoDAOImpl implements AlunoDAO {
 
-	private static List<Aluno> alunos;
+	private Logger logger = Logger.getLogger(AlunoDAOImpl.class);
 
-	public AlunoDAOImpl() {
-		if(alunos == null){
-			alunos = new ArrayList<Aluno>();
-		}
-	}
-	
 	public Boolean salvar(Aluno aluno) {
-		try{
-			Session sessao = null;  
-		    Transaction transacao = null;  
-		      
-		    sessao = HibernateUtil.getSessionFactory().openSession();//n‹o inicia a sess‹o no hibernate 4  
-		    transacao = sessao.beginTransaction();  
-		    sessao.save(aluno);  
-		    transacao.commit();  
-		      
-		    sessao.close();  
-		}catch (Exception e) {
-			e.printStackTrace();
-			return false;
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean salvou;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.save(aluno);
+			transacao.commit();
+			salvou = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			salvou = false;
+			logger.info("Erro ao salvar Aluno: " + e.getMessage());
+		} finally {
+			sessao.close();
 		}
-		return true;
-		
+		return salvou;
 	}
 
-	public Boolean alterar(Aluno aluno) {
-		return alunos.add(aluno);
+	public Boolean atualizar(Aluno aluno) {
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean atualizou;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.update(aluno);
+			transacao.commit();
+			atualizou = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			atualizou = false;
+			logger.info("Erro ao atualizar Aluno: " + e.getMessage());
+		} finally {
+			sessao.close();
+		}
+		return atualizou;
 	}
 
 	public Boolean excluir(Aluno aluno) {
-		Iterator<Aluno> it = alunos.iterator();
-		while(it.hasNext()) {
-			Aluno alunoExistente = it.next();
-			if(alunoExistente.getId().equals(alunoExistente.getId())) {
-				it.remove();
-				return true;
-			}
+		Session sessao = null;
+		Transaction transacao = null;
+		boolean excluiu;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			sessao.delete(aluno);
+			transacao.commit();
+			excluiu = true;
+		} catch (Exception e) {
+			transacao.rollback();
+			excluiu = false;
+			logger.info("Erro ao excluir Aluno: " + e.getMessage());
+		} finally {
+			sessao.close();
 		}
-		return false;
+		return excluiu;
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Aluno> pesquisarTodos() {
-		 return HibernateUtil.getSessionFactory().openSession().createQuery("FROM " + Aluno.class.getName()).list();
-//		return Collections.unmodifiableList(alunos);
+		Session sessao = null;
+		Transaction transacao = null;
+		List<Aluno> alunos = null;
+		try {
+			sessao = HibernateUtil.getSessionFactory().openSession();
+			transacao = sessao.beginTransaction();
+			alunos = sessao.createCriteria(Aluno.class.getName()).list();
+			transacao.commit();
+		} catch (Exception e) {
+			transacao.rollback();
+			logger.info("Erro pesquisar todos Alunos: " + e.getMessage());
+		} finally {
+			sessao.close();
+		}
+		return alunos;
 	}
 
 }

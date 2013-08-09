@@ -25,8 +25,8 @@ public class SocioServiceImpl implements SocioService {
 		return dao.salvar(socio);
 	}
 
-	public Boolean alterar(Socio socio) {
-		return dao.alterar(socio);
+	public Boolean atualizar(Socio socio) {
+		return dao.atualizar(socio);
 	}
 
 	public Boolean excluir(Socio socio) {

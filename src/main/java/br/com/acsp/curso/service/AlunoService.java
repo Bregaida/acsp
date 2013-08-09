@@ -16,7 +16,7 @@ public interface AlunoService {
 
 	public Boolean salvar(Aluno aluno);
 
-	public Boolean alterar(Aluno aluno);
+	public Boolean atualizar(Aluno aluno);
 
 	public Boolean excluir(Aluno aluno);
 
