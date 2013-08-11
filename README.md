@@ -7,10 +7,11 @@ Requisitos do Programa:
     Banco de Dados será PostgreSQL - OK
 	Gerar as querys                - OK
 	Gerar o Banco via Hibernate    - OK
+    Implementar Spring
     @autowired (remover new)
-	Adicionar Spring
     Implementar segurança
-	Criar Protótipos de Tela
+    Criar Protótipos de Tela
+    Telas (HTML 5 e CSS 3, deverá ser Responsiva)	
 
 Módulos CRUD:
 
