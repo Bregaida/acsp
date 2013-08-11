@@ -1,17 +1,23 @@
+/**
+ * 
+ */
 package br.com.acsp.curso.service;
 
-import java.util.List;
+import br.com.acsp.curso.domain.Atendente;
+import br.com.acsp.curso.repository.AtendenteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import br.com.acsp.curso.domain.clazz.Atendente;
+/**
+ * @author eduardobregaida
+ * 
+ */
 
-public interface AtendenteService {
+@Service
+public class AtendenteService extends AbstractService<Atendente> {
 
-	public Boolean salvar(Atendente atendente);
-
-	public Boolean alterar(Atendente atendente);
-
-	public Boolean excluir(Atendente atendente);
-
-	public List<Atendente> pesquisarTodos();
-
+    @Autowired
+    public void setRepository(AtendenteRepository repository){
+        super.repository = repository;
+    }
 }

@@ -1,39 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Novo Aluno</title>
 </head>
 <body>
-	<c:url var="salvar" value="/aluno/salvar" />
-	<form action="${salvar }" method="post">
+    <form:form action="adicionar" id="aluno" method="POST" commandName="aluno" >
 		<c:forEach var="error" items="${errors}">
     		${error.category} - ${error.message}<br />
 		</c:forEach>
 		<table>
 			<tr>
 				<td>Nome</td>
-				<td><input name="alunoForm.aluno.nome" /> </td>
+				<td><form:input path="nome" /> </td>
 			</tr>
 			<tr>
 				<td>RG</td>
-				<td><input name="alunoForm.aluno.rg" /> </td>
+				<td><form:input path="rg" /> </td>
 			</tr>
 			<tr>
 				<td>CPF</td>
-				<td><input name="alunoForm.aluno.cpf" /> </td>
+				<td><form:input path="cpf" /> </td>
 			</tr>
 			<tr>
 				<td>Codigo ANAC</td>
-				<td><input name="alunoForm.aluno.codigoANAC" /> </td>
+				<td><form:input path="codigoANAC" /> </td>
 			</tr>
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Salvar" /> </td>
 			</tr>		
 		</table>
-	</form>
+	</form:form>
 </body>
 </html>

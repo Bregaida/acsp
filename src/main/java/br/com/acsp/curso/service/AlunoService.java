@@ -3,23 +3,27 @@
  */
 package br.com.acsp.curso.service;
 
-import java.util.List;
+import br.com.acsp.curso.domain.Aluno;
+import br.com.acsp.curso.repository.AlunoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import br.com.acsp.curso.domain.clazz.Aluno;
+import java.util.Collection;
 
 /**
  * @author eduardobregaida
  * 
  */
 
-public interface AlunoService {
+@Service
+public class AlunoService extends AbstractService<Aluno>{
 
-	public Boolean salvar(Aluno aluno);
+    @Autowired
+	public void setRepository(AlunoRepository repository){
+        super.repository = repository;
+    }
 
-	public Boolean alterar(Aluno aluno);
-
-	public Boolean excluir(Aluno aluno);
-
-	public List<Aluno> pesquisarTodos();
-
+    public Collection<Aluno> listarOrdenado(){
+        return ((AlunoRepository) repository).listarOrdenadoPorNome();
+    }
 }

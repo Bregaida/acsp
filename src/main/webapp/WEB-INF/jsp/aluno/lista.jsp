@@ -10,7 +10,7 @@
 </head>
 <body>
 	<table>
-		<c:forEach var="aluno" items="${alunoList}">
+		<c:forEach var="aluno" items="${listaDeAlunos}">
 			<tr>
 				<td>Nome do Aluno:</td> <td>${aluno.nome }</td>
 				<td>${aluno.codigoANAC }</td>
@@ -19,6 +19,8 @@
 			</tr>
 		</c:forEach>
 	</table>
+<hr/>
+<a href="http://localhost:8080/acsp/alunos/adicionar">Adicionar</a>
 </body>
 
 </html>
