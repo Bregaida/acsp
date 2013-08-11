@@ -17,10 +17,33 @@ Módulos CRUD:
     Cadastro de Aluno - Ok
     Cadastro de Instrutor - OK
     Cadastro de Atendente - OK
-    Cadastro de Aeronave - OK
+    Cadastro de Aeronave
+    	Lista Aula (para qual hora aquela aeronave serve)
     Cadastro de Sócios - OK
     Pessoa (Classe Abstrata) - OK
-	Agenda
+    Aula 
+    	id
+    	Nome da Materia
+    	Quantidade de horas necessárias para instrutor poder aplicar aquela matéria
+    	
+    Agenda
+    	Data (dia/mês)
+    	Lista de Aeronaves disponíveis
+    	Horas disponíveis para determinada aeronave naquele dia
+    	Quantidade de horas que o aluno/sócio quer agendar
+    		(> 16:00 - voo noturno)
+    		(< 08:00 - voo matutino especial)
+    	Opcional para o aluno/Sócio que esteja agendando
+    		Checkbox 360 Milhas (Reserva aeronave para o dia todo)
+    		Aula (Manobras Altas, TGL, Navegação, INVA, Acrobático)
+    		Lista Instrutores disponíveis na horas e habilitado para o tipo de aula selecionado (obrigado selecionar tipo de aula para agendar com instrutor)
+    	Status (Pode ser Aprovado, Reprovado, Pendênte ou Cancelado)
+    	
+    Perfil
+    	(Aluno e Sócio - Agendam horas de vôo e consultam apenas suas horas marcadas, podendo cancelar até 1 dia antes)
+    	(Intrutores - Visualizam seu cadastro, consultam horas de vôo no qual eles foram marcados)
+    	(Atendentes - Cadastram Alunos, Instrutores e outros Atendentes, aprovam ou reprovam horas marcadas, cancelam horas agendadas, ativam ou desativam aeronaves, instrutores, sócios e alunos, atualizam quantidades de horas de instrução dos instrutores)
+    	
 
     Agenda Regras para Agendar Horas de Vôo:
         Aluno só pode agendar horas de vôo do dia atual até no max 15 dias, ou seja do dia 01/07 até dia 14/07, do dia 15/07 até o dia 30, etc
