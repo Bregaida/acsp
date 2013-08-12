@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class InstrutorService extends AbstractService<Instrutor> {
+public class InstrutorService extends AbstractService<Instrutor, Long> {
 
     @Autowired
     public void setRepository(InstrutorRepository repository){

@@ -7,9 +7,9 @@ import java.util.Collection;
  * Date: 8/11/13
  * Time: 10:32 PM
  */
-public interface GenericRepository<E> {
+public interface GenericRepository<E, PK> {
 
-    void exclui(E entity);
+    void excluiPorPK(PK primaryKey);
 
     void salva(E entity);
 

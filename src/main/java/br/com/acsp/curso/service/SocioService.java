@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class SocioService extends AbstractService<Socio> {
+public class SocioService extends AbstractService<Socio, Long> {
 
     @Autowired
     public void setRepository(SocioRepository repository){

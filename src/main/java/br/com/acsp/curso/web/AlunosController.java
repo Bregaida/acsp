@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,6 +46,12 @@ public class AlunosController {
     public String lista(ModelMap map){
         map.put("listaDeAlunos", alunoService.listarOrdenado());
         return "aluno/lista";
+    }
+
+    @RequestMapping(value = "/aluno/{id}/apaga", method = RequestMethod.GET)
+    public String exclui(@PathVariable("id") Long id){
+        alunoService.excluirPorId(id);
+        return "redirect:/alunos";
     }
 
     @RequestMapping(value = "/alunos/adicionar", method = RequestMethod.GET)

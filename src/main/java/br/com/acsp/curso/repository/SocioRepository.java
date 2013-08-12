@@ -10,4 +10,4 @@ import br.com.acsp.curso.domain.Socio;
  * 
  */
 
-public interface SocioRepository extends GenericRepository<Socio> {}
+public interface SocioRepository extends GenericRepository<Socio, Long> {}
