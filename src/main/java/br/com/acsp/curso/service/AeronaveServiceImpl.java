@@ -5,17 +5,18 @@ package br.com.acsp.curso.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.com.acsp.curso.dao.AeronaveDAO;
 import br.com.acsp.curso.dao.AeronaveDAOImpl;
 import br.com.acsp.curso.domain.clazz.Aeronave;
-import br.com.caelum.vraptor.ioc.Component;
 
 /**
  * @author eduardobregaida
  * 
  */
 
-@Component
+@Service
 public class AeronaveServiceImpl implements AeronaveService {
 
 	// TODO: remover esse new

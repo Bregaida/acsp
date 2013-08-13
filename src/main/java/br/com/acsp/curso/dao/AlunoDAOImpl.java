@@ -5,25 +5,24 @@ package br.com.acsp.curso.dao;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import br.com.acsp.curso.domain.clazz.Aluno;
 import br.com.acsp.curso.util.HibernateUtil;
-import br.com.caelum.vraptor.ioc.Component;
-import br.com.caelum.vraptor.ioc.RequestScoped;
 
 /**
  * @author eduardobregaida
  * 
  */
 
-@Component
-@RequestScoped
+@Repository
 public class AlunoDAOImpl implements AlunoDAO {
 
-	private Logger logger = Logger.getLogger(AlunoDAOImpl.class);
+	private Logger logger = LoggerFactory.getLogger(AlunoDAOImpl.class);
 
 	public Boolean salvar(Aluno aluno) {
 		Session sessao = null;

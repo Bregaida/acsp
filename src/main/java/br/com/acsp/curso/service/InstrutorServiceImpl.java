@@ -5,17 +5,18 @@ package br.com.acsp.curso.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.com.acsp.curso.dao.InstrutorDAO;
 import br.com.acsp.curso.dao.InstrutorDAOImpl;
 import br.com.acsp.curso.domain.clazz.Instrutor;
-import br.com.caelum.vraptor.ioc.Component;
 
 /**
  * @author eduardobregaida
  * 
  */
 
-@Component
+@Service
 public class InstrutorServiceImpl implements InstrutorService {
 
 	// TODO: remover esse new

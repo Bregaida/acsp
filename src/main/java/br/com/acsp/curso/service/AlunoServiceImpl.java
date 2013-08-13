@@ -5,17 +5,18 @@ package br.com.acsp.curso.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.com.acsp.curso.dao.AlunoDAO;
 import br.com.acsp.curso.dao.AlunoDAOImpl;
 import br.com.acsp.curso.domain.clazz.Aluno;
-import br.com.caelum.vraptor.ioc.Component;
 
 /**
  * @author eduardobregaida
  * 
  */
 
-@Component
+@Service
 public class AlunoServiceImpl implements AlunoService {
 
 	// TODO: remover esse new

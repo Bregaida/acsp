@@ -5,17 +5,18 @@ package br.com.acsp.curso.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.com.acsp.curso.dao.SocioDAO;
 import br.com.acsp.curso.dao.SocioDAOImpl;
 import br.com.acsp.curso.domain.clazz.Socio;
-import br.com.caelum.vraptor.ioc.Component;
 
 /**
  * @author eduardobregaida
  * 
  */
 
-@Component
+@Service
 public class SocioServiceImpl implements SocioService {
 
 	// TODO: remover esse new

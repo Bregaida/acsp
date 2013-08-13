@@ -5,25 +5,24 @@ package br.com.acsp.curso.dao;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import br.com.acsp.curso.domain.clazz.Socio;
 import br.com.acsp.curso.util.HibernateUtil;
-import br.com.caelum.vraptor.ioc.Component;
-import br.com.caelum.vraptor.ioc.RequestScoped;
 
 /**
  * @author eduardobregaida
  * 
  */
 
-@Component
-@RequestScoped
+@Repository
 public class SocioDAOImpl implements SocioDAO {
 
-	private Logger logger = Logger.getLogger(SocioDAOImpl.class);
+	private Logger logger = LoggerFactory.getLogger(SocioDAOImpl.class);
 
 	public Boolean salvar(Socio socio) {
 		Session sessao = null;

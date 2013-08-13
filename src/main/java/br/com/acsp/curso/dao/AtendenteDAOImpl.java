@@ -5,24 +5,24 @@ package br.com.acsp.curso.dao;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import br.com.acsp.curso.domain.clazz.Atendente;
 import br.com.acsp.curso.util.HibernateUtil;
-import br.com.caelum.vraptor.ioc.Component;
-import br.com.caelum.vraptor.ioc.RequestScoped;
 
 /**
  * @author eduardobregaida
  * 
  */
-@Component
-@RequestScoped
+
+@Repository
 public class AtendenteDAOImpl implements AtendenteDAO {
 
-	private Logger logger = Logger.getLogger(AtendenteDAOImpl.class);
+	private Logger logger = LoggerFactory.getLogger(AtendenteDAOImpl.class);
 
 	public Boolean salvar(Atendente atendente) {
 		Session sessao = null;
