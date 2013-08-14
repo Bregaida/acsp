@@ -12,16 +12,6 @@ import org.springframework.stereotype.Service;
  * @author eduardobregaida
  * 
  */
-<<<<<<< HEAD
-public interface InstrutorService {
-
-	public Boolean salvar(Instrutor instrutor);
-
-	public Boolean atualizar(Instrutor instrutor);
-
-	public Boolean excluir(Instrutor instrutor);
-=======
->>>>>>> pr/1
 
 @Service
 public class InstrutorService extends AbstractService<Instrutor, Long> {

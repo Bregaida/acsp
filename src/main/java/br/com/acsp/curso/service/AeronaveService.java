@@ -12,16 +12,6 @@ import org.springframework.stereotype.Service;
  * @author eduardobregaida
  * 
  */
-<<<<<<< HEAD
-public interface AeronaveService {
-
-	public Boolean salvar(Aeronave aeronave);
-
-	public Boolean atualizar(Aeronave aeronave);
-
-	public Boolean excluir(Aeronave aeronave);
-=======
->>>>>>> pr/1
 
 @Service
 public class AeronaveService extends AbstractService<Aeronave, Long> {

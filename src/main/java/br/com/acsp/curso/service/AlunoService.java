@@ -20,20 +20,10 @@ import java.util.Collection;
 @Transactional
 public class AlunoService extends AbstractService<Aluno, Long>{
 
-<<<<<<< HEAD
-	public Boolean salvar(Aluno aluno);
-
-	public Boolean atualizar(Aluno aluno);
-
-	public Boolean excluir(Aluno aluno);
-
-	public List<Aluno> pesquisarTodos();
-=======
     @Autowired
 	public void setRepository(AlunoRepository repository){
         super.repository = repository;
     }
->>>>>>> pr/1
 
     public Collection<Aluno> listarOrdenado(){
         return ((AlunoRepository) repository).listarOrdenadoPorNome();

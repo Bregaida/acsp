@@ -13,20 +13,8 @@ import org.springframework.stereotype.Service;
  * 
  */
 
-<<<<<<< HEAD
-public interface AtendenteService {
-
-	public Boolean salvar(Atendente atendente);
-
-	public Boolean atualizar(Atendente atendente);
-
-	public Boolean excluir(Atendente atendente);
-
-	public List<Atendente> pesquisarTodos();
-=======
 @Service
 public class AtendenteService extends AbstractService<Atendente, Long> {
->>>>>>> pr/1
 
     @Autowired
     public void setRepository(AtendenteRepository repository){

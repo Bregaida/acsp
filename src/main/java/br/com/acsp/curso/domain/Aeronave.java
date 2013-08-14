@@ -3,23 +3,12 @@
  */
 package br.com.acsp.curso.domain;
 
-import java.util.Collection;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
 /**
  * @author eduardobregaida
  * 
  */
-@Entity
 public class Aeronave {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String certificadoMatricula;
 	private String marca;
@@ -27,8 +16,6 @@ public class Aeronave {
 	private String dentel;
 	private String fiam;
 	private String apoliceSeguro;
-	@ManyToOne
-	private Collection<Aula> aulas;
 	private boolean fichaPesoBalanceamento;
 	private boolean manualVoo;
 	private boolean checkList;
@@ -44,14 +31,6 @@ public class Aeronave {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Collection<Aula> getAulas() {
-		return aulas;
-	}
-
-	public void setAulas(Collection<Aula> aulas) {
-		this.aulas = aulas;
 	}
 
 	public String getCertificadoMatricula() {
