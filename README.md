@@ -7,7 +7,7 @@ Requisitos do Programa:
     Banco de Dados será PostgreSQL - OK
 	Gerar as querys                - OK
 	Gerar o Banco via Hibernate    - OK
-    Implementar Spring
+    Implementar Spring             - OK
     @autowired (remover new)
     Implementar segurança
     Criar Protótipos de Tela
@@ -100,3 +100,25 @@ Módulos CRUD:
     Administrador do Sistema
         Poderá visualizar tudo
         Poderá inativar alunos, sócios e disponibilidade de Aeronaves
+
+
+Idéia do processamento da agenda:
+
+	- Dia/mes
+	- Carrega Combo de horas disp
+	- Aparece qtdades de hrs q vai voar
+	- Carrega aeronaves disp para aquele dia/hora (dentro da qtdade de horas)
+	- Carrega tipos de aula (opcional)
+	- Carrega instrutores disp para aula, qtdade q o aluno colocou e se ele estiver apto para aquelas horas (tabela)
+	- Checkbox 360 milhas
+
+Outros
+	Select status pendente (Filtro)
+	Envia email (para instrutor e atendente)
+	Grid pendentes aprovação tela principal (atendentes veem status pendente quando logan na tela principal)
+
+Telas:
+	Começam com pesquisar, botão pesquisar e novo.
+	Novo Carrega a página de inserção
+	Pesquisa traz uma grid com Nome para selecionar e atualizar
+	aluno, instr, aeronave, etc
