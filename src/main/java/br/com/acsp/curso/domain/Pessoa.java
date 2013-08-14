@@ -3,9 +3,7 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -15,17 +13,21 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class Pessoa implements Serializable {
 
-	private String nome;
-	private Long rg;
-	private Long cpf;
-	private Long tituloEleitor;
-	private Long alistamentoMilitar;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Enumerated(EnumType.STRING)
-	private EscolaridadeType escolaridade;
-	private boolean ativo;
+	@Column private String nome;
+    @Column private Long rg;
+    @Column private Long cpf;
+    @Column private Long tituloEleitor;
+    @Column private Long alistamentoMilitar;
+    @Column private boolean ativo;
 
-	public String getNome() {
+    @Enumerated(EnumType.STRING)
+    private EscolaridadeType escolaridade;
+
+    public String getNome() {
 		return nome;
 	}
 
@@ -81,4 +83,11 @@ public abstract class Pessoa implements Serializable {
 		this.ativo = ativo;
 	}
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

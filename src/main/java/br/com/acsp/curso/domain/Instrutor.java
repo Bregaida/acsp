@@ -3,25 +3,20 @@
  */
 package br.com.acsp.curso.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 /**
  * @author eduardobregaida
  * 
  */
+@Entity
 public class Instrutor extends Pessoa {
 
-	private Long id;
-	private String nomePista;
-	private Long cma;
-	private Long cht;
-	private Long codigoANAC;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column private String nomePista;
+    @Column private Long cma;
+    @Column private Long cht;
+    @Column private Long codigoANAC;
 
 	public String getNomePista() {
 		return nomePista;

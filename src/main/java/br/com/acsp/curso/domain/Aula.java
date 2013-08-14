@@ -8,5 +8,5 @@ package br.com.acsp.curso.domain;
  *
  */
 public class Aula {
-
+    //Fantastico hein?
 }

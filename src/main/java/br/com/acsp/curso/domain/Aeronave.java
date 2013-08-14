@@ -3,27 +3,33 @@
  */
 package br.com.acsp.curso.domain;
 
+import javax.persistence.*;
+
 /**
  * @author eduardobregaida
  * 
  */
+@Entity
 public class Aeronave {
 
-	private Long id;
-	private String certificadoMatricula;
-	private String marca;
-	private String modelo;
-	private String dentel;
-	private String fiam;
-	private String apoliceSeguro;
-	private boolean fichaPesoBalanceamento;
-	private boolean manualVoo;
-	private boolean checkList;
-	private boolean nsca3_5;
-	private boolean nsca3_7;
-	private boolean diarioBordo;
-	private boolean ativo;
-	private String motivoInatividade;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column private String certificadoMatricula;
+    @Column private String marca;
+    @Column private String modelo;
+    @Column private String dentel;
+    @Column private String fiam;
+    @Column private String apoliceSeguro;
+    @Column private boolean fichaPesoBalanceamento;
+    @Column private boolean manualVoo;
+    @Column private boolean checkList;
+    @Column private boolean nsca3_5;
+    @Column private boolean nsca3_7;
+    @Column private boolean diarioBordo;
+    @Column private boolean ativo;
+    @Column private String motivoInatividade;
 
 	public Long getId() {
 		return id;

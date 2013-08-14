@@ -3,7 +3,8 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 /**
  * @author eduardobregaida
@@ -14,22 +15,10 @@ public class Aluno extends Pessoa {
 
     private static final long serialVersionUID = 6781271219397736009L;
 
-    @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
     @Column private String nomePista;
     @Column private Long cma;
     @Column private Long cht;
     @Column private Long codigoANAC;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNomePista() {
 		return nomePista;
