@@ -3,14 +3,16 @@
  */
 package br.com.acsp.curso.service;
 
-import java.util.List;
-
-import br.com.acsp.curso.domain.clazz.Instrutor;
+import br.com.acsp.curso.domain.Instrutor;
+import br.com.acsp.curso.repository.InstrutorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author eduardobregaida
  * 
  */
+<<<<<<< HEAD
 public interface InstrutorService {
 
 	public Boolean salvar(Instrutor instrutor);
@@ -18,7 +20,14 @@ public interface InstrutorService {
 	public Boolean atualizar(Instrutor instrutor);
 
 	public Boolean excluir(Instrutor instrutor);
+=======
+>>>>>>> pr/1
 
-	public List<Instrutor> pesquisarTodos();
+@Service
+public class InstrutorService extends AbstractService<Instrutor, Long> {
 
+    @Autowired
+    public void setRepository(InstrutorRepository repository){
+        super.repository = repository;
+    }
 }

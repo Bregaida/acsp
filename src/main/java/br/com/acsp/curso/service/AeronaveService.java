@@ -3,14 +3,16 @@
  */
 package br.com.acsp.curso.service;
 
-import java.util.List;
-
-import br.com.acsp.curso.domain.clazz.Aeronave;
+import br.com.acsp.curso.domain.Aeronave;
+import br.com.acsp.curso.repository.AeronaveRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author eduardobregaida
  * 
  */
+<<<<<<< HEAD
 public interface AeronaveService {
 
 	public Boolean salvar(Aeronave aeronave);
@@ -18,7 +20,14 @@ public interface AeronaveService {
 	public Boolean atualizar(Aeronave aeronave);
 
 	public Boolean excluir(Aeronave aeronave);
+=======
+>>>>>>> pr/1
 
-	public List<Aeronave> pesquisarTodos();
+@Service
+public class AeronaveService extends AbstractService<Aeronave, Long> {
 
+    @Autowired
+    public void setRepository(AeronaveRepository repository){
+        super.repository = repository;
+    }
 }
