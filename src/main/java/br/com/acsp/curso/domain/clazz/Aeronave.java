@@ -3,10 +3,13 @@
  */
 package br.com.acsp.curso.domain.clazz;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * @author eduardobregaida
@@ -24,6 +27,8 @@ public class Aeronave {
 	private String dentel;
 	private String fiam;
 	private String apoliceSeguro;
+	@ManyToOne
+	private Collection<Aula> aulas;
 	private boolean fichaPesoBalanceamento;
 	private boolean manualVoo;
 	private boolean checkList;
@@ -39,6 +44,14 @@ public class Aeronave {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Collection<Aula> getAulas() {
+		return aulas;
+	}
+
+	public void setAulas(Collection<Aula> aulas) {
+		this.aulas = aulas;
 	}
 
 	public String getCertificadoMatricula() {
