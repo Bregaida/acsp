@@ -8,20 +8,21 @@ Requisitos do Programa:
 	Gerar as querys                - OK
 	Gerar o Banco via Hibernate    - OK
     Implementar Spring             - OK
-    @autowired (remover new)
-    Implementar segurança
+    @autowired (remover new)       - OK
+    Implementar segurança          - OK
     Criar Protótipos de Tela
-    Telas (HTML 5 e CSS 3, deverá ser Responsiva)	
+    Telas (HTML 5 e CSS 3, deverá ser Responsiva)
+	Criar Regras de segurança (última fase após cruds e agenda)
 
 Módulos CRUD:
 
-    Cadastro de Aluno - Ok
+    Pessoa (Classe Abstrata) - OK
+	Cadastro de Aluno - Ok
     Cadastro de Instrutor - OK
     Cadastro de Atendente - OK
+    Cadastro de Sócios - OK
     Cadastro de Aeronave
     	Lista Aula (para qual hora aquela aeronave serve)
-    Cadastro de Sócios - OK
-    Pessoa (Classe Abstrata) - OK
     Aula 
     	id
     	Nome da Materia
