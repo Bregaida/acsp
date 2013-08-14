@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class AtendenteService extends AbstractService<Atendente> {
+public class AtendenteService extends AbstractService<Atendente, Long> {
 
     @Autowired
     public void setRepository(AtendenteRepository repository){

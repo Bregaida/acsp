@@ -1,8 +1,6 @@
 package br.com.acsp.curso.repository.jpa;
 
 import br.com.acsp.curso.repository.GenericRepository;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +13,7 @@ import java.util.Collection;
  * Date: 8/11/13
  * Time: 10:24 PM
  */
-public abstract class JpaGenericDAO<E> implements GenericRepository<E> {
+public abstract class JpaGenericDAO<E, PK> implements GenericRepository<E, PK> {
 
     private final Logger LOGGER = LoggerFactory.getLogger(JpaGenericDAO.class);
 
@@ -30,14 +28,16 @@ public abstract class JpaGenericDAO<E> implements GenericRepository<E> {
     }
 
     @Override
-    public void exclui(E entity){
-        em.detach(entity);
+    public void excluiPorPK(PK primaryKey){
+        final E entity = (E) em.find(clazz, primaryKey);
+        em.remove(entity);
+        em.flush();
     }
 
     @Override
     public void salva(E entity){
-        System.out.println("Salvando DAO " + ToStringBuilder.reflectionToString(entity, ToStringStyle.MULTI_LINE_STYLE));
         em.persist(entity);
+        em.flush();
     }
 
     @Override
@@ -47,7 +47,9 @@ public abstract class JpaGenericDAO<E> implements GenericRepository<E> {
 
     @Override
     public E atualiza(E entity){
-        return em.merge(entity);
+        em.merge(entity);
+        em.flush();
+        return entity;
     }
 
     public Collection<E> listarTodos(){

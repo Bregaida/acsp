@@ -12,10 +12,12 @@
 	<table>
 		<c:forEach var="aluno" items="${listaDeAlunos}">
 			<tr>
+                <td>ID do Aluno:</td> <td>${aluno.id}</td>
 				<td>Nome do Aluno:</td> <td>${aluno.nome }</td>
 				<td>${aluno.codigoANAC }</td>
 				<td>${aluno.rg }</td>
 				<td>${aluno.cpf }</td>
+                <td><a href="http://localhost:8080/acsp/aluno/${aluno.id}/apaga">APAGA</a></td>
 			</tr>
 		</c:forEach>
 	</table>

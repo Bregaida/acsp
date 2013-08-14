@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  * 
  */
 @Repository
-public class SocioDAO extends JpaGenericDAO<Socio> implements SocioRepository {
+public class SocioDAO extends JpaGenericDAO<Socio, Long> implements SocioRepository {
 
     public SocioDAO(){
         super(Socio.class);

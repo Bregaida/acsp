@@ -20,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeUrls()
                 .antMatchers("/alunos/**").permitAll()
+                .antMatchers("/aluno/**").permitAll()
                 .anyRequest().authenticated()
             .and()
                 .logout()

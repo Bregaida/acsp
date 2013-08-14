@@ -11,7 +11,7 @@ import java.util.Collection;
  * @author eduardobregaida
  * 
  */
-public interface AlunoRepository extends GenericRepository<Aluno>{
+public interface AlunoRepository extends GenericRepository<Aluno, Long>{
 
     Collection<Aluno> listarOrdenadoPorNome();
 }

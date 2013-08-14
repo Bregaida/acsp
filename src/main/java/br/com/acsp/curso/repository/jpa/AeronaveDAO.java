@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public class AeronaveDAO extends JpaGenericDAO<Aeronave> implements AeronaveRepository {
+public class AeronaveDAO extends JpaGenericDAO<Aeronave, Long> implements AeronaveRepository {
 
     public AeronaveDAO(){
         super(Aeronave.class);

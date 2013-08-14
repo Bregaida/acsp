@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  * 
  */
 @Repository
-public class AtendenteDAO extends JpaGenericDAO<Atendente> implements AtendenteRepository {
+public class AtendenteDAO extends JpaGenericDAO<Atendente, Long> implements AtendenteRepository {
 
     public AtendenteDAO(){
         super(Atendente.class);

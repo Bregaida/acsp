@@ -12,6 +12,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.AnnotationTransactionAttributeSource;
@@ -67,7 +68,9 @@ public class PersistenceConfig {
 
     @Bean
     public TransactionInterceptor transactionInterceptor() {
-        return new TransactionInterceptor(transactionManager(), annotationTransactionAttributeSource());
+        final TransactionInterceptor interceptor = new TransactionInterceptor(transactionManager(), annotationTransactionAttributeSource());
+        interceptor.setTransactionManager(transactionManager());
+        return interceptor;
     }
 
     @Bean
@@ -106,10 +109,18 @@ public class PersistenceConfig {
         return sessionFactoryBean().getObject();
     }
 
-    @Bean
-    public HibernateTransactionManager transactionManager() {
+    @Bean JpaTransactionManager transactionManager(){
+        final JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setDataSource(dataSource());
+        transactionManager.setEntityManagerFactory(entityManagerFactory());
+        return transactionManager;
+    }
+
+    //@Bean
+    public HibernateTransactionManager XXXtransactionManager() {
         final HibernateTransactionManager man = new HibernateTransactionManager();
         man.setSessionFactory(sessionFactory());
+        man.setDataSource(dataSource());
         return man;
     }
     @Bean
@@ -120,6 +131,7 @@ public class PersistenceConfig {
         properties.put("hibernate.show_sql", hibernateShowSql);
         properties.put("hibernate.hbm2ddl.auto", hibernateHbm2ddlAuto);
         properties.put("hibernate.show_sql", true);
+        properties.put("hibernate.connection.shutdown", true);
         return properties;
     }
 

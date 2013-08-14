@@ -14,7 +14,7 @@ import java.util.Collection;
  *
  */
 @Repository
-public class AlunoDAO extends JpaGenericDAO<Aluno> implements AlunoRepository {
+public class AlunoDAO extends JpaGenericDAO<Aluno, Long> implements AlunoRepository {
 
     public AlunoDAO(){
         super(Aluno.class);
