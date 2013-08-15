@@ -3,7 +3,16 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author eduardobregaida
@@ -12,24 +21,41 @@ import javax.persistence.*;
 @Entity
 public class Aeronave {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column private String certificadoMatricula;
-    @Column private String marca;
-    @Column private String modelo;
-    @Column private String dentel;
-    @Column private String fiam;
-    @Column private String apoliceSeguro;
-    @Column private boolean fichaPesoBalanceamento;
-    @Column private boolean manualVoo;
-    @Column private boolean checkList;
-    @Column private boolean nsca3_5;
-    @Column private boolean nsca3_7;
-    @Column private boolean diarioBordo;
-    @Column private boolean ativo;
-    @Column private String motivoInatividade;
+	@Column
+	private String certificadoMatricula;
+	@Column
+	private String marca;
+	@Column
+	private String modelo;
+	@Column
+	private String dentel;
+	@Column
+	private String fiam;
+	@Column
+	private String apoliceSeguro;
+	@Column
+	private boolean fichaPesoBalanceamento;
+	@Column
+	private boolean manualVoo;
+	@Column
+	private boolean checkList;
+	@Column
+	private boolean nsca3_5;
+	@Column
+	private boolean nsca3_7;
+	@Column
+	private boolean diarioBordo;
+	@Column
+	private boolean ativo;
+	@Column
+	private String motivoInatividade;
+
+	@OneToMany(mappedBy = "aeronave", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Aula> aulas;
 
 	public Long getId() {
 		return id;
@@ -149,6 +175,14 @@ public class Aeronave {
 
 	public void setMotivoInatividade(String motivoInatividade) {
 		this.motivoInatividade = motivoInatividade;
+	}
+
+	public List<Aula> getAulas() {
+		return aulas;
+	}
+
+	public void setAulas(List<Aula> aulas) {
+		this.aulas = aulas;
 	}
 
 }

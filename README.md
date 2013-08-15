@@ -21,14 +21,9 @@ Módulos CRUD:
     Cadastro de Instrutor - OK
     Cadastro de Atendente - OK
     Cadastro de Sócios - OK
-    Cadastro de Aeronave
-    	Lista Aula (para qual hora aquela aeronave serve)
-    Aula 
-    	id
-    	Nome da Materia
-    	Quantidade de horas necessárias para instrutor poder aplicar aquela matéria
-    	
-    Agenda
+    Cadastro de Aeronave - OK
+    Aula - OK
+    Agenda - OK
     	Data (dia/mês)
     	Lista de Aeronaves disponíveis
     	Horas disponíveis para determinada aeronave naquele dia
@@ -105,20 +100,22 @@ Módulos CRUD:
 
 Idéia do processamento da agenda:
 
-	- Dia/mes
-	- Carrega Combo de horas disp
-	- Aparece qtdades de hrs q vai voar
-	- Carrega aeronaves disp para aquele dia/hora (dentro da qtdade de horas)
-	- Carrega tipos de aula (opcional)
-	- Carrega instrutores disp para aula, qtdade q o aluno colocou e se ele estiver apto para aquelas horas (tabela)
-	- Checkbox 360 milhas
+		Dia/mes
+		Carrega Combo de horas disp
+	 	Aparece qtdades de hrs q vai voar
+		Carrega aeronaves disp para aquele dia/hora (dentro da qtdade de horas)
+		Carrega tipos de aula (opcional)
+		Carrega instrutores disp para aula, qtdade q o aluno colocou e se ele estiver apto para aquelas horas (tabela)
+		Checkbox 360 milhas
 
-Outros
+Outros: 
+
 	Select status pendente (Filtro)
 	Envia email (para instrutor e atendente)
 	Grid pendentes aprovação tela principal (atendentes veem status pendente quando logan na tela principal)
 
 Telas:
+
 	Começam com pesquisar, botão pesquisar e novo.
 	Novo Carrega a página de inserção
 	Pesquisa traz uma grid com Nome para selecionar e atualizar

@@ -13,10 +13,15 @@ import javax.persistence.Entity;
 @Entity
 public class Instrutor extends Pessoa {
 
-    @Column private String nomePista;
-    @Column private Long cma;
-    @Column private Long cht;
-    @Column private Long codigoANAC;
+	private static final long serialVersionUID = -7104927923365640143L;
+	@Column
+	private String nomePista;
+	@Column
+	private Long cma;
+	@Column
+	private Long cht;
+	@Column
+	private Long codigoANAC;
 
 	public String getNomePista() {
 		return nomePista;
