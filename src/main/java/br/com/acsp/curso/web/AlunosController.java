@@ -48,9 +48,27 @@ public class AlunosController {
         return "aluno/lista";
     }
 
+    @RequestMapping(value = "/aluno", method = RequestMethod.GET)
+    public String preparaForm() {
+        return "aluno/formulario";
+    }
+
     @RequestMapping(value = "/aluno/{id}/apaga", method = RequestMethod.GET)
     public String exclui(@PathVariable("id") Long id) {
         alunoService.excluirPorId(id);
+        return "redirect:/alunos";
+    }
+
+    @RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
+    public String buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+        modelMap.put("aluno", alunoService.obtemPorId(id));
+        return "aluno/formulario";
+    }
+
+    @RequestMapping(value = "/aluno/{id}", method = RequestMethod.POST)
+    public String atualiza(@PathVariable("id") Long id, @ModelAttribute("aluno") Aluno aluno) {
+        aluno.setId(id);
+        alunoService.alterar(aluno);
         return "redirect:/alunos";
     }
 
@@ -58,10 +76,5 @@ public class AlunosController {
     public String salvarAluno(@ModelAttribute("aluno") Aluno aluno) {
         alunoService.salvar(aluno);
         return "redirect:/alunos";
-    }
-
-    @RequestMapping(value = "/aluno", method = RequestMethod.GET)
-    public String preparaForm() {
-        return "aluno/formulario";
     }
 }

@@ -32,6 +32,10 @@ abstract class AbstractService<E, PK> {
         return getRepository().atualiza(entity);
     }
 
+    public E obtemPorId(PK id) {
+        return getRepository().procuraPorId(id);
+    }
+
     public void excluirPorId(PK primaryKey) {
         getRepository().excluiPorPK(primaryKey);
     }

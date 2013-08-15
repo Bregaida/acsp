@@ -17,6 +17,7 @@
 				<td>${aluno.codigoANAC }</td>
 				<td>${aluno.rg }</td>
 				<td>${aluno.cpf }</td>
+                <td><a href="http://localhost:8080/acsp/aluno/${aluno.id}">EDITAR</a>  ||  </td>
                 <td><a href="http://localhost:8080/acsp/aluno/${aluno.id}/apaga">APAGA</a></td>
 			</tr>
 		</c:forEach>

@@ -41,7 +41,7 @@ public abstract class JpaGenericDAO<E, PK> implements GenericRepository<E, PK> {
     }
 
     @Override
-    public E procuraPorId(Long id) {
+    public E procuraPorId(PK id) {
         return (E) em.find(clazz, id);
     }
 

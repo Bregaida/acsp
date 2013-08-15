@@ -13,7 +13,7 @@ public interface GenericRepository<E, PK> {
 
     void salva(E entity);
 
-    E procuraPorId(Long id);
+    E procuraPorId(PK id);
 
     E atualiza(E entity);
 
