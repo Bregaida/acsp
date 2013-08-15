@@ -21,6 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeUrls()
                 .antMatchers("/alunos/**").permitAll()
                 .antMatchers("/aluno/**").permitAll()
+                .antMatchers("/agendas/**").permitAll()
                 .antMatchers("/agenda/**").permitAll()
                 .anyRequest().authenticated()
             .and()

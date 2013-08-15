@@ -20,7 +20,7 @@ abstract class AbstractService<E, PK> {
 
     protected GenericRepository<E, PK> repository;
 
-    protected GenericRepository<E, PK> getRepository(){
+    protected GenericRepository<E, PK> getRepository() {
         return repository;
     }
 

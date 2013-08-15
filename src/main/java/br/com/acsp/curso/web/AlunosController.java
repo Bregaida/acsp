@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.web;
 
@@ -23,7 +23,6 @@ import java.util.Enumeration;
 
 /**
  * @author eduardobregaida
- *
  */
 
 @Controller
@@ -31,43 +30,38 @@ public class AlunosController {
 
     private static final Log logger = LogFactory.getLog(AlunosController.class);
 
-    @Autowired private AlunoService alunoService;
+    @Autowired
+    private AlunoService alunoService;
 
+    /**
+     * Este metodo adiciona o aluno ao (form) request, basta usar o form com o nome de "aluno"
+     * @return
+     */
     @ModelAttribute("aluno")
-    public Aluno getPerson(){
-        final Aluno aluno = new Aluno();
-        aluno.setNome("Bregaida");
-        aluno.setCpf(123L);
-        aluno.setRg(32L);
-        return aluno;
+    public Aluno getAluno() {
+        return new Aluno();
     }
 
     @RequestMapping("/alunos")
-    public String lista(ModelMap map){
+    public String lista(ModelMap map) {
         map.put("listaDeAlunos", alunoService.listarOrdenado());
         return "aluno/lista";
     }
 
     @RequestMapping(value = "/aluno/{id}/apaga", method = RequestMethod.GET)
-    public String exclui(@PathVariable("id") Long id){
+    public String exclui(@PathVariable("id") Long id) {
         alunoService.excluirPorId(id);
         return "redirect:/alunos";
     }
 
-    @RequestMapping(value = "/alunos/adicionar", method = RequestMethod.GET)
-    public String adicionaFormAoRequest(){
-        return "aluno/formulario";
-    }
-
-    @RequestMapping(value = "/alunos/adicionar", method = RequestMethod.POST)
-    public String salvarAluno(@ModelAttribute("aluno") Aluno aluno, BindingResult result, HttpServletRequest request){
-        Enumeration enAttr = request.getAttributeNames();
-        while(enAttr.hasMoreElements()){
-            String attributeName = (String)enAttr.nextElement();
-            System.out.println("Attribute Name - "+attributeName+", Value - "+(request.getAttribute(attributeName)).toString());
-        }
-        System.out.println("Salvando controller " + ToStringBuilder.reflectionToString(aluno, ToStringStyle.MULTI_LINE_STYLE));
+    @RequestMapping(value = "/aluno", method = RequestMethod.POST)
+    public String salvarAluno(@ModelAttribute("aluno") Aluno aluno) {
         alunoService.salvar(aluno);
         return "redirect:/alunos";
+    }
+
+    @RequestMapping(value = "/aluno", method = RequestMethod.GET)
+    public String preparaForm() {
+        return "aluno/formulario";
     }
 }

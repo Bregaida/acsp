@@ -1,63 +1,57 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.domain;
 
+import javax.persistence.*;
 import java.util.Calendar;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * @author pedrosa
- * 
  */
 
 @Entity
 public class Agenda {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column
-	private Calendar dataReserva;
+    @Column
+    private Calendar dataReserva;
 
 
 	/*
-	 * 
+     *
 	 * Atributos :
-	 * Data (dia/ms) 
-	 * Lista de Aeronaves dispon’veis 
-	 * Horas dispon’veis para aeronave selecionada
-	 * Quantidade de horas que o aluno/s—cio quer agendar 
+	 * Data (dia/mï¿½s) 
+	 * Lista de Aeronaves disponï¿½veis 
+	 * Horas disponï¿½veis para aeronave selecionada
+	 * Quantidade de horas que o aluno/sï¿½cio quer agendar 
 	 * 	(> 16:00 - voo noturno) 
 	 * 	(< 08:00 - voo matutino especial) 
 	 * Voo 360 Milhas 
-	 * Aula (Manobras Altas, TGL, Navega‹o, INVA, Acrob‡tico) 
-	 * Lista Instrutores dispon’veis na horas e habilitado para o tipo de aula selecionado 
+	 * Aula (Manobras Altas, TGL, Navegaï¿½ï¿½o, INVA, Acrobï¿½tico) 
+	 * Lista Instrutores disponï¿½veis na horas e habilitado para o tipo de aula selecionado 
 	 * 	(obrigado selecionar tipo de aula para agendar com instrutor) 
 	 * Status 
 	 * 	(Quando aluno agenda Voo noturno, matutino especial, 360 milhas ou com instrutor Status pendente)
 	 */
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Calendar getDataReserva() {
-		return dataReserva;
-	}
+    public Calendar getDataReserva() {
+        return dataReserva;
+    }
 
-	public void setDataReserva(Calendar dataReserva) {
-		this.dataReserva = dataReserva;
-	}
+    public void setDataReserva(Calendar dataReserva) {
+        this.dataReserva = dataReserva;
+    }
 
 
 }

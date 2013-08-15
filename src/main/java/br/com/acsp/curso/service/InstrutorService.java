@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.service;
 
@@ -10,14 +10,13 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author eduardobregaida
- * 
  */
 
 @Service
 public class InstrutorService extends AbstractService<Instrutor, Long> {
 
     @Autowired
-    public void setRepository(InstrutorRepository repository){
+    public void setRepository(InstrutorRepository repository) {
         super.repository = repository;
     }
 }

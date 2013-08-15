@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.repository;
 
@@ -9,9 +9,8 @@ import java.util.Collection;
 
 /**
  * @author eduardobregaida
- * 
  */
-public interface AlunoRepository extends GenericRepository<Aluno, Long>{
+public interface AlunoRepository extends GenericRepository<Aluno, Long> {
 
     Collection<Aluno> listarOrdenadoPorNome();
 }

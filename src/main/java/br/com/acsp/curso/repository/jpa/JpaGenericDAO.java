@@ -22,37 +22,37 @@ public abstract class JpaGenericDAO<E, PK> implements GenericRepository<E, PK> {
 
     private Class clazz;
 
-    public JpaGenericDAO(Class clazz){
+    public JpaGenericDAO(Class clazz) {
         LOGGER.info("Pertence a " + clazz);
         this.clazz = clazz;
     }
 
     @Override
-    public void excluiPorPK(PK primaryKey){
+    public void excluiPorPK(PK primaryKey) {
         final E entity = (E) em.find(clazz, primaryKey);
         em.remove(entity);
         em.flush();
     }
 
     @Override
-    public void salva(E entity){
+    public void salva(E entity) {
         em.persist(entity);
         em.flush();
     }
 
     @Override
-    public E procuraPorId(Long id){
+    public E procuraPorId(Long id) {
         return (E) em.find(clazz, id);
     }
 
     @Override
-    public E atualiza(E entity){
+    public E atualiza(E entity) {
         em.merge(entity);
         em.flush();
         return entity;
     }
 
-    public Collection<E> listarTodos(){
-        return em.createQuery("from " + clazz.getName() ).getResultList();
+    public Collection<E> listarTodos() {
+        return em.createQuery("from " + clazz.getName()).getResultList();
     }
 }

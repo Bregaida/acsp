@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.repository.jpa;
 
@@ -11,12 +11,11 @@ import java.util.Collection;
 
 /**
  * @author eduardobregaida
- *
  */
 @Repository
 public class AlunoDAO extends JpaGenericDAO<Aluno, Long> implements AlunoRepository {
 
-    public AlunoDAO(){
+    public AlunoDAO() {
         super(Aluno.class);
     }
 

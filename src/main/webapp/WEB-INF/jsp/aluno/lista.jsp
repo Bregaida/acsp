@@ -22,7 +22,7 @@
 		</c:forEach>
 	</table>
 <hr/>
-<a href="http://localhost:8080/acsp/alunos/adicionar">Adicionar</a>
+<a href="http://localhost:8080/acsp/aluno">Adicionar</a>
 </body>
 
 </html>

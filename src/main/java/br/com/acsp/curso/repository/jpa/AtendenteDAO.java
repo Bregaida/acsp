@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.repository.jpa;
 
@@ -9,12 +9,11 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author eduardobregaida
- * 
  */
 @Repository
 public class AtendenteDAO extends JpaGenericDAO<Atendente, Long> implements AtendenteRepository {
 
-    public AtendenteDAO(){
+    public AtendenteDAO() {
         super(Atendente.class);
     }
 

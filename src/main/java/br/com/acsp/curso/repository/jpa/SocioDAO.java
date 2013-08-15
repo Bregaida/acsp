@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.repository.jpa;
 
@@ -9,12 +9,11 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author eduardobregaida
- * 
  */
 @Repository
 public class SocioDAO extends JpaGenericDAO<Socio, Long> implements SocioRepository {
 
-    public SocioDAO(){
+    public SocioDAO() {
         super(Socio.class);
     }
 }

@@ -12,7 +12,7 @@
 <title>Novo Aluno</title>
 </head>
 <body>
-    <form:form action="adicionar" id="aluno" method="POST" commandName="aluno" >
+    <form:form id="aluno" method="POST" commandName="aluno" >
 		<c:forEach var="error" items="${errors}">
     		${error.category} - ${error.message}<br />
 		</c:forEach>

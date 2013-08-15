@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.service;
 
@@ -10,14 +10,13 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author eduardobregaida
- * 
  */
 
 @Service
 public class SocioService extends AbstractService<Socio, Long> {
 
     @Autowired
-    public void setRepository(SocioRepository repository){
+    public void setRepository(SocioRepository repository) {
         super.repository = repository;
     }
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.repository.jpa;
 
@@ -9,13 +9,12 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author eduardobregaida
- * 
  */
 
 @Repository
 public class AeronaveDAO extends JpaGenericDAO<Aeronave, Long> implements AeronaveRepository {
 
-    public AeronaveDAO(){
+    public AeronaveDAO() {
         super(Aeronave.class);
     }
 }

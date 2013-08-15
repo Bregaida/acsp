@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.service;
 
@@ -13,19 +13,18 @@ import java.util.Collection;
 
 /**
  * @author eduardobregaida
- * 
  */
 
 @Service
 @Transactional
-public class AlunoService extends AbstractService<Aluno, Long>{
+public class AlunoService extends AbstractService<Aluno, Long> {
 
     @Autowired
-	public void setRepository(AlunoRepository repository){
+    public void setRepository(AlunoRepository repository) {
         super.repository = repository;
     }
 
-    public Collection<Aluno> listarOrdenado(){
+    public Collection<Aluno> listarOrdenado() {
         return ((AlunoRepository) repository).listarOrdenadoPorNome();
     }
 }

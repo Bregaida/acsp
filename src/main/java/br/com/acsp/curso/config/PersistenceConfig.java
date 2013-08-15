@@ -116,13 +116,6 @@ public class PersistenceConfig {
         return transactionManager;
     }
 
-    //@Bean
-    public HibernateTransactionManager XXXtransactionManager() {
-        final HibernateTransactionManager man = new HibernateTransactionManager();
-        man.setSessionFactory(sessionFactory());
-        man.setDataSource(dataSource());
-        return man;
-    }
     @Bean
     public Properties hibernateProperties()
     {
@@ -131,7 +124,6 @@ public class PersistenceConfig {
         properties.put("hibernate.show_sql", hibernateShowSql);
         properties.put("hibernate.hbm2ddl.auto", hibernateHbm2ddlAuto);
         properties.put("hibernate.show_sql", true);
-        properties.put("hibernate.connection.shutdown", true);
         return properties;
     }
 
