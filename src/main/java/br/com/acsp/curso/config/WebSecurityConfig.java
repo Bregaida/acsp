@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
             .and()
                 .formLogin()
-                .defaultSuccessUrl("/index.jsp")
+                .defaultSuccessUrl("/alunos")
                 .loginUrl("/login.jsp")
                 .failureUrl("/login.jsp?error")
             .permitAll();
