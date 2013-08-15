@@ -4,7 +4,6 @@
 package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Agenda;
-import br.com.acsp.curso.domain.Aluno;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AgendaService;
 import org.springframework.beans.factory.annotation.Autowired;
