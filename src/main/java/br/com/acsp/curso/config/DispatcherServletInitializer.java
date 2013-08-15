@@ -1,5 +1,6 @@
 package br.com.acsp.curso.config;
 
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -30,9 +31,12 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
         return new String[] { "/" };
     }
 
-    protected Filter[] getSerFilters(){
-        return new Filter[]{new DelegatingFilterProxy()};
-    }
+    //@Override
+    //protected Filter[] getServletFilters(){
+    //    return new Filter[]{new DelegatingFilterProxy("springSecurityFilterChain")};
+    //}
+
+
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {

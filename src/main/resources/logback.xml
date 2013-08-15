@@ -4,8 +4,7 @@
     <jmxConfigurator />
 
     <logger name="h2database" level="WARN"/>
-    <logger name="org.springframework" level="INFO" />
-    <logger name="org.springframework.security" level="DEBUG" />
+    <logger name="org.springframework" level="DEBUG" />
     <logger name="org.hibernate" level="DEBUG" />
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
