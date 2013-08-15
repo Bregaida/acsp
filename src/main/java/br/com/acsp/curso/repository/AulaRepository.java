@@ -3,6 +3,8 @@
  */
 package br.com.acsp.curso.repository;
 
+import java.util.Collection;
+
 import br.com.acsp.curso.domain.Aula;
 
 /**
@@ -10,4 +12,5 @@ import br.com.acsp.curso.domain.Aula;
  * 
  */
 public interface AulaRepository extends GenericRepository<Aula, Long> {
+	Collection<Aula> listarOrdenadoPorMateria();
 }
