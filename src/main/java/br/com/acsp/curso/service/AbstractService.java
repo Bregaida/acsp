@@ -33,7 +33,17 @@ abstract class AbstractService<E, PK> {
     }
 
     public E obtemPorId(PK id) {
-        return getRepository().procuraPorId(id);
+        final E entity = getRepository().procuraPorId(id);
+        return (entity != null)?entity: useNullStrategy();
+    }
+
+    /**
+     * No caso de uma busca por ID resultar em NULL (nao achou), e possivel implementar este metodo
+     * que pode dar um comportamente diferente, instanciando um objeto padrao (ou usando um padrao).
+     * @return
+     */
+    protected E useNullStrategy(){
+        return null;
     }
 
     public void excluirPorId(PK primaryKey) {

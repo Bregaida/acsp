@@ -37,7 +37,7 @@ public class AeronaveController {
 	@RequestMapping("/aeronaves")
 	public String lista(ModelMap map) {
 		logger.info("AeronaveController: lista");
-		map.put("listaDeAronaves", aeronaveService.listarOrdenadoPorModelo());
+		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		return "aeronave/lista";
 	}
 

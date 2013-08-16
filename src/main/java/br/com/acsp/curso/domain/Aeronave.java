@@ -45,9 +45,6 @@ public class Aeronave {
     @Column
     private String motivoInatividade;
 
-    @OneToMany(mappedBy = "aeronave", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Aula> aulas;
-
     public Long getId() {
         return id;
     }
@@ -166,14 +163,6 @@ public class Aeronave {
 
     public void setMotivoInatividade(String motivoInatividade) {
         this.motivoInatividade = motivoInatividade;
-    }
-
-    public List<Aula> getAulas() {
-        return aulas;
-    }
-
-    public void setAulas(List<Aula> aulas) {
-        this.aulas = aulas;
     }
 
 }
