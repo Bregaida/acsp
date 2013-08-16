@@ -19,6 +19,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/aluno/**").permitAll()
 				.antMatchers("/agendas/**").permitAll()
 				.antMatchers("/agenda/**").permitAll()
+				.antMatchers("/socios/**").permitAll()
+				.antMatchers("/socio/**").permitAll()
 				.antMatchers("/aeronaves/**").permitAll()
 				.antMatchers("/aeronave/**").permitAll().anyRequest()
 				.authenticated().and().logout()
