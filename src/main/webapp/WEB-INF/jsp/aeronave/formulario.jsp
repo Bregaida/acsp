@@ -73,10 +73,10 @@
 				<td>Motivo da inatividade</td>
 				<td><form:checkbox path="motivoInatividade" /> </td>
 			</tr>
-			<tr>
+			<!-- tr>
 				<td>Aulas Homologadas</td>
-				<td><form:checkbox path="aulas" /> </td>
-			</tr>
+				<td><form:select items="aulas" /> </td>
+			</tr -->
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Salvar" /> </td>
