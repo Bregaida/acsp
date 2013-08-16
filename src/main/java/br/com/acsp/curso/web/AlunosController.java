@@ -58,8 +58,17 @@ public class AlunosController {
 
 	@RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
 	public String buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		modelMap.put("aluno", alunoService.obtemPorId(id));
-		return "aluno/formulario";
+		final Aluno aluno = alunoService.obtemPorId(id);
+        String retPage;
+        if(aluno != null){
+            modelMap.put("aluno", aluno);
+            retPage = "aluno/formulario";
+        }
+        else{
+            modelMap.put("erro", "Nao ha um aluno com id " + id);
+            retPage = "redirect:/alunos";
+        }
+		return retPage;
 	}
 
 	@RequestMapping(value = "/aluno/{id}", method = RequestMethod.POST)
