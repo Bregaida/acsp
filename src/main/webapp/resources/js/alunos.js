@@ -32,13 +32,14 @@ function aplicarObjetoNoFormulario(obj, formId){
 
 // Gambeta
 $('#alunoModalBtn').click(function(){
+    $('#alunoForm')[0].reset();
     $('#alunoForm').attr('action', '/acsp/aluno');
 });
 
 $('.editaAlunoAction').click(function(event){
     var alunoId = $(this).attr('alunoId');
-    obtemAluno(alunoId);
     $('#alunoModalBtn').trigger('click'); //hehehe
+    obtemAluno(alunoId);
     $('#alunoForm').attr('action', '/acsp/aluno/' + alunoId);
 });
 
