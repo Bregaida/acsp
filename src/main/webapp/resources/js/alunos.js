@@ -10,29 +10,24 @@ function obtemAluno(id){
     $.ajax({
         url: "/acsp/aluno/" + id
     }).done(function(aluno) {
-        console.log(aluno);
         aplicarObjetoNoFormulario(aluno, "#alunoForm");
-        console.log("---");
     });
 }
 function aplicarObjetoNoFormulario(obj, formId){
-    console.log("???");
     var properties = [];
     for(var key in obj) {
         if(obj.hasOwnProperty(key) && typeof obj[key] !== 'function') {
             properties.push(key);
         }
     }
-    console.log("xxx no formId" + formId);
-    $("form#" + formId + " :input").each(function(){
+    var selector = "form" + formId + " :input";
+    $(selector).each(function(){
         var input = $(this);// This is the jquery object of the input
-        console.log("------> " + input.attr('name'));
         var attrName = input.attr('name');
-        console.log("No form: " + attrName);
-        console.log("No obj: " + properties[attrName]);
-        input.attr(attrName, properties[attrName]);
+        if(obj[attrName] != undefined && obj[attrName] != null){
+            input.val(obj[attrName]);
+        }
     });
-    console.log("yyyy");
 }
 
 // Gambeta
@@ -43,7 +38,8 @@ $('#alunoModalBtn').click(function(){
 $('.editaAlunoAction').click(function(event){
     var alunoId = $(this).attr('alunoId');
     obtemAluno(alunoId);
-    alert("Editar " + alunoId);
+    $('#alunoModalBtn').trigger('click'); //hehehe
+    $('#alunoForm').attr('action', '/acsp/aluno/' + alunoId);
 });
 
 $('.apagaAlunoAction').click(function(event){
