@@ -24,6 +24,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/agenda/**").permitAll()
 				.antMatchers("/socios/**").permitAll()
 				.antMatchers("/socio/**").permitAll()
+				.antMatchers("/aulas/**").permitAll()
+				.antMatchers("/aula/**").permitAll()
+				.antMatchers("/instrutores/**").permitAll()
+				.antMatchers("/instrutor/**").permitAll()
+			
+			
 				.antMatchers("/aeronaves/**").permitAll()
 				.antMatchers("/aeronave/**").permitAll().anyRequest()
 				.authenticated().and().logout()
