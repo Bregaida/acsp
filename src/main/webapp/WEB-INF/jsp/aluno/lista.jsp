@@ -4,12 +4,12 @@
 
 	<table class="table table-striped table-hover">
         <thead>
-            <th>ID</th>
-            <th>Nome do aluno</th>
-            <th>Código anac</th>
-            <th>RG</th>
-            <th>CPF</th>
-            <th></th>
+            <td>ID</td>
+            <td>Nome do aluno</td>
+            <td>Código anac</td>
+            <td>RG</td>
+            <td>CPF</td>
+            <td></td>
         </thead>
         <tbody>
 		<c:forEach var="aluno" items="${listaDeAlunos}">
