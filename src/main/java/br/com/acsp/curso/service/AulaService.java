@@ -3,10 +3,13 @@
  */
 package br.com.acsp.curso.service;
 
-import br.com.acsp.curso.domain.Aula;
-import br.com.acsp.curso.repository.AulaRepository;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.acsp.curso.domain.Aula;
+import br.com.acsp.curso.repository.AulaRepository;
 
 /**
  * @author eduardobregaida
@@ -20,4 +23,7 @@ public class AulaService extends AbstractService<Aula, Long> {
         super.repository = repository;
     }
 
+    public Collection<Aula> listarOrdenado() {
+        return ((AulaRepository) repository).listarOrdenadoPorMateria();
+    }
 }

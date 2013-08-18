@@ -13,8 +13,11 @@ import javax.persistence.Entity;
 public class Instrutor extends Pessoa {
 
     private static final long serialVersionUID = -7104927923365640143L;
+    
+    //TODO virou entity
     @Column
     private String nomePista;
+    
     @Column
     private Long cma;
     @Column

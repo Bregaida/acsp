@@ -3,10 +3,13 @@
  */
 package br.com.acsp.curso.service;
 
-import br.com.acsp.curso.domain.Instrutor;
-import br.com.acsp.curso.repository.InstrutorRepository;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.acsp.curso.domain.Instrutor;
+import br.com.acsp.curso.repository.InstrutorRepository;
 
 /**
  * @author eduardobregaida
@@ -19,4 +22,12 @@ public class InstrutorService extends AbstractService<Instrutor, Long> {
     public void setRepository(InstrutorRepository repository) {
         super.repository = repository;
     }
+
+	public Collection<Instrutor> listarOrdenado() {
+        return ((InstrutorRepository) repository).listarOrdenadoPorNome();
+    }
+
+	
+	
+	
 }
