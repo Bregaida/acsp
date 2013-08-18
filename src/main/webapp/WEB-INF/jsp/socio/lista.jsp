@@ -1,14 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>Lista de Sócios</title>
-</head>
-<body>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="../../includes/header.jsp"/>
 	<table>
 		<c:forEach var="socio" items="${listaDeSocios}">
 			<tr>
@@ -24,6 +16,4 @@
 	</table>
 <hr/>
 <a href="http://localhost:8080/acsp/socio">Adicionar</a>
-</body>
-
-</html>
+<c:import url="../../includes/footer.jsp"/>
