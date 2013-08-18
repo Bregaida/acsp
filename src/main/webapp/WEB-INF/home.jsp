@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="resources/css/navbar.css" rel="stylesheet">
 </head>
 <body>
 
@@ -87,10 +88,11 @@
 <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
 <script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"/>
 
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script type="text/javascript" src="resources/js/respond.min.js"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script type="text/javascript" src="resources/js/respond.min.js"></script>
 </body>
 </html>
