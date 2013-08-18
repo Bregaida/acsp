@@ -15,7 +15,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeUrls().antMatchers("/alunos/**").permitAll()
+		http.authorizeUrls()
+                .antMatchers("/home*").permitAll()
+                .antMatchers("/resources/**", "/css/*", "/js/*").permitAll()
+                .antMatchers("/alunos/**").permitAll()
 				.antMatchers("/aluno/**").permitAll()
 				.antMatchers("/agendas/**").permitAll()
 				.antMatchers("/agenda/**").permitAll()

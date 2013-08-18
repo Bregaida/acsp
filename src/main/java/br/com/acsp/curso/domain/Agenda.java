@@ -56,8 +56,8 @@ public class Agenda {
      *
 	 * Atributos :
 	 * Data (dia/mes) 
-	 * Lista de Aeronaves disponïveis 
-	 * Horas disponïveis para aeronave selecionada
+	 * Lista de Aeronaves disponÃ­veis
+	 * Horas disponÃ­veis para aeronave selecionada
 	 * Quantidade de horas que o aluno/soio quer agendar 
 	 * 	(> 16:00 - voo noturno) 
 	 * 	(< 08:00 - voo matutino especial) 

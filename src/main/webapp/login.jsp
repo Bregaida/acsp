@@ -1,52 +1,43 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Login Page</title>
-    <style>
-        .errorblock {
-            color: #ff0000;
-            background-color: #ffEEEE;
-            border: 3px solid #ff0000;
-            padding: 8px;
-            margin: 16px;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="resources/ico/favicon.png">
+
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="resources/css/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/login.css" rel="stylesheet">
+
 </head>
-<body onload='document.f.j_username.focus();'>
-<h3>Login with Username and Password (Custom Page)</h3>
 
-<c:if test="${not empty error}">
-    <div class="errorblock">
-        Your login attempt was not successful, try again.<br /> Caused :
-            ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-    </div>
-</c:if>
+<body>
 
-<form name='f' action="j_spring_security_check" method='POST'>
+<div class="container">
 
-    <table>
-        <tr>
-            <td>User:</td>
-            <td><input type='text' name='j_username' value=''>
-            </td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='j_password' />
-            </td>
-        </tr>
-        <tr>
-            <td colspan='2'><input name="submit" type="submit"
-                                   value="submit" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan='2'><input name="reset" type="reset" />
-            </td>
-        </tr>
-    </table>
+    <form name='f' action="j_spring_security_check" method='POST' class="form-signin">
+        <h2 class="form-signin-heading">Login</h2>
+        <input type="text" name="j_username" class="form-control" placeholder="Email address" autofocus>
+        <input type="password" name="j_password" class="form-control" placeholder="Password">
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Manter logado
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
 
-</form>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="resources/js/respond.min.js"></script>
 </body>
 </html>
