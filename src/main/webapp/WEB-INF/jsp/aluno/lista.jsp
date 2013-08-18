@@ -13,16 +13,16 @@
         </thead>
         <tbody>
 		<c:forEach var="aluno" items="${listaDeAlunos}">
-			<tr>
+			<tr id="aluno_<c:out value="${aluno.id}"/>">
                 <td><c:out value="${aluno.id}"/></td>
-				<td><c:out value="${aluno.nome}"/></td>
+				<td id="alunoNome<c:out value="${aluno.id}"/>"><c:out value="${aluno.nome}"/></td>
 				<td><c:out value="${aluno.codigoANAC}"/></td>
 				<td><c:out value="${aluno.rg}"/></td>
 				<td><c:out value="${aluno.cpf}"/></td>
                 <td>
                     <div class="btn-group">
-                        <a href="http://localhost:8080/acsp/aluno/${aluno.id}" class="btn btn-default">Editar</a>
-                        <a href="http://localhost:8080/acsp/aluno/${aluno.id}/apaga" class="btn btn-default">Apagar</a>
+                        <input type="button" class="btn btn-default editaAlunoAction" id="editar_<c:out value="${aluno.id}"/>" value="Editar" alunoid="<c:out value="${aluno.id}"/>"/>
+                        <input type="button" class="btn btn-default apagaAlunoAction" id="apagar_<c:out value="${aluno.id}"/>" value="Apagar" alunoid="<c:out value="${aluno.id}"/>"/>
                     </div>
                 </td>
 			</tr>
