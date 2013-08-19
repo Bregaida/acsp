@@ -45,6 +45,10 @@ public class Agenda {
 	@JoinColumn(name = "aluno_id")
 	private Aluno aluno;
 
+	@ManyToOne
+	@JoinColumn(name = "socio_id")
+	private Socio socio;
+
 	@Column
 	private Integer qtdeHoras;
 
@@ -77,6 +81,14 @@ public class Agenda {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Socio getSocio() {
+		return socio;
+	}
+
+	public void setSocio(Socio socio) {
+		this.socio = socio;
 	}
 
 	public Date getDataReserva() {
