@@ -3,9 +3,15 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.*;
+import java.util.Date;
 
-import java.util.Calendar;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * @author pedrosa
@@ -19,7 +25,11 @@ public class Agenda {
     private Long id;
 
     @Column
-    private Calendar dataReserva;
+    private Date dataReserva;
+    
+    @ManyToOne
+    @JoinColumn(name = "aluno_id")
+    private Aluno aluno;
     
     @ManyToOne
     @JoinColumn(name = "aeronave_id")
@@ -51,24 +61,7 @@ public class Agenda {
 	@Column
     private boolean flag360milhas;
 
-
-	/*
-     *
-	 * Atributos :
-	 * Data (dia/mes) 
-	 * Lista de Aeronaves disponíveis
-	 * Horas disponíveis para aeronave selecionada
-	 * Quantidade de horas que o aluno/soio quer agendar 
-	 * 	(> 16:00 - voo noturno) 
-	 * 	(< 08:00 - voo matutino especial) 
-	 * Voo 360 Milhas 
-	 * Aula (Manobras Altas, TGL, Navegacao, INVA, Acrobatico) 
-	 * Lista Instrutores disponiveis na horas e habilitado para o tipo de aula selecionado 
-	 * 	(obrigado selecionar tipo de aula para agendar com instrutor) 
-	 * Status 
-	 * 	(Quando aluno agenda Voo noturno, matutino especial, 360 milhas ou com instrutor Status pendente)
-	 */
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -76,12 +69,20 @@ public class Agenda {
 		this.id = id;
 	}
 
-	public Calendar getDataReserva() {
+	public Date getDataReserva() {
 		return dataReserva;
 	}
 
-	public void setDataReserva(Calendar dataReserva) {
+	public void setDataReserva(Date dataReserva) {
 		this.dataReserva = dataReserva;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 	public Aeronave getAeronave() {
@@ -125,6 +126,23 @@ public class Agenda {
 	}
 
 
+	/*
+     *
+	 * Atributos :
+	 * Data (dia/mes) 
+	 * Lista de Aeronaves disponíveis
+	 * Horas disponíveis para aeronave selecionada
+	 * Quantidade de horas que o aluno/soio quer agendar 
+	 * 	(> 16:00 - voo noturno) 
+	 * 	(< 08:00 - voo matutino especial) 
+	 * Voo 360 Milhas 
+	 * Aula (Manobras Altas, TGL, Navegacao, INVA, Acrobatico) 
+	 * Lista Instrutores disponiveis na horas e habilitado para o tipo de aula selecionado 
+	 * 	(obrigado selecionar tipo de aula para agendar com instrutor) 
+	 * Status 
+	 * 	(Quando aluno agenda Voo noturno, matutino especial, 360 milhas ou com instrutor Status pendente)
+	 */
+    
     
 
 }
