@@ -12,49 +12,17 @@ import javax.persistence.Entity;
 @Entity
 public class Instrutor extends Pessoa {
 
-    private static final long serialVersionUID = -7104927923365640143L;
-    
-    //TODO virou entity
-    @Column
-    private String nomePista;
-    
-    @Column
-    private Long cma;
-    @Column
-    private Long cht;
-    @Column
-    private Long codigoANAC;
+	private static final long serialVersionUID = -7104927923365640143L;
 
-    public String getNomePista() {
-        return nomePista;
-    }
+	@Column
+	private Long quantidadeHorasMinistrada;
 
-    public void setNomePista(String nomePista) {
-        this.nomePista = nomePista;
-    }
+	public Long getQuantidadeHorasMinistrada() {
+		return quantidadeHorasMinistrada;
+	}
 
-    public Long getCma() {
-        return cma;
-    }
-
-    public void setCma(Long cma) {
-        this.cma = cma;
-    }
-
-    public Long getCht() {
-        return cht;
-    }
-
-    public void setCht(Long cht) {
-        this.cht = cht;
-    }
-
-    public Long getCodigoANAC() {
-        return codigoANAC;
-    }
-
-    public void setCodigoANAC(Long codigoANAC) {
-        this.codigoANAC = codigoANAC;
-    }
+	public void setQuantidadeHorasMinistrada(Long quantidadeHorasMinistrada) {
+		this.quantidadeHorasMinistrada = quantidadeHorasMinistrada;
+	}
 
 }

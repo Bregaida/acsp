@@ -9,6 +9,12 @@
             <td>Código anac</td>
             <td>RG</td>
             <td>CPF</td>
+            <td>Escolaridade</td>
+            <td>Título de Eleitor</td>
+            <td>Nome de Pista</td>
+            <td>CHT</td>
+            <td>CMA</td>
+            <td>Ativo</td>
             <td></td>
         </thead>
         <tbody>
@@ -19,6 +25,12 @@
 				<td><c:out value="${aluno.codigoANAC}"/></td>
 				<td><c:out value="${aluno.rg}"/></td>
 				<td><c:out value="${aluno.cpf}"/></td>
+				<td><c:out value="${aluno.escolaridade.descricao}"/></td>
+				<td><c:out value="${aluno.tituloEleitor}"/></td>
+				<td><c:out value="${aluno.nomePista}"/></td>
+				<td><c:out value="${aluno.cht}"/></td>
+				<td><c:out value="${aluno.cma}"/></td>
+				<td><c:out value="${aluno.ativo}"/></td>
                 <td>
                     <div class="btn-group">
                         <input type="button" class="btn btn-default editaAlunoAction" id="editar_<c:out value="${aluno.id}"/>" value="Editar" alunoid="<c:out value="${aluno.id}"/>"/>

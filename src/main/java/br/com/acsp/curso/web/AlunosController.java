@@ -8,7 +8,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.acsp.curso.domain.Aluno;
 import br.com.acsp.curso.service.AlunoService;
@@ -47,7 +51,7 @@ public class AlunosController {
 		return "aluno/formulario";
 	}
 
-    // Nem todos os browser suportam DELETE
+	// Nem todos os browser suportam DELETE
 	@RequestMapping(value = "/aluno/{id}/apaga", method = RequestMethod.GET)
 	public String exclui(@PathVariable("id") Long id) {
 		alunoService.excluirPorId(id);
@@ -55,7 +59,7 @@ public class AlunosController {
 	}
 
 	@RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
-    @ResponseBody
+	@ResponseBody
 	public Aluno buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
 		return alunoService.obtemPorId(id);
 	}

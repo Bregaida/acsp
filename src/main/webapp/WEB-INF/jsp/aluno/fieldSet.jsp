@@ -19,11 +19,50 @@
         <div class="col-lg-10">
             <form:input path="cpf" id="cpf" cssClass="form-control"/>
         </div>
+		
+		<label for="alistamentoMilitar" class="col-lg-2 control-label">Alistamento Militar</label>
+        <div class="col-lg-10">
+            <form:input path="alistamentoMilitar" id="alistamentoMilitar" cssClass="form-control"/>
+        </div>
+        
+        <label for="escolaridade" class="col-lg-2 control-label">Escolaridade</label>
+        <div class="col-lg-10">
+        	<!-- Não pegou o enum -->
+        	 <!-- form:select items="escolaridade" path="escolaridade.id" id="escolaridade" itemValue="id" itemLabel="descricao" cssClass="form-control"/> -->
+        </div>
+		
+
+		<label for="tituloEleitor" class="col-lg-2 control-label">Título de Eleitor</label>
+        <div class="col-lg-10">
+            <form:input path="tituloEleitor" id="tituloEleitor" cssClass="form-control"/>
+        </div>
 
         <label for="codigoANAC" class="col-lg-2 control-label">Código ANAC</label>
         <div class="col-lg-10">
             <form:input path="codigoANAC" id="codigoANAC" cssClass="form-control"/>
         </div>
+        
+        <label for="nomePista" class="col-lg-2 control-label">Nome de Pista</label>
+        <div class="col-lg-10">
+            <form:input path="nomePista" id="nomePista" cssClass="form-control"/>
+        </div>
+        
+        <label for="cht" class="col-lg-2 control-label">CHT</label>
+        <div class="col-lg-10">
+            <form:input path="cht" id="cht" cssClass="form-control"/>
+        </div>
+         
+        <label for="cma" class="col-lg-2 control-label">CMA</label>
+        <div class="col-lg-10">
+            <form:input path="cma" id="cma" cssClass="form-control"/>
+        </div>
+        
+        <label for="ativo" class="col-lg-2 control-label">Ativo</label>
+        <div class="col-lg-10">
+            <form:checkbox path="ativo" id="ativo" cssClass="form-control"/>
+        </div>
+         
+        
     </div>
     <div class="btn-group pull-right">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

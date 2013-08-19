@@ -3,8 +3,15 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.*;
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  * @author eduardobregaida
@@ -12,89 +19,129 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class Pessoa implements Serializable {
 
-    private static final long serialVersionUID = -5261337447506230696L;
+	private static final long serialVersionUID = -5261337447506230696L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column
-    private String nome;
-    @Column
-    private Long rg;
-    @Column
-    private Long cpf;
-    @Column
-    private Long tituloEleitor;
-    @Column
-    private Long alistamentoMilitar;
-    @Column
-    private boolean ativo;
+	@Column
+	private String nome;
+	@Column
+	private Long rg;
+	@Column
+	private Long cpf;
+	@Column
+	private Long tituloEleitor;
+	@Column
+	private Long alistamentoMilitar;
+	@Column
+	private boolean ativo;
+	@Column
+	private String nomePista;
+	@Column
+	private Long cma;
+	@Column
+	private Long cht;
+	@Column
+	private Long codigoANAC;
 
-    @Enumerated(EnumType.STRING)
-    private EscolaridadeType escolaridade;
+	public String getNomePista() {
+		return nomePista;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setNomePista(String nomePista) {
+		this.nomePista = nomePista;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public Long getCma() {
+		return cma;
+	}
 
-    public Long getRg() {
-        return rg;
-    }
+	public void setCma(Long cma) {
+		this.cma = cma;
+	}
 
-    public void setRg(Long rg) {
-        this.rg = rg;
-    }
+	public Long getCht() {
+		return cht;
+	}
 
-    public Long getCpf() {
-        return cpf;
-    }
+	public void setCht(Long cht) {
+		this.cht = cht;
+	}
 
-    public void setCpf(Long cpf) {
-        this.cpf = cpf;
-    }
+	public Long getCodigoANAC() {
+		return codigoANAC;
+	}
 
-    public Long getTituloEleitor() {
-        return tituloEleitor;
-    }
+	public void setCodigoANAC(Long codigoANAC) {
+		this.codigoANAC = codigoANAC;
+	}
 
-    public void setTituloEleitor(Long tituloEleitor) {
-        this.tituloEleitor = tituloEleitor;
-    }
+	@Enumerated(EnumType.ORDINAL)
+	private EscolaridadeType escolaridade;
 
-    public Long getAlistamentoMilitar() {
-        return alistamentoMilitar;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setAlistamentoMilitar(Long alistamentoMilitar) {
-        this.alistamentoMilitar = alistamentoMilitar;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public EscolaridadeType getEscolaridade() {
-        return escolaridade;
-    }
+	public Long getRg() {
+		return rg;
+	}
 
-    public void setEscolaridade(EscolaridadeType escolaridade) {
-        this.escolaridade = escolaridade;
-    }
+	public void setRg(Long rg) {
+		this.rg = rg;
+	}
 
-    public boolean isAtivo() {
-        return ativo;
-    }
+	public Long getCpf() {
+		return cpf;
+	}
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getTituloEleitor() {
+		return tituloEleitor;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setTituloEleitor(Long tituloEleitor) {
+		this.tituloEleitor = tituloEleitor;
+	}
+
+	public Long getAlistamentoMilitar() {
+		return alistamentoMilitar;
+	}
+
+	public void setAlistamentoMilitar(Long alistamentoMilitar) {
+		this.alistamentoMilitar = alistamentoMilitar;
+	}
+
+	public EscolaridadeType getEscolaridade() {
+		return escolaridade;
+	}
+
+	public void setEscolaridade(EscolaridadeType escolaridade) {
+		this.escolaridade = escolaridade;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

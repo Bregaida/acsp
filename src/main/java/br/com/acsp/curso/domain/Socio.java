@@ -3,7 +3,6 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -12,46 +11,15 @@ import javax.persistence.Entity;
 @Entity
 public class Socio extends Pessoa {
 
-    private static final long serialVersionUID = -4735921766760735482L;
-    @Column
-    private String nomePista;
-    @Column
-    private Long cma;
-    @Column
-    private Long cht;
-    @Column
-    private Long codigoANAC;
+	private static final long serialVersionUID = -4735921766760735482L;
+	private Long numeroInscricao;
 
-    public String getNomePista() {
-        return nomePista;
-    }
+	public Long getNumeroInscricao() {
+		return numeroInscricao;
+	}
 
-    public void setNomePista(String nomePista) {
-        this.nomePista = nomePista;
-    }
-
-    public Long getCma() {
-        return cma;
-    }
-
-    public void setCma(Long cma) {
-        this.cma = cma;
-    }
-
-    public Long getCht() {
-        return cht;
-    }
-
-    public void setCht(Long cht) {
-        this.cht = cht;
-    }
-
-    public Long getCodigoANAC() {
-        return codigoANAC;
-    }
-
-    public void setCodigoANAC(Long codigoANAC) {
-        this.codigoANAC = codigoANAC;
-    }
+	public void setNumeroInscricao(Long numeroInscricao) {
+		this.numeroInscricao = numeroInscricao;
+	}
 
 }
