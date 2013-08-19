@@ -7,6 +7,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,6 +48,21 @@ public class Agenda {
 	@Column
 	private Integer qtdeHoras;
 
+	@Column
+	private boolean flag360milhas;
+
+	@Column
+	private boolean flagVooNoturno;// >16:00
+
+	@Column
+	private boolean flagVooMatutinoEspecial;// <09:00
+
+	@Column
+	private boolean flagPresenca;
+
+	@Enumerated(EnumType.STRING)
+	private StatusType status;
+
 	public boolean isFlag360milhas() {
 		return flag360milhas;
 	}
@@ -54,20 +71,6 @@ public class Agenda {
 		this.flag360milhas = flag360milhas;
 	}
 
-	@Column
-	private boolean flag360milhas;
-
-	/*
-	 * 
-	 * Atributos : Data (dia/mes) Lista de Aeronaves disponíveis Horas
-	 * disponíveis para aeronave selecionada Quantidade de horas que o
-	 * aluno/soio quer agendar (> 16:00 - voo noturno) (< 08:00 - voo matutino
-	 * especial) Voo 360 Milhas Aula (Manobras Altas, TGL, Navegacao, INVA,
-	 * Acrobatico) Lista Instrutores disponiveis na horas e habilitado para o
-	 * tipo de aula selecionado (obrigado selecionar tipo de aula para agendar
-	 * com instrutor) Status (Quando aluno agenda Voo noturno, matutino
-	 * especial, 360 milhas ou com instrutor Status pendente)
-	 */
 	public Long getId() {
 		return id;
 	}
@@ -122,6 +125,38 @@ public class Agenda {
 
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
+	}
+
+	public boolean isFlagVooNoturno() {
+		return flagVooNoturno;
+	}
+
+	public void setFlagVooNoturno(boolean flagVooNoturno) {
+		this.flagVooNoturno = flagVooNoturno;
+	}
+
+	public boolean isFlagVooMatutinoEspecial() {
+		return flagVooMatutinoEspecial;
+	}
+
+	public void setFlagVooMatutinoEspecial(boolean flagVooMatutinoEspecial) {
+		this.flagVooMatutinoEspecial = flagVooMatutinoEspecial;
+	}
+
+	public boolean isFlagPresenca() {
+		return flagPresenca;
+	}
+
+	public void setFlagPresenca(boolean flagPresenca) {
+		this.flagPresenca = flagPresenca;
+	}
+
+	public StatusType getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusType status) {
+		this.status = status;
 	}
 
 }

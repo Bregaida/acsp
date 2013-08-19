@@ -46,6 +46,9 @@ public abstract class Pessoa implements Serializable {
 	@Column
 	private Long codigoANAC;
 
+	@Enumerated(EnumType.ORDINAL)
+	private EscolaridadeType escolaridade;
+
 	public String getNomePista() {
 		return nomePista;
 	}
@@ -77,9 +80,6 @@ public abstract class Pessoa implements Serializable {
 	public void setCodigoANAC(Long codigoANAC) {
 		this.codigoANAC = codigoANAC;
 	}
-
-	@Enumerated(EnumType.ORDINAL)
-	private EscolaridadeType escolaridade;
 
 	public String getNome() {
 		return nome;

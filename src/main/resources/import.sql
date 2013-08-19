@@ -10,3 +10,10 @@ insert into Aula (id,materia, quantidadeHorasNecessarias, aeronave_id) values (n
 insert into Aula (id,materia, quantidadeHorasNecessarias, aeronave_id) values (null,'INVA', 300, 3);
 insert into Aula (id,materia, quantidadeHorasNecessarias, aeronave_id) values (null,'Acrobática', 500, 3);
 insert into Instrutor (id,nome, cma, cht,codigoANAC,ativo) values (null,'Santos Dumont', 300123, 12345,145678,'Y');
+insert into Instrutor (id,nome, cma, cht,codigoANAC,ativo) values (null,'Barao Vermelho', 300123, 12345,145678,'Y');
+insert into Instrutor (id,nome, cma, cht,codigoANAC,ativo) values (null,'123 de Oliveira 4', 300123, 12345,145678,'Y');
+insert into Socio (id,nome, cma, cht,codigoANAC,ativo, numeroInscricao) values (null,'Pedro da Bolea', 300123, 12345,145678,'Y', 1);
+insert into Socio (id,nome, cma, cht,codigoANAC,ativo, numeroInscricao) values (null,'Jar Jar', 300123, 12345,145678,'Y', 1);
+insert into Socio (id,nome, cma, cht,codigoANAC,ativo, numeroInscricao) values (null,'Piriquita', 300123, 12345,145678,'Y', 1);
+insert into Atendente (id,nome, rg) values (null,'Marcos', 123);
+insert into Socio (id,nome, rg) values (null,'Pepe Legal', 300123);
