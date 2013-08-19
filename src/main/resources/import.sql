@@ -16,4 +16,4 @@ insert into Socio (id,nome, cma, cht,codigoANAC,ativo, numeroInscricao) values (
 insert into Socio (id,nome, cma, cht,codigoANAC,ativo, numeroInscricao) values (null,'Jar Jar', 300123, 12345,145678,'Y', 1);
 insert into Socio (id,nome, cma, cht,codigoANAC,ativo, numeroInscricao) values (null,'Piriquita', 300123, 12345,145678,'Y', 1);
 insert into Atendente (id,nome, rg) values (null,'Marcos', 123);
-insert into Socio (id,nome, rg) values (null,'Pepe Legal', 300123);
+insert into Atendente (id,nome, rg) values (null,'Pepe Legal', 300123);
