@@ -3,7 +3,7 @@
  */
 package br.com.acsp.curso.domain;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public class Agenda {
 	private Long id;
 
 	@Column
-	private Calendar dataReserva;
+	private Date dataReserva;
 
 	@ManyToOne
 	@JoinColumn(name = "aeronave_id")
@@ -76,11 +76,11 @@ public class Agenda {
 		this.id = id;
 	}
 
-	public Calendar getDataReserva() {
+	public Date getDataReserva() {
 		return dataReserva;
 	}
 
-	public void setDataReserva(Calendar dataReserva) {
+	public void setDataReserva(Date dataReserva) {
 		this.dataReserva = dataReserva;
 	}
 
