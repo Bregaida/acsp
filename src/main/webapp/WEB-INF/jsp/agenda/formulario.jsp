@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:import url="../../includes/header.jsp"/>
-    <form:form action="agendar" id="agenda" method="POST" commandName="agenda" >
+    <form:form action="agenda" id="agenda" method="POST" commandName="agenda" >
 		<c:forEach var="error" items="${errors}">
     		${error.category} - ${error.message}<br />
 		</c:forEach>
@@ -12,9 +12,16 @@
 				<td><form:input path="dataReserva" maxlength="10" size="12" /> </td>
 			</tr>
 			<tr>
+				<td>Aluno</td>
+				<td>
+					<form:select path="aluno.id" id="aluno" items="${listaDeAlunos}" itemValue="id" itemLabel="nome" />
+				</td>
+			</tr>
+			
+			<tr>
 				<td>Aeronaves</td>
 				<td>
-					<form:select path="aeronave" id="aeronave" items="${listaDeAeronaves}" itemValue="id" itemLabel="modelo" />
+					<form:select path="aeronave.id" id="aeronave" items="${listaDeAeronaves}" itemValue="id" itemLabel="modelo" />
 				</td>
 			</tr>
 			<tr>
@@ -42,13 +49,13 @@
 			<tr>
 				<td>Aula</td>
 				<td>
-					<form:select path="aula" id="aula" items="${listaDeAulas}" itemValue="id" itemLabel="materia" />
+					<form:select path="aula.id" id="aula" items="${listaDeAulas}" itemValue="id" itemLabel="materia" />
 				</td>
 			</tr>
 			<tr>
 				<td>Instrutores Disponíveis</td>
 				<td>
-					<form:select path="instrutor" id="instrutor" items="${listaDeInstrutores}" itemValue="id" itemLabel="nome" />
+					<form:select path="instrutor.id" id="instrutor" items="${listaDeInstrutores}" itemValue="id" itemLabel="nome" />
 				</td>
 			</tr>
 			<tr>

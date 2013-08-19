@@ -3,5 +3,5 @@ insert into Aluno (id, alistamentoMilitar, ativo, cpf, escolaridade, nome, rg, t
 insert into Aluno (id, alistamentoMilitar, ativo, cpf, escolaridade, nome, rg, tituloEleitor, cht, cma, codigoANAC) values (null, 345, 'Y', 33333333333, 'TECNICO', 'Thomás Turbando', 2422599, 1001, 1003, 1153, 1221);
 insert into Aeronave (id, apoliceSeguro, ativo, certificadoMatricula, checkList, dentel, diarioBordo, fiam, fichaPesoBalanceamento, manualVoo, marca, modelo, nsca3_5, nsca3_7) values (null, 123, 'Y', 1234, 234, 'Y', '12', 'Y', 'Y', 'Y', 'Cessna', '172', 'Y', 'Y');
 insert into Aeronave (id, apoliceSeguro, ativo, certificadoMatricula, checkList, dentel, diarioBordo, fiam, fichaPesoBalanceamento, manualVoo, marca, modelo, nsca3_5, nsca3_7) values (null, 234, 'Y', 4567, 567, 'Y', '33', 'Y', 'Y', 'Y', 'Airbus', 'A300', 'Y', 'Y');
-
-
+insert into Aula (id,materia, quantidadeHorasNecessarias, aeronave_id) values (null,'Aula Livre', 300, 1);
+insert into Instrutor (id,nome, cma, cht,codigoANAC,ativo) values (null,'Santos Dumont', 300123, 12345,145678,'Y');
