@@ -7,8 +7,8 @@ package br.com.acsp.curso.domain;
  * @author eduardobregaida
  */
 public enum EscolaridadeType {
-	FUNDAMENTAL(1, "Fundamental"), MEDIO(2, "Médio"), TECNICO(3, "Técnico"), GRADUACAO(
-			4, "Graduação"), POS_GRADUACAO(5, "Pós-Graduação"), MESTRADO(6,
+	FUNDAMENTAL(1, "Fundamental"), MEDIO(2, "Medioo"), TECNICO(3, "Tecnico"), GRADUACAO(
+			4, "Graduacao"), POS_GRADUACAO(5, "Pos-Graduacao"), MESTRADO(6,
 			"Mestrado"), DOUTORADO(7, "Doutorado");
 
 	private EscolaridadeType(Integer id, String descricao) {
