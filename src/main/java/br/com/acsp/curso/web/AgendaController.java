@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.acsp.curso.domain.Agenda;
+import br.com.acsp.curso.domain.Aula;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AgendaService;
 import br.com.acsp.curso.service.AlunoService;
@@ -89,7 +90,6 @@ public class AgendaController extends AbstractController {
 		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
-
 		return "agenda/formulario";
 	}
 

@@ -53,7 +53,7 @@
                 <a href="/acsp/aulas">Aulas</a>
             </li>
             <li>
-                <a href="/acsp/agenda">Agenda</a>
+                <a href="/acsp/agendas">Agendas</a>
             </li>
             <li>
                 <a href="/acsp/socios">Sócios</a>
@@ -79,7 +79,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Manutenção de Usuários</a></li>
-                    <li><a href="#">Manutenção de Instrutores</a></li>
+                    <li><a href="/acsp/instrutores">Manutenção de Instrutores</a></li>
                     <li><a href="#">Manutenção de Pista</a></li>
                     <li><a href="#">Informações do Sistema</a></li>
                 </ul>
