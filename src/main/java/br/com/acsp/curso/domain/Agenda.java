@@ -39,6 +39,10 @@ public class Agenda {
 	@JoinColumn(name = "aula_id")
 	private Aula aula;
 
+	@ManyToOne
+	@JoinColumn(name = "aluno_id")
+	private Aluno aluno;
+
 	@Column
 	private Integer qtdeHoras;
 
@@ -110,6 +114,14 @@ public class Agenda {
 
 	public void setQtdeHoras(Integer qtdeHoras) {
 		this.qtdeHoras = qtdeHoras;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 }
