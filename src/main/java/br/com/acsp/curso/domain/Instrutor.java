@@ -10,7 +10,7 @@ import javax.persistence.Entity;
  * @author eduardobregaida
  */
 @Entity
-public class Instrutor extends Pessoa {
+public class Instrutor extends Piloto {
 
 	private static final long serialVersionUID = -7104927923365640143L;
 

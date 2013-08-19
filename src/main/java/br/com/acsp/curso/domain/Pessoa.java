@@ -37,49 +37,8 @@ public abstract class Pessoa implements Serializable {
 	private Long alistamentoMilitar;
 	@Column
 	private boolean ativo;
-	@Column
-	private String nomePista;
-	@Column
-	private Long cma;
-	@Column
-	private Long cht;
-	@Column
-	private Long codigoANAC;
-
 	@Enumerated(EnumType.ORDINAL)
 	private EscolaridadeType escolaridade;
-
-	public String getNomePista() {
-		return nomePista;
-	}
-
-	public void setNomePista(String nomePista) {
-		this.nomePista = nomePista;
-	}
-
-	public Long getCma() {
-		return cma;
-	}
-
-	public void setCma(Long cma) {
-		this.cma = cma;
-	}
-
-	public Long getCht() {
-		return cht;
-	}
-
-	public void setCht(Long cht) {
-		this.cht = cht;
-	}
-
-	public Long getCodigoANAC() {
-		return codigoANAC;
-	}
-
-	public void setCodigoANAC(Long codigoANAC) {
-		this.codigoANAC = codigoANAC;
-	}
 
 	public String getNome() {
 		return nome;
