@@ -59,9 +59,10 @@ public class AulaController {
 		return "redirect:/aulas";
 	}
 
-	@RequestMapping(value = "/aulao/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)
 	public String buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
 		modelMap.put("aula", aulaService.obtemPorId(id));
+		modelMap.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		return "aula/formulario";
 	}
 
