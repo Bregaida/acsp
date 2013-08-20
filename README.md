@@ -4,15 +4,15 @@ Requisitos do Programa:
 
     Maven                          - OK
     Hibernate/JPA                  - OK
-    Banco de Dados será PostgreSQL - OK
-	Gerar as querys                - OK
-	Gerar o Banco via Hibernate    - OK
+    Gerar o Banco via Hibernate    - OK
     Implementar Spring             - OK
-    @autowired (remover new)       - OK
+    @autowired                     - OK
     Implementar segurança          - OK
-    Criar Protótipos de Tela
-    Telas (HTML 5 e CSS 3, deverá ser Responsiva)
-	Criar Regras de segurança (última fase após cruds e agenda)
+    Criar Protótipos de Tela	   - OK
+    Telas (HTML 5 e CSS 3, deverá ser Responsiva) - OK
+	Criar Regras de segurança
+	Layout do ACSP
+	Banco de Dados oficial
 
 Módulos CRUD:
 
@@ -24,17 +24,8 @@ Módulos CRUD:
     Cadastro de Aeronave - OK
     Aula - OK
     Agenda - OK
-    	Data (dia/mês)
-    	Lista de Aeronaves disponíveis
-    	Horas disponíveis para determinada aeronave naquele dia
-    	Quantidade de horas que o aluno/sócio quer agendar
-    		(> 16:00 - voo noturno)
-    		(< 08:00 - voo matutino especial)
-    	Opcional para o aluno/Sócio que esteja agendando
-    		Checkbox 360 Milhas (Reserva aeronave para o dia todo)
-    		Aula (Manobras Altas, TGL, Navegação, INVA, Acrobático)
-    		Lista Instrutores disponíveis na horas e habilitado para o tipo de aula selecionado (obrigado selecionar tipo de aula para agendar com instrutor)
-    	Status (Pode ser Aprovado, Reprovado, Pendênte ou Cancelado)
+	Atendente
+	Horário
     	
     Perfil
     	(Aluno e Sócio - Agendam horas de vôo e consultam apenas suas horas marcadas, podendo cancelar até 1 dia antes)
@@ -69,6 +60,18 @@ Módulos CRUD:
             ficará com status pendente e apenas atendentes e instrutores aprovarão
             Horas menores que 08:00 será alertado que as horas devem ser acordadas antes com instrutor e neste caso o campo instrutor será obrigatório
             Horas maiores que 16:00 será alertado que as horas devem ser acordadas antes com instrutor e neste caso o campo instrutor será obrigatório
+Atributos:
+    	Data (dia/mês)
+    	Lista de Aeronaves disponíveis
+    	Horas disponíveis para determinada aeronave naquele dia
+    	Quantidade de horas que o aluno/sócio quer agendar
+    		(> 16:00 - voo noturno)
+    		(< 08:00 - voo matutino especial)
+    	Opcional para o aluno/Sócio que esteja agendando
+    		Checkbox 360 Milhas (Reserva aeronave para o dia todo)
+    		Aula (Manobras Altas, TGL, Navegação, INVA, Acrobático)
+    		Lista Instrutores disponíveis na horas e habilitado para o tipo de aula selecionado (obrigado selecionar tipo de aula para agendar com instrutor)
+    	Status (Pode ser Aprovado, Reprovado, Pendênte ou Cancelado)
 
     Filtros da Agenda para pesquisa:
         Por dia/mês
