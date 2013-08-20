@@ -27,7 +27,8 @@
             <div class="form-group">
                 <label for="aeronave" class="col-lg-2 control-label">Aeronaves</label>
                 <div class="col-lg-10">
-                    <form:checkboxes path="aeronave.id" id="aeronave" items="${listaDeAeronaves}" itemValue="id" itemLabel="modelo" />
+                    <%--  <form:checkboxes path="aeronaves.id" id="aeronave" items="${listaDeAeronaves}" itemValue="id" itemLabel="modelo" />--%>
+                    <form:select path="aeronaves" id="aeronave" items="${listaDeAeronaves}" itemValue="id" itemLabel="modelo" />
                 </div>
             </div>
         </div>

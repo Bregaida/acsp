@@ -3,7 +3,16 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 /**
  * @author eduardobregaida
@@ -22,9 +31,9 @@ public class Aula {
     @Column
     private Long quantidadeHorasNecessarias;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "aeronave_id")
-    private Aeronave aeronave;
+    private List<Aeronave> aeronaves = new ArrayList<Aeronave>();
 
     public Long getId() {
         return id;
@@ -50,12 +59,14 @@ public class Aula {
         this.quantidadeHorasNecessarias = quantidadeHorasNecessarias;
     }
 
-    public Aeronave getAeronave() {
-        return aeronave;
-    }
+	public List<Aeronave> getAeronaves() {
+		return aeronaves;
+	}
 
-    public void setAeronave(Aeronave aeronave) {
-        this.aeronave = aeronave;
-    }
+	public void setAeronaves(List<Aeronave> aeronaves) {
+		this.aeronaves = aeronaves;
+	}
+
+    
 
 }
