@@ -3,6 +3,7 @@
  */
 package br.com.acsp.curso.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import javax.persistence.ManyToMany;
  */
 
 @Entity
-public class Aula {
+public class Aula implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

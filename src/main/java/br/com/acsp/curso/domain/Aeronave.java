@@ -3,6 +3,7 @@
  */
 package br.com.acsp.curso.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ import javax.persistence.ManyToMany;
  * @author eduardobregaida
  */
 @Entity
-public class Aeronave {
+public class Aeronave implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

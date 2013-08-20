@@ -3,6 +3,7 @@
  */
 package br.com.acsp.curso.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
-public class Agenda {
+public class Agenda implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

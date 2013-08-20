@@ -5,6 +5,7 @@ import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -30,6 +31,7 @@ import java.util.Properties;
  * Time: 1:31 AM
  */
 @Configuration
+@EnableJpaRepositories("br.com.acsp.curso.repository")
 @EnableTransactionManagement
 public class PersistenceConfig {
 
