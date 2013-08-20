@@ -9,12 +9,17 @@
             <td>Quantidade de Horas necessárias para instrutor</td>
             <td>Aeronaves Homologadas</td>
         </thead>
-		<c:forEach var="aula" items="${listaDeAulas}">
+		<c:forEach var="aula" items="${listaDeAulas}" varStatus="status">
+			
 			<tr>
                 <td>${aula.id}</td>
 				<td>${aula.materia }</td>
 				<td>${aula.quantidadeHorasNecessarias }</td>
-				<td>popular correto</td>
+				<td>
+					<c:forEach var="aeronave" items="${aula.aeronaves}">
+						${aeronave.modelo }&nbsp;
+					</c:forEach>
+				</td>
 				<td>
                     <div class="btn-group">
                         <a class="btn btn-default" href="http://localhost:8080/acsp/aula/${aula.id}" value="Editar">Editar</a>
