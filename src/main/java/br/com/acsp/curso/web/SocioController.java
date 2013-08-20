@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.acsp.curso.domain.Socio;
 import br.com.acsp.curso.service.SocioService;
@@ -57,9 +58,9 @@ public class SocioController {
 	}
 
 	@RequestMapping(value = "/socio/{id}", method = RequestMethod.GET)
-	public String buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		modelMap.put("socio", socioService.obtemPorId(id));
-		return "socio/formulario";
+	@ResponseBody
+	public Socio buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+		return socioService.obtemPorId(id);
 	}
 
 	@RequestMapping(value = "/socio/{id}", method = RequestMethod.POST)

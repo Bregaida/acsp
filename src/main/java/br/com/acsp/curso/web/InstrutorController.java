@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.acsp.curso.domain.Instrutor;
 import br.com.acsp.curso.service.InstrutorService;
@@ -23,14 +24,15 @@ import br.com.acsp.curso.service.InstrutorService;
 @Controller
 public class InstrutorController {
 
-	private static final Log logger = LogFactory.getLog(InstrutorController.class);
+	private static final Log logger = LogFactory
+			.getLog(InstrutorController.class);
 
 	@Autowired
 	private InstrutorService instrutorService;
 
 	/**
-	 * Este metodo adiciona o Instrutor ao (form) request, basta usar o form com o
-	 * nome de "Instrutor"
+	 * Este metodo adiciona o Instrutor ao (form) request, basta usar o form com
+	 * o nome de "Instrutor"
 	 * 
 	 * @return
 	 */
@@ -57,9 +59,9 @@ public class InstrutorController {
 	}
 
 	@RequestMapping(value = "/instrutor/{id}", method = RequestMethod.GET)
-	public String buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		modelMap.put("instrutor", instrutorService.obtemPorId(id));
-		return "instrutor/formulario";
+	@ResponseBody
+	public Instrutor buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+		return instrutorService.obtemPorId(id);
 	}
 
 	@RequestMapping(value = "/instrutor/{id}", method = RequestMethod.POST)
@@ -71,7 +73,8 @@ public class InstrutorController {
 	}
 
 	@RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-	public String salvarAluno(@ModelAttribute("instrutor") Instrutor instrutor) {
+	public String salvarInstrutor(
+			@ModelAttribute("instrutor") Instrutor instrutor) {
 		instrutorService.salvar(instrutor);
 		return "redirect:/instrutores";
 	}

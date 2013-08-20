@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.acsp.curso.domain.Aeronave;
 import br.com.acsp.curso.service.AeronaveService;
@@ -54,10 +55,9 @@ public class AeronaveController {
 	}
 
 	@RequestMapping(value = "/aeronave/{id}", method = RequestMethod.GET)
-	public String buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		logger.info("AeronaveController: buscaPorId");
-		modelMap.put("aeronave", aeronaveService.obtemPorId(id));
-		return "aeronave/formulario";
+	@ResponseBody
+	public Aeronave buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+		return aeronaveService.obtemPorId(id);
 	}
 
 	@RequestMapping(value = "/aeronave/{id}", method = RequestMethod.POST)

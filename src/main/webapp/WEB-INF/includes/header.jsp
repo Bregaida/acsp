@@ -47,6 +47,9 @@
                 <a href="/acsp/aeronaves">Aeronaves</a>
             </li>
             <li>
+                <a href="/acsp/instrutores">Instrutores</a>
+            </li>
+            <li>
                 <a href="/acsp/alunos">Alunos</a>
             </li>
             <li>
