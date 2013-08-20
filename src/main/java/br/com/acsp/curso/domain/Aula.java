@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 /**
@@ -31,8 +32,8 @@ public class Aula {
     @Column
     private Long quantidadeHorasNecessarias;
 
-    @ManyToMany
-    @JoinColumn(name = "aeronave_id")
+	@ManyToMany
+	@JoinTable(name = "aula_aeronave", joinColumns = { @JoinColumn(name = "aula_id") }, inverseJoinColumns = { @JoinColumn(name = "aeronave_id") })
     private List<Aeronave> aeronaves = new ArrayList<Aeronave>();
 
     public Long getId() {

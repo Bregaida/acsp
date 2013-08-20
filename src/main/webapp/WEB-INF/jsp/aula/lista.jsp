@@ -14,7 +14,7 @@
                 <td>${aula.id}</td>
 				<td>${aula.materia }</td>
 				<td>${aula.quantidadeHorasNecessarias }</td>
-				<td>${aula.aeronave.modelo }</td>
+				<td>popular correto</td>
 				<td>
                     <div class="btn-group">
                         <a class="btn btn-default" href="http://localhost:8080/acsp/aula/${aula.id}" value="Editar">Editar</a>
