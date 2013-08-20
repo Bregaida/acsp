@@ -22,7 +22,7 @@ import br.com.acsp.curso.service.AulaService;
  */
 
 @Controller
-public class AulaController {
+public class AulaController extends AbstractController {
 
 	private static final Log logger = LogFactory.getLog(AulaController.class);
 
