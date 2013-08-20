@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.com.acsp.curso.domain.Aeronave;
 import br.com.acsp.curso.domain.Aula;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AulaService;
@@ -27,9 +26,10 @@ public class AulaController extends AbstractController {
 
 	private static final Log logger = LogFactory.getLog(AulaController.class);
 
-	@Autowired private AulaService aulaService;
-	@Autowired private AeronaveService aeronaveService;
-	
+	@Autowired
+	private AulaService aulaService;
+	@Autowired
+	private AeronaveService aeronaveService;
 
 	/**
 	 * Este metodo adiciona a aula ao (form) request, basta usar o form com o
@@ -44,13 +44,6 @@ public class AulaController extends AbstractController {
 
 	@RequestMapping("/aulas")
 	public String lista(ModelMap map) {
-		for (Aula aula : aulaService.listarOrdenado()) {
-			System.out.println(aula.getMateria());
-			for (Aeronave aeronave : aula.getAeronaves()) {
-				System.out.println(aeronave.getModelo());
-			}
-		}
-		
 		map.put("listaDeAulas", aulaService.listarOrdenado());
 		return "aula/lista";
 	}
@@ -70,7 +63,8 @@ public class AulaController extends AbstractController {
 	@RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)
 	public String buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
 		modelMap.put("aula", aulaService.obtemPorId(id));
-		modelMap.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+		modelMap.put("listaDeAeronaves",
+				aeronaveService.listarOrdenadoPorModelo());
 		return "aula/formulario";
 	}
 
