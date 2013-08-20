@@ -28,6 +28,6 @@
 <script type="text/javascript" src="/acsp/resources/js/alunos.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/aeronaves.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/instrutores.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/aulas.js"></script>
+<script type="text/javascript" src="/acsp/resources/js/socios.js"></script>
 </body>
 </html>
