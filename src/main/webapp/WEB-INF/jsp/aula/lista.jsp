@@ -1,28 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="../../includes/header.jsp"/>
 
-<title>Lista de Aulas</title>
-</head>
-<body>
-	<table>
+	<table class="table table-striped table-hover">
+        <thead>
+            <td>Código da Aula</td>
+            <td>Matéria</td>
+            <td>Quantidade de Horas necessárias para instrutor</td>
+            <td>Aeronaves Homologadas</td>
+        </thead>
 		<c:forEach var="aula" items="${listaDeAulas}">
 			<tr>
-                <td>ID da Aula:</td> <td>${aula.id}</td>
-				<td>Materia:</td> <td>${aula.materia }</td>
+                <td>${aula.id}</td>
+				<td>${aula.materia }</td>
 				<td>${aula.quantidadeHorasNecessarias }</td>
 				<td>${aula.aeronave.modelo }</td>
-                <td><a href="http://localhost:8080/acsp/aula/${aula.id}">EDITAR</a>  ||  </td>
-                <td><a href="http://localhost:8080/acsp/aula/${aula.id}/apaga">APAGA</a></td>
+				<td>
+                    <div class="btn-group">
+                        <a class="btn btn-default" href="http://localhost:8080/acsp/aula/${aula.id}" value="Editar">Editar</a>
+                        <a class="btn btn-default" href="http://localhost:8080/acsp/aula/${aula.id}/apaga" value="Apagar">Apagar</a>
+                    </div>
+                </td>
 			</tr>
 		</c:forEach>
+	</tbody>
 	</table>
 <hr/>
-<a href="http://localhost:8080/acsp/aula">Adicionar</a>
-</body>
-
-</html>
+<a href="http://localhost:8080/acsp/aula" class="btn btn-default btn-lg">Adicionar</a>
+<c:import url="../../includes/footer.jsp"/>
