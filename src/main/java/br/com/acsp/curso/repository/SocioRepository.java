@@ -3,14 +3,18 @@
  */
 package br.com.acsp.curso.repository;
 
-import java.util.Collection;
-
 import br.com.acsp.curso.domain.Socio;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.Collection;
 
 /**
  * @author eduardobregaida
  */
 
-public interface SocioRepository extends GenericRepository<Socio, Long> {
-	 Collection<Socio> listarOrdenadoPorNome();
+public interface SocioRepository extends JpaRepository<Socio, Long> {
+
+    @Query("select a from Socio a order by a.nome")
+    Collection<Socio> listarOrdenadoPorNome();
 }

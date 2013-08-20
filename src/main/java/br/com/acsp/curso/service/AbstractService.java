@@ -1,11 +1,13 @@
 package br.com.acsp.curso.service;
 
-import br.com.acsp.curso.repository.GenericRepository;
+import br.com.acsp.curso.exception.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -14,43 +16,37 @@ import java.util.Collection;
  * Time: 10:45 PM
  */
 @Transactional(propagation = Propagation.REQUIRED)
-abstract class AbstractService<E, PK> {
+abstract class AbstractService<E, PK extends Serializable> {
 
     private final Logger LOGGER = LoggerFactory.getLogger(AbstractService.class);
 
-    protected GenericRepository<E, PK> repository;
+    protected JpaRepository<E, PK> repository;
 
-    protected GenericRepository<E, PK> getRepository() {
+    protected JpaRepository<E, PK> getRepository() {
         return repository;
     }
 
     public void salvar(E entity) {
-        getRepository().salva(entity);
+        getRepository().saveAndFlush(entity);
     }
 
     public E alterar(E entity) {
-        return getRepository().atualiza(entity);
+        return getRepository().saveAndFlush(entity);
     }
 
-    public E obtemPorId(PK id) {
-        final E entity = getRepository().procuraPorId(id);
-        return (entity != null)?entity: useNullStrategy();
-    }
-
-    /**
-     * No caso de uma busca por ID resultar em NULL (nao achou), e possivel implementar este metodo
-     * que pode dar um comportamente diferente, instanciando um objeto padrao (ou usando um padrao).
-     * @return
-     */
-    protected E useNullStrategy(){
-        return null;
+    public E obtemPorId(PK primaryKey) {
+        return getRepository().findOne(primaryKey);
     }
 
     public void excluirPorId(PK primaryKey) {
-        getRepository().excluiPorPK(primaryKey);
+        E entity = getRepository().findOne(primaryKey);
+        if(entity == null){
+            throw new EntityNotFoundException();
+        }
+        getRepository().delete(primaryKey);
     }
 
     public Collection<E> pesquisarTodos() {
-        return getRepository().listarTodos();
+        return getRepository().findAll();
     }
 }

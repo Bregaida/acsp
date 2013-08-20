@@ -3,14 +3,18 @@
  */
 package br.com.acsp.curso.repository;
 
-import java.util.Collection;
-
 import br.com.acsp.curso.domain.Horario;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.Collection;
 
 /**
  * @author eduardobregaida
  * 
  */
-public interface HorarioRepository extends GenericRepository<Horario, Long> {
+public interface HorarioRepository extends JpaRepository<Horario, Long> {
+
+    @Query("select a from Aeronave a order by a.id")
 	Collection<Horario> listarOrdenadoPorId();
 }
