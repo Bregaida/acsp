@@ -15,21 +15,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeUrls()
-                .antMatchers("/home*").permitAll()
-                .antMatchers("/resources/**", "/css/*", "/js/*").permitAll()
-                .antMatchers("/alunos/**").permitAll()
-				.antMatchers("/aluno/**").permitAll()
-				.antMatchers("/agendas/**").permitAll()
+		http.authorizeUrls().antMatchers("/home*").permitAll()
+				.antMatchers("/resources/**", "/css/*", "/js/*").permitAll()
+				.antMatchers("/alunos/**").permitAll().antMatchers("/aluno/**")
+				.permitAll().antMatchers("/agendas/**").permitAll()
 				.antMatchers("/agenda/**").permitAll()
-				.antMatchers("/socios/**").permitAll()
-				.antMatchers("/socio/**").permitAll()
-				.antMatchers("/aulas/**").permitAll()
+				.antMatchers("/socios/**").permitAll().antMatchers("/socio/**")
+				.permitAll().antMatchers("/aulas/**").permitAll()
 				.antMatchers("/aula/**").permitAll()
 				.antMatchers("/instrutores/**").permitAll()
 				.antMatchers("/instrutor/**").permitAll()
-			
-			
 				.antMatchers("/aeronaves/**").permitAll()
 				.antMatchers("/aeronave/**").permitAll().anyRequest()
 				.authenticated().and().logout()

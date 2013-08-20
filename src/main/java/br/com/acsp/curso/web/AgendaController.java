@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.acsp.curso.domain.Agenda;
-import br.com.acsp.curso.domain.Aula;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AgendaService;
 import br.com.acsp.curso.service.AlunoService;
@@ -40,6 +39,9 @@ public class AgendaController extends AbstractController {
 	@Autowired
 	private AulaService aulaService;
 
+	// @Autowired
+	// private HorarioService horarioService;
+
 	/**
 	 * Este metodo adiciona a agenda ao (form) request, basta usar o form com o
 	 * nome de "agenda"
@@ -64,7 +66,8 @@ public class AgendaController extends AbstractController {
 		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
-
+		// TODO: Deverá ser listar por horario dispoivel
+		// map.put("listaDeHorarios", horarioService.listarOrdenado());
 		return "agenda/formulario";
 	}
 
@@ -90,6 +93,8 @@ public class AgendaController extends AbstractController {
 		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
+		// TODO: Deverá ser listar por horario dispoivel
+		// map.put("listaDeHorarios", horarioService.listarOrdenado());
 		return "agenda/formulario";
 	}
 

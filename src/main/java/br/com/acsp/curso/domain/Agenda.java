@@ -67,6 +67,20 @@ public class Agenda {
 	@Enumerated(EnumType.STRING)
 	private StatusType status;
 
+	// @ManyToMany(fetch = FetchType.EAGER)
+	// @JoinTable(name = "agenda_horario", joinColumns = { @JoinColumn(name =
+	// "agenda_id") }, inverseJoinColumns = { @JoinColumn(name = "horario_id")
+	// })
+	// private List<Horario> horarios = new ArrayList<Horario>();
+
+	// public List<Horario> getHorarios() {
+	// return horarios;
+	// }
+	//
+	// public void setHorarios(List<Horario> horarios) {
+	// this.horarios = horarios;
+	// }
+
 	public boolean isFlag360milhas() {
 		return flag360milhas;
 	}
