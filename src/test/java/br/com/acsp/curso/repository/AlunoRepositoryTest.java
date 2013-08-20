@@ -3,6 +3,7 @@ package br.com.acsp.curso.repository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 
 /**
@@ -16,7 +17,8 @@ public class AlunoRepositoryTest extends AbstractRepositoryTestSupport {
     private AlunoRepository repository;
 
     @Test
-    public void testListarOrdenadoPorNome() throws Exception {
+    public void deveHaverTresAlunosCarregadosPorDefault() throws Exception {
         assertNotNull(repository);
+        assertEquals(3, repository.findAll().size());
     }
 }
