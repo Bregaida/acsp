@@ -7,7 +7,7 @@
 
         <div class="row col-md-9">
             <div class="form-group">
-                <label for="materia" class="col-lg-2 control-label">Matério</label>
+                <label for="materia" class="col-lg-2 control-label">Matéria</label>
                 <div class="col-lg-10">
                     <form:input path="materia" id="materia" cssClass="form-control"/>
                 </div>
