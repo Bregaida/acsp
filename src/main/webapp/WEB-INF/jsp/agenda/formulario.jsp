@@ -27,7 +27,7 @@
 			<tr>
 				<td>Horas Disponíveis</td>
 				<td>
-					<%--<form:select path="aeronave" id="aeronave" items="${vars.aeronaves}" itemValue="id" itemLabel="modelo" /> --%>	
+					<form:select path="horarios" id="horario" items="${listaDeHorarios}" itemValue="id" itemLabel="horarioAgenda" />
 				 </td>
 			</tr>
 			<tr>

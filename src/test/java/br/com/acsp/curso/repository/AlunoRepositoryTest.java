@@ -1,10 +1,10 @@
 package br.com.acsp.curso.repository;
 
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * User: Christian Reichel
