@@ -4,23 +4,17 @@
 package br.com.acsp.curso.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 /**
  * @author pedrosa
@@ -73,19 +67,43 @@ public class Agenda implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private StatusType status;
-	
-	
-	@ManyToMany()
-	@JoinTable(name = "agenda_horario", joinColumns = { @JoinColumn(name = "agenda_id") }, inverseJoinColumns = { @JoinColumn(name = "horario_id") })
-	private List<Horario> horarios; 
-	
-	
+
+	// @ManyToMany(fetch = FetchType.EAGER)
+	// @JoinTable(name = "agenda_horario", joinColumns = { @JoinColumn(name =
+	// "agenda_id") }, inverseJoinColumns = { @JoinColumn(name = "horario_id")
+	// })
+	// private List<Horario> horarios = new ArrayList<Horario>();
+
+	// public List<Horario> getHorarios() {
+	// return horarios;
+	// }
+	//
+	// public void setHorarios(List<Horario> horarios) {
+	// this.horarios = horarios;
+	// }
+
+	public boolean isFlag360milhas() {
+		return flag360milhas;
+	}
+
+	public void setFlag360milhas(boolean flag360milhas) {
+		this.flag360milhas = flag360milhas;
+	}
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Socio getSocio() {
+		return socio;
+	}
+
+	public void setSocio(Socio socio) {
+		this.socio = socio;
 	}
 
 	public Date getDataReserva() {
@@ -120,22 +138,6 @@ public class Agenda implements Serializable {
 		this.aula = aula;
 	}
 
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
-
-	public Socio getSocio() {
-		return socio;
-	}
-
-	public void setSocio(Socio socio) {
-		this.socio = socio;
-	}
-
 	public Integer getQtdeHoras() {
 		return qtdeHoras;
 	}
@@ -144,12 +146,12 @@ public class Agenda implements Serializable {
 		this.qtdeHoras = qtdeHoras;
 	}
 
-	public boolean isFlag360milhas() {
-		return flag360milhas;
+	public Aluno getAluno() {
+		return aluno;
 	}
 
-	public void setFlag360milhas(boolean flag360milhas) {
-		this.flag360milhas = flag360milhas;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 	public boolean isFlagVooNoturno() {
@@ -184,16 +186,4 @@ public class Agenda implements Serializable {
 		this.status = status;
 	}
 
-	
-	public List<Horario> getHorarios() {
-		return horarios;
-	}
-
-	public void setHorarios(List<Horario> horarios) {
-		this.horarios = horarios;
-	}
-
-	
-	
-	
 }

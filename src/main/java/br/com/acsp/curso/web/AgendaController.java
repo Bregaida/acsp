@@ -12,12 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.acsp.curso.domain.Agenda;
-import br.com.acsp.curso.domain.Horario;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AgendaService;
 import br.com.acsp.curso.service.AlunoService;
 import br.com.acsp.curso.service.AulaService;
-import br.com.acsp.curso.service.HorarioService;
 import br.com.acsp.curso.service.InstrutorService;
 import br.com.acsp.curso.service.SocioService;
 
@@ -28,13 +26,21 @@ import br.com.acsp.curso.service.SocioService;
 @Controller
 public class AgendaController extends AbstractController {
 
-	@Autowired private AgendaService agendaService;
-	@Autowired private AlunoService alunoService;
-	@Autowired private SocioService socioService;
-	@Autowired private AeronaveService aeronaveService;
-	@Autowired private InstrutorService instrutorService;
-	@Autowired private AulaService aulaService;
-	@Autowired private HorarioService horarioService;
+	@Autowired
+	private AgendaService agendaService;
+	@Autowired
+	private AlunoService alunoService;
+	@Autowired
+	private SocioService socioService;
+	@Autowired
+	private AeronaveService aeronaveService;
+	@Autowired
+	private InstrutorService instrutorService;
+	@Autowired
+	private AulaService aulaService;
+
+	// @Autowired
+	// private HorarioService horarioService;
 
 	/**
 	 * Este metodo adiciona a agenda ao (form) request, basta usar o form com o
@@ -60,20 +66,9 @@ public class AgendaController extends AbstractController {
 		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
-		// TODO: Devera° ser listado por horario dispoivel
-		mockHorarios();
-		
-		map.put("listaDeHorarios", horarioService.listarOrdenado());
+		// TODO: Dever√° ser listar por horario dispoivel
+		// map.put("listaDeHorarios", horarioService.listarOrdenado());
 		return "agenda/formulario";
-	}
-
-	private void mockHorarios() {
-		Horario horario = null;
-		for (int i = 8; i < 22; i++) {
-			horario = new Horario();
-			horario.setHorarioAgenda(i < 10 ? "0" + i + ":00" : i + ":00");
-			horarioService.salvar(horario);
-		}
 	}
 
 	@RequestMapping(value = "/agenda/{id}", method = RequestMethod.POST)
@@ -98,8 +93,8 @@ public class AgendaController extends AbstractController {
 		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
-		// TODO: Devera° ser listar por horario dispoivel
-		 map.put("listaDeHorarios", horarioService.listarOrdenado());
+		// TODO: Dever√° ser listar por horario dispoivel
+		// map.put("listaDeHorarios", horarioService.listarOrdenado());
 		return "agenda/formulario";
 	}
 
