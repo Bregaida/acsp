@@ -19,16 +19,12 @@
     <link href="/acsp/resources/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/acsp/resources/css/navbar.css" rel="stylesheet">
     <link href="/acsp/resources/css/cupertino/jquery-ui-1.10.3.custom.css" rel="stylesheet">
-    <link href="/acsp/resources/css/grid.css" rel="stylesheet">
+    <%--<link href="/acsp/resources/css/grid.css" rel="stylesheet">--%>
     
-	<div class="header-topo">
-		<h5 align="right" class="topp">AEROCLUBE DE SÃO PAULO</h5>
-	</div>
-	
 </head>
 <body>
 
-<nav class="navbar" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
