@@ -15,3 +15,5 @@ Thumbs.db
 target/
 .classpath
 .project
+
+src/main/resources/rebel.xml
