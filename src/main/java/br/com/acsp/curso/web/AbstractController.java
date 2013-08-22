@@ -10,6 +10,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
 import br.com.acsp.curso.domain.Aeronave;
+import br.com.acsp.curso.domain.Horario;
 
 /**
  * @author pedrosa
@@ -32,6 +33,17 @@ public abstract class AbstractController {
                     aeronave.setId(id);
                 }
                 return aeronave;
+            }
+        });
+        binder.registerCustomEditor(List.class, "horarios",new CustomCollectionEditor(List.class){
+            @Override
+            protected Object convertElement(Object element) {
+                Horario horario = new Horario();
+                if (element != null) {
+                    Long id = Long.valueOf(element.toString());
+                    horario.setId(id);
+                }
+                return horario;
             }
         });
 

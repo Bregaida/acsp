@@ -15,6 +15,6 @@ import java.util.Collection;
  */
 public interface HorarioRepository extends JpaRepository<Horario, Long> {
 
-    @Query("select a from Aeronave a order by a.id")
+    @Query("select a from Horario a order by a.id")
 	Collection<Horario> listarOrdenadoPorId();
 }
