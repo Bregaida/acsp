@@ -60,7 +60,7 @@ public class AgendaController extends AbstractController {
 		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
-		// TODO: Devera¡ ser listado por horario dispoivel
+		// TODO: Devera ser listado por horario dispoivel
 		mockHorarios();
 		
 		map.put("listaDeHorarios", horarioService.listarOrdenado());
@@ -98,7 +98,7 @@ public class AgendaController extends AbstractController {
 		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
-		// TODO: Devera¡ ser listar por horario dispoivel
+		// TODO: Devera ser listar por horario dispoivel
 		 map.put("listaDeHorarios", horarioService.listarOrdenado());
 		return "agenda/formulario";
 	}
