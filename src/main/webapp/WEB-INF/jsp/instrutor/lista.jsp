@@ -34,7 +34,7 @@
 				<td><c:out value="${instrutor.ativo}"/></td>
 				<td><c:out value="${instrutor.quantidadeHorasMinistrada}"/></td>
                 <td>
-                    <div class="btn-group">
+                    <div class="btn-group btn-group-sm">
                         <input type="button" class="btn btn-default editaInstrutorAction" id="editar_<c:out value="${instrutor.id}"/>" value="Editar" instrutorid="<c:out value="${instrutor.id}"/>"/>
                         <input type="button" class="btn btn-default apagaInstrutorAction" id="apagar_<c:out value="${instrutor.id}"/>" value="Apagar" instrutorid="<c:out value="${instrutor.id}"/>"/>
                     </div>

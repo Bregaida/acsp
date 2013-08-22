@@ -30,7 +30,7 @@
                 <td>${aeronave.ativo}</td>
                 <td>${aeronave.motivoInatividade}</td>
                <td>
-                    <div class="btn-group">
+                    <div class="btn-group btn-group-sm">
                         <input type="button" class="btn btn-default editaAeronaveAction" id="editar_<c:out value="${aeronave.id}"/>" value="Editar" aeronaveid="<c:out value="${aeronave.id}"/>"/>
                         <input type="button" class="btn btn-default apagaAeronaveAction" id="apagar_<c:out value="${aeronave.id}"/>" value="Apagar" aeronaveid="<c:out value="${aeronave.id}"/>"/>
                     </div>

@@ -43,6 +43,7 @@ public class InstrutorController {
 
 	@RequestMapping("/instrutores")
 	public String lista(ModelMap map) {
+        map.put("instrutoresMenu", "active");
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		return "instrutor/lista";
 	}

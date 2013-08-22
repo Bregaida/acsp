@@ -42,6 +42,7 @@ public class AlunosController {
 
 	@RequestMapping("/alunos")
 	public String lista(ModelMap map) {
+        map.put("alunosMenu", "active");
 		map.put("listaDeAlunos", alunoService.listarOrdenado());
 		return "aluno/lista";
 	}

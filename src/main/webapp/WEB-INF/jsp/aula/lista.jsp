@@ -21,7 +21,7 @@
 					</c:forEach>
 				</td>
 				<td>
-                    <div class="btn-group">
+                    <div class="btn-group btn-group-sm">
                         <a class="btn btn-default" href="http://localhost:8080/acsp/aula/${aula.id}" value="Editar">Editar</a>
                         <a class="btn btn-default" href="http://localhost:8080/acsp/aula/${aula.id}/apaga" value="Apagar">Apagar</a>
                     </div>

@@ -44,6 +44,7 @@ public class AulaController extends AbstractController {
 
 	@RequestMapping("/aulas")
 	public String lista(ModelMap map) {
+        map.put("aulasMenu", "active");
 		map.put("listaDeAulas", aulaService.listarOrdenado());
 		return "aula/lista";
 	}

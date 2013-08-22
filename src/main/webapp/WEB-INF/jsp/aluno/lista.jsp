@@ -32,7 +32,7 @@
 				<td><c:out value="${aluno.cma}"/></td>
 				<td><c:out value="${aluno.ativo}"/></td>
                 <td>
-                    <div class="btn-group">
+                    <div class="btn-group btn-group-sm">
                         <input type="button" class="btn btn-default editaAlunoAction" id="editar_<c:out value="${aluno.id}"/>" value="Editar" alunoid="<c:out value="${aluno.id}"/>"/>
                         <input type="button" class="btn btn-default apagaAlunoAction" id="apagar_<c:out value="${aluno.id}"/>" value="Apagar" alunoid="<c:out value="${aluno.id}"/>"/>
                     </div>

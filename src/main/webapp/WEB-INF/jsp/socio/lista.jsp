@@ -34,7 +34,7 @@
 					<td><c:out value="${socio.cma}"/></td>
 					<td><c:out value="${socio.ativo}"/></td>
 	                <td>
-	                    <div class="btn-group">
+	                    <div class="btn-group btn-group-sm">
 	                        <input type="button" class="btn btn-default editaSocioAction" id="editar_<c:out value="${socio.id}"/>" value="Editar" socioid="<c:out value="${socio.id}"/>"/>
 	                        <input type="button" class="btn btn-default apagaSocioAction" id="apagar_<c:out value="${socio.id}"/>" value="Apagar" socioid="<c:out value="${socio.id}"/>"/>
 	                    </div>
