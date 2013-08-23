@@ -32,7 +32,7 @@
 				<td><c:out value="${aluno.cma}"/></td>
 				<td><c:out value="${aluno.ativo}"/></td>
                 <td>
-                    <div class="btn-group">
+                    <div class="btn-group btn-group-sm">
                         <input type="button" class="btn btn-default editaAlunoAction" id="editar_<c:out value="${aluno.id}"/>" value="Editar" alunoid="<c:out value="${aluno.id}"/>"/>
                         <input type="button" class="btn btn-default apagaAlunoAction" id="apagar_<c:out value="${aluno.id}"/>" value="Apagar" alunoid="<c:out value="${aluno.id}"/>"/>
                     </div>
@@ -45,21 +45,6 @@
 <!-- Button trigger modal -->
 <a id="alunoModalBtn" data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">Novo Aluno</a>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Aluno</h4>
-            </div>
-            <div class="modal-body">
-                <c:import url="fieldSet.jsp"/>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<c:import url="formulario.jsp"/>
 
 <c:import url="../../includes/footer.jsp"/>

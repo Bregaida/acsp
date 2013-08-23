@@ -42,7 +42,8 @@ public class SocioController {
 
 	@RequestMapping("/socios")
 	public String lista(ModelMap map) {
-		map.put("listaDeSocios", socioService.listarOrdenado());
+        map.put("sociosMenu", "active");
+        map.put("listaDeSocios", socioService.listarOrdenado());
 		return "socio/lista";
 	}
 

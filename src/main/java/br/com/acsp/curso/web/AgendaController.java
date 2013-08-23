@@ -105,6 +105,7 @@ public class AgendaController extends AbstractController {
 
 	@RequestMapping(value = "/agendas", method = RequestMethod.GET)
 	public String lista(ModelMap map) {
+        map.put("agendasMenu", "active");
 		map.put("listaDeAgendas", agendaService.pesquisarTodos());
 		return "agenda/lista";
 	}
