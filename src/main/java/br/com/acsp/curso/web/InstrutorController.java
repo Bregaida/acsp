@@ -3,26 +3,29 @@
  */
 package br.com.acsp.curso.web;
 
+import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.util.CustomEnumEscolaridadeEditor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.acsp.curso.domain.Instrutor;
 import br.com.acsp.curso.service.InstrutorService;
+
+import javax.validation.Valid;
 
 /**
  * @author pedrosa
  */
 
 @Controller
-public class InstrutorController {
+public class InstrutorController extends AbstractController {
 
 	private static final Log logger = LogFactory
 			.getLog(InstrutorController.class);
@@ -45,7 +48,8 @@ public class InstrutorController {
 	public String lista(ModelMap map) {
         map.put("instrutoresMenu", "active");
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
-		return "instrutor/lista";
+        map.put("escolaridades", EscolaridadeType.values());
+        return "instrutor/lista";
 	}
 
 	@RequestMapping(value = "/instrutor", method = RequestMethod.GET)
@@ -74,9 +78,16 @@ public class InstrutorController {
 	}
 
 	@RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-	public String salvarInstrutor(
-			@ModelAttribute("instrutor") Instrutor instrutor) {
-		instrutorService.salvar(instrutor);
-		return "redirect:/instrutores";
-	}
+	public String salvar(@Valid Instrutor instrutor, BindingResult bindingResult, Model uiModel) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("instrutor", instrutor);
+            uiModel.addAttribute("instrutoresMenu", "active");
+            uiModel.addAttribute("listaDeInstrutores", instrutorService.listarOrdenado());
+            uiModel.addAttribute("escolaridades", EscolaridadeType.values());
+            return "instrutor/lista";
+        }
+        uiModel.asMap().clear();
+        instrutorService.salvar(instrutor);
+        return "redirect:/instrutores";
+    }
 }

@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<form:form id="aeronaveForm" method="POST" commandName="aeronave" role="form">
 
     <div class="form-group">
         <form:errors/>
@@ -90,10 +89,3 @@
         <label for="motivoInatividade">Motivo da inatividade</label>
         <form:input path="motivoInatividade" id="motivoInatividade" cssClass="form-control"/>
     </div>
-
-    <div class="btn-group pull-right">
-        <button type="button" class="btn btn-default">Limpar</button>
-        <button type="submit" class="btn btn-default">Enviar</button>
-    </div>
-
-</form:form>
