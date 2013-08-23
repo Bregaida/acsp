@@ -38,8 +38,9 @@ public class AeronaveController {
 	@RequestMapping("/aeronaves")
 	public String lista(ModelMap map) {
 		logger.info("AeronaveController: lista");
-		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-		return "aeronave/lista";
+        map.put("aeronaveMenu", "active");
+        map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+        return "aeronave/lista";
 	}
 
 	@RequestMapping(value = "/aeronave", method = RequestMethod.GET)
