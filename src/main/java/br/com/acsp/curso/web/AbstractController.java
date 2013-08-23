@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.util.CustomEnumEscolaridadeEditor;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 
 import br.com.acsp.curso.domain.Aeronave;
 import br.com.acsp.curso.domain.Horario;
+import sun.beans.editors.EnumEditor;
 
 /**
  * @author pedrosa
@@ -46,7 +49,7 @@ public abstract class AbstractController {
                 return horario;
             }
         });
-
+        binder.registerCustomEditor(EscolaridadeType.class, new CustomEnumEscolaridadeEditor());
     }
 
 }

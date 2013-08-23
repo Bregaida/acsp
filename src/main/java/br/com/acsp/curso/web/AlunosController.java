@@ -3,6 +3,7 @@
  */
 package br.com.acsp.curso.web;
 
+import br.com.acsp.curso.domain.EscolaridadeType;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import br.com.acsp.curso.service.AlunoService;
  */
 
 @Controller
-public class AlunosController {
+public class AlunosController extends AbstractController {
 
 	private static final Log logger = LogFactory.getLog(AlunosController.class);
 
@@ -42,7 +43,9 @@ public class AlunosController {
 
 	@RequestMapping("/alunos")
 	public String lista(ModelMap map) {
+        map.put("alunosMenu", "active");
 		map.put("listaDeAlunos", alunoService.listarOrdenado());
+        map.put("escolaridades", EscolaridadeType.values());
 		return "aluno/lista";
 	}
 
