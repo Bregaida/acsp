@@ -29,10 +29,6 @@ public class Horario implements Serializable {
 	@Column
 	private String horarioAgenda;
 
-	@ManyToMany
-	@JoinTable(name = "agenda_horario", joinColumns = { @JoinColumn(name =	"horario_id") }, inverseJoinColumns = { @JoinColumn(name = "agenda_id")	})
-	private List<Agenda> agendas;
-
 	public Long getId() {
 		return id;
 	}
@@ -48,16 +44,6 @@ public class Horario implements Serializable {
 	public void setHorarioAgenda(String horarioAgenda) {
 		this.horarioAgenda = horarioAgenda;
 	}
-
-	public List<Agenda> getAgendas() {
-		return agendas;
-	}
-
-	public void setAgendas(List<Agenda> agendas) {
-		this.agendas = agendas;
-	}
-	
-	
 	
 
 }

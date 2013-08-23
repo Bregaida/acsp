@@ -55,6 +55,10 @@ public class Agenda implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "socio_id")
 	private Socio socio;
+	
+	@ManyToOne
+	@JoinColumn(name = "horario_id")
+	private Horario horario; 
 
 	@Column
 	private Integer qtdeHoras;
@@ -73,13 +77,7 @@ public class Agenda implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private StatusType status;
-	
-	
-	@ManyToMany()
-	@JoinTable(name = "agenda_horario", joinColumns = { @JoinColumn(name = "agenda_id") }, inverseJoinColumns = { @JoinColumn(name = "horario_id") })
-	private List<Horario> horarios; 
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -136,6 +134,14 @@ public class Agenda implements Serializable {
 		this.socio = socio;
 	}
 
+	public Horario getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Horario horario) {
+		this.horario = horario;
+	}
+
 	public Integer getQtdeHoras() {
 		return qtdeHoras;
 	}
@@ -183,17 +189,5 @@ public class Agenda implements Serializable {
 	public void setStatus(StatusType status) {
 		this.status = status;
 	}
-
-	
-	public List<Horario> getHorarios() {
-		return horarios;
-	}
-
-	public void setHorarios(List<Horario> horarios) {
-		this.horarios = horarios;
-	}
-
-	
-	
 	
 }

@@ -27,7 +27,7 @@
 			<tr>
 				<td>Horas Disponíveis</td>
 				<td>
-					<form:select path="horarios" id="horario" items="${listaDeHorarios}" itemValue="id" itemLabel="horarioAgenda" />
+					<form:select path="horario.id" id="horario" items="${listaDeHorarios}" itemValue="id" itemLabel="horarioAgenda" />
 				 </td>
 			</tr>
 			<tr>
