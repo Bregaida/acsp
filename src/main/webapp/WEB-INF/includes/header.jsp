@@ -22,11 +22,16 @@
     <link href="/acsp/resources/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="/acsp/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="/acsp/resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/acsp/resources/css/acsp-custom.css" rel="stylesheet">
+    <!--
+
+       Tema: http://bootswatch.com/spacelab/
+    -->
 <%--<link href="/acsp/resources/css/grid.css" rel="stylesheet">--%>
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -35,15 +40,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">ACSP</a>
+        <a class="navbar-brand" href="/acsp/home">ACSP</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li class="${homeMenu}">
-                <a href="/acsp/home">Inicio</a>
-            </li>
              <li class="${atendenteMenu}">
                 <a href="/acsp/atendentes">Atendentes</a>
             </li>
@@ -87,6 +89,14 @@
                     <li><a href="/acsp/agendas">Manutenção de Agendamentos</a></li>
                     <li><a href="#">Informações do Sistema</a></li>
                 </ul>
+            </li>
+            <li>
+                <c:if test="${pageContext.request.remoteUser != null}">
+                    <c:url var="logoutUrl" value="/logout"/>
+                    <form:form class="navbar-form pull-right" action="${logoutUrl}" method="post">
+                        <input type="submit" value="Log out" class="btn btn-warning"/>
+                    </form:form>
+                </c:if>
             </li>
         </ul>
     </div><!-- /.navbar-collapse -->

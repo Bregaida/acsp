@@ -14,7 +14,7 @@
     <title>Login</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/acsp/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="/acsp/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="/acsp/resources/css/login.css" rel="stylesheet">
 
 </head>
@@ -22,14 +22,14 @@
 <body>
 
 <div class="container">
-    <c:if test="${param.error != null}"> 2
+    <c:if test="${param.error != null}">
         <div class="alert alert-error">
-            Invalid username and password.
+            Usuário e/ou senha inválidos.
         </div>
     </c:if>
-    <c:if test="${param.logout != null}"> 3
+    <c:if test="${param.logout != null}">
         <div class="alert alert-success">
-            You have been logged out.
+            Você saiu do sistema com sucesso.
         </div>
     </c:if>
     <c:url value="/login" var="loginUrl"/>

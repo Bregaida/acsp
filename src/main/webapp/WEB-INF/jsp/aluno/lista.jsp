@@ -42,7 +42,7 @@
 	</table>
 
 <!-- Button trigger modal -->
-<a id="alunoModalBtn" data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">Novo Aluno</a>
+<a id="alunoModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Aluno</a>
 
 <c:import url="formulario.jsp"/>
 
