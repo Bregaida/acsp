@@ -25,6 +25,7 @@
 <script type="text/javascript" src="resources/js/backbone-min.js"></script>
 -->
 <script type="text/javascript" src="/acsp/resources/js/common-utils.js"></script>
+<script type="text/javascript" src="/acsp/resources/js/atendentes.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/alunos.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/aeronaves.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/instrutores.js"></script>
