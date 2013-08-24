@@ -42,6 +42,9 @@
             <li class="${homeMenu}">
                 <a href="/acsp/home">Inicio</a>
             </li>
+             <li class="${atendenteMenu}">
+                <a href="/acsp/atendentes">Atendentes</a>
+            </li>
             <li class="${aeronaveMenu}">
                 <a href="/acsp/aeronaves">Aeronaves</a>
             </li>
@@ -80,9 +83,12 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Manutenção de Usuários</a></li>
+                    <li><a href="/acsp/alunos">Manutenção de Alunos</a></li>
                     <li><a href="/acsp/instrutores">Manutenção de Instrutores</a></li>
-                    <li><a href="#">Manutenção de Pista</a></li>
+                    <li><a href="/acsp/atendentes">Manutenção de Atendentes</a></li>
+                    <li><a href="/acsp/aeronaves">Manutenção de Aeronaves</a></li>
+                    <li><a href="/acsp/aulas">Manutenção de Aulas</a></li>
+                    <li><a href="/acsp/agendas">Manutenção de Agendamentos</a></li>
                     <li><a href="#">Informações do Sistema</a></li>
                 </ul>
             </li>

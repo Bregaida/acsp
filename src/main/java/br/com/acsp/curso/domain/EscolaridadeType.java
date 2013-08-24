@@ -10,13 +10,9 @@ import java.io.Serializable;
  */
 public enum EscolaridadeType implements Serializable {
 
-	FUNDAMENTAL(1, "Fundamental"),
-    MEDIO(2, "Medioo"),
-    TECNICO(3, "Tecnico"),
-    GRADUACAO(4, "Graduacao"),
-    POS_GRADUACAO(5, "Pos-Graduacao"),
-    MESTRADO(6, "Mestrado"),
-    DOUTORADO(7, "Doutorado");
+	FUNDAMENTAL(1, "Fundamental"), MEDIO(2, "Medio"), TECNICO(3, "Tecnico"), GRADUACAO(
+			4, "Graduacao"), POS_GRADUACAO(5, "Pos-Graduacao"), MESTRADO(6,
+			"Mestrado"), DOUTORADO(7, "Doutorado");
 
 	private EscolaridadeType(Integer id, String descricao) {
 		setId(id);
