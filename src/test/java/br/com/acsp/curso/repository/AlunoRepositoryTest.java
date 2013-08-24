@@ -19,6 +19,6 @@ public class AlunoRepositoryTest extends AbstractRepositoryTestSupport {
     @Test
     public void deveHaverTresAlunosCarregadosPorDefault() throws Exception {
         assertNotNull(repository);
-        assertEquals(3, repository.findAll().size());
+        assertEquals(33, repository.findAll().size());
     }
 }
