@@ -30,5 +30,6 @@
 <script type="text/javascript" src="/acsp/resources/js/aeronaves.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/instrutores.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/socios.js"></script>
+<script type="text/javascript" src="/acsp/resources/js/agenda.js"></script>
 </body>
 </html>

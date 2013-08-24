@@ -36,17 +36,6 @@ public abstract class AbstractController {
                 return aeronave;
             }
         });
-        binder.registerCustomEditor(List.class, "horarios",new CustomCollectionEditor(List.class){
-            @Override
-            protected Object convertElement(Object element) {
-                Horario horario = new Horario();
-                if (element != null) {
-                    Long id = Long.valueOf(element.toString());
-                    horario.setId(id);
-                }
-                return horario;
-            }
-        });
         binder.registerCustomEditor(EscolaridadeType.class, new CustomEnumEscolaridadeEditor());
     }
 

@@ -6,6 +6,7 @@ package br.com.acsp.curso.web;
 import br.com.acsp.curso.domain.Agenda;
 import br.com.acsp.curso.domain.Horario;
 import br.com.acsp.curso.service.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author pedrosa
@@ -48,15 +50,6 @@ public class AgendaController extends AbstractController {
 
 	@RequestMapping(value = "/agenda", method = RequestMethod.GET)
 	public String preparaForm(ModelMap map) {
-		map.put("listaDeAlunos", alunoService.listarOrdenado());
-		map.put("listaDeSocios", socioService.listarOrdenado());
-		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
-		map.put("listaDeAulas", aulaService.listarOrdenado());
-		// TODO: Devera ser listado por horario dispoivel
-		mockHorarios();
-		
-		map.put("listaDeHorarios", horarioService.listarOrdenado());
 		return "agenda/formulario";
 	}
 
@@ -84,22 +77,34 @@ public class AgendaController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/agenda/{id}", method = RequestMethod.GET)
-	public String buscaPorId(@PathVariable("id") Long id, ModelMap map) {
-		map.put("agenda", agendaService.obtemPorId(id));
+	@ResponseBody
+	public Agenda buscaPorId(@PathVariable("id") Long id, ModelMap map) {
+		/*map.put("agenda", agendaService.obtemPorId(id));
 		map.put("listaDeAlunos", alunoService.listarOrdenado());
 		map.put("listaDeSocios", socioService.listarOrdenado());
 		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
 		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
 		// TODO: Devera ser listar por horario dispoivel
-		 map.put("listaDeHorarios", horarioService.listarOrdenado());
-		return "agenda/formulario";
+		 map.put("listaDeHorarios", horarioService.listarOrdenado());*/
+		
+		return agendaService.obtemPorId(id);
 	}
 
 	@RequestMapping(value = "/agendas", method = RequestMethod.GET)
 	public String lista(ModelMap map) {
         map.put("agendasMenu", "active");
 		map.put("listaDeAgendas", agendaService.pesquisarTodos());
+		map.put("listaDeAlunos", alunoService.listarOrdenado());
+		map.put("listaDeSocios", socioService.listarOrdenado());
+		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
+		map.put("listaDeAulas", aulaService.listarOrdenado());
+		// TODO: Devera ser listado por horario dispoivel
+		mockHorarios();
+		
+		map.put("listaDeHorarios", horarioService.listarOrdenado());
+
 		return "agenda/lista";
 	}
 }
