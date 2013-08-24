@@ -75,12 +75,6 @@
                 </ul>
             </li>
         </ul>
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Pesquisar">
-            </div>
-            <button type="submit" class="btn btn-default">Busca</button>
-        </form>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador<b class="caret"></b></a>
