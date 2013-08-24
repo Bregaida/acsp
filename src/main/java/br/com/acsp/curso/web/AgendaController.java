@@ -3,6 +3,9 @@
  */
 package br.com.acsp.curso.web;
 
+import br.com.acsp.curso.domain.Agenda;
+import br.com.acsp.curso.domain.Horario;
+import br.com.acsp.curso.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,16 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import br.com.acsp.curso.domain.Agenda;
-import br.com.acsp.curso.domain.Horario;
-import br.com.acsp.curso.service.AeronaveService;
-import br.com.acsp.curso.service.AgendaService;
-import br.com.acsp.curso.service.AlunoService;
-import br.com.acsp.curso.service.AulaService;
-import br.com.acsp.curso.service.HorarioService;
-import br.com.acsp.curso.service.InstrutorService;
-import br.com.acsp.curso.service.SocioService;
 
 /**
  * @author pedrosa

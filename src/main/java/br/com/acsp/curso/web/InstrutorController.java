@@ -4,7 +4,8 @@
 package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.EscolaridadeType;
-import br.com.acsp.curso.util.CustomEnumEscolaridadeEditor;
+import br.com.acsp.curso.domain.Instrutor;
+import br.com.acsp.curso.service.InstrutorService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
-import br.com.acsp.curso.domain.Instrutor;
-import br.com.acsp.curso.service.InstrutorService;
 
 import javax.validation.Valid;
 

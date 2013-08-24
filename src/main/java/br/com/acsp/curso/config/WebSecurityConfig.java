@@ -15,31 +15,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeUrls().antMatchers("/home*").permitAll()
-				.antMatchers("/resources/**", "/css/*", "/js/*").permitAll()
-				.antMatchers("/alunos/**").permitAll().antMatchers("/aluno/**")
-				.permitAll().antMatchers("/agendas/**").permitAll()
-				.antMatchers("/agenda/**").permitAll()
-				.antMatchers("/socios/**").permitAll().antMatchers("/socio/**")
-				.permitAll().antMatchers("/aulas/**").permitAll()
-				.antMatchers("/aula/**").permitAll()
-				.antMatchers("/instrutores/**").permitAll()
-				.antMatchers("/instrutor/**").permitAll()
-				.antMatchers("/aeronaves/**").permitAll()
-				.antMatchers("/aeronave/**").permitAll().anyRequest()
-				.authenticated().and().logout()
-				.logoutSuccessUrl("/login.jsp?logout").logoutUrl("/logout.jsp")
-				.permitAll().and().formLogin().defaultSuccessUrl("/alunos")
-				.loginUrl("/login.jsp").failureUrl("/login.jsp?error")
-				.permitAll();
+        http
+            .authorizeRequests()
+                .antMatchers("/resources/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage("/login")
+                .permitAll();
 	}
 
 	@Override
 	protected void registerAuthentication(AuthenticationManagerBuilder auth)
 			throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("user1")
-				.roles("USER").and().withUser("admin").password("admin1")
-				.roles("ADMIN", "USER");
+		auth.inMemoryAuthentication()
+                .withUser("user")
+                    .password("user1")
+				    .roles("USER")
+                .and().withUser("admin")
+                    .password("admin1")
+				    .roles("ADMIN", "USER");
 	}
 
 }

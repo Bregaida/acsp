@@ -49,7 +49,7 @@ public class PersistenceConfig {
     //@Bean
     public DataSource dataSource2()
     {
-        DriverManagerDataSource ds = new DriverManagerDataSource();
+        final DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName(driverClassName);
         ds.setUrl(url);
         ds.setUsername(username);
@@ -125,7 +125,6 @@ public class PersistenceConfig {
         properties.put("hibernate.show_sql", hibernateShowSql);
         properties.put("hibernate.hbm2ddl.auto", hibernateHbm2ddlAuto);
         properties.put("hibernate.show_sql", true);
-        //properties.put("hibernate.hbm2ddl.import_files", "/import.sql");
         return properties;
     }
 

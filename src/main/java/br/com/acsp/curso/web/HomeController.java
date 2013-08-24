@@ -16,7 +16,7 @@ public class HomeController extends AbstractController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(ModelMap map) {
         map.put("homeMenu", "active");
-        return "../home"; //TODO: fixx
+        return "home"; //TODO: fixx
     }
 
 }

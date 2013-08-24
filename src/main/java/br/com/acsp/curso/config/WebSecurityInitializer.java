@@ -1,6 +1,6 @@
 package br.com.acsp.curso.config;
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
 /**
@@ -8,6 +8,6 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
  * Date: 8/9/13
  * Time: 10:14 PM
  */
-@Configuration
+@Order(2)
 public class WebSecurityInitializer extends AbstractSecurityWebApplicationInitializer {
 }

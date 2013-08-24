@@ -1,5 +1,6 @@
 package br.com.acsp.curso.config;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.ServletContext;
@@ -11,29 +12,23 @@ import javax.servlet.ServletRegistration;
  * Date: 8/9/13
  * Time: 10:08 PM
  */
-public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+@Order(1)
+public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] { WebSecurityConfig.class };
+        return new Class<?>[] { RootConfiguration.class };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[] { WebConfig.class, WebSecurityInitializer.class, PersistenceConfig.class };
+        return new Class<?>[] { WebMvcConfiguration.class };
     }
 
     @Override
     protected String[] getServletMappings() {
         return new String[] { "/" };
     }
-
-    //@Override
-    //protected Filter[] getServletFilters(){
-    //    return new Filter[]{new DelegatingFilterProxy("springSecurityFilterChain")};
-    //}
-
-
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
