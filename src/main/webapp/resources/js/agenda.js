@@ -9,8 +9,8 @@ function apagaAgenda(id){
 function obtemAgenda(id){
     $.ajax({
         url: "/acsp/agenda/" + id
-    }).done(function(atendente) {
-        aplicarObjetoNoFormulario(aluno, "#agendaForm");
+    }).done(function(agenda) {
+        aplicarObjetoNoFormulario(agenda, "#agendaForm");
     });
 }
 
@@ -23,14 +23,14 @@ $('#agendaModalBtn').click(function(){
 $('.editaAgendaAction').click(function(event){
     var agendaId = $(this).attr('agendaId');
     $('#agendaModalBtn').trigger('click');
-    obtemAtendente(atendenteId);
-    $('#agendaForm').attr('action', '/acsp/agenda/' + atendenteId);
+    obtemAgenda(agendaId);
+    $('#agendaForm').attr('action', '/acsp/agenda/' + agendaId);
 });
 
-$('.apagaAtendenteAction').click(function(event){
+$('.apagaAgendaAction').click(function(event){
     var agendaId = $(this).attr('agendaId');
     //var nome = $("#atendenteNome" + atendenteId).text();
-    var confirmed = window.confirm("Confirma remocao do atendente ");
+    var confirmed = window.confirm("Confirma remocao da agenda ?");
     if(confirmed){
         apagaAgenda(agendaId);
     }

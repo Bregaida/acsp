@@ -79,15 +79,6 @@ public class AgendaController extends AbstractController {
 	@RequestMapping(value = "/agenda/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Agenda buscaPorId(@PathVariable("id") Long id, ModelMap map) {
-		/*map.put("agenda", agendaService.obtemPorId(id));
-		map.put("listaDeAlunos", alunoService.listarOrdenado());
-		map.put("listaDeSocios", socioService.listarOrdenado());
-		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
-		map.put("listaDeAulas", aulaService.listarOrdenado());
-		// TODO: Devera ser listar por horario dispoivel
-		 map.put("listaDeHorarios", horarioService.listarOrdenado());*/
-		
 		return agendaService.obtemPorId(id);
 	}
 

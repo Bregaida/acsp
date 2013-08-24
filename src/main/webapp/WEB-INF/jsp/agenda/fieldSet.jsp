@@ -7,7 +7,7 @@
     </div>
 
     <div class="form-group">
-        <label for="nome">Dia e mes da reserva</label>
+        <label for="dataReserva">Dia e mes da reserva</label>
         <form:input path="dataReserva" id="dataReserva" cssClass="form-control"/>
     </div>
 
@@ -27,7 +27,7 @@
     </div>
 
     <div class="form-group">
-        <label for="quantidadeHoras">Quantidade de Horas</label>
+        <label for="qtdeHoras">Quantidade de Horas</label>
         <form:input path="qtdeHoras" id="qtdeHoras" cssClass="form-control"/>
     </div>
 
