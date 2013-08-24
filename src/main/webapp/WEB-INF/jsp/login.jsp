@@ -37,11 +37,15 @@
         <h2 class="form-signin-heading">Login</h2>
         <input type="text" name="username" class="form-control" placeholder="Email address" autofocus>
         <input type="password" name="password" class="form-control" placeholder="Password">
+        <!--
         <label class="checkbox">
             <input type="checkbox" value="remember-me"> Manter logado
         </label>
+        -->
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form:form>
+
+    <small class="pull-right">Usuários disponíveis admin/admin1 ou user/user1</small>
 
 </div> <!-- /container -->
 
