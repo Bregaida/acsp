@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages="br.com.acsp.curso")
-public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
+public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     public AnnotationMBeanExporter annotationMBeanExporter() {
