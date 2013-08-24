@@ -5,6 +5,7 @@
 
     <logger name="h2database" level="WARN"/>
     <logger name="org.springframework" level="WARN" />
+    <logger name="org.springframework.web" level="DEBUG" />
     <logger name="org.springframework.security" level="ERROR" />
     <logger name="org.hibernate" level="INFO" />
     <logger name="br.com.acsp" level="DEBUG" />

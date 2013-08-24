@@ -40,6 +40,20 @@
 		</c:forEach>
         </tbody>
 	</table>
+    <ul class="pagination pull-right">
+        <li class="active">
+            <a href="/acsp/alunos?page=1?page.size=5?page.sort=id">1</a>
+        </li>
+        <li>
+            <a href="/acsp/alunos?page=2?page.size=5?page.sort=id">2</a>
+        </li>
+        <li>
+            <a href="/acsp/alunos?page=3?page.size=5?page.sort=id">3</a>
+        </li>
+        <li>
+            <a href="/acsp/alunos?page=4?page.size=5?page.sort=id">4</a>
+        </li>
+    </ul>
 
 <!-- Button trigger modal -->
 <a id="alunoModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Aluno</a>
