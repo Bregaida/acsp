@@ -3,6 +3,8 @@
  */
 package br.com.acsp.curso.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,8 +20,10 @@ public abstract class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+    @NotBlank
 	@Column
 	private String nome;
+    @NotBlank
 	@Column
 	private Long rg;
 	@Column

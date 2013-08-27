@@ -4,23 +4,23 @@
 
 	<table class="table table-striped table-hover">
         <thead>
-            <td>ID</td>
-            <td>Nome do aluno</td>
-            <td>Código anac</td>
-            <td>RG</td>
-            <td>CPF</td>
-            <td>Escolaridade</td>
-            <td>Título de Eleitor</td>
-            <td>Nome de Pista</td>
-            <td>CHT</td>
-            <td>CMA</td>
-            <td>Ativo</td>
-            <td></td>
+            <th class="hidden">ID</th>
+            <th>Nome do aluno</th>
+            <th>Código anac</th>
+            <th>RG</th>
+            <th>CPF</th>
+            <th>Escolaridade</th>
+            <th>Título de Eleitor</th>
+            <th>Nome de Pista</th>
+            <th>CHT</th>
+            <th>CMA</th>
+            <th>Ativo</th>
+            <th></th>
         </thead>
         <tbody>
 		<c:forEach var="aluno" items="${listaDeAlunos}">
-			<tr id="aluno_<c:out value="${aluno.id}"/>">
-                <td><c:out value="${aluno.id}"/></td>
+			<tr id="<c:out value="${aluno.id}"/>">
+                <td class="hidden"><c:out value="${aluno.id}"/></td>
 				<td id="alunoNome<c:out value="${aluno.id}"/>"><c:out value="${aluno.nome}"/></td>
 				<td><c:out value="${aluno.codigoANAC}"/></td>
 				<td><c:out value="${aluno.rg}"/></td>
@@ -30,11 +30,11 @@
 				<td><c:out value="${aluno.nomePista}"/></td>
 				<td><c:out value="${aluno.cht}"/></td>
 				<td><c:out value="${aluno.cma}"/></td>
-				<td><c:out value="${aluno.ativo}"/></td>
+				<td><span class="${aluno.ativo?'icon-check':'icon-check-empty'}"></span></td>
                 <td>
-                    <span id="editar_<c:out value="${aluno.id}"/>" class="icon-edit icon-2x editaAlunoAction" alunoid="<c:out value="${aluno.id}"/>"></span>
+                    <span class="icon-edit icon-2x editaAlunoAction" alunoid="<c:out value="${aluno.id}"/>"></span>
                     &nbsp;
-                    <span id="apagar_<c:out value="${aluno.id}"/>" class="icon-remove-circle icon-2x apagaAlunoAction" alunoid="<c:out value="${aluno.id}"/>"></span>
+                    <span class="icon-remove-circle icon-2x apagaAlunoAction" alunoid="<c:out value="${aluno.id}"/>"></span>
                 </td>
 			</tr>
 		</c:forEach>
