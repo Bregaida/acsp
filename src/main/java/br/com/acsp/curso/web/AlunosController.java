@@ -48,11 +48,6 @@ public class AlunosController extends AbstractController {
         return "aluno/lista";
     }
 
-    @RequestMapping(value = "/aluno", method = RequestMethod.GET)
-    public String preparaForm() {
-        return "aluno/formulario";
-    }
-
     // Nem todos os browser suportam DELETE
     @RequestMapping(value = "/aluno/{id}/apaga", method = RequestMethod.GET)
     public String exclui(@PathVariable("id") Long id) {
@@ -62,25 +57,17 @@ public class AlunosController extends AbstractController {
 
     @RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Aluno buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-        return alunoService.obtemPorId(id);
+    public Aluno buscaPorId(@PathVariable("id") Long id) {
+        return alunoService.getByIdDetached(id);
     }
 
-    @RequestMapping(value = "/aluno/{id}", method = RequestMethod.POST)
-    public String atualiza(@PathVariable("id") Long id,
-                           @ModelAttribute("aluno") Aluno aluno) {
-        aluno.setId(id);
-        alunoService.alterar(aluno);
-        return "redirect:/alunos";
-    }
-
-    @RequestMapping(value = "/aluno", method = RequestMethod.POST)
-    public String salvar(@Valid Aluno aluno, BindingResult result, Model uiModel) {
+    @RequestMapping(value = "/alunos", method = RequestMethod.POST)
+    public String salvarOuAtualizar(@Valid Aluno aluno, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            uiModel.addAttribute("aluno", aluno);
-            uiModel.addAttribute("alunosMenu", "active");
-            uiModel.addAttribute("listaDeAlunos", alunoService.listarOrdenado());
-            uiModel.addAttribute("escolaridades", EscolaridadeType.values());
+            model.addAttribute("aluno", aluno);
+            model.addAttribute("alunosMenu", "active");
+            model.addAttribute("listaDeAlunos", alunoService.listarOrdenado());
+            model.addAttribute("escolaridades", EscolaridadeType.values());
             return "aluno/lista";
         }
         alunoService.salvar(aluno);

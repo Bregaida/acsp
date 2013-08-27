@@ -3,6 +3,9 @@ package br.com.acsp.curso.util;
 import java.beans.PropertyEditorSupport;
 
 import br.com.acsp.curso.domain.EscolaridadeType;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.spi.LoggerFactory;
 
 /**
  * Created with IntelliJ IDEA. User: Pedro Date: 22/08/13 Time: 20:59 To change
@@ -10,10 +13,13 @@ import br.com.acsp.curso.domain.EscolaridadeType;
  */
 public class CustomEnumEscolaridadeEditor extends PropertyEditorSupport {
 
+    private static final Log LOGGER = LogFactory.getLog(CustomEnumEscolaridadeEditor.class);
+
 	@Override
 	public String getAsText() {
-		return super.getAsText();
-	}
+        EscolaridadeType escolaridade = (EscolaridadeType) getValue();
+        return (escolaridade != null ? String.valueOf(escolaridade.getId()) : "");
+    }
 
 	@Override
 	public void setAsText(String text) throws IllegalArgumentException {

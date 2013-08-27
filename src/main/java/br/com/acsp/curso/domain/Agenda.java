@@ -3,6 +3,8 @@
  */
 package br.com.acsp.curso.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,6 +20,7 @@ public class Agenda implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+    @DateTimeFormat(style = "S-")
 	@Column
 	private Date dataReserva;
 
