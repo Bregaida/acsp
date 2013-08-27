@@ -3,10 +3,17 @@
  */
 package br.com.acsp.curso.domain;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import javax.persistence.*;
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @author eduardobregaida
@@ -20,12 +27,12 @@ public abstract class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-    @NotBlank
+	@NotBlank
 	@Column
 	private String nome;
-    @NotBlank
+	@NotBlank
 	@Column
-	private Long rg;
+	private String rg;
 	@Column
 	private Long cpf;
 	@Column
@@ -45,11 +52,11 @@ public abstract class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 
-	public Long getRg() {
+	public String getRg() {
 		return rg;
 	}
 
-	public void setRg(Long rg) {
+	public void setRg(String rg) {
 		this.rg = rg;
 	}
 
