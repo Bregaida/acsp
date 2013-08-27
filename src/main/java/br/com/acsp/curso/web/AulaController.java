@@ -45,6 +45,7 @@ public class AulaController extends AbstractController {
 	public String lista(ModelMap map) {
         map.put("aulasMenu", "active");
 		map.put("listaDeAulas", aulaService.listarOrdenado());
+		map.put("listaDeAeronaves",aeronaveService.listarOrdenadoPorModelo());
 		return "aula/lista";
 	}
 
