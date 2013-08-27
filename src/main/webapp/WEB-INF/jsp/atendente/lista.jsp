@@ -24,18 +24,31 @@
 				<td><c:out value="${atendente.tituloEleitor}"/></td>
 				<td><c:out value="${atendente.ativo}"/></td>
                 <td>
-                    <div class="btn-group btn-group-sm">
-                        <input type="button" class="btn btn-default editaAtendenteAction" id="editar_<c:out value="${atendente.id}"/>" value="Editar" atendenteid="<c:out value="${atendente.id}"/>"/>
-                        <input type="button" class="btn btn-default apagaAtendenteAction" id="apagar_<c:out value="${atendente.id}"/>" value="Apagar" atendenteid="<c:out value="${atendente.id}"/>"/>
-                    </div>
+                    <span class="icon-edit icon-2x editaAtendenteAction" atendenteid="<c:out value="${atendente.id}"/>"></span>
+                    &nbsp;
+                    <span class="icon-remove-circle icon-2x apagaAtendenteAction" atendenteid="<c:out value="${atendente.id}"/>"></span>
                 </td>
 			</tr>
 		</c:forEach>
         </tbody>
 	</table>
+    <ul class="pagination pull-right">
+        <li class="active">
+            <a href="/acsp/atendentes?page=1?page.size=5?page.sort=id">1</a>
+        </li>
+        <li>
+            <a href="/acsp/atendentes?page=2?page.size=5?page.sort=id">2</a>
+        </li>
+        <li>
+            <a href="/acsp/atendentes?page=3?page.size=5?page.sort=id">3</a>
+        </li>
+        <li>
+            <a href="/acsp/atendentes?page=4?page.size=5?page.sort=id">4</a>
+        </li>
+    </ul>
 
 <!-- Button trigger modal -->
-<a id="atendenteModalBtn" data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">Novo Atendente</a>
+<a id="atendenteModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Atendente</a>
 
 <c:import url="formulario.jsp"/>
 

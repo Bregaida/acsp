@@ -5,7 +5,7 @@
 	<table class="table table-striped table-hover">
         <thead>
             <td>ID</td>
-            <td>Nome do instrutor</td>
+            <td>Nome</td>
             <td>Código anac</td>
             <td>RG</td>
             <td>CPF</td>
@@ -15,7 +15,7 @@
             <td>CHT</td>
             <td>CMA</td>
             <td>Ativo</td>
-            <td>Quantidade de Horas Ministradas</td>
+            <td>Qtd. Hr/Aula</td>
             <td></td>
         </thead>
         <tbody>
@@ -33,19 +33,32 @@
 				<td><c:out value="${instrutor.cma}"/></td>
 				<td><c:out value="${instrutor.ativo}"/></td>
 				<td><c:out value="${instrutor.quantidadeHorasMinistrada}"/></td>
-                <td>
-                    <div class="btn-group btn-group-sm">
-                        <input type="button" class="btn btn-default editaInstrutorAction" id="editar_<c:out value="${instrutor.id}"/>" value="Editar" instrutorid="<c:out value="${instrutor.id}"/>"/>
-                        <input type="button" class="btn btn-default apagaInstrutorAction" id="apagar_<c:out value="${instrutor.id}"/>" value="Apagar" instrutorid="<c:out value="${instrutor.id}"/>"/>
-                    </div>
+              <td>
+                    <span class="icon-edit icon-2x editaInstrutorAction" instrutorid="<c:out value="${instrutor.id}"/>"></span>
+                    &nbsp;
+                    <span class="icon-remove-circle icon-2x apagaInstrutorAction" instrutorid="<c:out value="${instrutor.id}"/>"></span>
                 </td>
 			</tr>
 		</c:forEach>
         </tbody>
 	</table>
+    <ul class="pagination pull-right">
+        <li class="active">
+            <a href="/acsp/instrutores?page=1?page.size=5?page.sort=id">1</a>
+        </li>
+        <li>
+            <a href="/acsp/instrutores?page=2?page.size=5?page.sort=id">2</a>
+        </li>
+        <li>
+            <a href="/acsp/instrutores?page=3?page.size=5?page.sort=id">3</a>
+        </li>
+        <li>
+            <a href="/acsp/instrutores?page=4?page.size=5?page.sort=id">4</a>
+        </li>
+    </ul>
 
 <!-- Button trigger modal -->
-<a id="instrutorModalBtn" data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">Novo Instrutor</a>
+<a id="instrutorModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Instrutor</a>
 
 <c:import url="formulario.jsp"/>
 

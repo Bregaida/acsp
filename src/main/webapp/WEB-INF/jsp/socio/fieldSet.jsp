@@ -6,6 +6,11 @@
         <form:errors/>
     </div>
 
+	 <div class="form-group">
+        <label for="nome">N. Inscr.</label>
+        <form:input path="numeroInscricao" id="numeroInscricao" cssClass="form-control"/>
+    </div>
+    
     <div class="form-group">
         <label for="nome">Nome</label>
         <form:input path="nome" id="nome" cssClass="form-control"/>

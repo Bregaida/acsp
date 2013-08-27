@@ -55,6 +55,9 @@
             <li class="${instrutoresMenu}">
                 <a href="/acsp/instrutores">Instrutores</a>
             </li>
+            <li class="${sociosMenu}">
+                <a href="/acsp/socios">Sócios</a>
+            </li>
             <li class="${alunosMenu}">
                 <a href="/acsp/alunos">Alunos</a>
             </li>
@@ -63,9 +66,6 @@
             </li>
             <li class="${agendasMenu}">
                 <a href="/acsp/agendas">Agendas</a>
-            </li>
-            <li class="${sociosMenu}">
-                <a href="/acsp/socios">Sócios</a>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios<b class="caret"></b></a>
