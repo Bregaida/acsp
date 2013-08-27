@@ -4,20 +4,20 @@
 
 	<table class="table table-striped table-hover">
         <thead>
-            <td>Código da Aula</td>
-            <td>Matéria</td>
-            <td>Quantidade de Horas necessárias para instrutor</td>
-            <td>Aeronaves Homologadas</td>
+            <th>Código da Aula</th>
+            <th>Matéria</th>
+            <th>Quantidade de Horas necessárias para instrutor</th>
+            <th>Aeronaves Homologadas</th>
         </thead>
+
 		<c:forEach var="aula" items="${listaDeAulas}" varStatus="status">
-			
 			<tr>
                 <td>${aula.id}</td>
 				<td>${aula.materia }</td>
 				<td>${aula.quantidadeHorasNecessarias }</td>
 				<td>
 					<c:forEach var="aeronave" items="${aula.aeronaves}">
-						${aeronave.modelo }&nbsp;
+						${aeronave.modelo}&nbsp;
 					</c:forEach>
 				</td>
 				<td>
@@ -30,6 +30,11 @@
 		</c:forEach>
 	</tbody>
 	</table>
-<hr/>
-<a href="http://localhost:8080/acsp/aula" class="btn btn-default btn-lg">Adicionar</a>
+
+<!-- Button trigger modal -->
+<a id="aulaModalBtn" data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">Adicionar Aula</a>
+
+<%-- Formulario para inserir nova aeronave --%>
+<c:import url="formulario.jsp"/>
+
 <c:import url="../../includes/footer.jsp"/>

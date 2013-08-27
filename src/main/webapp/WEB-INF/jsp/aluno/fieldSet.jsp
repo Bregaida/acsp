@@ -1,29 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
     <div class="form-group">
-        <form:errors/>
-    </div>
-
-    <div class="form-group">
-        <label for="nome">Nome</label>
+        <label for="nome"><spring:message code="aluno.nome"/></label>
         <form:input path="nome" id="nome" cssClass="form-control"/>
+        <form:errors path="nome" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="rg">RG</label>
         <form:input path="rg" id="rg" cssClass="form-control"/>
+        <form:errors path="rg" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="cpf">CPF</label>
         <form:input path="cpf" id="cpf" cssClass="form-control"/>
+        <form:errors path="cpf" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="alistamentoMilitar">Alistamento Militar</label>
         <form:input path="alistamentoMilitar" id="alistamentoMilitar" cssClass="form-control"/>
+        <form:errors path="alistamentoMilitar" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
@@ -34,26 +35,31 @@
     <div class="form-group">
         <label for="tituloEleitor">Título de Eleitor</label>
         <form:input path="tituloEleitor" id="tituloEleitor" cssClass="form-control"/>
+        <form:errors path="tituloEleitor" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="codigoANAC">Código ANAC</label>
         <form:input path="codigoANAC" id="codigoANAC" cssClass="form-control"/>
+        <form:errors path="codigoANAC" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="nomePista">Nome de Pista</label>
         <form:input path="nomePista" id="nomePista" cssClass="form-control"/>
+        <form:errors path="nomePista" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="cht">CHT</label>
         <form:input path="cht" id="cht" cssClass="form-control"/>
+        <form:errors path="cht" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="cma">CMA</label>
         <form:input path="cma" id="cma" cssClass="form-control"/>
+        <form:errors path="cma" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="checkbox">

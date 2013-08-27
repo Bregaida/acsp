@@ -1,9 +1,12 @@
 package br.com.acsp.curso.config;
 
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jmx.export.annotation.AnnotationMBeanExporter;
@@ -53,6 +56,13 @@ public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
         ppc.setLocation(new ClassPathResource("application.properties"));
         ppc.setIgnoreUnresolvablePlaceholders(false);
         return ppc;
+    }
+
+    @Bean(name = AbstractApplicationContext.MESSAGE_SOURCE_BEAN_NAME) // Nice: no hardcoded name.
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages"); // Our i18n translations are in messages.properties, messages_nl.properties, ...
+        return messageSource;
     }
 
     //------
