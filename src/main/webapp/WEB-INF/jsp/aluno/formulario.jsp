@@ -12,6 +12,7 @@
             </div>
 
             <form:form id="alunoForm" method="POST" commandName="aluno" role="form">
+                <form:errors path="*" cssClass="alert alert-error" element="div" />
                 <div class="modal-body">
                     <c:import url="fieldSet.jsp"/>
                 </div>
