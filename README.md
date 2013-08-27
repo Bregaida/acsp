@@ -10,8 +10,8 @@ Requisitos do Programa:
     Implementar segurança          - OK
     Criar Protótipos de Tela	   - OK
     Telas (HTML 5 e CSS 3, deverá ser Responsiva) - OK
-	Criar Regras de segurança
-	Layout do ACSP
+	Criar Regras de segurança      - OK
+	Layout do ACSP                 - OK
 	Banco de Dados oficial
 
 Módulos CRUD:
@@ -24,8 +24,8 @@ Módulos CRUD:
     Cadastro de Aeronave - OK
     Aula - OK
     Agenda - OK
-	Atendente
-	Horário
+	Atendente - OK
+	Horário   - OK
     	
     Perfil
     	(Aluno e Sócio - Agendam horas de vôo e consultam apenas suas horas marcadas, podendo cancelar até 1 dia antes)
@@ -127,3 +127,6 @@ Telas:
 	Novo Carrega a página de inserção
 	Pesquisa traz uma grid com Nome para selecionar e atualizar
 	aluno, instr, aeronave, etc
+
+
+Este software é grátis e não deverá ser cobrado daqueles que o utilizarem, os créditos dos fontes devem ser mantidos.
