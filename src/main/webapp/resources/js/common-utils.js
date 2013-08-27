@@ -14,3 +14,9 @@ function aplicarObjetoNoFormulario(obj, formId){
         }
     });
 }
+
+$('.editaAction').click(function(e) {
+    var id = $(this).closest('tr').attr('id');
+    $('#myModal form')[0].reset();
+
+});

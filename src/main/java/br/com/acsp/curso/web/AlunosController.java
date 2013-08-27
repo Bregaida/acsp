@@ -10,8 +10,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author Christian Reichel
@@ -20,59 +24,66 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class AlunosController extends AbstractController {
 
-	private static final Log logger = LogFactory.getLog(AlunosController.class);
+    private static final Log logger = LogFactory.getLog(AlunosController.class);
 
-	@Autowired
-	private AlunoService alunoService;
+    @Autowired
+    private AlunoService alunoService;
 
-	/**
-	 * Este metodo adiciona o aluno ao (form) request, basta usar o form com o
-	 * nome de "aluno"
-	 * 
-	 * @return
-	 */
-	@ModelAttribute("aluno")
-	public Aluno getAluno() {
-		return new Aluno();
-	}
+    /**
+     * Este metodo adiciona o aluno ao (form) request, basta usar o form com o
+     * nome de "aluno"
+     *
+     * @return
+     */
+    @ModelAttribute("aluno")
+    public Aluno getAluno() {
+        return new Aluno();
+    }
 
-	@RequestMapping("/alunos")
-	public String lista(ModelMap map) {
+    @RequestMapping("/alunos")
+    public String lista(ModelMap map) {
         map.put("alunosMenu", "active");
-		map.put("listaDeAlunos", alunoService.listarOrdenado());
+        map.put("listaDeAlunos", alunoService.listarOrdenado());
         map.put("escolaridades", EscolaridadeType.values());
-		return "aluno/lista";
-	}
+        return "aluno/lista";
+    }
 
-	@RequestMapping(value = "/aluno", method = RequestMethod.GET)
-	public String preparaForm() {
-		return "aluno/formulario";
-	}
+    @RequestMapping(value = "/aluno", method = RequestMethod.GET)
+    public String preparaForm() {
+        return "aluno/formulario";
+    }
 
-	// Nem todos os browser suportam DELETE
-	@RequestMapping(value = "/aluno/{id}/apaga", method = RequestMethod.GET)
-	public String exclui(@PathVariable("id") Long id) {
-		alunoService.excluirPorId(id);
-		return "redirect:/alunos";
-	}
+    // Nem todos os browser suportam DELETE
+    @RequestMapping(value = "/aluno/{id}/apaga", method = RequestMethod.GET)
+    public String exclui(@PathVariable("id") Long id) {
+        alunoService.excluirPorId(id);
+        return "redirect:/alunos";
+    }
 
-	@RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public Aluno buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		return alunoService.obtemPorId(id);
-	}
+    @RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Aluno buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+        return alunoService.obtemPorId(id);
+    }
 
-	@RequestMapping(value = "/aluno/{id}", method = RequestMethod.POST)
-	public String atualiza(@PathVariable("id") Long id,
-			@ModelAttribute("aluno") Aluno aluno) {
-		aluno.setId(id);
-		alunoService.alterar(aluno);
-		return "redirect:/alunos";
-	}
+    @RequestMapping(value = "/aluno/{id}", method = RequestMethod.POST)
+    public String atualiza(@PathVariable("id") Long id,
+                           @ModelAttribute("aluno") Aluno aluno) {
+        aluno.setId(id);
+        alunoService.alterar(aluno);
+        return "redirect:/alunos";
+    }
 
-	@RequestMapping(value = "/aluno", method = RequestMethod.POST)
-	public String salvarAluno(@ModelAttribute("aluno") Aluno aluno) {
-		alunoService.salvar(aluno);
-		return "redirect:/alunos";
-	}
+    @RequestMapping(value = "/aluno", method = RequestMethod.POST)
+    public String salvar(@Valid Aluno aluno, BindingResult result, Model uiModel) {
+        if (result.hasErrors()) {
+            uiModel.addAttribute("aluno", aluno);
+            uiModel.addAttribute("alunosMenu", "active");
+            uiModel.addAttribute("listaDeAlunos", alunoService.listarOrdenado());
+            uiModel.addAttribute("escolaridades", EscolaridadeType.values());
+            return "aluno/lista";
+        }
+        alunoService.salvar(aluno);
+        return "redirect:/alunos";
+    }
 }
