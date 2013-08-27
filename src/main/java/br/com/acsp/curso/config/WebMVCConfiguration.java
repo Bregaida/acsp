@@ -9,10 +9,14 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jmx.export.annotation.AnnotationMBeanExporter;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import java.util.List;
 
 /**
  * User: Christian Reichel
@@ -27,6 +31,14 @@ public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public AnnotationMBeanExporter annotationMBeanExporter() {
         return new AnnotationMBeanExporter();
+    }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        final MappingJackson2HttpMessageConverter jackson5 = new MappingJackson2HttpMessageConverter();//joking
+        jackson5.setObjectMapper(new HibernateAwareObjectMapper());
+        converters.add(jackson5);
+        super.configureMessageConverters(converters);
     }
 
     @Bean
