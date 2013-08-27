@@ -6,6 +6,7 @@ package br.com.acsp.curso.web;
 import br.com.acsp.curso.domain.Aula;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AulaService;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author pedrosa
@@ -62,11 +64,9 @@ public class AulaController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)
-	public String buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		modelMap.put("aula", aulaService.obtemPorId(id));
-		modelMap.put("listaDeAeronaves",
-				aeronaveService.listarOrdenadoPorModelo());
-		return "aula/formulario";
+	@ResponseBody
+	public Aula buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+		return aulaService.obtemPorId(id);
 	}
 
 	@RequestMapping(value = "/aula/{id}", method = RequestMethod.POST)

@@ -31,5 +31,6 @@
 <script type="text/javascript" src="/acsp/resources/js/instrutores.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/socios.js"></script>
 <script type="text/javascript" src="/acsp/resources/js/agenda.js"></script>
+<script type="text/javascript" src="/acsp/resources/js/aulas.js"></script>
 </body>
 </html>

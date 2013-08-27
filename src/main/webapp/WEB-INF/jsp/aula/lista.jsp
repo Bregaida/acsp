@@ -21,10 +21,9 @@
 					</c:forEach>
 				</td>
 				<td>
-                    <div class="btn-group btn-group-sm">
-                        <a class="btn btn-default" href="http://localhost:8080/acsp/aula/${aula.id}" value="Editar">Editar</a>
-                        <a class="btn btn-default" href="http://localhost:8080/acsp/aula/${aula.id}/apaga" value="Apagar">Apagar</a>
-                    </div>
+                    <span id="editar_<c:out value="${aula.id}"/>" class="icon-edit icon-2x editaAulaAction" aulaid="<c:out value="${aula.id}"/>"></span>
+                    &nbsp;
+                    <span id="apagar_<c:out value="${aula.id}"/>" class="icon-remove-circle icon-2x apagaAulaAction" aulaid="<c:out value="${aula.id}"/>"></span>
                 </td>
 			</tr>
 		</c:forEach>
