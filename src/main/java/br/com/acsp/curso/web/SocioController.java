@@ -24,7 +24,7 @@ import br.com.acsp.curso.service.SocioService;
  */
 
 @Controller
-public class SocioController {
+public class SocioController extends AbstractController {
 
 	private static final Log logger = LogFactory.getLog(SocioController.class);
 
