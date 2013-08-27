@@ -9,8 +9,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author eduardobregaida
@@ -38,11 +42,6 @@ public class AeronaveController {
         return "aeronave/lista";
 	}
 
-	@RequestMapping(value = "/aeronave", method = RequestMethod.GET)
-	public String preparaForm() {
-		return "aeronave/formulario";
-	}
-
 	@RequestMapping(value = "/aeronave/{id}/apaga", method = RequestMethod.GET)
 	public String exclui(@PathVariable("id") Long id) {
 		logger.info("AeronaveController: exclui");
@@ -53,23 +52,20 @@ public class AeronaveController {
 	@RequestMapping(value = "/aeronave/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Aeronave buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		return aeronaveService.obtemPorId(id);
+		return aeronaveService.getByIdDetached(id);
 	}
 
-	@RequestMapping(value = "/aeronave/{id}", method = RequestMethod.POST)
-	public String atualiza(@PathVariable("id") Long id,
-			@ModelAttribute("aeronave") Aeronave aeronave) {
-		logger.info("AeronaveController: atualiza");
-		aeronave.setId(id);
-		aeronaveService.alterar(aeronave);
-		return "redirect:/aeronaves";
-	}
-
-	@RequestMapping(value = "/aeronave", method = RequestMethod.POST)
-	public String salvar(@ModelAttribute("aeronave") Aeronave aeronave) {
-		logger.info("AeronaveController: salva");
-		aeronaveService.salvar(aeronave);
-		return "redirect:/aeronaves";
-	}
+	@RequestMapping(value = "/aeronaves", method = RequestMethod.POST)
+	public String salvarOuAtualizar(@Valid Aeronave aeronave, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("aeronave", aeronave);
+            model.addAttribute("aeronaveMenu", "active");
+            model.addAttribute("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+            return "aeronave/lista";
+        }
+        logger.info("AeronaveController: salva");
+        aeronaveService.salvar(aeronave);
+        return "redirect:/aeronaves";
+    }
 
 }

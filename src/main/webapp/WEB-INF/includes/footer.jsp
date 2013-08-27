@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 </div> <!-- fim do miolo da pagina -->
 <!-- Footer -->
 <br/>
@@ -10,27 +12,24 @@
 </div>
 
 <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-<script type="text/javascript" src="/acsp/resources/js/jquery-1.10.2.min.js"/>
-<script type="text/javascript" src="/acsp/resources/js/jquery-ui-1.10.3.custom.min.js"/>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-1.10.2.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui-1.10.3.custom.min.js"/>"></script>
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script type="text/javascript" src="/acsp/resources/js/respond.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/respond.min.js"/>"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script type="text/javascript" src="/acsp/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootbox.min.js"/>"></script>
 
-<script type="text/javascript" src="/acsp/resources/js/underscore-min.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/underscore.string.min.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/modal.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/tooltip.js"></script>
-<!--
-<script type="text/javascript" src="resources/js/backbone-min.js"></script>
--->
-<script type="text/javascript" src="/acsp/resources/js/common-utils.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/atendentes.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/alunos.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/aeronaves.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/instrutores.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/socios.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/agenda.js"></script>
-<script type="text/javascript" src="/acsp/resources/js/aulas.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/underscore-min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/underscore.string.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/modal.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/tooltip.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="/resources/js/common-utils.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/atendentes.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/instrutores.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/socios.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/agenda.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/aulas.js"/>"></script>
 </body>
 </html>

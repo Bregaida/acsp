@@ -32,9 +32,10 @@
 				<td><c:out value="${aluno.cma}"/></td>
 				<td><span class="${aluno.ativo?'icon-check':'icon-check-empty'}"></span></td>
                 <td>
-                    <span class="icon-edit icon-2x editaAlunoAction" alunoid="<c:out value="${aluno.id}"/>"></span>
-                    &nbsp;
-                    <span class="icon-remove-circle icon-2x apagaAlunoAction" alunoid="<c:out value="${aluno.id}"/>"></span>
+                    <div class="btn-group btn-custom-block">
+                        <span class="icon-edit icon-2x editaAction"></span>
+                        <span class="icon-remove-circle icon-2x apagaAction"></span>
+                    </div>
                 </td>
 			</tr>
 		</c:forEach>
