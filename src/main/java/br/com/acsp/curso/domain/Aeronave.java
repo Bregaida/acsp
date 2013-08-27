@@ -3,15 +3,23 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  * @author eduardobregaida
  */
 @Entity
-public class Aeronave implements Serializable{
+public class Aeronave implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,11 +53,11 @@ public class Aeronave implements Serializable{
 	private boolean ativo;
 	@Column
 	private String motivoInatividade;
-	
+
 	@ManyToMany
-	@JoinTable(name="aula_aeronave",joinColumns={@JoinColumn(name="aeronave_id")},inverseJoinColumns={@JoinColumn(name="aula_id")})
+	@JoinTable(name = "aula_aeronave", joinColumns = { @JoinColumn(name = "aeronave_id") }, inverseJoinColumns = { @JoinColumn(name = "aula_id") })
 	private List<Aula> aulas;
-	
+
 	public Long getId() {
 		return id;
 	}

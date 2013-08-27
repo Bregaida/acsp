@@ -3,14 +3,21 @@
  */
 package br.com.acsp.curso.web;
 
-import br.com.acsp.curso.domain.Socio;
-import br.com.acsp.curso.service.SocioService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.domain.Socio;
+import br.com.acsp.curso.service.AeronaveService;
+import br.com.acsp.curso.service.SocioService;
 
 /**
  * @author pedrosa
@@ -23,6 +30,9 @@ public class SocioController {
 
 	@Autowired
 	private SocioService socioService;
+
+	@Autowired
+	private AeronaveService aeronaveService;
 
 	/**
 	 * Este metodo adiciona o socio ao (form) request, basta usar o form com o
@@ -37,8 +47,9 @@ public class SocioController {
 
 	@RequestMapping("/socios")
 	public String lista(ModelMap map) {
-        map.put("sociosMenu", "active");
-        map.put("listaDeSocios", socioService.listarOrdenado());
+		map.put("sociosMenu", "active");
+		map.put("listaDeSocios", socioService.listarOrdenado());
+		map.put("escolaridades", EscolaridadeType.values());
 		return "socio/lista";
 	}
 
@@ -47,6 +58,7 @@ public class SocioController {
 		return "socio/formulario";
 	}
 
+	// Nem todos os browser suportam DELETE
 	@RequestMapping(value = "/socio/{id}/apaga", method = RequestMethod.GET)
 	public String exclui(@PathVariable("id") Long id) {
 		socioService.excluirPorId(id);
@@ -68,7 +80,7 @@ public class SocioController {
 	}
 
 	@RequestMapping(value = "/socio", method = RequestMethod.POST)
-	public String salvarAluno(@ModelAttribute("socio") Socio socio) {
+	public String salvarSocio(@ModelAttribute("socio") Socio socio) {
 		socioService.salvar(socio);
 		return "redirect:/socios";
 	}

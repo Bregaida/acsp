@@ -3,8 +3,11 @@
  */
 package br.com.acsp.curso.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 
 /**
  * @author eduardobregaida
@@ -22,6 +25,8 @@ public abstract class Piloto extends Pessoa {
 	private Long cht;
 	@Column
 	private Long codigoANAC;
+	@OneToMany
+	private List<Aeronave> aeronaves;
 
 	public String getNomePista() {
 		return nomePista;
@@ -54,4 +59,13 @@ public abstract class Piloto extends Pessoa {
 	public void setCodigoANAC(Long codigoANAC) {
 		this.codigoANAC = codigoANAC;
 	}
+
+	public List<Aeronave> getAeronaves() {
+		return aeronaves;
+	}
+
+	public void setAeronaves(List<Aeronave> aeronaves) {
+		this.aeronaves = aeronaves;
+	}
+
 }

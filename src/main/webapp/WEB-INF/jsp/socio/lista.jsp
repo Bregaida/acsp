@@ -34,34 +34,32 @@
 					<td><c:out value="${socio.cma}"/></td>
 					<td><c:out value="${socio.ativo}"/></td>
 	                <td>
-	                    <div class="btn-group btn-group-sm">
-	                        <input type="button" class="btn btn-default editaSocioAction" id="editar_<c:out value="${socio.id}"/>" value="Editar" socioid="<c:out value="${socio.id}"/>"/>
-	                        <input type="button" class="btn btn-default apagaSocioAction" id="apagar_<c:out value="${socio.id}"/>" value="Apagar" socioid="<c:out value="${socio.id}"/>"/>
-	                    </div>
-	                </td>
+                    	<span id="editar_<c:out value="${socio.id}"/>" class="icon-edit icon-2x editaSocioAction" socioid="<c:out value="${socio.id}"/>"></span>
+                    	&nbsp;
+                    	<span id="apagar_<c:out value="${socio.id}"/>" class="icon-remove-circle icon-2x apagaSocioAction" socioid="<c:out value="${socio.id}"/>"></span>
+                	</td>
 				</tr>
 			</c:forEach>
         </tbody>
 	</table>
+	<ul class="pagination pull-right">
+        <li class="active">
+            <a href="/acsp/socios?page=1?page.size=5?page.sort=id">1</a>
+        </li>
+        <li>
+            <a href="/acsp/socios?page=2?page.size=5?page.sort=id">2</a>
+        </li>
+        <li>
+            <a href="/acsp/socios?page=3?page.size=5?page.sort=id">3</a>
+        </li>
+        <li>
+            <a href="/acsp/socios?page=4?page.size=5?page.sort=id">4</a>
+        </li>
+    </ul>
 
 <!-- Button trigger modal -->
-<a id="socioModalBtn" data-toggle="modal" href="#myModal" class="btn btn-default btn-lg">Novo Sócio</a>
+<a id="socioModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Socio</a>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Sócio</h4>
-            </div>
-            <div class="modal-body">
-                <c:import url="fieldSet.jsp"/>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<c:import url="formulario.jsp"/>
 
 <c:import url="../../includes/footer.jsp"/>
