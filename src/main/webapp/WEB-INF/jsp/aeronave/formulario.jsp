@@ -11,7 +11,7 @@
                 <h4 class="modal-title">Aeronave</h4>
             </div>
 
-            <form:form id="aeronaveForm" method="POST" commandName="aeronave" role="form">
+            <form:form method="POST" commandName="aeronave" role="form">
                 <div class="modal-body">
                     <c:import url="fieldSet.jsp"/>
                 </div>

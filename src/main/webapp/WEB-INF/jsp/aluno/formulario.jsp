@@ -11,8 +11,7 @@
                 <h4 class="modal-title">Aluno</h4>
             </div>
 
-            <form:form id="alunoForm" method="POST" commandName="aluno" role="form">
-                <form:errors path="*" cssClass="alert alert-error" element="div" />
+            <form:form method="POST" commandName="aluno" role="form">
                 <div class="modal-body">
                     <c:import url="fieldSet.jsp"/>
                 </div>

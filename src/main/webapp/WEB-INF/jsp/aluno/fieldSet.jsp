@@ -3,6 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+    <form:hidden path="id"/>
+
     <div class="form-group">
         <label for="nome"><spring:message code="aluno.nome"/></label>
         <form:input path="nome" id="nome" cssClass="form-control"/>

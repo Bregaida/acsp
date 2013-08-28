@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import br.com.acsp.curso.util.CustomEnumEscolaridadeSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -41,6 +43,8 @@ public abstract class Pessoa implements Serializable {
 	private Long alistamentoMilitar;
 	@Column
 	private boolean ativo;
+
+    @JsonSerialize(using = CustomEnumEscolaridadeSerializer.class)
 	@Enumerated(EnumType.ORDINAL)
 	private EscolaridadeType escolaridade;
 
