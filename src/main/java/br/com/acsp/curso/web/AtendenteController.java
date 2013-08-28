@@ -3,20 +3,15 @@
  */
 package br.com.acsp.curso.web;
 
+import br.com.acsp.curso.domain.Atendente;
+import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.service.AtendenteService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import br.com.acsp.curso.domain.Atendente;
-import br.com.acsp.curso.domain.EscolaridadeType;
-import br.com.acsp.curso.service.AtendenteService;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author eduardobregaida

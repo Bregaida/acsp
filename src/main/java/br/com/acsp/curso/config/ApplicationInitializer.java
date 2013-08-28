@@ -1,11 +1,11 @@
 package br.com.acsp.curso.config;
 
+import org.springframework.core.annotation.Order;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
-
-import org.springframework.core.annotation.Order;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * User: Christian Reichel Date: 8/9/13 Time: 10:08 PM

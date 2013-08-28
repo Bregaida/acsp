@@ -3,11 +3,10 @@
  */
 package br.com.acsp.curso.domain;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import java.util.List;
 
 /**
  * @author eduardobregaida

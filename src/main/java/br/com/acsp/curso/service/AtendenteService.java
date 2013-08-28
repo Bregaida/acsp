@@ -3,14 +3,13 @@
  */
 package br.com.acsp.curso.service;
 
-import java.util.Collection;
-
+import br.com.acsp.curso.domain.Atendente;
+import br.com.acsp.curso.repository.AtendenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.acsp.curso.domain.Atendente;
-import br.com.acsp.curso.repository.AtendenteRepository;
+import java.util.Collection;
 
 /**
  * @author eduardobregaida

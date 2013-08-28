@@ -2,7 +2,6 @@ package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Aeronave;
 import br.com.acsp.curso.domain.EscolaridadeType;
-import br.com.acsp.curso.domain.Horario;
 import br.com.acsp.curso.util.CustomEnumEscolaridadeEditor;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.beans.propertyeditors.CustomDateEditor;

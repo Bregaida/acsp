@@ -2,17 +2,13 @@ package br.com.acsp.curso.web;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.converter.HttpMessageNotWritableException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * User: Christian Reichel
