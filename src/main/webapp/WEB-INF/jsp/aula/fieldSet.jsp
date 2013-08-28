@@ -6,6 +6,7 @@
     <form:errors/>
 </div>
 
+<form:hidden path="id"/>
 <div class="form-group">
     <label for="materia">Matéria</label>
     <form:input path="materia" id="materia" cssClass="form-control"/>

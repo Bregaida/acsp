@@ -27,10 +27,8 @@ public class AulaController extends AbstractController {
 
 	private static final Log logger = LogFactory.getLog(AulaController.class);
 
-	@Autowired
-	private AulaService aulaService;
-	@Autowired
-	private AeronaveService aeronaveService;
+	@Autowired private AulaService aulaService;
+	@Autowired private AeronaveService aeronaveService;
 
 	/**
 	 * Este metodo adiciona a aula ao (form) request, basta usar o form com o
@@ -66,7 +64,7 @@ public class AulaController extends AbstractController {
 	@RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Aula buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		return aulaService.obtemPorId(id);
+		return aulaService.getByIdDetached(id);
 	}
 
 	@RequestMapping(value = "/aula/{id}", method = RequestMethod.POST)

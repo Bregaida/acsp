@@ -26,6 +26,8 @@
 <script type="text/javascript" src="<c:url value="/resources/js/tooltip.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="/resources/js/common-utils.js"/>"></script>
+
+<!-- remover esses js porcos e nojentos portuga explica a mandinga para o incluir e alterar -->
 <script type="text/javascript" src="<c:url value="/resources/js/atendentes.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/instrutores.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/socios.js"/>"></script>
