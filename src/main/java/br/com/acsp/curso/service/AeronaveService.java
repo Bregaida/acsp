@@ -27,16 +27,4 @@ public class AeronaveService extends AbstractService<Aeronave, Long> {
 	public Collection<Aeronave> listarOrdenadoPorModelo() {
 		return ((AeronaveRepository) repository).listarOrdenadoPorModelo();
 	}
-
-    public Aeronave getByIdDetached(Long id) {
-        Aeronave aeronave = repository.findOne(id);
-
-        //FIXME - just to load the list for now
-        List<Aula> aulas = aeronave.getAulas();
-        for (Aula aula : aulas) {
-            aula.getId();
-        }
-
-        return aeronave;
-    }
 }

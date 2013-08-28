@@ -5,24 +5,24 @@
 
 	<table class="table table-striped table-hover">
         <thead>
-          	<td>Data de agendamento</td>
-			<td>Nome do Aluno</td>
-			<td>Instrutor</td>
-			<td>Aeronave</td>
-			<td></td> 
+          	<th>Data de agendamento</th>
+			<th>Nome do Aluno</th>
+			<th>Instrutor</th>
+			<th>Aeronave</th>
+			<th></th>
         </thead>
         <tbody>
 		<c:forEach var="agenda" items="${listaDeAgendas}">
-			<tr id="agenda_<c:out value="${agenda.id}"/>">
+			<tr id="<c:out value="${agenda.id}"/>">
             	<td><fmt:formatDate value="${agenda.dataReserva}" pattern="dd/MM/yyyy" /></td> 
 				<td>${agenda.aluno.nome }</td>
 				<td>${agenda.instrutor.nome }</td>
 				<td>${agenda.aeronave.modelo }</td>
-				
                 <td>
-                    <span id="editar_<c:out value="${agenda.id}"/>" class="icon-edit icon-2x editaAgendaAction" agendaid="<c:out value="${agenda.id}"/>"></span>
-                    &nbsp;
-                    <span id="apagar_<c:out value="${agenda.id}"/>" class="icon-remove-circle icon-2x apagaAgendaAction" agendaid="<c:out value="${agenda.id}"/>"></span>
+                    <div class="btn-group btn-custom-block">
+                        <span class="icon-edit icon-2x editaAction"></span>
+                        <span class="icon-remove-circle icon-2x apagaAction"></span>
+                    </div>
                 </td>
 			</tr>
 		</c:forEach>

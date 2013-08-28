@@ -2,8 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+    <form:hidden path="id"/>
+
     <div class="form-group">
-        <form:errors/>
+        <form:errors path="*" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
@@ -22,7 +24,7 @@
     </div>
 
     <div class="form-group">
-        <label for="horasDisponiveis">Horas Disponíveis</label>
+        <label>Horas Disponíveis</label>
         <form:select path="horario.id" id="horario" items="${listaDeHorarios}" itemValue="id" itemLabel="horarioAgenda" cssClass="form-control" />
     </div>
 
@@ -42,7 +44,7 @@
     </div>
    
     <div class="checkbox">
-        <label for="ativo">
+        <label>
             <form:checkbox path="flag360milhas" value="true"/>
             360 Milhas
         </label>

@@ -58,12 +58,13 @@ public class AlunosController extends AbstractController {
     @RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Aluno buscaPorId(@PathVariable("id") Long id) {
-        return alunoService.getByIdDetached(id);
+        return alunoService.obtemPorId(id);
     }
 
     @RequestMapping(value = "/alunos", method = RequestMethod.POST)
     public String salvarOuAtualizar(@Valid Aluno aluno, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("formHasError", true);
             model.addAttribute("aluno", aluno);
             model.addAttribute("alunosMenu", "active");
             model.addAttribute("listaDeAlunos", alunoService.listarOrdenado());

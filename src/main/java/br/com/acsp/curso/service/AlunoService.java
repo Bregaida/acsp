@@ -30,15 +30,4 @@ public class AlunoService extends AbstractService<Aluno, Long> {
         return ((AlunoRepository) repository).listarOrdenadoPorNome();
     }
 
-    public Aluno getByIdDetached(Long id) {
-        Aluno aluno = repository.findOne(id);
-
-        //FIXME just to load the list for now
-        List<Aeronave> aeronaves = aluno.getAeronaves();
-        for (Aeronave aeronave : aeronaves) {
-            aeronave.isAtivo();
-        }
-
-        return aluno;
-    }
 }

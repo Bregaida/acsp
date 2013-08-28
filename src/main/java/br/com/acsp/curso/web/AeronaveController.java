@@ -52,12 +52,13 @@ public class AeronaveController {
 	@RequestMapping(value = "/aeronave/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Aeronave buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
-		return aeronaveService.getByIdDetached(id);
+		return aeronaveService.obtemPorId(id);
 	}
 
 	@RequestMapping(value = "/aeronaves", method = RequestMethod.POST)
 	public String salvarOuAtualizar(@Valid Aeronave aeronave, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("formHasError", true);
             model.addAttribute("aeronave", aeronave);
             model.addAttribute("aeronaveMenu", "active");
             model.addAttribute("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());

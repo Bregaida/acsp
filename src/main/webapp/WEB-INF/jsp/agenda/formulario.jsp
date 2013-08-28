@@ -11,7 +11,7 @@
                 <h4 class="modal-title">Agenda</h4>
             </div>
 
-            <form:form id="agendaForm" method="POST" commandName="agenda" role="form">
+            <form:form method="POST" commandName="agenda" role="form">
                 <div class="modal-body">
                     <c:import url="fieldSet.jsp"/>
                 </div>

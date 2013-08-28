@@ -31,7 +31,17 @@
 <script type="text/javascript" src="<c:url value="/resources/js/atendentes.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/instrutores.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/socios.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/agenda.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/aulas.js"/>"></script>
+
+<c:if test="${formHasError}">
+    <script type="text/javascript">
+        //Exibe o form ao carregar a pagina se o mesmo tem erros de validação.
+        //Não esquecer de popular a variavel no controller dentro do result.hasError()
+        $(function() {
+            $('#myModal').modal('show');
+        });
+    </script>
+</c:if>
+
 </body>
 </html>
