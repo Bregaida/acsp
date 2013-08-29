@@ -11,7 +11,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author eduardobregaida
@@ -19,8 +22,8 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 public class AtendenteController extends AbstractController {
-	private static final Log logger = LogFactory
-			.getLog(AtendenteController.class);
+
+	private static final Log logger = LogFactory.getLog(AtendenteController.class);
 
 	@Autowired
 	private AtendenteService atendenteService;
@@ -45,11 +48,6 @@ public class AtendenteController extends AbstractController {
 		return "atendente/lista";
 	}
 
-	@RequestMapping(value = "/atendente", method = RequestMethod.GET)
-	public String preparaForm() {
-		return "atendente/formulario";
-	}
-
 	// Nem todos os browser suportam DELETE
 	@RequestMapping(value = "/atendente/{id}/apaga", method = RequestMethod.GET)
 	public String exclui(@PathVariable("id") Long id) {
@@ -60,25 +58,23 @@ public class AtendenteController extends AbstractController {
 
 	@RequestMapping(value = "/atendente/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Atendente buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+	public Atendente buscaPorId(@PathVariable("id") Long id) {
 		logger.info("AtendenteController: buscaPorId");
 		return atendenteService.obtemPorId(id);
 	}
 
-	@RequestMapping(value = "/atendente/{id}", method = RequestMethod.POST)
-	public String atualiza(@PathVariable("id") Long id,
-			@ModelAttribute("atendente") Atendente atendente) {
-		logger.info("AtendenteController: atualiza");
-		atendente.setId(id);
-		atendenteService.alterar(atendente);
-		return "redirect:/atendentes";
-	}
-
-	@RequestMapping(value = "/atendente", method = RequestMethod.POST)
-	public String salvarAtendente(
-			@ModelAttribute("atendente") Atendente atendente) {
-		logger.info("AtendenteController: salva");
-		atendenteService.salvar(atendente);
-		return "redirect:/atendentes";
-	}
+	@RequestMapping(value = "/atendentes", method = RequestMethod.POST)
+	public String salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
+        if (result.hasErrors()) {
+            map.put("formHasError", true);
+            map.put("atendente", atendente);
+            map.put("atendentesMenu", "active");
+            map.put("listaDeAtendentes", atendenteService.listarOrdenado());
+            map.put("escolaridades", EscolaridadeType.values());
+            return "atendente/lista";
+        }
+        logger.info("AtendenteController: salva");
+        atendenteService.salvar(atendente);
+        return "redirect:/atendentes";
+    }
 }

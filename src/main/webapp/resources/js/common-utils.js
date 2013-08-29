@@ -38,7 +38,9 @@ $('.editaAction').click(function(e) {
     var $form = $('#myModal form');
     $form[0].reset();
     var action = $form.attr('action');
-    if (action.substr(-1) === 's') {
+    if (action.substr(-2) === 'es') {
+        action = action.slice(0, -2);
+    } else if (action.substr(-1) === 's') {
         action = action.slice(0, -1);
     }
     $.ajax({
@@ -67,3 +69,8 @@ $('.apagaAction').click(function(e) {
         }
     });
 });
+
+/**
+ * Inicialização do DataTables
+ */
+$('.table').dataTable();

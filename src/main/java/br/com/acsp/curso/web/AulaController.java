@@ -11,7 +11,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author pedrosa
@@ -44,12 +47,6 @@ public class AulaController extends AbstractController {
 		return "aula/lista";
 	}
 
-	@RequestMapping(value = "/aula", method = RequestMethod.GET)
-	public String preparaForm(ModelMap map) {
-		map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-		return "aula/formulario";
-	}
-
 	@RequestMapping(value = "/aula/{id}/apaga", method = RequestMethod.GET)
 	public String exclui(@PathVariable("id") Long id) {
 		aulaService.excluirPorId(id);
@@ -58,21 +55,21 @@ public class AulaController extends AbstractController {
 
 	@RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Aula buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+	public Aula buscaPorId(@PathVariable("id") Long id) {
 		return aulaService.getByIdDetached(id);
 	}
 
-	@RequestMapping(value = "/aula/{id}", method = RequestMethod.POST)
-	public String atualiza(@PathVariable("id") Long id,
-			@ModelAttribute("aula") Aula aula) {
-		aula.setId(id);
-		aulaService.alterar(aula);
-		return "redirect:/aulas";
-	}
-
-	@RequestMapping(value = "/aula", method = RequestMethod.POST)
-	public String salvarAula(@ModelAttribute("aula") Aula aula) {
-		aulaService.salvar(aula);
-		return "redirect:/aulas";
-	}
+	@RequestMapping(value = "/aulas", method = RequestMethod.POST)
+	public String salvarAula(@Valid Aula aula, BindingResult result, ModelMap map) {
+        if (result.hasErrors()) {
+            map.put("hasErrors", true);
+            map.put("aula", aula);
+            map.put("aulasMenu", "active");
+            map.put("listaDeAulas", aulaService.listarOrdenado());
+            map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+            return "aula/lista";
+        }
+        aulaService.salvar(aula);
+        return "redirect:/aulas";
+    }
 }

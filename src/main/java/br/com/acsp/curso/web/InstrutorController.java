@@ -24,8 +24,7 @@ import javax.validation.Valid;
 @Controller
 public class InstrutorController extends AbstractController {
 
-	private static final Log logger = LogFactory
-			.getLog(InstrutorController.class);
+	private static final Log logger = LogFactory.getLog(InstrutorController.class);
 
 	@Autowired
 	private InstrutorService instrutorService;
@@ -49,11 +48,6 @@ public class InstrutorController extends AbstractController {
         return "instrutor/lista";
 	}
 
-	@RequestMapping(value = "/instrutor", method = RequestMethod.GET)
-	public String preparaForm() {
-		return "instrutor/formulario";
-	}
-
 	@RequestMapping(value = "/instrutor/{id}/apaga", method = RequestMethod.GET)
 	public String exclui(@PathVariable("id") Long id) {
 		instrutorService.excluirPorId(id);
@@ -66,17 +60,10 @@ public class InstrutorController extends AbstractController {
 		return instrutorService.obtemPorId(id);
 	}
 
-	@RequestMapping(value = "/instrutor/{id}", method = RequestMethod.POST)
-	public String atualiza(@PathVariable("id") Long id,
-			@ModelAttribute("instrutor") Instrutor instrutor) {
-		instrutor.setId(id);
-		instrutorService.alterar(instrutor);
-		return "redirect:/instrutores";
-	}
-
-	@RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-	public String salvar(@Valid Instrutor instrutor, BindingResult bindingResult, Model uiModel) {
+	@RequestMapping(value = "/instrutores", method = RequestMethod.POST)
+	public String salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult bindingResult, Model uiModel) {
         if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("formHasError", true);
             uiModel.addAttribute("instrutor", instrutor);
             uiModel.addAttribute("instrutoresMenu", "active");
             uiModel.addAttribute("listaDeInstrutores", instrutorService.listarOrdenado());

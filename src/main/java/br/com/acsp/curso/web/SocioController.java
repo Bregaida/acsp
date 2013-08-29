@@ -12,7 +12,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author pedrosa
@@ -48,11 +51,6 @@ public class SocioController extends AbstractController {
 		return "socio/lista";
 	}
 
-	@RequestMapping(value = "/socio", method = RequestMethod.GET)
-	public String preparaForm() {
-		return "socio/formulario";
-	}
-
 	// Nem todos os browser suportam DELETE
 	@RequestMapping(value = "/socio/{id}/apaga", method = RequestMethod.GET)
 	public String exclui(@PathVariable("id") Long id) {
@@ -62,21 +60,21 @@ public class SocioController extends AbstractController {
 
 	@RequestMapping(value = "/socio/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Socio buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+	public Socio buscaPorId(@PathVariable("id") Long id) {
 		return socioService.obtemPorId(id);
 	}
 
-	@RequestMapping(value = "/socio/{id}", method = RequestMethod.POST)
-	public String atualiza(@PathVariable("id") Long id,
-			@ModelAttribute("socio") Socio socio) {
-		socio.setId(id);
-		socioService.alterar(socio);
-		return "redirect:/socios";
-	}
-
-	@RequestMapping(value = "/socio", method = RequestMethod.POST)
-	public String salvarSocio(@ModelAttribute("socio") Socio socio) {
-		socioService.salvar(socio);
-		return "redirect:/socios";
-	}
+	@RequestMapping(value = "/socios", method = RequestMethod.POST)
+	public String salvarOuAtualizar(@Valid Socio socio, BindingResult result, ModelMap map) {
+        if (result.hasErrors()) {
+            map.put("formHasError", true);
+            map.put("socio", socio);
+            map.put("sociosMenu", "active");
+            map.put("listaDeSocios", socioService.listarOrdenado());
+            map.put("escolaridades", EscolaridadeType.values());
+            return "socio/lista";
+        }
+        socioService.salvar(socio);
+        return "redirect:/socios";
+    }
 }

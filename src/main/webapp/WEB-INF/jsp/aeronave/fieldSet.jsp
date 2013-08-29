@@ -5,7 +5,7 @@
     <form:hidden path="id"/>
 
     <div class="form-group">
-        <form:errors path="*"/>
+        <form:errors path="*" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">

@@ -2,11 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+    <form:hidden path="id"/>
+
     <div class="form-group">
-        <form:errors/>
+        <form:errors path="*" cssClass="help-block alert-danger"/>
     </div>
 
-	 <div class="form-group">
+	<div class="form-group">
         <label for="nome">N. Inscr.</label>
         <form:input path="numeroInscricao" id="numeroInscricao" cssClass="form-control"/>
     </div>
