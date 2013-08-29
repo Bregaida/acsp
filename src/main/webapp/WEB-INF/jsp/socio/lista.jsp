@@ -5,13 +5,10 @@
 <div class="clearfix">
     <table class="table table-striped table-hover">
         <thead>
-        <th>Número de Inscrição</th>
         <th>Nome do sócio</th>
+        <th>Número de Inscrição</th>
         <th>Código anac</th>
-        <th>RG</th>
         <th>CPF</th>
-        <th>Escolaridade</th>
-        <th>Título de Eleitor</th>
         <th>Nome de Pista</th>
         <th>CHT</th>
         <th>CMA</th>
@@ -21,13 +18,10 @@
         <tbody>
         <c:forEach var="socio" items="${listaDeSocios}">
             <tr id="<c:out value="${socio.id}"/>">
-                <td><c:out value="${socio.numeroInscricao}"/></td>
                 <td><c:out value="${socio.nome}"/></td>
+                <td><c:out value="${socio.numeroInscricao}"/></td>
                 <td><c:out value="${socio.codigoANAC}"/></td>
-                <td><c:out value="${socio.rg}"/></td>
                 <td><c:out value="${socio.cpf}"/></td>
-                <td><c:out value="${socio.escolaridade.descricao}"/></td>
-                <td><c:out value="${socio.tituloEleitor}"/></td>
                 <td><c:out value="${socio.nomePista}"/></td>
                 <td><c:out value="${socio.cht}"/></td>
                 <td><c:out value="${socio.cma}"/></td>

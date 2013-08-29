@@ -7,12 +7,9 @@
         <thead>
         <th class="hidden">ID</th>
         <th>Nome</th>
-        <th>Código anac</th>
-        <th>RG</th>
-        <th>CPF</th>
-        <th>Escolaridade</th>
-        <th>Título de Eleitor</th>
         <th>Nome de Pista</th>
+        <th>Código anac</th>
+        <th>CPF</th>
         <th>CHT</th>
         <th>CMA</th>
         <th>Ativo</th>
@@ -24,12 +21,9 @@
             <tr id="<c:out value="${instrutor.id}"/>">
                 <td class="hidden"><c:out value="${instrutor.id}"/></td>
                 <td id="instrutorNome<c:out value="${instrutor.id}"/>"><c:out value="${instrutor.nome}"/></td>
-                <td><c:out value="${instrutor.codigoANAC}"/></td>
-                <td><c:out value="${instrutor.rg}"/></td>
-                <td><c:out value="${instrutor.cpf}"/></td>
-                <td><c:out value="${instrutor.escolaridade.descricao}"/></td>
-                <td><c:out value="${instrutor.tituloEleitor}"/></td>
                 <td><c:out value="${instrutor.nomePista}"/></td>
+                <td><c:out value="${instrutor.codigoANAC}"/></td>
+                <td><c:out value="${instrutor.cpf}"/></td>
                 <td><c:out value="${instrutor.cht}"/></td>
                 <td><c:out value="${instrutor.cma}"/></td>
                 <td><span class="${instrutor.ativo?'icon-check':'icon-check-empty'}"></span></td>

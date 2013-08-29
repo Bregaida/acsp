@@ -8,10 +8,7 @@
         <th class="hidden">ID</th>
         <th>Nome do aluno</th>
         <th>Código anac</th>
-        <th>RG</th>
         <th>CPF</th>
-        <th>Escolaridade</th>
-        <th>Título de Eleitor</th>
         <th>Nome de Pista</th>
         <th>CHT</th>
         <th>CMA</th>
@@ -24,10 +21,7 @@
                 <td class="hidden"><c:out value="${aluno.id}"/></td>
                 <td id="alunoNome<c:out value="${aluno.id}"/>"><c:out value="${aluno.nome}"/></td>
                 <td><c:out value="${aluno.codigoANAC}"/></td>
-                <td><c:out value="${aluno.rg}"/></td>
                 <td><c:out value="${aluno.cpf}"/></td>
-                <td><c:out value="${aluno.escolaridade.descricao}"/></td>
-                <td><c:out value="${aluno.tituloEleitor}"/></td>
                 <td><c:out value="${aluno.nomePista}"/></td>
                 <td><c:out value="${aluno.cht}"/></td>
                 <td><c:out value="${aluno.cma}"/></td>

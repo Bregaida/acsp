@@ -7,10 +7,7 @@
         <thead>
         <th class="hidden">ID</th>
         <th>Nome do Atendente</th>
-        <th>RG</th>
         <th>CPF</th>
-        <th>Escolaridade</th>
-        <th>Título de Eleitor</th>
         <th>Ativo</th>
         <th></th>
         </thead>
@@ -19,10 +16,7 @@
             <tr id="<c:out value="${atendente.id}"/>">
                 <td class="hidden"><c:out value="${atendente.id}"/></td>
                 <td id="atendenteNome<c:out value="${atendente.id}"/>"><c:out value="${atendente.nome}"/></td>
-                <td><c:out value="${atendente.rg}"/></td>
                 <td><c:out value="${atendente.cpf}"/></td>
-                <td><c:out value="${atendente.escolaridade.descricao}"/></td>
-                <td><c:out value="${atendente.tituloEleitor}"/></td>
                 <td><span class="${atendente.ativo?'icon-check':'icon-check-empty'}"></span></td>
                 <td>
                     <div class="btn-group btn-custom-block">

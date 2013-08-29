@@ -9,12 +9,10 @@
         <th>Cert. Matrícula</th>
         <th>Marca</th>
         <th>Modelo</th>
-        <th>Apólice de Seguro</th>
         <th>Manual de vôo</th>
         <th>Check List</th>
         <th>Diário de Bordo</th>
         <th>Aeronave Ativa</th>
-        <th>Motivo de Inatividade</th>
         <th></th>
         </thead>
         <tbody>
@@ -24,12 +22,10 @@
                 <td>${aeronave.certificadoMatricula}</td>
                 <td>${aeronave.marca}</td>
                 <td id="aeronaveModelo<c:out value="${aeronave.id}"/>"><c:out value="${aeronave.modelo}"/></td>
-                <td>${aeronave.apoliceSeguro}</td>
                 <td><span class="${aeronave.manualVoo?'icon-check':'icon-check-empty'}"></span></td>
                 <td><span class="${aeronave.checkList?'icon-check':'icon-check-empty'}"></span></td>
                 <td><span class="${aeronave.diarioBordo?'icon-check':'icon-check-empty'}"></span></td>
                 <td><span class="${aeronave.ativo?'icon-check':'icon-check-empty'}"></span></td>
-                <td>${aeronave.motivoInatividade}</td>
                 <td>
                     <div class="btn-group btn-custom-block">
                         <span class="icon-edit icon-2x editaAction"></span>
