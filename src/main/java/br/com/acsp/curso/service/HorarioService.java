@@ -3,12 +3,13 @@
  */
 package br.com.acsp.curso.service;
 
-import br.com.acsp.curso.domain.Horario;
-import br.com.acsp.curso.repository.HorarioRepository;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import br.com.acsp.curso.domain.Horario;
+import br.com.acsp.curso.repository.HorarioRepository;
 
 /**
  * @author eduardobregaida
@@ -24,5 +25,11 @@ public class HorarioService extends AbstractService<Horario, Long> {
 
 	public Collection<Horario> listarOrdenado() {
 		return ((HorarioRepository) repository).listarOrdenadoPorId();
+	}
+
+	public Collection<Horario> listarHorasPorDisponibilidadeAeronave(
+			Long aeronaveId) {
+		return ((HorarioRepository) repository)
+				.listarHorasPorDisponibilidadeAeronave(aeronaveId);
 	}
 }
