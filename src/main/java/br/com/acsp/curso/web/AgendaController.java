@@ -78,9 +78,10 @@ public class AgendaController extends AbstractController {
     }
 
     @RequestMapping(value = "/agenda/{id}/apaga", method = RequestMethod.GET)
+    @ResponseBody
     public String exclui(@PathVariable("id") Long id) {
         agendaService.excluirPorId(id);
-        return "redirect:/agendas";
+        return "SUCCESS";
     }
 
     @RequestMapping(value = "/agenda/{id}", method = RequestMethod.GET)

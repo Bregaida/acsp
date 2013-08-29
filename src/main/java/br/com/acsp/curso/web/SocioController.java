@@ -53,9 +53,10 @@ public class SocioController extends AbstractController {
 
 	// Nem todos os browser suportam DELETE
 	@RequestMapping(value = "/socio/{id}/apaga", method = RequestMethod.GET)
+    @ResponseBody
 	public String exclui(@PathVariable("id") Long id) {
 		socioService.excluirPorId(id);
-		return "redirect:/socios";
+		return "SUCCESS";
 	}
 
 	@RequestMapping(value = "/socio/{id}", method = RequestMethod.GET)

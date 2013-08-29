@@ -50,10 +50,11 @@ public class AtendenteController extends AbstractController {
 
 	// Nem todos os browser suportam DELETE
 	@RequestMapping(value = "/atendente/{id}/apaga", method = RequestMethod.GET)
+    @ResponseBody
 	public String exclui(@PathVariable("id") Long id) {
 		logger.info("AtendenteController: exclui");
 		atendenteService.excluirPorId(id);
-		return "redirect:/atendentes";
+		return "SUCCESS";
 	}
 
 	@RequestMapping(value = "/atendente/{id}", method = RequestMethod.GET)

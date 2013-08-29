@@ -49,9 +49,10 @@ public class InstrutorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/instrutor/{id}/apaga", method = RequestMethod.GET)
+    @ResponseBody
 	public String exclui(@PathVariable("id") Long id) {
 		instrutorService.excluirPorId(id);
-		return "redirect:/instrutores";
+		return "SUCCESS";
 	}
 
 	@RequestMapping(value = "/instrutor/{id}", method = RequestMethod.GET)

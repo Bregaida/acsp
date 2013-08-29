@@ -23,8 +23,7 @@ import javax.validation.Valid;
 @Controller
 public class AeronaveController {
 
-	private static final Log logger = LogFactory
-			.getLog(AeronaveController.class);
+	private static final Log logger = LogFactory.getLog(AeronaveController.class);
 
 	@Autowired
 	private AeronaveService aeronaveService;
@@ -43,10 +42,11 @@ public class AeronaveController {
 	}
 
 	@RequestMapping(value = "/aeronave/{id}/apaga", method = RequestMethod.GET)
+    @ResponseBody
 	public String exclui(@PathVariable("id") Long id) {
 		logger.info("AeronaveController: exclui");
 		aeronaveService.excluirPorId(id);
-		return "redirect:/aeronaves";
+		return "SUCCESS";
 	}
 
 	@RequestMapping(value = "/aeronave/{id}", method = RequestMethod.GET)

@@ -57,14 +57,23 @@ $('.apagaAction').click(function(e) {
     bootbox.confirm('Confirma remoção?', function (result) {
         if (result) {
             var id = $tr.attr('id');
-            if (action.substr(-1) === 's') {
+            if (action.substr(-2) === 'es') {
+                action = action.slice(0, -2);
+            } else if (action.substr(-1) === 's') {
                 action = action.slice(0, -1);
             }
             $.ajax({
                 url: action + '/' + id + "/apaga"
-            }).done(function() {
-                    $tr.remove();
-//            window.location.reload();
+            }).done(function(result) {
+                if (result === 'SUCCESS') {
+                    //Se em algum momento existir mais de uma tabela dataTable este metodo deve ser retestado!
+                    var table = $.fn.dataTable.fnTables(true);
+                    if ( table.length > 0 ) {
+                        $(table).dataTable().fnDeleteRow( $tr[0] );
+                    }
+                } else {
+                    bootbox.alert(result);
+                }
             });
         }
     });

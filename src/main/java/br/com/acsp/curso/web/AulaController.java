@@ -48,9 +48,10 @@ public class AulaController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/aula/{id}/apaga", method = RequestMethod.GET)
+    @ResponseBody
 	public String exclui(@PathVariable("id") Long id) {
 		aulaService.excluirPorId(id);
-		return "redirect:/aulas";
+		return "SUCCESS";
 	}
 
 	@RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)

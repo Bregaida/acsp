@@ -3,9 +3,8 @@
 <c:import url="../../includes/header.jsp"/>
 
 <div class="clearfix">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover table-condensed">
         <thead>
-        <th class="hidden">ID</th>
         <th>Nome do aluno</th>
         <th>Código anac</th>
         <th>CPF</th>
@@ -18,8 +17,7 @@
         <tbody>
         <c:forEach var="aluno" items="${listaDeAlunos}">
             <tr id="<c:out value="${aluno.id}"/>">
-                <td class="hidden"><c:out value="${aluno.id}"/></td>
-                <td id="alunoNome<c:out value="${aluno.id}"/>"><c:out value="${aluno.nome}"/></td>
+                <td><c:out value="${aluno.nome}"/></td>
                 <td><c:out value="${aluno.codigoANAC}"/></td>
                 <td><c:out value="${aluno.cpf}"/></td>
                 <td><c:out value="${aluno.nomePista}"/></td>
