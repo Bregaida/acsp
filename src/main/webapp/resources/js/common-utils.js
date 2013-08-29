@@ -10,11 +10,20 @@ function aplicarObjetoNoFormulario(obj, formId){
         var input = $(this);// This is the jquery object of the input
         var attrName = input.attr('name');
         var attrType = input.attr('type');
+        var isObject = false;
+        if (attrName != undefined && attrName.indexOf('.') !== -1) {
+            isObject = true;
+            attrName = attrName.split('.')[0];
+        }
         if(obj[attrName] != undefined && obj[attrName] != null){
             if (attrType === 'checkbox') { //TODO - implementar casos de radio button!
                 input.prop('checked', obj[attrName]);
             } else {
-                input.val(obj[attrName]);
+                if (isObject) {
+                    input.val(obj[attrName].id);
+                } else {
+                    input.val(obj[attrName]);
+                }
             }
         }
     });
