@@ -21,7 +21,7 @@
 
     <div class="form-group">
         <label for="cpf">CPF</label>
-        <form:input path="cpf" id="cpf" cssClass="form-control"/>
+        <form:input path="cpf" id="cpf" cssClass="form-control cpf" size="14" maxlength="14"/>
     </div>
 
     <div class="form-group">

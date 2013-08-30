@@ -20,7 +20,7 @@
 
     <div class="form-group">
         <label for="cpf"><spring:message code="atendente.cpf"/></label>
-        <form:input path="cpf" id="cpf" cssClass="form-control"/>
+        <form:input path="cpf" id="cpf" cssClass="form-control cpf" size="14" maxlength="14"/>
     </div>
 
     <div class="form-group">
