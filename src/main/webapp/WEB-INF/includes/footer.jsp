@@ -12,20 +12,19 @@
 </div>
 
 <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-1.10.2.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui-1.10.3.custom.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script type="text/javascript" src="<c:url value="/resources/js/respond.min.js"/>"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/bootbox.min.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="/resources/js/modal.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/tooltip.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="/resources/js/DT-bootstrap.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/common-utils.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/LAB.js"/>"></script>
+<script type="text/javascript">
+$LAB
+    .script("<c:url value="/resources/js/jquery-1.10.2.min.js"/>").wait()
+    .script("<c:url value="/resources/js/jquery.dataTables.min.js"/>")
+    .script("<c:url value="/resources/js/DT-bootstrap.js"/>")
+    .script("<c:url value="/resources/js/common-utils.js"/>")
+    .script("<c:url value="/resources/js/respond.min.js"/>")
+    .script("<c:url value="/resources/js/bootstrap.min.js"/>")
+    .script("<c:url value="/resources/js/bootbox.min.js"/>")
+    .script("<c:url value="/resources/js/modal.js"/>")
+    .script("<c:url value="/resources/js/tooltip.js"/>");
+</script>
 
 <c:if test="${formHasError}">
     <script type="text/javascript">

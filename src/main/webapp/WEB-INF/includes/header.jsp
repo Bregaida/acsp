@@ -20,12 +20,9 @@
        Tema: http://bootswatch.com/spacelab/
     -->
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet" media="screen">
-    <link href="<c:url value="/resources/css/cupertino/jquery-ui-1.10.3.custom.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
-    <%--<link href="<c:url value="/resources/css/bootstrap-theme.min.css"/>" rel="stylesheet"> vai usar este tema???--%>
     <link href="<c:url value="/resources/css/font-awesome.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/datatables/css/jquery.dataTables.css"/>" rel="stylesheet">
-
     <link href="<c:url value="/resources/css/navbar.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/acsp-custom.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/DT-bootstrap.css"/>" rel="stylesheet">
