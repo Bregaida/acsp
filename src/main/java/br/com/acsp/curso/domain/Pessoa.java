@@ -12,8 +12,11 @@ import java.io.Serializable;
 
 /**
  * @author eduardobregaida
+ * http://en.wikibooks.org/wiki/Java_Persistence/Inheritance
  */
-@MappedSuperclass
+@Entity
+@Inheritance
+@DiscriminatorColumn(name="PESSOA_TYPE")
 public abstract class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = -5261337447506230696L;

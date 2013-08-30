@@ -3,6 +3,7 @@
  */
 package br.com.acsp.curso.domain;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.io.Serializable;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @author eduardobregaida
  */
 @Entity
+@DiscriminatorValue("ALUNO_PILOTO")
 public class Aluno extends Piloto implements Serializable {
 
 	private static final long serialVersionUID = 6781271219397736009L;

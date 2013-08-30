@@ -4,6 +4,7 @@
 package br.com.acsp.curso.domain;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * 
  */
 @MappedSuperclass
+@DiscriminatorValue("PILOTO")
 public abstract class Piloto extends Pessoa {
 
 	private static final long serialVersionUID = -6447976014511027605L;
