@@ -20,7 +20,7 @@ import javax.validation.Valid;
  */
 
 @Controller
-public class AgendaController extends AbstractController {
+public class AgendamentoController extends AbstractController {
 
     @Autowired
     private AgendaService agendaService;
@@ -48,7 +48,7 @@ public class AgendaController extends AbstractController {
         return new Agenda();
     }
 
-    @RequestMapping(value = "/agenda", method = RequestMethod.POST)
+    @RequestMapping(value = "/agendamento", method = RequestMethod.POST)
     public String salvarOuAtualizar(@Valid Agenda agenda, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("formHasError", true);
@@ -63,23 +63,23 @@ public class AgendaController extends AbstractController {
             return "agenda/lista";
         }
         agendaService.salvar(agenda);
-        return "redirect:/agendas";
+        return "redirect:/agendamentos";
     }
 
-    @RequestMapping(value = "/agenda/{id}/apaga", method = RequestMethod.GET)
+    @RequestMapping(value = "/agendamento/{id}/apaga", method = RequestMethod.GET)
     @ResponseBody
     public String exclui(@PathVariable("id") Long id) {
         agendaService.excluirPorId(id);
         return "SUCCESS";
     }
 
-    @RequestMapping(value = "/agenda/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/agendamento/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Agenda buscaPorId(@PathVariable("id") Long id) {
         return agendaService.obtemPorId(id);
     }
 
-    @RequestMapping(value = "/agendas", method = RequestMethod.GET)
+    @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
     public String lista(ModelMap map) {
         map.put("agendasMenu", "active");
         map.put("listaDeAgendas", agendaService.pesquisarTodos());

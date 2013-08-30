@@ -44,26 +44,23 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-             <li class="${atendenteMenu}">
-                <a href="/acsp/atendentes">Atendentes</a>
-            </li>
             <li class="${aeronaveMenu}">
                 <a href="/acsp/aeronaves">Aeronaves</a>
             </li>
-            <li class="${instrutoresMenu}">
-                <a href="/acsp/instrutores">Instrutores</a>
-            </li>
-            <li class="${sociosMenu}">
-                <a href="/acsp/socios">Sócios</a>
+            <li class="${agendasMenu}">
+                <a href="/acsp/agendamentos">Agendamento</a>
             </li>
             <li class="${alunosMenu}">
                 <a href="/acsp/alunos">Alunos</a>
             </li>
+            <li class="${atendenteMenu}">
+                <a href="/acsp/atendentes">Atendentes</a>
+            </li>
             <li class="${aulasMenu}">
                 <a href="/acsp/aulas">Aulas</a>
             </li>
-            <li class="${agendasMenu}">
-                <a href="/acsp/agendas">Agendas</a>
+            <li class="${instrutoresMenu}">
+                <a href="/acsp/instrutores">Instrutores</a>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios<b class="caret"></b></a>
@@ -73,6 +70,9 @@
                     <li><a href="#">Relatório III</a></li>
                     <li><a href="#">Relatório IV</a></li>
                 </ul>
+            </li>
+            <li class="${sociosMenu}">
+                <a href="/acsp/socios">Sócios</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
