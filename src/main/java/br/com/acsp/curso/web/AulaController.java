@@ -60,7 +60,7 @@ public class AulaController extends AbstractController {
 		return aulaService.getByIdDetached(id);
 	}
 
-	@RequestMapping(value = "/aulas", method = RequestMethod.POST)
+	@RequestMapping(value = "/aula", method = RequestMethod.POST)
 	public String salvarAula(@Valid Aula aula, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
             map.put("hasErrors", true);

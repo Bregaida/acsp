@@ -55,7 +55,7 @@ public class AeronaveController {
 		return aeronaveService.obtemPorId(id);
 	}
 
-	@RequestMapping(value = "/aeronaves", method = RequestMethod.POST)
+	@RequestMapping(value = "/aeronave", method = RequestMethod.POST)
 	public String salvarOuAtualizar(@Valid Aeronave aeronave, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("formHasError", true);

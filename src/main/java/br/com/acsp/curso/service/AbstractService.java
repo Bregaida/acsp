@@ -3,6 +3,8 @@ package br.com.acsp.curso.service;
 import br.com.acsp.curso.exception.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,5 +50,9 @@ abstract class AbstractService<E, PK extends Serializable> {
 
     public Collection<E> pesquisarTodos() {
         return getRepository().findAll();
+    }
+
+    public Page<E> pesquisarTodos(Pageable pageable) {
+        return getRepository().findAll(pageable);
     }
 }

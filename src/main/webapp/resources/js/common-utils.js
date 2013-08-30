@@ -29,6 +29,24 @@ function aplicarObjetoNoFormulario(obj, formId){
     });
 }
 
+function getSingular(valor){
+    //TODO: Fazer ficar mais bonito... assim ta bom por enquanto
+    var irregulares = new Array();
+    irregulares['/acsp/aeronaves'] = "aeronave";
+    irregulares['/acsp/atendentes'] = "atendente";
+
+    var singular;
+    if(irregulares.hasOwnProperty(valor)){
+        singular = irregulares[valor];
+    }
+    else if (valor.substr(-2) === 'es') {
+        singular = valor.slice(0, -2);
+    } else if (valor.substr(-1) === 's') {
+        singular = valor.slice(0, -1);
+    }
+    return singular;
+}
+
 $('#myModal').on('hidden.bs.modal', function () {
     $(this).find('form')[0].reset();
 });
@@ -37,12 +55,7 @@ $('.editaAction').click(function(e) {
     var id = $(this).closest('tr').attr('id');
     var $form = $('#myModal form');
     $form[0].reset();
-    var action = $form.attr('action');
-    if (action.substr(-2) === 'es') {
-        action = action.slice(0, -2);
-    } else if (action.substr(-1) === 's') {
-        action = action.slice(0, -1);
-    }
+    var action = getSingular($form.attr('action'));
     $.ajax({
         url: action + '/' + id
     }).done(function(returnObject) {
@@ -51,32 +64,24 @@ $('.editaAction').click(function(e) {
     });
 });
 
-$('.apagaAction').click(function(e) {
-    var $tr = $(this).closest('tr');
-    var action = $('#myModal form').attr('action');
-    bootbox.confirm('Confirma remoção?', function (result) {
-        if (result) {
-            var id = $tr.attr('id');
-            if (action.substr(-2) === 'es') {
-                action = action.slice(0, -2);
-            } else if (action.substr(-1) === 's') {
-                action = action.slice(0, -1);
-            }
-            $.ajax({
-                url: action + '/' + id + "/apaga"
-            }).done(function(result) {
-                if (result === 'SUCCESS') {
-                    //Se em algum momento existir mais de uma tabela dataTable este metodo deve ser retestado!
-                    var table = $.fn.dataTable.fnTables(true);
-                    if ( table.length > 0 ) {
-                        $(table).dataTable().fnDeleteRow( $tr[0] );
-                    }
-                } else {
-                    bootbox.alert(result);
-                }
-            });
-        }
-    });
+$('.editaAction').click(function(e) {
+    var id = $(this).closest('tr').attr('id');
+    var $form = $('#myModal form');
+    $form[0].reset();
+    var action = getSingular($form.attr('action'));
+    $.ajax({
+        url: action + '/' + id
+    }).done(function(returnObject) {
+            aplicarObjetoNoFormulario(returnObject, "#" + $form.attr('id'));
+            $('#myModal').modal('show');
+        });
+});
+
+$('.insereAction').click(function(e) {
+    var formRef = $('#myModal form');
+    var actionVal = getSingular(formRef.attr('action'));
+    formRef.attr('action', actionVal);
+    formRef.submit();
 });
 
 /**

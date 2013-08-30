@@ -61,7 +61,7 @@ public class InstrutorController extends AbstractController {
 		return instrutorService.obtemPorId(id);
 	}
 
-	@RequestMapping(value = "/instrutores", method = RequestMethod.POST)
+	@RequestMapping(value = "/instrutor", method = RequestMethod.POST)
 	public String salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult bindingResult, Model uiModel) {
         if (bindingResult.hasErrors()) {
             uiModel.addAttribute("formHasError", true);

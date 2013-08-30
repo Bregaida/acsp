@@ -48,7 +48,7 @@ public class AgendaController extends AbstractController {
         return new Agenda();
     }
 
-    @RequestMapping(value = "/agendas", method = RequestMethod.POST)
+    @RequestMapping(value = "/agenda", method = RequestMethod.POST)
     public String salvarOuAtualizar(@Valid Agenda agenda, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("formHasError", true);

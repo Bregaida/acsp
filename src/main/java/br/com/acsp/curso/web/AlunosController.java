@@ -6,9 +6,13 @@ package br.com.acsp.curso.web;
 import br.com.acsp.curso.domain.Aluno;
 import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.service.AlunoService;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 /**
  * @author Christian Reichel
@@ -40,12 +45,20 @@ public class AlunosController extends AbstractController {
         return new Aluno();
     }
 
-    @RequestMapping("/alunos")
+    @RequestMapping(value = "/alunos", method = RequestMethod.GET)
     public String lista(ModelMap map) {
         map.put("alunosMenu", "active");
         map.put("listaDeAlunos", alunoService.listarOrdenado());
         map.put("escolaridades", EscolaridadeType.values());
         return "aluno/lista";
+    }
+
+    @RequestMapping(value = "/alunos", method = RequestMethod.POST)
+    @ResponseBody
+    public Collection<Aluno> listaPorAjax(Pageable pageable) {
+        final Page<Aluno> alunos =  alunoService.pesquisarTodos(pageable);
+        logger.info(ToStringBuilder.reflectionToString(alunos, ToStringStyle.MULTI_LINE_STYLE));
+        return alunos.getContent();
     }
 
     // Nem todos os browser suportam DELETE
@@ -62,7 +75,7 @@ public class AlunosController extends AbstractController {
         return alunoService.obtemPorId(id);
     }
 
-    @RequestMapping(value = "/alunos", method = RequestMethod.POST)
+    @RequestMapping(value = "/aluno", method = RequestMethod.POST)
     public String salvarOuAtualizar(@Valid Aluno aluno, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("formHasError", true);

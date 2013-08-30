@@ -65,7 +65,7 @@ public class SocioController extends AbstractController {
 		return socioService.obtemPorId(id);
 	}
 
-	@RequestMapping(value = "/socios", method = RequestMethod.POST)
+	@RequestMapping(value = "/socio", method = RequestMethod.POST)
 	public String salvarOuAtualizar(@Valid Socio socio, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
             map.put("formHasError", true);

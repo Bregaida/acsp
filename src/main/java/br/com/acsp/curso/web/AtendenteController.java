@@ -64,7 +64,7 @@ public class AtendenteController extends AbstractController {
 		return atendenteService.obtemPorId(id);
 	}
 
-	@RequestMapping(value = "/atendentes", method = RequestMethod.POST)
+	@RequestMapping(value = "/atendente", method = RequestMethod.POST)
 	public String salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
             map.put("formHasError", true);

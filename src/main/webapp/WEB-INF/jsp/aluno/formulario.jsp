@@ -19,7 +19,7 @@
                     <div class="btn-group pull-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                         <button type="reset" class="btn btn-default">Limpar</button>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn btn-primary insereAction">Salvar</button>
                     </div>
                 </div>
             </form:form>

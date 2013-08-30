@@ -9,10 +9,14 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.web.PageableArgumentResolver;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jmx.export.annotation.AnnotationMBeanExporter;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.ServletWebArgumentResolverAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -77,6 +81,12 @@ public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
         return messageSource;
     }
 
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        final PageableArgumentResolver resolver = new PageableArgumentResolver();
+        resolver.setFallbackPageable(new PageRequest(1, 10));
+        argumentResolvers.add(new ServletWebArgumentResolverAdapter(resolver));
+    }
     //------
 
     @Override
