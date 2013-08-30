@@ -19,4 +19,9 @@ public class HomeController extends AbstractController {
         return "home";
     }
 
+    @RequestMapping(value = "/sobre", method = RequestMethod.GET)
+    public String sobre(ModelMap map) {
+        map.put("homeMenu", "active");
+        return "sobre";
+    }
 }

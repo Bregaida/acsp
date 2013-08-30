@@ -59,22 +59,11 @@ public class AgendaController extends AbstractController {
             model.addAttribute("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
             model.addAttribute("listaDeInstrutores", instrutorService.listarOrdenado());
             model.addAttribute("listaDeAulas", aulaService.listarOrdenado());
-            // TODO: Devera ser listado por horario dispoivel
-            mockHorarios();
             model.addAttribute("listaDeHorarios", horarioService.listarOrdenado());
             return "agenda/lista";
         }
         agendaService.salvar(agenda);
         return "redirect:/agendas";
-    }
-
-    private void mockHorarios() {
-        Horario horario = null;
-        for (int i = 8; i < 22; i++) {
-            horario = new Horario();
-            horario.setHorarioAgenda(i < 10 ? "0" + i + ":00" : i + ":00");
-            horarioService.salvar(horario);
-        }
     }
 
     @RequestMapping(value = "/agenda/{id}/apaga", method = RequestMethod.GET)
@@ -99,11 +88,7 @@ public class AgendaController extends AbstractController {
         map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
         map.put("listaDeInstrutores", instrutorService.listarOrdenado());
         map.put("listaDeAulas", aulaService.listarOrdenado());
-        // TODO: Devera ser listado por horario dispoivel
-        mockHorarios();
-
         map.put("listaDeHorarios", horarioService.listarOrdenado());
-
         return "agenda/lista";
     }
 }
