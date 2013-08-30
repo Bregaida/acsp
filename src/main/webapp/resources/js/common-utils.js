@@ -48,6 +48,7 @@ function getSingular(valor){
 }
 
 $('#myModal').on('hidden.bs.modal', function () {
+    $(this).find('#nome').removeAttr('disabled');
     $(this).find('form')[0].reset();
 });
 
@@ -67,6 +68,7 @@ $('.editaAction').click(function(e) {
 $('.editaAction').click(function(e) {
     var id = $(this).closest('tr').attr('id');
     var $form = $('#myModal form');
+    $form.find('#nome').attr('disabled', 'disabled');
     $form[0].reset();
     var action = getSingular($form.attr('action'));
     $.ajax({
