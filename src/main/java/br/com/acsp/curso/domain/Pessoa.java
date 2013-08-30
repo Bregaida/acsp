@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Entity
 @Inheritance
 @DiscriminatorColumn(name="PESSOA_TYPE")
-public abstract class Pessoa implements Serializable {
+public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = -5261337447506230696L;
 

@@ -84,6 +84,19 @@ $('.insereAction').click(function(e) {
     formRef.submit();
 });
 
+$('.cpf').focusout(function() {
+    var cpf = $(this).val();
+    var qtd = cpf.length;
+    var formId = $(this).closest('form').attr('id');
+    if(qtd == 14){
+        $.ajax({
+            url: '/acsp/pessoa/' + cpf.replace(/\./g,'').replace(/-/g,'')
+        }).done(function(returnObject) {
+            aplicarObjetoNoFormulario(returnObject, "#" + formId);
+        });
+    }
+});
+
 /**
  * Inicialização do DataTables
  */

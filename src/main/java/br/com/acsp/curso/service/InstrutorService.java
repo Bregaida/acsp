@@ -3,13 +3,12 @@
  */
 package br.com.acsp.curso.service;
 
-import java.util.Collection;
-
+import br.com.acsp.curso.domain.Instrutor;
+import br.com.acsp.curso.repository.InstrutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.acsp.curso.domain.Instrutor;
-import br.com.acsp.curso.repository.InstrutorRepository;
+import java.util.Collection;
 
 /**
  * @author eduardobregaida

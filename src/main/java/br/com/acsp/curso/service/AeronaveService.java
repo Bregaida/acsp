@@ -3,14 +3,13 @@
  */
 package br.com.acsp.curso.service;
 
-import java.util.Collection;
-import java.util.Date;
-
+import br.com.acsp.curso.domain.Aeronave;
+import br.com.acsp.curso.repository.AeronaveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.acsp.curso.domain.Aeronave;
-import br.com.acsp.curso.repository.AeronaveRepository;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * @author eduardobregaida
