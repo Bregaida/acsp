@@ -4,7 +4,7 @@
 <c:import url="../../includes/header.jsp"/>
 
 <div class="clearfix">
-    <table class="table table-striped table-hover table-condensed">
+    <table class="table table-striped table-hover table-condensed datatabled">
         <thead>
         <th>Nome do aluno</th>
         <th>Código anac</th>

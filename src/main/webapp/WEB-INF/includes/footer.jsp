@@ -24,6 +24,7 @@ $LAB
     .script("<c:url value="/resources/js/bootbox.min.js"/>")
     .script("<c:url value="/resources/js/modal.js"/>")
     .script("<c:url value="/resources/js/jquery.mask.min.js"/>")
+    .script("<c:url value="/resources/js/fullcalendar.min.js"/>")
     .script("<c:url value="/resources/js/tooltip.js"/>");
 </script>
 

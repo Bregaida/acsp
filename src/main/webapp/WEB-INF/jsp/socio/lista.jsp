@@ -3,7 +3,7 @@
 <c:import url="../../includes/header.jsp"/>
 
 <div class="clearfix">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover datatabled">
         <thead>
         <th>Nome do sócio</th>
         <th>Número de Inscrição</th>

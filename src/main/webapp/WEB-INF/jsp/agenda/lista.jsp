@@ -4,7 +4,7 @@
 <c:import url="../../includes/header.jsp"/>
 
 <div class="clearfix">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover datatabled">
         <thead>
         <th>Data de agendamento</th>
         <th>Nome do Aluno</th>

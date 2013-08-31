@@ -88,6 +88,10 @@ $('.insereAction').click(function(e) {
     formRef.submit();
 });
 
+$('#actionAgendar').click(function(){
+    bootbox.alert('Abre tela de agendamento');
+});
+
 $('.cpf').focusout(function() {
     var cpf = $(this).val();
     var qtd = cpf.length;
@@ -104,12 +108,15 @@ $('.cpf').focusout(function() {
 /**
  * Inicialização do DataTables
  */
-$('.table').dataTable();
+$('.datatabled').dataTable();
 
-/**
- * Máscaras
- */
 $(document).ready(function(){
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
     $('.cpf').mask('000.000.000-00', {reverse: true});
     $('.date').mask('11/11/1111');
     $('.time').mask('00:00:00');
@@ -120,4 +127,82 @@ $(document).ready(function(){
     $('.phone_us').mask('(000) 000-0000');
     $('.mixed').mask('AAA 000-S0S');
     $('.money').mask('000.000.000.000.000,00', {reverse: true});
+
+    //http://arshaw.com/fullcalendar/
+    $('#calendar').fullCalendar({
+        defaultView: 'agendaWeek',
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        buttonText: {
+            prev:     '&lsaquo;', // <
+            next:     '&rsaquo;', // >
+            prevYear: '&laquo;',  // <<
+            nextYear: '&raquo;',  // >>
+            today:    'hoje',
+            month:    'mês',
+            week:     'semana',
+            day:      'dia'
+        },
+        editable: true,
+
+        agenda: 'h:mm{ - h:mm}',
+
+        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+            'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+
+        timeFormat: 'H(:mm)',
+
+        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta','Quinta', 'Sexta', 'Sábado'],
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+
+        // put your options and callbacks here
+        //dayClick: function() {
+          //  alert('a day has been clicked!');
+        //},
+        events: [
+            {
+                title  : 'Thomáz Turbando',
+                start  : '2013-08-31 09:00:00',
+                end  : '2013-08-31 10:00:00',
+                allDay : false
+            },
+            {
+                title  : 'Timelo Rego',
+                start  : '2013-08-29 09:00:00',
+                end    : '2013-08-29 11:00:00',
+                allDay : false
+            },
+            {
+                title  : 'Vinci Comer',
+                start  : '2013-08-31 14:00:00',
+                start  : '2013-08-31 15:00:00',
+                allDay : false // will make the time show
+            },
+            {
+                title  : 'Santos Bregaida',
+                start  : '2013-09-01 14:00:00',
+                start  : '2013-09-01 15:00:00',
+                allDay : false // will make the time show
+            },
+            {
+                title  : 'Lord Vader    ',
+                start  : '2013-09-01 15:00:00',
+                start  : '2013-09-01 16:00:00',
+                allDay : false // will make the time show
+            }
+        ],
+
+        eventClick: function(calEvent, jsEvent, view) {
+
+            alert('Event: ' + calEvent.title);
+            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+            alert('View: ' + view.name);
+
+            // change the border color just for fun
+            $(this).css('border-color', 'red');
+        }
+    })
 });

@@ -3,7 +3,7 @@
 <c:import url="../../includes/header.jsp"/>
 
 <div class="clearfix">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover datatabled">
         <thead>
         <th>Matéria</th>
         <th>Quantidade de Horas necessárias para instrutor</th>

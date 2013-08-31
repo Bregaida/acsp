@@ -3,7 +3,7 @@
 <c:import url="../../includes/header.jsp"/>
 
 <div class="clearfix">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover datatabled">
         <thead>
         <th class="hidden">ID</th>
         <th>Nome do Atendente</th>
