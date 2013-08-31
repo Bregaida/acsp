@@ -147,6 +147,11 @@ $(document).ready(function(){
             day:      'dia'
         },
         editable: true,
+        columnFormat:{
+            month: 'ddd',    // Mon
+            week: 'ddd d/M', // Mon 9/7
+            day: 'dddd d/M'  // Monday 9/7
+        },
 
         agenda: 'h:mm{ - h:mm}',
 
