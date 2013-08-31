@@ -32,8 +32,8 @@ function aplicarObjetoNoFormulario(obj, formId){
 function getSingular(valor){
     //TODO: Fazer ficar mais bonito... assim ta bom por enquanto
     var irregulares = new Array();
-    irregulares['/acsp/aeronaves'] = "aeronave";
-    irregulares['/acsp/atendentes'] = "atendente";
+    irregulares['/acsp/aeronaves'] = "/acsp/aeronave";
+    irregulares['/acsp/atendentes'] = "/acsp/atendente";
 
     var singular;
     if(irregulares.hasOwnProperty(valor)){
@@ -65,18 +65,20 @@ $('.editaAction').click(function(e) {
     });
 });
 
-$('.editaAction').click(function(e) {
-    var id = $(this).closest('tr').attr('id');
-    var $form = $('#myModal form');
-    $form.find('#nome').attr('disabled', 'disabled');
-    $form[0].reset();
-    var action = getSingular($form.attr('action'));
-    $.ajax({
-        url: action + '/' + id
-    }).done(function(returnObject) {
-            aplicarObjetoNoFormulario(returnObject, "#" + $form.attr('id'));
-            $('#myModal').modal('show');
-        });
+$('.apagaAction').click(function(e) {
+    var $tr = $(this).closest('tr');
+    var action = $('#myModal form').attr('action');
+    bootbox.confirm('Confirma remoção?', function (result) {
+        if (result) {
+            var id = $tr.attr('id');
+            action = getSingular(action);
+            $.ajax({
+                url: action + '/' + id + "/apaga"
+            }).done(function() {
+                $tr.remove();
+            });
+        }
+    });
 });
 
 $('.insereAction').click(function(e) {
