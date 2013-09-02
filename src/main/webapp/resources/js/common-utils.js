@@ -6,24 +6,24 @@ function aplicarObjetoNoFormulario(obj, formId){
         }
     }
     var selector = "form" + formId + " :input";
-    $(selector).each(function(){
+    $(selector).each(function() {
         var input = $(this);// This is the jquery object of the input
         var attrName = input.attr('name');
         var attrType = input.attr('type');
-        var isObject = false;
-        if (attrName != undefined && attrName.indexOf('.') !== -1) {
-            isObject = true;
+        if (input.is('select')) {
             attrName = attrName.split('.')[0];
-        }
-        if(obj[attrName] != undefined && obj[attrName] != null){
+            var values = [],
+                objects = [].concat(obj[attrName]);
+            $.each(objects, function(key, value) {
+                values.push(value.id);
+            });
+            input.val(values);
+
+        } else if (obj[attrName] != undefined && obj[attrName] != null) {
             if (attrType === 'checkbox') { //TODO - implementar casos de radio button!
                 input.prop('checked', obj[attrName]);
             } else {
-                if (isObject) {
-                    input.val(obj[attrName].id);
-                } else {
-                    input.val(obj[attrName]);
-                }
+                input.val(obj[attrName]);
             }
         }
     });
