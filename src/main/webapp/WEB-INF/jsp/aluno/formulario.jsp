@@ -10,8 +10,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Aluno</h4>
             </div>
-
-            <form:form method="POST" commandName="aluno" role="form">
+            <c:url value="/aluno" var="urlAction"/>
+            <form:form action="${urlAction}" method="POST" commandName="aluno" role="form">
                 <div class="modal-body">
                     <c:import url="fieldSet.jsp"/>
                 </div>

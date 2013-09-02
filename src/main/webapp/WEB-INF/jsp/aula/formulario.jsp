@@ -10,12 +10,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Aula</h4>
             </div>
-
-            <form:form id="aulaForm" method="POST" commandName="aula" role="form">
+            <c:url value="/aula" var="urlAction"/>
+            <form:form action="${urlAction}" method="POST" commandName="aula" role="form">
                 <div class="modal-body">
                     <c:import url="fieldSet.jsp"/>
                 </div>
-
                 <div class="modal-footer">
                     <div class="btn-group pull-right">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

@@ -63,14 +63,12 @@ public class AulaController extends AbstractController {
 	@RequestMapping(value = "/aula", method = RequestMethod.POST)
 	public String salvarAula(@Valid Aula aula, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
-            map.put("hasErrors", true);
             map.put("aula", aula);
-            map.put("aulasMenu", "active");
-            map.put("listaDeAulas", aulaService.listarOrdenado());
             map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-            return "aula/lista";
+            return "aula/formulario";
         }
         aulaService.salvar(aula);
-        return "redirect:/aulas";
+        map.put("msgSucesso", "Aula " + aula.getMateria() + " inserida com exito.");
+        return "success";
     }
 }

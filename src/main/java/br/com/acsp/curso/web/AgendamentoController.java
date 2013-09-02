@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 
 /**
  * @author pedrosa
@@ -49,21 +50,25 @@ public class AgendamentoController extends AbstractController {
     }
 
     @RequestMapping(value = "/agendamento", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Agenda agenda, BindingResult result, Model model) {
+    public String salvarOuAtualizar(@Valid Agenda agenda, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
-            model.addAttribute("formHasError", true);
-            model.addAttribute("agendasMenu", "active");
-            model.addAttribute("listaDeAgendas", agendaService.pesquisarTodos());
-            model.addAttribute("listaDeAlunos", alunoService.listarOrdenado());
-            model.addAttribute("listaDeSocios", socioService.listarOrdenado());
-            model.addAttribute("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-            model.addAttribute("listaDeInstrutores", instrutorService.listarOrdenado());
-            model.addAttribute("listaDeAulas", aulaService.listarOrdenado());
-            model.addAttribute("listaDeHorarios", horarioService.listarOrdenado());
-            return "agenda/lista";
+            map.put("agenda", agenda);
+            formularioMap(map);
+            return "agenda/formulario";
         }
         agendaService.salvar(agenda);
-        return "redirect:/agendamentos";
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        map.put("msgSucesso", "Agendamento para data " + format.format(agenda.getDataReserva()) + " realizado com exito.");
+        return "success";
+    }
+
+    private void formularioMap(ModelMap map) {
+        map.put("listaDeAlunos", alunoService.listarOrdenado());
+        map.put("listaDeSocios", socioService.listarOrdenado());
+        map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+        map.put("listaDeInstrutores", instrutorService.listarOrdenado());
+        map.put("listaDeAulas", aulaService.listarOrdenado());
+        map.put("listaDeHorarios", horarioService.listarOrdenado());
     }
 
     @RequestMapping(value = "/agendamento/{id}/apaga", method = RequestMethod.GET)
@@ -83,12 +88,7 @@ public class AgendamentoController extends AbstractController {
     public String lista(ModelMap map) {
         map.put("agendasMenu", "active");
         map.put("listaDeAgendas", agendaService.pesquisarTodos());
-        map.put("listaDeAlunos", alunoService.listarOrdenado());
-        map.put("listaDeSocios", socioService.listarOrdenado());
-        map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-        map.put("listaDeInstrutores", instrutorService.listarOrdenado());
-        map.put("listaDeAulas", aulaService.listarOrdenado());
-        map.put("listaDeHorarios", horarioService.listarOrdenado());
+        formularioMap(map);
         return "agenda/lista";
     }
 }

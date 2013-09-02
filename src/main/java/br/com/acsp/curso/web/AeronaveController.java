@@ -56,17 +56,15 @@ public class AeronaveController {
 	}
 
 	@RequestMapping(value = "/aeronave", method = RequestMethod.POST)
-	public String salvarOuAtualizar(@Valid Aeronave aeronave, BindingResult result, Model model) {
+	public String salvarOuAtualizar(@Valid Aeronave aeronave, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
-            model.addAttribute("formHasError", true);
-            model.addAttribute("aeronave", aeronave);
-            model.addAttribute("aeronaveMenu", "active");
-            model.addAttribute("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-            return "aeronave/lista";
+            map.put("aeronave", aeronave);
+            return "aeronave/formulario";
         }
         logger.info("AeronaveController: salva");
         aeronaveService.salvar(aeronave);
-        return "redirect:/aeronaves";
+        map.put("msgSucesso", "Aeronave " + aeronave.getCertificadoMatricula() + " inserida com exito.");
+        return "success";
     }
 
 }

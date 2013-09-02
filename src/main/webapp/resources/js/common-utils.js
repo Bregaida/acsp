@@ -29,34 +29,33 @@ function aplicarObjetoNoFormulario(obj, formId){
     });
 }
 
-function getSingular(valor){
-    //TODO: Fazer ficar mais bonito... assim ta bom por enquanto
-    var irregulares = new Array();
-    irregulares['/acsp/aeronaves'] = "/acsp/aeronave";
-    irregulares['/acsp/atendentes'] = "/acsp/atendente";
-
-    var singular;
-    if(irregulares.hasOwnProperty(valor)){
-        singular = irregulares[valor];
+$('body').on('hidden.bs.modal', '.modal', function () {
+    if ($(this).find('#btnSuccess').length !== 0) {
+        window.location.reload();
     }
-    else if (valor.substr(-2) === 'es') {
-        singular = valor.slice(0, -2);
-    } else if (valor.substr(-1) === 's') {
-        singular = valor.slice(0, -1);
-    }
-    return singular;
-}
+    $(this)
+        .find('[id*=".errors"]').remove().end()
+        .find('form')[0].reset();
+});
 
-$('#myModal').on('hidden.bs.modal', function () {
-    $(this).find('#nome').removeAttr('disabled');
-    $(this).find('form')[0].reset();
+$('.modal').on('click', 'button[type="reset"]', function (e) {
+    $(this).parents('.modal').find('[id*=".errors"]').remove();
+});
+
+$('.modal').on('click', '.insereAction', function(e) {
+    var formRef = $('#myModal form');
+    var actionVal = formRef.attr('action');
+
+    $.post(actionVal, formRef.serialize(), function(result) {
+        $('.modal').html($(result).filter('.modal').html());
+    });
 });
 
 $('.editaAction').click(function(e) {
     var id = $(this).closest('tr').attr('id');
     var $form = $('#myModal form');
     $form[0].reset();
-    var action = getSingular($form.attr('action'));
+    var action = $form.attr('action');
     $.ajax({
         url: action + '/' + id
     }).done(function(returnObject) {
@@ -71,21 +70,22 @@ $('.apagaAction').click(function(e) {
     bootbox.confirm('Confirma remoção?', function (result) {
         if (result) {
             var id = $tr.attr('id');
-            action = getSingular(action);
             $.ajax({
                 url: action + '/' + id + "/apaga"
-            }).done(function() {
-                $tr.remove();
-            });
+            }).done(function(result) {
+                    if (result === 'SUCCESS') {
+                        //Se em algum momento existir mais de uma tabela dataTable este metodo deve ser retestado!
+                        var table = $.fn.dataTable.fnTables(true);
+                        if ( table.length > 0 ) {
+                            $(table).dataTable().fnDeleteRow( $tr[0] );
+                        }
+                    } else {
+                        //TODO - melhorar layout das msg de erro
+                        bootbox.alert(result);
+                    }
+                });
         }
     });
-});
-
-$('.insereAction').click(function(e) {
-    var formRef = $('#myModal form');
-    var actionVal = getSingular(formRef.attr('action'));
-    formRef.attr('action', actionVal);
-    formRef.submit();
 });
 
 $('#actionAgendar').click(function(){
@@ -183,19 +183,19 @@ $(document).ready(function(){
             {
                 title  : 'Vinci Comer',
                 start  : '2013-08-31 14:00:00',
-                start  : '2013-08-31 15:00:00',
+                end    : '2013-08-31 15:00:00',
                 allDay : false // will make the time show
             },
             {
                 title  : 'Santos Bregaida',
                 start  : '2013-09-01 14:00:00',
-                start  : '2013-09-01 15:00:00',
+                end    : '2013-09-01 15:00:00',
                 allDay : false // will make the time show
             },
             {
                 title  : 'Lord Vader    ',
                 start  : '2013-09-01 15:00:00',
-                start  : '2013-09-01 16:00:00',
+                end    : '2013-09-01 16:00:00',
                 allDay : false // will make the time show
             }
         ],

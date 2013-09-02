@@ -28,15 +28,5 @@ $LAB
     .script("<c:url value="/resources/js/tooltip.js"/>");
 </script>
 
-<c:if test="${formHasError}">
-    <script type="text/javascript">
-        //Exibe o form ao carregar a pagina se o mesmo tem erros de validação.
-        //Não esquecer de popular a variavel no controller dentro do result.hasError()
-        $(function() {
-            $('#myModal').modal('show');
-        });
-    </script>
-</c:if>
-
 </body>
 </html>

@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -76,16 +75,14 @@ public class AlunosController extends AbstractController {
     }
 
     @RequestMapping(value = "/aluno", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Aluno aluno, BindingResult result, Model model) {
+    public String salvarOuAtualizar(@Valid Aluno aluno, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
-            model.addAttribute("formHasError", true);
-            model.addAttribute("aluno", aluno);
-            model.addAttribute("alunosMenu", "active");
-            model.addAttribute("listaDeAlunos", alunoService.listarOrdenado());
-            model.addAttribute("escolaridades", EscolaridadeType.values());
-            return "aluno/lista";
+            map.put("aluno", aluno);
+            map.put("escolaridades", EscolaridadeType.values());
+            return "aluno/formulario";
         }
         alunoService.salvar(aluno);
-        return "redirect:/alunos";
+        map.put("msgSucesso", "Aluno " + aluno.getNome() + " inserido com exito.");
+        return "success";
     }
 }

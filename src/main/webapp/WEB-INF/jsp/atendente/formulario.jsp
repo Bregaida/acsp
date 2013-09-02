@@ -10,8 +10,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Atendente</h4>
             </div>
-
-            <form:form id="atendenteForm" method="POST" commandName="atendente" role="form">
+            <c:url value="/atendente" var="urlAction"/>
+            <form:form action="${urlAction}" method="POST" commandName="atendente" role="form">
                 <div class="modal-body">
                     <c:import url="fieldSet.jsp"/>
                 </div>
