@@ -62,17 +62,14 @@ public class InstrutorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-	public String salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult bindingResult, Model uiModel) {
+	public String salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult bindingResult, ModelMap map) {
         if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("formHasError", true);
-            uiModel.addAttribute("instrutor", instrutor);
-            uiModel.addAttribute("instrutoresMenu", "active");
-            uiModel.addAttribute("listaDeInstrutores", instrutorService.listarOrdenado());
-            uiModel.addAttribute("escolaridades", EscolaridadeType.values());
-            return "instrutor/lista";
+            map.put("instrutor", instrutor);
+            map.put("escolaridades", EscolaridadeType.values());
+            return "instrutor/formulario";
         }
-        uiModel.asMap().clear();
         instrutorService.salvar(instrutor);
-        return "redirect:/instrutores";
+        map.put("msgSucesso", "Instrutor " + instrutor.getNome() + " inserido com exito.");
+        return "success";
     }
 }

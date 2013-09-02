@@ -6,8 +6,10 @@ package br.com.acsp.curso.domain;
 import br.com.acsp.curso.util.CustomEnumEscolaridadeSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -31,6 +33,7 @@ public class Pessoa implements Serializable {
 	@NotBlank
 	@Column
 	private String rg;
+    @NotNull
 	@Column
 	private Long cpf;
 	@Column

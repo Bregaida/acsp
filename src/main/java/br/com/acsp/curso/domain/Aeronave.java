@@ -3,6 +3,8 @@
  */
 package br.com.acsp.curso.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -17,10 +19,13 @@ public class Aeronave implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+    @NotBlank
 	@Column
 	private String certificadoMatricula;
+    @NotBlank
 	@Column
 	private String marca;
+    @NotBlank
 	@Column
 	private String modelo;
 	@Column

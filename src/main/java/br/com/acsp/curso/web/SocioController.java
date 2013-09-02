@@ -68,14 +68,12 @@ public class SocioController extends AbstractController {
 	@RequestMapping(value = "/socio", method = RequestMethod.POST)
 	public String salvarOuAtualizar(@Valid Socio socio, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
-            map.put("formHasError", true);
             map.put("socio", socio);
-            map.put("sociosMenu", "active");
-            map.put("listaDeSocios", socioService.listarOrdenado());
             map.put("escolaridades", EscolaridadeType.values());
-            return "socio/lista";
+            return "socio/formulario";
         }
         socioService.salvar(socio);
-        return "redirect:/socios";
+        map.put("msgSucesso", "Socio " + socio.getNome() + " inserido com exito.");
+        return "success";
     }
 }

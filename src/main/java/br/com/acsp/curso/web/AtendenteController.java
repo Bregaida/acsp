@@ -67,15 +67,14 @@ public class AtendenteController extends AbstractController {
 	@RequestMapping(value = "/atendente", method = RequestMethod.POST)
 	public String salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
-            map.put("formHasError", true);
             map.put("atendente", atendente);
-            map.put("atendentesMenu", "active");
-            map.put("listaDeAtendentes", atendenteService.listarOrdenado());
             map.put("escolaridades", EscolaridadeType.values());
-            return "atendente/lista";
+            return "atendente/formulario";
         }
+
         logger.info("AtendenteController: salva");
         atendenteService.salvar(atendente);
-        return "redirect:/atendentes";
+        map.put("msgSucesso", "Atendente " + atendente.getNome() + " inserido com exito.");
+        return "success";
     }
 }
