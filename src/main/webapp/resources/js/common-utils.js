@@ -168,38 +168,7 @@ $(document).ready(function(){
         //dayClick: function() {
           //  alert('a day has been clicked!');
         //},
-        events: [
-            {
-                title  : 'Thomáz Turbando',
-                start  : '2013-08-31 09:00:00',
-                end  : '2013-08-31 10:00:00',
-                allDay : false
-            },
-            {
-                title  : 'Timelo Rego',
-                start  : '2013-08-29 09:00:00',
-                end    : '2013-08-29 11:00:00',
-                allDay : false
-            },
-            {
-                title  : 'Vinci Comer',
-                start  : '2013-08-31 14:00:00',
-                end    : '2013-08-31 15:00:00',
-                allDay : false // will make the time show
-            },
-            {
-                title  : 'Santos Bregaida',
-                start  : '2013-09-01 14:00:00',
-                end    : '2013-09-01 15:00:00',
-                allDay : false // will make the time show
-            },
-            {
-                title  : 'Lord Vader    ',
-                start  : '2013-09-01 15:00:00',
-                end    : '2013-09-01 16:00:00',
-                allDay : false // will make the time show
-            }
-        ],
+        events: '/acsp/agenda/ajax',
 
         eventClick: function(calEvent, jsEvent, view) {
 

@@ -4,6 +4,7 @@
 package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Agenda;
+import br.com.acsp.curso.domain.EventDTO;
 import br.com.acsp.curso.domain.Horario;
 import br.com.acsp.curso.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * @author pedrosa
@@ -47,6 +51,18 @@ public class AgendamentoController extends AbstractController {
     @ModelAttribute("agenda")
     public Agenda getAgenda() {
         return new Agenda();
+    }
+
+    @RequestMapping(value = "/agenda/ajax", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<EventDTO> obtemAgendamentosAjax(){
+        final Date dataRef = new Date();
+        final Collection<Agenda> agendamentos = agendaService.obterAgendamentosDoMes(dataRef);
+        final Collection<EventDTO> eventos = new ArrayList<EventDTO>();
+        for(Agenda agendamento : agendamentos){
+            eventos.add(new EventDTO(agendamento));
+        }
+        return eventos;
     }
 
     @RequestMapping(value = "/agendamento", method = RequestMethod.POST)

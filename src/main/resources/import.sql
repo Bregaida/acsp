@@ -69,5 +69,5 @@ insert into Horario (id, horarioAgenda) values(null, '13:00');
 insert into Horario (id, horarioAgenda) values(null, '14:00');
 insert into Horario (id, horarioAgenda) values(null, '15:00');
 insert into Horario (id, horarioAgenda) values(null, '16:00');
-insert into Agenda (id, aeronave_id, aluno_id, aula_id, dataReserva, flag360milhas, flagPresenca, flagVooMatutinoEspecial, flagVooNoturno, horario_id, instrutor_id, qtdeHoras, socio_id, status) values (null, 2, 3, 1, CURRENT_TIMESTAMP, true, true, true, true, 3, 34, 12, 38, 'PENDENTE');
-insert into Agenda (id, aeronave_id, aluno_id, aula_id, dataReserva, flag360milhas, flagPresenca, flagVooMatutinoEspecial, flagVooNoturno, horario_id, instrutor_id, qtdeHoras, socio_id, status) values (null, 3, 24, 1, CURRENT_TIMESTAMP, true, true, true, true, 4, 35, 12, 37, 'PENDENTE');
+insert into Agenda (id, aeronave_id, aluno_id, aula_id, dataReserva, flag360milhas, flagPresenca, flagVooMatutinoEspecial, flagVooNoturno, horario_id, instrutor_id, qtdeHoras, socio_id, status) values (null, 2, 3, 1, CURRENT_TIMESTAMP, true, true, true, true, 3, 34, 2, 38, 'PENDENTE');
+insert into Agenda (id, aeronave_id, aluno_id, aula_id, dataReserva, flag360milhas, flagPresenca, flagVooMatutinoEspecial, flagVooNoturno, horario_id, instrutor_id, qtdeHoras, socio_id, status) values (null, 3, 24, 1, CURRENT_TIMESTAMP, true, true, true, true, 4, 35, 3, 37, 'PENDENTE');
