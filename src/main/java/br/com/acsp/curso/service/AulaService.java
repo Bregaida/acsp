@@ -32,11 +32,7 @@ public class AulaService extends AbstractService<Aula, Long> {
     	Aula aula = repository.findOne(id);
 
         //FIXME just to load the list for now
-        List<Aeronave> aeronaves = aula.getAeronaves();
-        for (Aeronave aeronave : aeronaves) {
-            aeronave.getMarca();
-        }
-
+        aula.getAeronaves();
         return aula;
     }
     

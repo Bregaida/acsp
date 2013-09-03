@@ -3,18 +3,25 @@
  */
 package br.com.acsp.curso.web;
 
-import br.com.acsp.curso.domain.Aeronave;
-import br.com.acsp.curso.service.AeronaveService;
+import java.util.Date;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
+import br.com.acsp.curso.domain.Aeronave;
+import br.com.acsp.curso.service.AeronaveService;
 
 /**
  * @author eduardobregaida
@@ -66,5 +73,13 @@ public class AeronaveController {
         map.put("msgSucesso", "Aeronave " + aeronave.getCertificadoMatricula() + " inserida com exito.");
         return "success";
     }
+	
+	//TODO Combo aninhada agenda
+	@RequestMapping(value = "/aeronavesDisponiveis/{dataReserva}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Aeronave> listarAeronavesDisponiveis(@PathVariable("dataReserva") Date dataReserva){
+		return null;
+	}
 
+	
 }
