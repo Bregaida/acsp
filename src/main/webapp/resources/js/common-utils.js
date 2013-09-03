@@ -130,12 +130,13 @@ $(document).ready(function(){
 
     //http://arshaw.com/fullcalendar/
     $('#calendar').fullCalendar({
-        defaultView: 'agendaWeek',
+        defaultView: 'agendaDay',
         header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
+        allDayText: 'dia-todo',
         buttonText: {
             prev:     '&lsaquo;', // <
             next:     '&rsaquo;', // >
@@ -154,30 +155,36 @@ $(document).ready(function(){
         },
 
         agenda: 'h:mm{ - h:mm}',
+        timeFormat: 'H(:mm)',
 
         monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
             'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
         monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
 
-        timeFormat: 'H(:mm)',
-
         dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta','Quinta', 'Sexta', 'Sábado'],
         dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
 
-        // put your options and callbacks here
-        //dayClick: function() {
-          //  alert('a day has been clicked!');
-        //},
+        dayClick: function() {
+            alert('a day has been clicked!');
+        },
+
         events: '/acsp/agenda/ajax',
 
         eventClick: function(calEvent, jsEvent, view) {
 
-            alert('Event: ' + calEvent.title);
+            alert('Event: ' + calEvent.title + ", id: " + calEvent.id);
             alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            alert('View: ' + view.name);
+            //alert('View: ' + view.name);
 
             // change the border color just for fun
             $(this).css('border-color', 'red');
+
+        },
+        eventMouseover: function(calEvent, jsEvent, view) {
+            console.log("-> " + calEvent.id);
+        },
+        eventMouseout: function(calEvent, jsEvent, view) {
+            console.log("<- " + calEvent.id);
         }
     })
 });
