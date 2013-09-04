@@ -48,5 +48,4 @@
     </div>
 </div>
 
-<c:import url="./agenda/formulario.jsp"/>
 <c:import url="../includes/footer.jsp"/>
