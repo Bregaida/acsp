@@ -16,4 +16,7 @@ target/
 .classpath
 .project
 
+# IDea
+.idea/
+
 src/main/resources/rebel.xml
