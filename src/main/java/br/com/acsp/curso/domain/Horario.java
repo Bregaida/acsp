@@ -3,6 +3,8 @@
  */
 package br.com.acsp.curso.domain;
 
+import org.joda.time.LocalTime;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -35,6 +37,9 @@ public class Horario implements Serializable {
 	public void setHorarioAgenda(String horarioAgenda) {
 		this.horarioAgenda = horarioAgenda;
 	}
-	
+
+    public int getTranslatedHourToInt() {
+        return LocalTime.parse(horarioAgenda).getHourOfDay();
+    }
 
 }

@@ -3,6 +3,7 @@ package br.com.acsp.curso.domain;
 import org.apache.commons.lang.time.DateUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -26,8 +27,9 @@ public class EventDTO {
 
     public EventDTO(Agenda agenda) {
         this.title = agenda.getAluno().getNomePista();
-        this.setStart(agenda.getDataReserva());
-        this.setEnd(DateUtils.addHours(agenda.getDataReserva(), agenda.getQtdeHoras()));
+        Date roundedDate = DateUtils.round(agenda.getDataReserva(), Calendar.HOUR);
+        this.setStart(DateUtils.setHours(roundedDate, agenda.getHorario().getTranslatedHourToInt()));
+        this.setEnd(DateUtils.addHours(roundedDate, agenda.getQtdeHoras()));
         this.id = agenda.getId();
     }
 

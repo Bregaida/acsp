@@ -139,6 +139,7 @@ $(document).ready(function(){
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
+        allDaySlot :false,
         allDayText: 'dia-todo',
         buttonText: {
             prev:     '&lsaquo;', // <
@@ -157,8 +158,12 @@ $(document).ready(function(){
             day: 'dddd d/M'  // Monday 9/7
         },
 
-        agenda: 'h:mm{ - h:mm}',
-        timeFormat: 'H(:mm)',
+        agenda: 'HH:mm{ - HH:mm}',
+        timeFormat: 'HH:mm',
+        axisFormat : 'HH:mm',
+
+        minTime: 8,
+        maxTime: 19,
 
         monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
             'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],

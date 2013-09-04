@@ -83,7 +83,7 @@
                     <li><a href="/acsp/atendentes">Manutenção de Atendentes</a></li>
                     <li><a href="/acsp/aeronaves">Manutenção de Aeronaves</a></li>
                     <li><a href="/acsp/aulas">Manutenção de Aulas</a></li>
-                    <li><a href="/acsp/agendas">Manutenção de Agendamentos</a></li>
+                    <li><a href="/acsp/agendamentos">Manutenção de Agendamentos</a></li>
                     <li><a href="#">Informações do Sistema</a></li>
                 </ul>
             </li>
