@@ -13,7 +13,7 @@
             <c:url value="/aula" var="urlAction"/>
             <form:form action="${urlAction}" method="POST" commandName="aula" role="form">
                 <div class="modal-body">
-                    <c:import url="fieldSet.jsp"/>
+                    <jsp:include page="fieldSet.jsp"/>
                 </div>
                 <div class="modal-footer">
                     <div class="btn-group pull-right">

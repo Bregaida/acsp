@@ -67,7 +67,7 @@ $('.editaAction').click(function(e) {
 $('.apagaAction').click(function(e) {
     var $tr = $(this).closest('tr');
     var action = $('#myModal form').attr('action');
-    bootbox.confirm('Confirma remo����o?', function (result) {
+    bootbox.confirm('Confirma remoção?', function (result) {
         if (result) {
             var id = $tr.attr('id');
             $.ajax({
@@ -88,15 +88,6 @@ $('.apagaAction').click(function(e) {
     });
 });
 
-$('#actionAgendar').click( function(e) {
-    var formRef = $('#myModal form');
-    var actionVal = formRef.attr('action');
-
-    $.post(actionVal, formRef.serialize(), function(result) {
-        $('.modal').html($(result).filter('.modal').html());
-    });
-});
-
 $('.cpf').focusout(function() {
     var cpf = $(this).val();
     var qtd = cpf.length;
@@ -110,8 +101,15 @@ $('.cpf').focusout(function() {
     }
 });
 
+$( ".datepicker-input" ).datepicker({
+    format: "dd/mm/yyyy",
+    todayBtn: "linked",
+    language: "pt-BR",
+    todayHighlight: true
+});
+
 /**
- * Inicializa����o do DataTables
+ * Inicialização do DataTables
  */
 $('.datatabled').dataTable();
 
@@ -148,7 +146,7 @@ $(document).ready(function(){
             prevYear: '&laquo;',  // <<
             nextYear: '&raquo;',  // >>
             today:    'hoje',
-            month:    'm��s',
+            month:    'mês',
             week:     'semana',
             day:      'dia'
         },
@@ -162,11 +160,11 @@ $(document).ready(function(){
         agenda: 'h:mm{ - h:mm}',
         timeFormat: 'H(:mm)',
 
-        monthNames: ['Janeiro', 'Fevereiro', 'Mar��o', 'Abril', 'Maio', 'Junho', 'Julho',
+        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
             'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
         monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
 
-        dayNames: ['Domingo', 'Segunda', 'Ter��a', 'Quarta','Quinta', 'Sexta', 'S��bado'],
+        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta','Quinta', 'Sexta', 'Sábado'],
         dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
 
         dayClick: function() {

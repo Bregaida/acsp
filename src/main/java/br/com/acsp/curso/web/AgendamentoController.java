@@ -53,6 +53,12 @@ public class AgendamentoController extends AbstractController {
         return new Agenda();
     }
 
+    @RequestMapping(value = "/agendamento", method = RequestMethod.GET)
+    public String formulario(ModelMap map) {
+        formularioMap(map);
+        return "agenda/formulario";
+    }
+
     @RequestMapping(value = "/agenda/ajax", method = RequestMethod.GET)
     @ResponseBody
     public Collection<EventDTO> obtemAgendamentosAjax(){

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<c:import url="../includes/header.jsp"/>
+<jsp:include page="../includes/header.jsp"/>
 
 <div class="row">
     <div class="col-md-8">
@@ -48,4 +48,5 @@
     </div>
 </div>
 
-<c:import url="../includes/footer.jsp"/>
+<c:import url="/agendamento"/>
+<jsp:include page="../includes/footer.jsp"/>

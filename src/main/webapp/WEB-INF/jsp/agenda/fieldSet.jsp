@@ -11,7 +11,7 @@
 
     <div class="form-group">
         <label for="dataReserva">Dia e mes da reserva</label>
-        <form:input path="dataReserva" id="dataReserva" cssClass="form-control"/>
+        <form:input path="dataReserva" id="dataReserva" cssClass="form-control datepicker-input"/>
     </div>
 
     <div class="form-group">

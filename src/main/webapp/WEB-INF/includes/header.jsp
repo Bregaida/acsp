@@ -27,6 +27,7 @@
     <link href="<c:url value="/resources/css/acsp-custom.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/DT-bootstrap.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/fullcalendar.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/datepicker.css"/>" rel="stylesheet">
 </head>
 <body>
 

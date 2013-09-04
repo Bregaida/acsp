@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<c:import url="../../includes/header.jsp"/>
+<jsp:include page="../../includes/header.jsp"/>
 
 <div class="clearfix">
     <table class="table table-striped table-hover table-condensed datatabled">
@@ -40,6 +40,6 @@
 <!-- Button trigger modal -->
 <a id="alunoModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Aluno</a>
 
-<c:import url="formulario.jsp"/>
+<jsp:include page="formulario.jsp"/>
 
-<c:import url="../../includes/footer.jsp"/>
+<jsp:include page="../../includes/footer.jsp"/>

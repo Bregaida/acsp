@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="../includes/header.jsp"/>
+<jsp:include page="../includes/header.jsp"/>
 
 <div class="jumbotron">
     <c:url value="/resources/img/logoACSP.png" var="logo" />
@@ -10,4 +10,4 @@
     <p><a href="https://github.com/Bregaida/acsp" class="btn btn-primary btn-lg">Projeto</a></p>
 </div>
 
-<c:import url="../includes/footer.jsp"/>
+<jsp:include page="../includes/footer.jsp"/>

@@ -13,7 +13,7 @@
             <c:url value="/aluno" var="urlAction"/>
             <form:form action="${urlAction}" method="POST" commandName="aluno" role="form">
                 <div class="modal-body">
-                    <c:import url="fieldSet.jsp"/>
+                    <jsp:include page="fieldSet.jsp"/>
                 </div>
                 <div class="modal-footer">
                     <div class="btn-group pull-right">

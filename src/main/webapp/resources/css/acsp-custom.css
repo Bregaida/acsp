@@ -5,3 +5,7 @@
 .btn-custom-block span {
     padding: 1px;
 }
+
+.datepicker {
+    z-index: 1050 !important;
+}
