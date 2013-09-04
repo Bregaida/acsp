@@ -41,10 +41,12 @@
         </table>
         <div class="row">
             <div class="col-md-6 pull-left">
-                <input id="actionAgendar" type="button" class="btn btn-primary btn-sm" value="Adicionar agendamento">
+            	<!-- Button trigger modal -->
+				<a id="agendaModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Agendamento</a>
             </div>
         </div>
     </div>
 </div>
 
+<c:import url="./agenda/formulario.jsp"/>
 <c:import url="../includes/footer.jsp"/>

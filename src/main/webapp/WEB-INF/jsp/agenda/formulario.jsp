@@ -10,10 +10,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Agenda</h4>
             </div>
-            <c:url value="/agendamento" var="urlAction"/>
+            <c:url value="./agendamento" var="urlAction"/>
             <form:form action="${urlAction}" method="POST" commandName="agenda" role="form">
                 <div class="modal-body">
-                    <c:import url="fieldSet.jsp"/>
+                
+                    <c:import url="./agenda/fieldSet.jsp"/>
                 </div>
                 <div class="modal-footer">
                     <div class="btn-group pull-right">

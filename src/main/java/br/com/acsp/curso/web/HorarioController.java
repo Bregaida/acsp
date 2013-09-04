@@ -21,18 +21,20 @@ import br.com.acsp.curso.service.HorarioService;
 
 @Controller
 public class HorarioController extends AbstractController {
-	
+
 	@Autowired
 	private HorarioService horarioService;
-	
+
 	// TODO Combo aninhada agenda
 	@RequestMapping(value = "/horario/disponiveis/{idAeronave}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Horario> listarHorasPorDisponibilidadeAeronave(@PathVariable("idAeronave") Long idAeronave) {
-		//horarioService.listarHorasPorDisponibilidadeAeronave(idAeronave);
-		System.out.println("Partiu Australia " + idAeronave);
-		
-		return null;
+	public List<Horario> listarHorasPorDisponibilidadeAeronave(
+			@PathVariable("idAeronave") Long idAeronave) {
+		// horarioService.listarHorasPorDisponibilidadeAeronave(idAeronave);
+		// System.out.println("Partiu Australia " + idAeronave);
+		// Que Sysout é esse? =P
+
+		return (List<Horario>) horarioService.listarOrdenado();
 	}
 
 }

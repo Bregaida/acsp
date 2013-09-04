@@ -67,7 +67,7 @@ $('.editaAction').click(function(e) {
 $('.apagaAction').click(function(e) {
     var $tr = $(this).closest('tr');
     var action = $('#myModal form').attr('action');
-    bootbox.confirm('Confirma remoção?', function (result) {
+    bootbox.confirm('Confirma remo����o?', function (result) {
         if (result) {
             var id = $tr.attr('id');
             $.ajax({
@@ -88,8 +88,13 @@ $('.apagaAction').click(function(e) {
     });
 });
 
-$('#actionAgendar').click(function(){
-    bootbox.alert('Abre tela de agendamento');
+$('#actionAgendar').click( function(e) {
+    var formRef = $('#myModal form');
+    var actionVal = formRef.attr('action');
+
+    $.post(actionVal, formRef.serialize(), function(result) {
+        $('.modal').html($(result).filter('.modal').html());
+    });
 });
 
 $('.cpf').focusout(function() {
@@ -106,7 +111,7 @@ $('.cpf').focusout(function() {
 });
 
 /**
- * Inicialização do DataTables
+ * Inicializa����o do DataTables
  */
 $('.datatabled').dataTable();
 
@@ -143,7 +148,7 @@ $(document).ready(function(){
             prevYear: '&laquo;',  // <<
             nextYear: '&raquo;',  // >>
             today:    'hoje',
-            month:    'mês',
+            month:    'm��s',
             week:     'semana',
             day:      'dia'
         },
@@ -157,11 +162,11 @@ $(document).ready(function(){
         agenda: 'h:mm{ - h:mm}',
         timeFormat: 'H(:mm)',
 
-        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+        monthNames: ['Janeiro', 'Fevereiro', 'Mar��o', 'Abril', 'Maio', 'Junho', 'Julho',
             'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
         monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
 
-        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta','Quinta', 'Sexta', 'Sábado'],
+        dayNames: ['Domingo', 'Segunda', 'Ter��a', 'Quarta','Quinta', 'Sexta', 'S��bado'],
         dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
 
         dayClick: function() {
