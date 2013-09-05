@@ -80,10 +80,12 @@ public class InstrutorController extends AbstractController {
 	}
 
 	// TODO Combo aninhada agenda
-	@RequestMapping(value = "/instrutoresDisponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
+	@RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Instrutor> listarInstrutoresDisponiveisPorHoraAeronaveAula(@PathVariable("idHora") Long idHora,@PathVariable("idAeronave") Long idAeronave,@PathVariable("idAula") Long idAula) {
-		return null;
+		//System.out.println("idHora" + idHora + " idAeronave" + idAeronave + " idAula" + idAula);
+		//TODO chamar o metodo certo
+		return (List<Instrutor>) instrutorService.listarOrdenado();
 	}
 
 }
