@@ -64,7 +64,7 @@
             <li class="${atendenteMenu}">
                 <a href="/acsp/atendentes">Atendentes</a>
             </li>
-            <li class="dropdown">
+            <!--  li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Relatório I</a></li>
@@ -72,7 +72,7 @@
                     <li><a href="#">Relatório III</a></li>
                     <li><a href="#">Relatório IV</a></li>
                 </ul>
-            </li>
+            </li -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
