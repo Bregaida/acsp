@@ -12,11 +12,7 @@ function aplicarObjetoNoFormulario(obj, formId){
         var attrType = input.attr('type');
         if (input.is('select')) {
             attrName = attrName.split('.')[0];
-            var refSelected = obj[attrName];
-            var valueSelected = obj[attrName];
-            if(refSelected instanceof Object){
-                valueSelected = refSelected.id;
-            }
+            var valueSelected = (obj[attrName] instanceof Object)?obj[attrName].id : obj[attrName];
             var selector = '#' + attrName + ' option:eq(' + valueSelected + ')';
             $(selector).prop('selected', true);
         } else if (obj[attrName] != undefined && obj[attrName] != null) {
