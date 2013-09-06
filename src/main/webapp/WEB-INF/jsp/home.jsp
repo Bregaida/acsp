@@ -15,11 +15,11 @@
                 <td>Horários</td>
             </thead>
             <tr>
-                <td>Piper</td>
+                <td>PT-IZQ - Cherokee</td>
                 <td>09-11, 11-12, 13-14, 16-17</td>
             </tr>
             <tr>
-                <td>A330</td>
+                <td>PR-MRG - A330</td>
                 <td>13-14, 16-17</td>
             </tr>
         </table>

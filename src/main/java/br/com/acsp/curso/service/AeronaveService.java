@@ -27,4 +27,8 @@ public class AeronaveService extends AbstractService<Aeronave, Long> {
 		return ((AeronaveRepository) repository).listarOrdenadoPorModelo();
 	}
 
+	public Collection<Aeronave> listarAtivas() {
+		return ((AeronaveRepository) repository).listarAtivas();
+	}
+
 }

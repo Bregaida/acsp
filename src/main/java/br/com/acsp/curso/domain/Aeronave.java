@@ -3,11 +3,20 @@
  */
 package br.com.acsp.curso.domain;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @author eduardobregaida
@@ -19,13 +28,13 @@ public class Aeronave implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-    @NotBlank
+	@NotBlank
 	@Column
 	private String certificadoMatricula;
-    @NotBlank
+	@NotBlank
 	@Column
 	private String marca;
-    @NotBlank
+	@NotBlank
 	@Column
 	private String modelo;
 	@Column
@@ -35,18 +44,25 @@ public class Aeronave implements Serializable {
 	@Column
 	private String apoliceSeguro;
 	@Column
+	@Type(type = "yes_no")
 	private boolean fichaPesoBalanceamento;
 	@Column
+	@Type(type = "yes_no")
 	private boolean manualVoo;
 	@Column
+	@Type(type = "yes_no")
 	private boolean checkList;
 	@Column
+	@Type(type = "yes_no")
 	private boolean nsca3_5;
 	@Column
+	@Type(type = "yes_no")
 	private boolean nsca3_7;
 	@Column
+	@Type(type = "yes_no")
 	private boolean diarioBordo;
 	@Column
+	@Type(type = "yes_no")
 	private boolean ativo;
 	@Column
 	private String motivoInatividade;

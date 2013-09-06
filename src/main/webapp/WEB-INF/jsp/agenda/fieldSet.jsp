@@ -20,8 +20,13 @@
     </div>
 
     <div class="form-group">
-        <label for="aeronave">Aeronave</label>
-        <form:select path="aeronave.id" id="aeronave" items="${listaDeAeronaves}" itemValue="id" itemLabel="modelo" cssClass="form-control" />
+    	<label for="aeronave">Aeronave</label>
+    	<form:select id="aeronave" name="aeronaveId" path="aeronave.id" cssClass="form-control" >
+    		<option value="">Selecione a Aeronave</option>
+    		<c:forEach var="acft" items="${listaDeAeronaves}">
+        		<form:option value="${acft.id}"><c:out value="${acft.certificadoMatricula} - ${acft.modelo}"/></form:option>
+    		</c:forEach>
+		</form:select>
     </div>
 
     <div class="form-group">

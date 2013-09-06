@@ -44,6 +44,7 @@ insert into Aeronave (id, apoliceSeguro, ativo, certificadoMatricula, checkList,
 insert into Aeronave (id, apoliceSeguro, ativo, certificadoMatricula, checkList, dentel, diarioBordo, fiam, fichaPesoBalanceamento, manualVoo, marca, modelo, nsca3_5, nsca3_7) values (null, 234, 'Y', 'PT-IZQ', 567, 'Y', '33', 'Y', 'Y', 'Y', 'Piper', 'Cherokee', 'Y', 'Y');
 insert into Aeronave (id, apoliceSeguro, ativo, certificadoMatricula, checkList, dentel, diarioBordo, fiam, fichaPesoBalanceamento, manualVoo, marca, modelo, nsca3_5, nsca3_7) values (null, 234, 'Y', 'PT-IZS', 567, 'Y', '33', 'Y', 'Y', 'Y', 'Piper', 'Cherokee', 'Y', 'Y');
 insert into Aeronave (id, apoliceSeguro, ativo, certificadoMatricula, checkList, dentel, diarioBordo, fiam, fichaPesoBalanceamento, manualVoo, marca, modelo, nsca3_5, nsca3_7) values (null, 234, 'Y', 'PT-NXS', 567, 'Y', '33', 'Y', 'Y', 'Y', 'Embraer', 'Tupi', 'Y', 'Y');
+insert into Aeronave (id, apoliceSeguro, ativo, certificadoMatricula, checkList, dentel, diarioBordo, fiam, fichaPesoBalanceamento, manualVoo, marca, modelo, nsca3_5, nsca3_7) values (null, 234, 'N', 'PP-BPP', 567, 'Y', '33', 'Y', 'Y', 'Y', 'Embraer', 'Tupi', 'Y', 'Y');
 insert into Aula (id,materia, quantidadeHorasNecessarias) values (null,'Manobras Altas', 50);
 insert into Aula (id,materia, quantidadeHorasNecessarias) values (null,'TGL', 200);
 insert into Aula (id,materia, quantidadeHorasNecessarias) values (null,'Aperfeicoamento', 250);

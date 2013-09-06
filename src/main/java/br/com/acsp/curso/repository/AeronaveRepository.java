@@ -18,4 +18,8 @@ public interface AeronaveRepository extends JpaRepository<Aeronave, Long> {
 	@Query("select a from Aeronave a order by a.modelo")
 	Collection<Aeronave> listarOrdenadoPorModelo();
 
+	@Query("select a from Aeronave a where a.ativo <>" + "'N'"
+			+ " order by a.modelo ")
+	Collection<Aeronave> listarAtivas();
+
 }
