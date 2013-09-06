@@ -23,7 +23,7 @@
     	<label for="aeronave">Aeronave</label>
         <form:select id="aeronave" name="aeronaveId" path="aeronave.id" cssClass="form-control">
             <form:option value="NONE" label="--- Selecione ---"/>
-            <form:options items="${listaDeAeronaves}" />
+            <form:options items="${listaDeAeronaves}" itemValue="id"/>
         </form:select>
     </div>
 
