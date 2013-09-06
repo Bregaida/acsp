@@ -199,4 +199,8 @@ public class Aeronave implements Serializable {
 		this.aulas = aulas;
 	}
 
+    @Override
+    public String toString() {
+        return certificadoMatricula + ' ' + modelo;
+    }
 }
