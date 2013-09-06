@@ -12,13 +12,13 @@ function aplicarObjetoNoFormulario(obj, formId){
         var attrType = input.attr('type');
         if (input.is('select')) {
             attrName = attrName.split('.')[0];
-            var values = [],
-                objects = [].concat(obj[attrName]);
-            $.each(objects, function(key, value) {
-                values.push(value.id);
-            });
-            input.val(values);
-
+            var refSelected = obj[attrName];
+            var valueSelected = obj[attrName];
+            if(refSelected instanceof Object){
+                valueSelected = refSelected.id;
+            }
+            var selector = '#' + attrName + ' option:eq(' + valueSelected + ')';
+            $(selector).prop('selected', true);
         } else if (obj[attrName] != undefined && obj[attrName] != null) {
             if (attrType === 'checkbox') { //TODO - implementar casos de radio button!
                 input.prop('checked', obj[attrName]);
@@ -54,15 +54,19 @@ $('.modal').on('click', '.insereAction', function(e) {
 $('.editaAction').click(function(e) {
     var id = $(this).closest('tr').attr('id');
     var $form = $('#myModal form');
-    $form[0].reset();
-    var action = $form.attr('action');
-    $.ajax({
-        url: action + '/' + id
-    }).done(function(returnObject) {
-        aplicarObjetoNoFormulario(returnObject, "#" + $form.attr('id'));
-        $('#myModal').modal('show');
-    });
+    editAction(id, $form);
 });
+
+function editAction(id, form) {
+    form[0].reset();
+    var action = form.attr('action') + '/' + id;
+    $.ajax({
+        url: action
+    }).done(function(returnObject) {
+            aplicarObjetoNoFormulario(returnObject, "#" + form.attr('id'));
+            $('#myModal').modal('show');
+        });
+};
 
 $('.apagaAction').click(function(e) {
     var $tr = $(this).closest('tr');
@@ -179,20 +183,13 @@ $(document).ready(function(){
         events: '/acsp/agenda/ajax',
 
         eventClick: function(calEvent, jsEvent, view) {
-
-            alert('Event: ' + calEvent.title + ", id: " + calEvent.id);
-            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            //alert('View: ' + view.name);
-
-            // change the border color just for fun
-            $(this).css('border-color', 'red');
-
+            editAction(calEvent.id, $('#agenda'));
         },
         eventMouseover: function(calEvent, jsEvent, view) {
-            console.log("-> " + calEvent.id);
+            //console.log("-> " + calEvent.id);
         },
         eventMouseout: function(calEvent, jsEvent, view) {
-            console.log("<- " + calEvent.id);
+            //console.log("<- " + calEvent.id);
         }
     })
 });
