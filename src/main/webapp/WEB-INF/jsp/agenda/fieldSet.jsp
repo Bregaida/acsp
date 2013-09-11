@@ -10,46 +10,51 @@
     </div>
 
     <div class="form-group">
-        <label for="dataReserva">Dia e mes da reserva</label>
-        <form:input path="dataReserva" id="dataReserva" cssClass="form-control datepicker-input"/>
+        <label for="dataReserva"><spring:message code="agenda.dataReserva"/></label>
+        <form:input path="dataReserva" id="modelo" cssClass="form-control"/>
+        <form:errors path="dataReserva" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
-        <label for="aluno">Aluno</label>
-        <form:select path="aluno.id" id="aluno" items="${listaDeAlunos}" itemValue="id" itemLabel="nome" cssClass="form-control" />
+    <label for="aluno"><spring:message code="agenda.aluno"/></label>
+    <form:select path="aluno.id" id="aluno" items="${listaDeAlunos}" itemValue="id" itemLabel="nome" cssClass="form-control" />
+    <form:errors path="aluno.id" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
-    	<label for="aeronave">Aeronave</label>
+    	<label for="aeronave"><spring:message code="agenda.aeronave"/></label>
         <form:select id="aeronave" name="aeronaveId" path="aeronave.id" cssClass="form-control">
             <form:option value="NONE" label="--- Selecione ---"/>
             <form:options items="${listaDeAeronaves}" itemValue="id"/>
         </form:select>
+        <form:errors path="id" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
-        <label>Horas Disponíveis</label>
+        <label for="horario"><spring:message code="agenda.horario"/></label>
         <form:select path="horario.id" id="horario" items="${listaDeHorarios}" itemValue="id" itemLabel="horarioAgenda" cssClass="form-control" />
+        <form:errors path="horario.id" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
-        <label for="qtdeHoras">Quantidade de Horas</label>
+        <label for="qtdeHoras"><spring:message code="agenda.qtdeHoras"/></label>
         <form:input path="qtdeHoras" id="qtdeHoras" cssClass="form-control"/>
+        <form:errors path="qtdeHoras" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
-        <label for="aula">Aula</label>
+        <label for="aula"><spring:message code="agenda.aula"/></label>
         <form:select path="aula.id" id="aula" items="${listaDeAulas}" itemValue="id" itemLabel="materia" cssClass="form-control" />
     </div>
 
     <div class="form-group">
-        <label for="instrutor">Instrutores Disponíveis</label>
+        <label for="instrutor"><spring:message code="agenda.instrutor"/></label>
         <form:select path="instrutor.id" id="instrutor" items="${listaDeInstrutores}" itemValue="id" itemLabel="nome" cssClass="form-control" />
     </div>
    
     <div class="checkbox">
         <label>
             <form:checkbox path="flag360milhas" value="true"/>
-            360 Milhas
+            <spring:message code="agenda.360Milhas"/>
         </label>
     </div>
