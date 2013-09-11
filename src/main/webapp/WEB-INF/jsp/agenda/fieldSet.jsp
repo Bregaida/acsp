@@ -4,36 +4,32 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
     <form:hidden path="id"/>
-
-    <div class="form-group">
-        <form:errors path="*" cssClass="help-block alert-danger"/>
-    </div>
-
+ 
     <div class="form-group">
         <label for="dataReserva"><spring:message code="agenda.dataReserva"/></label>
-        <form:input path="dataReserva" id="modelo" cssClass="form-control"/>
+        <form:input path="dataReserva" id="modelo" cssClass="form-control" maxlength="10"/>
         <form:errors path="dataReserva" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
-    <label for="aluno"><spring:message code="agenda.aluno"/></label>
-    <form:select path="aluno.id" id="aluno" items="${listaDeAlunos}" itemValue="id" itemLabel="nome" cssClass="form-control" />
-    <form:errors path="aluno.id" cssClass="help-block alert-danger"/>
+    	<label for="aluno"><spring:message code="agenda.aluno"/></label>
+    	<form:select path="aluno.id" id="aluno" items="${listaDeAlunos}" itemValue="id" itemLabel="nome" cssClass="form-control" />
+    	<form:errors path="aluno" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
     	<label for="aeronave"><spring:message code="agenda.aeronave"/></label>
         <form:select id="aeronave" name="aeronaveId" path="aeronave.id" cssClass="form-control">
-            <form:option value="NONE" label="--- Selecione ---"/>
+            <form:option value="" label="--- Selecione ---"/>
             <form:options items="${listaDeAeronaves}" itemValue="id"/>
         </form:select>
-        <form:errors path="id" cssClass="help-block alert-danger"/>
+        <form:errors path="aeronave" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="horario"><spring:message code="agenda.horario"/></label>
         <form:select path="horario.id" id="horario" items="${listaDeHorarios}" itemValue="id" itemLabel="horarioAgenda" cssClass="form-control" />
-        <form:errors path="horario.id" cssClass="help-block alert-danger"/>
+        <form:errors path="horario" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">

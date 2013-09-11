@@ -3,10 +3,22 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @author eduardobregaida
@@ -15,13 +27,21 @@ import java.util.List;
 @Entity
 public class Aula implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 27861293997381111L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column
     private String materia;
 
+    //TODO ideal eh pegar do properties para i18n
+    @NotNull( message = "Quantidade de horas não pode ser vazio" )
     @Column
     private Long quantidadeHorasNecessarias;
 

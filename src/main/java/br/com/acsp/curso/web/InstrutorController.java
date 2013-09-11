@@ -5,21 +5,23 @@ package br.com.acsp.curso.web;
 
 import java.util.List;
 
-import br.com.acsp.curso.domain.EscolaridadeType;
-import br.com.acsp.curso.domain.Horario;
-import br.com.acsp.curso.domain.Instrutor;
-import br.com.acsp.curso.service.InstrutorService;
+import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
+import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.domain.Instrutor;
+import br.com.acsp.curso.service.InstrutorService;
 
 /**
  * @author pedrosa

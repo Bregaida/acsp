@@ -3,13 +3,26 @@
  */
 package br.com.acsp.curso.domain;
 
-import br.com.acsp.curso.util.CustomDateSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import br.com.acsp.curso.util.CustomDateSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * @author pedrosa
@@ -18,6 +31,11 @@ import java.util.Date;
 @Entity
 public class Agenda implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5046199074240555898L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,9 +43,11 @@ public class Agenda implements Serializable {
     @JsonSerialize(using = CustomDateSerializer.class)
     @DateTimeFormat(style = "S-")
 	@Column
+	@NotNull
 	private Date dataReserva;
 
-	@ManyToOne
+    @NotNull
+    @ManyToOne
 	@JoinColumn(name = "aeronave_id")
 	private Aeronave aeronave;
 
@@ -39,6 +59,7 @@ public class Agenda implements Serializable {
 	@JoinColumn(name = "aula_id")
 	private Aula aula;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "aluno_id")
 	private Aluno aluno;
@@ -47,10 +68,12 @@ public class Agenda implements Serializable {
 	@JoinColumn(name = "socio_id")
 	private Socio socio;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "horario_id")
 	private Horario horario; 
 
+	@NotNull
 	@Column
 	private Integer qtdeHoras;
 

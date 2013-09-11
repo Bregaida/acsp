@@ -5,28 +5,28 @@
 
     <form:hidden path="id"/>
 
-    <div class="form-group">
-        <form:errors path="*" cssClass="help-block alert-danger"/>
-    </div>
-
 	<div class="form-group">
-        <label for="nome">N. Inscr.</label>
+        <label for="numeroInscricao">Número de Inscrição</label>
         <form:input path="numeroInscricao" id="numeroInscricao" cssClass="form-control"/>
+        <form:errors path="numeroInscricao" cssClass="help-block alert-danger"/>
     </div>
     
     <div class="form-group">
         <label for="nome">Nome</label>
         <form:input path="nome" id="nome" cssClass="form-control"/>
+        <form:errors path="nome" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="rg">RG</label>
         <form:input path="rg" id="rg" cssClass="form-control"/>
+        <form:errors path="rg" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">
         <label for="cpf">CPF</label>
         <form:input path="cpf" id="cpf" cssClass="form-control cpf" size="14" maxlength="14"/>
+        <form:errors path="cpf" cssClass="help-block alert-danger"/>
     </div>
 
     <div class="form-group">

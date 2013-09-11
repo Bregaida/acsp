@@ -5,18 +5,17 @@
 
 <form:hidden path="id"/>
 
-<div class="form-group">
-    <form:errors path="*" cssClass="help-block alert-danger"/>
-</div>
 
 <div class="form-group">
     <label for="materia">Matéria</label>
     <form:input path="materia" id="materia" cssClass="form-control"/>
+    <form:errors path="materia" cssClass="help-block alert-danger"/>
 </div>
 
 <div class="form-group">
     <label for="quantidadeHorasNecessarias">Quantidade de Horas para instrução</label>
     <form:input path="quantidadeHorasNecessarias" id="quantidadeHorasNecessarias" cssClass="form-control"/>
+    <form:errors path="quantidadeHorasNecessarias" cssClass="help-block alert-danger"/>
 </div>
 
 <div class="form-group">

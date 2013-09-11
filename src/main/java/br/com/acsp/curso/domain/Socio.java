@@ -6,6 +6,7 @@ package br.com.acsp.curso.domain;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author eduardobregaida
@@ -16,6 +17,7 @@ public class Socio extends Piloto {
 
 	private static final long serialVersionUID = -4735921766760735482L;
 
+	@NotNull( message = "Número de inscrição não pode ser vazio" )
 	@Column
 	private Long numeroInscricao;
 

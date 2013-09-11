@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-group">
-        <label for="cpf"><spring:message code="aluno.CPF"/></label>
+        <label for="cpf"><spring:message code="aluno.cpf"/></label>
         <form:input path="cpf" id="cpf" cssClass="form-control cpf" size="14" maxlength="14"/>
         <form:errors path="cpf" cssClass="help-block alert-danger"/>
     </div>
