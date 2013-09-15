@@ -3,22 +3,32 @@
  */
 package br.com.acsp.curso.domain;
 
-import br.com.acsp.curso.util.CustomEnumEscolaridadeSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+import br.com.acsp.curso.util.CustomEnumEscolaridadeSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * @author eduardobregaida
- * http://en.wikibooks.org/wiki/Java_Persistence/Inheritance
+ *         http://en.wikibooks.org/wiki/Java_Persistence/Inheritance
  */
 @Entity
 @Inheritance
-@DiscriminatorColumn(name="PESSOA_TYPE")
+@DiscriminatorColumn(name = "PESSOA_TYPE")
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = -5261337447506230696L;
@@ -30,20 +40,25 @@ public class Pessoa implements Serializable {
 	@NotBlank
 	@Column
 	private String nome;
+	
 	@NotBlank
 	@Column
 	private String rg;
-    @NotNull
+	
+	@CPF
 	@Column
-	private Long cpf;
+	private String cpf;
+	
 	@Column
 	private Long tituloEleitor;
+	
 	@Column
 	private Long alistamentoMilitar;
+	
 	@Column
 	private boolean ativo;
 
-    @JsonSerialize(using = CustomEnumEscolaridadeSerializer.class)
+	@JsonSerialize(using = CustomEnumEscolaridadeSerializer.class)
 	@Enumerated(EnumType.ORDINAL)
 	private EscolaridadeType escolaridade;
 
@@ -63,11 +78,11 @@ public class Pessoa implements Serializable {
 		this.rg = rg;
 	}
 
-	public Long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 

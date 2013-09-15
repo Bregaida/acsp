@@ -15,6 +15,11 @@ import java.io.Serializable;
 @Entity
 public class Horario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2775523320331807282L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
