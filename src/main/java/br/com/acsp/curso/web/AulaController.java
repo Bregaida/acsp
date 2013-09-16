@@ -6,6 +6,7 @@ package br.com.acsp.curso.web;
 import br.com.acsp.curso.domain.Aula;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AulaService;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,8 +68,9 @@ public class AulaController extends AbstractController {
             map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
             return "aula/formulario";
         }
+        final String msgOperacao = getMensagemOperacao(aula.getId());
         aulaService.salvar(aula);
-        map.put("msgSucesso", "Aula " + aula.getMateria() + " inserida com exito.");
+        map.put("msgSucesso", "Aula " + aula.getMateria() + " " + msgOperacao + " com exito.");
         return "success";
     }
 }

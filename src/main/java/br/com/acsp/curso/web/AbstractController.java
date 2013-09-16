@@ -37,5 +37,9 @@ public abstract class AbstractController {
         });
         binder.registerCustomEditor(EscolaridadeType.class, new CustomEnumEscolaridadeEditor());
     }
+    
+    public String getMensagemOperacao(Long id){
+    	return id == null ? "inserido(a)" : "alterado(a)"; 
+    }
 
 }

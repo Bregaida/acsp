@@ -43,6 +43,6 @@
     <div class="checkbox">
         <label for="ativo">
             <form:checkbox path="ativo" id="ativo"/>
-            Ativo
+            <spring:message code="atendente.ativo"/>
         </label>
     </div>

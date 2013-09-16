@@ -28,7 +28,7 @@ import br.com.acsp.curso.service.AeronaveService;
  * 
  */
 @Controller
-public class AeronaveController {
+public class AeronaveController extends AbstractController {
 
 	private static final Log logger = LogFactory.getLog(AeronaveController.class);
 
@@ -69,8 +69,9 @@ public class AeronaveController {
             return "aeronave/formulario";
         }
         logger.info("AeronaveController: salva");
+        final String msgOperacao = getMensagemOperacao(aeronave.getId());
         aeronaveService.salvar(aeronave);
-        map.put("msgSucesso", "Aeronave " + aeronave.getCertificadoMatricula() + " inserida com exito.");
+        map.put("msgSucesso", "Aeronave " + aeronave.getCertificadoMatricula() + " " + msgOperacao + " com exito.");
         return "success";
     }
 	

@@ -6,6 +6,7 @@ package br.com.acsp.curso.web;
 import br.com.acsp.curso.domain.Atendente;
 import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.service.AtendenteService;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,8 +74,9 @@ public class AtendenteController extends AbstractController {
         }
 
         logger.info("AtendenteController: salva");
+        final String msgOperacao = getMensagemOperacao(atendente.getId());
         atendenteService.salvar(atendente);
-        map.put("msgSucesso", "Atendente " + atendente.getNome() + " inserido com exito.");
+        map.put("msgSucesso", "Atendente " + atendente.getNome() + " " + msgOperacao +  " com exito.");
         return "success";
     }
 }

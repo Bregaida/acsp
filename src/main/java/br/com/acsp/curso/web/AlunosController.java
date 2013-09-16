@@ -81,8 +81,9 @@ public class AlunosController extends AbstractController {
             map.put("escolaridades", EscolaridadeType.values());
             return "aluno/formulario";
         }
+        final String msgOperacao = getMensagemOperacao(aluno.getId());
         alunoService.salvar(aluno);
-        map.put("msgSucesso", "Aluno " + aluno.getNome() + " inserido com exito.");
+        map.put("msgSucesso", "Aluno " + aluno.getNome() + " " + msgOperacao + " com exito.");
         return "success";
     }
 }

@@ -7,6 +7,7 @@ import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.domain.Socio;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.SocioService;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,8 +73,9 @@ public class SocioController extends AbstractController {
             map.put("escolaridades", EscolaridadeType.values());
             return "socio/formulario";
         }
+        final String msgOperacao = getMensagemOperacao(socio.getId());
         socioService.salvar(socio);
-        map.put("msgSucesso", "Socio " + socio.getNome() + " inserido com exito.");
+        map.put("msgSucesso", "Socio " + socio.getNome() + " " + msgOperacao +  " com exito.");
         return "success";
     }
 }

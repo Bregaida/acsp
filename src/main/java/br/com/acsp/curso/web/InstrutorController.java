@@ -76,8 +76,9 @@ public class InstrutorController extends AbstractController {
 			map.put("escolaridades", EscolaridadeType.values());
 			return "instrutor/formulario";
 		}
+		final String msgOperacao = getMensagemOperacao(instrutor.getId());
 		instrutorService.salvar(instrutor);
-		map.put("msgSucesso", "Instrutor " + instrutor.getNome() + " inserido com exito.");
+		map.put("msgSucesso", "Instrutor " + instrutor.getNome() + " " + msgOperacao +  " com exito.");
 		return "success";
 	}
 
