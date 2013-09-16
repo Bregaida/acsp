@@ -18,4 +18,6 @@ public interface InstrutorRepository extends JpaRepository<Instrutor, Long> {
 	@Query("select a from Instrutor a order by a.nome")
 	Collection<Instrutor> listarOrdenadoPorNome();
 
+    @Query("select a from Instrutor a where a.ativo <> 'N' order by a.nome ")
+    Collection<Instrutor> listarAtivos();
 }

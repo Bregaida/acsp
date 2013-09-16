@@ -28,4 +28,8 @@ public class AlunoService extends AbstractService<Aluno, Long> {
         return ((AlunoRepository) repository).listarOrdenadoPorNome();
     }
 
+    public Collection<Aluno> listarAtivos() {
+        return ((AlunoRepository) repository).listarAtivos();
+    }
+
 }

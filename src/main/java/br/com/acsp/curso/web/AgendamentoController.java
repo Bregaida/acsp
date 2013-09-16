@@ -10,6 +10,7 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import br.com.acsp.curso.domain.Aluno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -55,7 +56,7 @@ public class AgendamentoController extends AbstractController {
 	/**
 	 * Este metodo adiciona a agenda ao (form) request, basta usar o form com o
 	 * nome de "agenda"
-	 * 
+	 *
 	 * @return
 	 */
 	@ModelAttribute("agenda")
@@ -100,12 +101,13 @@ public class AgendamentoController extends AbstractController {
 	}
 
 	private void formularioMap(ModelMap map) {
-		map.put("listaDeAlunos", alunoService.listarOrdenado());
-		map.put("listaDeSocios", socioService.listarOrdenado());
+		map.put("listaDeAlunos", alunoService.listarAtivos());
+		map.put("listaDeSocios", socioService.listarAtivos());
 		map.put("listaDeAeronaves", aeronaveService.listarAtivas());
-		map.put("listaDeInstrutores", instrutorService.listarOrdenado());
+		map.put("listaDeInstrutores", instrutorService.listarAtivos());
 		map.put("listaDeAulas", aulaService.listarOrdenado());
 		map.put("listaDeHorarios", horarioService.listarOrdenado());
+
 	}
 
 	@RequestMapping(value = "/agendamento/{id}/apaga", method = RequestMethod.GET)

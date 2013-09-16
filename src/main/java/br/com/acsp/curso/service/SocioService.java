@@ -25,4 +25,8 @@ public class SocioService extends AbstractService<Socio, Long> {
     public Collection<Socio> listarOrdenado() {
         return ((SocioRepository) repository).listarOrdenadoPorNome();
     }
+
+    public Collection<Socio> listarAtivos() {
+        return ((SocioRepository) repository).listarAtivos();
+    }
 }
