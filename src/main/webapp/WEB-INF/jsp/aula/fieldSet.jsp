@@ -7,18 +7,18 @@
 
 
 <div class="form-group">
-    <label for="materia">Matéria</label>
+    <label for="materia"><spring:message code="aula.materia"/></label>
     <form:input path="materia" id="materia" cssClass="form-control"/>
     <form:errors path="materia" cssClass="help-block alert-danger"/>
 </div>
 
 <div class="form-group">
-    <label for="quantidadeHorasNecessarias">Quantidade de Horas para instrução</label>
+    <label for="quantidadeHorasNecessarias"><spring:message code="aula.quantidadeHorasNecessarias"/></label>
     <form:input path="quantidadeHorasNecessarias" id="quantidadeHorasNecessarias" cssClass="form-control"/>
     <form:errors path="quantidadeHorasNecessarias" cssClass="help-block alert-danger"/>
 </div>
 
 <div class="form-group">
-    <label for="aeronave">Aeronaves</label>
+    <label for="aeronave"><spring:message code="aula.aeronaves"/></label>
     <form:select path="aeronaves" id="aeronave" items="${listaDeAeronaves}" itemValue="id" itemLabel="modelo" cssClass="form-control" />
 </div>
