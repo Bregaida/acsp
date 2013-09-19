@@ -19,6 +19,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import br.com.acsp.curso.anotation.Reserva;
 import br.com.acsp.curso.util.CustomDateSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -43,6 +44,7 @@ public class Agenda implements Serializable {
     @DateTimeFormat(style = "S-")
 	@Column
 	@NotNull
+	@Reserva
 	private Date dataReserva;
 
     @NotNull
