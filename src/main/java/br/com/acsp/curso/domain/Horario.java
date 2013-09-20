@@ -4,8 +4,8 @@
 package br.com.acsp.curso.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,7 +40,7 @@ public class Horario implements Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "horario_aeronave", joinColumns = { @JoinColumn(name = "horario_id") }, inverseJoinColumns = { @JoinColumn(name = "aeronave_id") })
-    private List<Aeronave> aeronaves = new ArrayList<>();
+    private Set<Aeronave> aeronaves = new LinkedHashSet<>();
 
     public Long getId() {
 	return id;
@@ -62,11 +62,11 @@ public class Horario implements Serializable {
 	return LocalTime.parse(horarioAgenda).getHourOfDay();
     }
 
-    public List<Aeronave> getAeronaves() {
+    public Set<Aeronave> getAeronaves() {
 	return aeronaves;
     }
 
-    public void setAeronaves(List<Aeronave> aeronaves) {
+    public void setAeronaves(Set<Aeronave> aeronaves) {
 	this.aeronaves = aeronaves;
     }
 
