@@ -24,183 +24,195 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public class Aeronave implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotBlank
-	@Column
-	private String certificadoMatricula;
-	@NotBlank
-	@Column
-	private String marca;
-	@NotBlank
-	@Column
-	private String modelo;
-	@Column
-	private String dentel;
-	@Column
-	private String fiam;
-	@Column
-	private String apoliceSeguro;
-	@Column
-	@Type(type = "yes_no")
-	private boolean fichaPesoBalanceamento;
-	@Column
-	@Type(type = "yes_no")
-	private boolean manualVoo;
-	@Column
-	@Type(type = "yes_no")
-	private boolean checkList;
-	@Column
-	@Type(type = "yes_no")
-	private boolean nsca3_5;
-	@Column
-	@Type(type = "yes_no")
-	private boolean nsca3_7;
-	@Column
-	@Type(type = "yes_no")
-	private boolean diarioBordo;
-	@Column
-	@Type(type = "yes_no")
-	private boolean ativo;
-	@Column
-	private String motivoInatividade;
+    @NotBlank
+    @Column
+    private String certificadoMatricula;
+    @NotBlank
+    @Column
+    private String marca;
+    @NotBlank
+    @Column
+    private String modelo;
+    @Column
+    private String dentel;
+    @Column
+    private String fiam;
+    @Column
+    private String apoliceSeguro;
+    @Column
+    @Type(type = "yes_no")
+    private boolean fichaPesoBalanceamento;
+    @Column
+    @Type(type = "yes_no")
+    private boolean manualVoo;
+    @Column
+    @Type(type = "yes_no")
+    private boolean checkList;
+    @Column
+    @Type(type = "yes_no")
+    private boolean nsca3_5;
+    @Column
+    @Type(type = "yes_no")
+    private boolean nsca3_7;
+    @Column
+    @Type(type = "yes_no")
+    private boolean diarioBordo;
+    @Column
+    @Type(type = "yes_no")
+    private boolean ativo;
+    @Column
+    private String motivoInatividade;
 
-	@ManyToMany
-	@JoinTable(name = "aula_aeronave", joinColumns = { @JoinColumn(name = "aeronave_id") }, inverseJoinColumns = { @JoinColumn(name = "aula_id") })
-	private List<Aula> aulas;
+    @ManyToMany
+    @JoinTable(name = "aula_aeronave", joinColumns = { @JoinColumn(name = "aeronave_id") }, inverseJoinColumns = { @JoinColumn(name = "aula_id") })
+    private List<Aula> aulas;
 
-	public Long getId() {
-		return id;
-	}
+    @ManyToMany
+    @JoinTable(name = "horario_aeronave", joinColumns = { @JoinColumn(name = "aeronave_id") }, inverseJoinColumns = { @JoinColumn(name = "horario_id") })
+    private List<Horario> horarios;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public String getCertificadoMatricula() {
-		return certificadoMatricula;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public void setCertificadoMatricula(String certificadoMatricula) {
-		this.certificadoMatricula = certificadoMatricula;
-	}
+    public String getCertificadoMatricula() {
+	return certificadoMatricula;
+    }
 
-	public String getMarca() {
-		return marca;
-	}
+    public void setCertificadoMatricula(String certificadoMatricula) {
+	this.certificadoMatricula = certificadoMatricula;
+    }
 
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
+    public String getMarca() {
+	return marca;
+    }
 
-	public String getModelo() {
-		return modelo;
-	}
+    public void setMarca(String marca) {
+	this.marca = marca;
+    }
 
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
+    public String getModelo() {
+	return modelo;
+    }
 
-	public String getDentel() {
-		return dentel;
-	}
+    public void setModelo(String modelo) {
+	this.modelo = modelo;
+    }
 
-	public void setDentel(String dentel) {
-		this.dentel = dentel;
-	}
+    public String getDentel() {
+	return dentel;
+    }
 
-	public String getFiam() {
-		return fiam;
-	}
+    public void setDentel(String dentel) {
+	this.dentel = dentel;
+    }
 
-	public void setFiam(String fiam) {
-		this.fiam = fiam;
-	}
+    public String getFiam() {
+	return fiam;
+    }
 
-	public String getApoliceSeguro() {
-		return apoliceSeguro;
-	}
+    public void setFiam(String fiam) {
+	this.fiam = fiam;
+    }
 
-	public void setApoliceSeguro(String apoliceSeguro) {
-		this.apoliceSeguro = apoliceSeguro;
-	}
+    public String getApoliceSeguro() {
+	return apoliceSeguro;
+    }
 
-	public boolean isFichaPesoBalanceamento() {
-		return fichaPesoBalanceamento;
-	}
+    public void setApoliceSeguro(String apoliceSeguro) {
+	this.apoliceSeguro = apoliceSeguro;
+    }
 
-	public void setFichaPesoBalanceamento(boolean fichaPesoBalanceamento) {
-		this.fichaPesoBalanceamento = fichaPesoBalanceamento;
-	}
+    public boolean isFichaPesoBalanceamento() {
+	return fichaPesoBalanceamento;
+    }
 
-	public boolean isManualVoo() {
-		return manualVoo;
-	}
+    public void setFichaPesoBalanceamento(boolean fichaPesoBalanceamento) {
+	this.fichaPesoBalanceamento = fichaPesoBalanceamento;
+    }
 
-	public void setManualVoo(boolean manualVoo) {
-		this.manualVoo = manualVoo;
-	}
+    public boolean isManualVoo() {
+	return manualVoo;
+    }
 
-	public boolean isCheckList() {
-		return checkList;
-	}
+    public void setManualVoo(boolean manualVoo) {
+	this.manualVoo = manualVoo;
+    }
 
-	public void setCheckList(boolean checkList) {
-		this.checkList = checkList;
-	}
+    public boolean isCheckList() {
+	return checkList;
+    }
 
-	public boolean isNsca3_5() {
-		return nsca3_5;
-	}
+    public void setCheckList(boolean checkList) {
+	this.checkList = checkList;
+    }
 
-	public void setNsca3_5(boolean nsca3_5) {
-		this.nsca3_5 = nsca3_5;
-	}
+    public boolean isNsca3_5() {
+	return nsca3_5;
+    }
 
-	public boolean isNsca3_7() {
-		return nsca3_7;
-	}
+    public void setNsca3_5(boolean nsca3_5) {
+	this.nsca3_5 = nsca3_5;
+    }
 
-	public void setNsca3_7(boolean nsca3_7) {
-		this.nsca3_7 = nsca3_7;
-	}
+    public boolean isNsca3_7() {
+	return nsca3_7;
+    }
 
-	public boolean isDiarioBordo() {
-		return diarioBordo;
-	}
+    public void setNsca3_7(boolean nsca3_7) {
+	this.nsca3_7 = nsca3_7;
+    }
 
-	public void setDiarioBordo(boolean diarioBordo) {
-		this.diarioBordo = diarioBordo;
-	}
+    public boolean isDiarioBordo() {
+	return diarioBordo;
+    }
 
-	public boolean isAtivo() {
-		return ativo;
-	}
+    public void setDiarioBordo(boolean diarioBordo) {
+	this.diarioBordo = diarioBordo;
+    }
 
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
+    public boolean isAtivo() {
+	return ativo;
+    }
 
-	public String getMotivoInatividade() {
-		return motivoInatividade;
-	}
+    public void setAtivo(boolean ativo) {
+	this.ativo = ativo;
+    }
 
-	public void setMotivoInatividade(String motivoInatividade) {
-		this.motivoInatividade = motivoInatividade;
-	}
+    public String getMotivoInatividade() {
+	return motivoInatividade;
+    }
 
-	public List<Aula> getAulas() {
-		return aulas;
-	}
+    public void setMotivoInatividade(String motivoInatividade) {
+	this.motivoInatividade = motivoInatividade;
+    }
 
-	public void setAulas(List<Aula> aulas) {
-		this.aulas = aulas;
-	}
+    public List<Aula> getAulas() {
+	return aulas;
+    }
+
+    public void setAulas(List<Aula> aulas) {
+	this.aulas = aulas;
+    }
+
+    public List<Horario> getHorarios() {
+	return horarios;
+    }
+
+    public void setHorarios(List<Horario> horarios) {
+	this.horarios = horarios;
+    }
 
     @Override
     public String toString() {
-        return certificadoMatricula + ' ' + modelo;
+	return certificadoMatricula + ' ' + modelo;
     }
 }

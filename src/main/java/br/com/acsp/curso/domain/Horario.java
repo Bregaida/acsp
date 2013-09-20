@@ -3,10 +3,21 @@
  */
 package br.com.acsp.curso.domain;
 
-import org.joda.time.LocalTime;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import org.joda.time.LocalTime;
 
 /**
  * @author eduardobregaida
@@ -15,36 +26,48 @@ import java.io.Serializable;
 @Entity
 public class Horario implements Serializable {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 2775523320331807282L;
+    private static final long serialVersionUID = 2775523320331807282L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column
-	private String horarioAgenda;
+    @Column
+    private String horarioAgenda;
 
-	public Long getId() {
-		return id;
-	}
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "horario_aeronave", joinColumns = { @JoinColumn(name = "horario_id") }, inverseJoinColumns = { @JoinColumn(name = "aeronave_id") })
+    private List<Aeronave> aeronaves = new ArrayList<>();
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public String getHorarioAgenda() {
-		return horarioAgenda;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public void setHorarioAgenda(String horarioAgenda) {
-		this.horarioAgenda = horarioAgenda;
-	}
+    public String getHorarioAgenda() {
+	return horarioAgenda;
+    }
+
+    public void setHorarioAgenda(String horarioAgenda) {
+	this.horarioAgenda = horarioAgenda;
+    }
 
     public int getTranslatedHourToInt() {
-        return LocalTime.parse(horarioAgenda).getHourOfDay();
+	return LocalTime.parse(horarioAgenda).getHourOfDay();
+    }
+
+    public List<Aeronave> getAeronaves() {
+	return aeronaves;
+    }
+
+    public void setAeronaves(List<Aeronave> aeronaves) {
+	this.aeronaves = aeronaves;
     }
 
 }
