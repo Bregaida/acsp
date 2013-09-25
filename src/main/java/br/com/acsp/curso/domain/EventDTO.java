@@ -14,6 +14,7 @@ import java.util.Date;
 public class EventDTO {
 
     private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String SEPARADOR = "\r\n";
 
     private String title;
     private String start;
@@ -26,11 +27,21 @@ public class EventDTO {
     }
 
     public EventDTO(Agenda agenda) {
-        this.title = agenda.getAluno().getNomePista();
-        Date roundedDate = DateUtils.round(agenda.getDataReserva(), Calendar.HOUR);
-        this.setStart(DateUtils.setHours(roundedDate, agenda.getHorario().getTranslatedHourToInt()));
-        this.setEnd(DateUtils.addHours(roundedDate, agenda.getQtdeHoras()));
+        this.title = montaTitulo(agenda);
+        Date roundedDate = DateUtils.truncate(agenda.getDataReserva(), Calendar.HOUR);
+        Date startDate = DateUtils.setHours(roundedDate, agenda.getHorario().getTranslatedHourToInt());
+        this.setStart(startDate);
+        this.setEnd(DateUtils.addHours(startDate, agenda.getQtdeHoras()));
         this.id = agenda.getId();
+    }
+
+    private String montaTitulo(Agenda agenda) {
+        StringBuilder titulo = new StringBuilder();
+        titulo.append(agenda.getAluno().getNome()).append(SEPARADOR)
+                .append(agenda.getAeronave().toString()).append(SEPARADOR)
+                .append(agenda.getInstrutor().getNome()).append(SEPARADOR)
+                .append(agenda.getAula().getMateria());
+        return titulo.toString();
     }
 
 

@@ -13,8 +13,8 @@ function aplicarObjetoNoFormulario(obj, formId){
         if (input.is('select')) {
             attrName = attrName.split('.')[0];
             var valueSelected = (obj[attrName] instanceof Object)?obj[attrName].id : obj[attrName];
-            var selector = '#' + attrName + ' option:eq(' + valueSelected + ')';
-            $(selector).prop('selected', true);
+            var selector = '#' + attrName;
+            $(selector).val(valueSelected);
         } else if (obj[attrName] != undefined && obj[attrName] != null) {
             if (attrType === 'checkbox') { //TODO - implementar casos de radio button!
                 input.prop('checked', obj[attrName]);
@@ -151,7 +151,7 @@ $(document).ready(function(){
             week:     'semana',
             day:      'dia'
         },
-        editable: true,
+        editable: false,
         columnFormat:{
             month: 'ddd',    // Mon
             week: 'ddd d/M', // Mon 9/7
@@ -162,8 +162,9 @@ $(document).ready(function(){
         timeFormat: 'HH:mm',
         axisFormat : 'HH:mm',
 
-        minTime: 8,
-        maxTime: 19,
+        height: 450,
+        minTime: 7,
+        maxTime: 22,
 
         monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
             'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
@@ -172,8 +173,13 @@ $(document).ready(function(){
         dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta','Quinta', 'Sexta', 'Sábado'],
         dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
 
-        dayClick: function() {
-            alert('a day has been clicked!');
+        dayClick: function(date) {
+            $('#agendaModalBtn').click();
+            $('#dataReservaId').val(date.toLocaleDateString());
+            var timeString = date.toLocaleTimeString().split(':')[0];
+            $('#horario option').filter(function() {
+                return ($(this).text().indexOf(timeString)!=-1);
+            }).prop('selected', true);
         },
 
         events: '/acsp/agenda/ajax',

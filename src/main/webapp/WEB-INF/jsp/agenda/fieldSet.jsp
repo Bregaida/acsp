@@ -6,8 +6,8 @@
     <form:hidden path="id"/>
  
     <div class="form-group">
-        <label for="dataReserva"><spring:message code="agenda.dataReserva"/></label>
-        <form:input path="dataReserva" id="modelo" cssClass="form-control" maxlength="10"/>
+        <label><spring:message code="agenda.dataReserva"/></label>
+        <form:input path="dataReserva" id="dataReservaId" cssClass="form-control datepicker-input" maxlength="10"/>
         <form:errors path="dataReserva" cssClass="help-block alert-danger"/>
     </div>
 

@@ -26,10 +26,8 @@ public class AgendaService extends AbstractService<Agenda, Long> {
     }
 
     public Collection<Agenda> obterAgendamentosDoMes(Date dataRef) {
-        final Date inicioMes = DateUtils.round(dataRef, Calendar.MONTH);
+        final Date inicioMes = DateUtils.truncate(dataRef, Calendar.MONTH);
         final Date fimDoMes = DateUtils.addMonths(inicioMes, 1);
-        System.out.println("Inciio: " + inicioMes);
-        System.out.println("fim: " + fimDoMes);
         return getRepository().findByDataReservaBetween(inicioMes, fimDoMes);
     }
 }
