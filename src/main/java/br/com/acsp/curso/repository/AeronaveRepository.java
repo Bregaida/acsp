@@ -30,5 +30,5 @@ public interface AeronaveRepository extends JpaRepository<Aeronave, Long> {
     // where p.PESSOA_TYPE='ALUNO_PILOTO'
     // and ae.ativo = 'true'
     // and p.id= :aluno;
-    Collection<Aeronave> listarAeronavesAtivasPorAluno();
+    // Collection<Aeronave> listarAeronavesAtivasPorAluno();
 }

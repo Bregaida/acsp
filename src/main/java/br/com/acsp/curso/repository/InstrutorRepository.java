@@ -31,7 +31,7 @@ public interface InstrutorRepository extends JpaRepository<Instrutor, Long> {
     // #and p.ativo = 'true'
     // and au.id = :aula
     // and ae.id= :aeronave;
-    Collection<Instrutor> listarInstrutoresPorAeronavePorAula();
+    // Collection<Instrutor> listarInstrutoresPorAeronavePorAula();
 
     // select p.nome
     // from Pessoa_Aeronave pa
@@ -42,5 +42,5 @@ public interface InstrutorRepository extends JpaRepository<Instrutor, Long> {
     // where p.PESSOA_TYPE='INSTRUTOR_PILOTO'
     // #and p.ativo = 'true'
     // and ae.id= :aeronave;
-    Collection<Instrutor> listarInstrutoresPorAeronaveSemAula();
+    // Collection<Instrutor> listarInstrutoresPorAeronaveSemAula();
 }

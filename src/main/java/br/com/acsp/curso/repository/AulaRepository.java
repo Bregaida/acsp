@@ -21,5 +21,5 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
     // select au.materia, ae.id from aula_aeronave aa left join Aula au on
     // (au.id = aa.aula_id) left join Aeronave ae on (ae.id = aa.aeronave_id)
     // where ae.id= :aeronaveId;
-    Collection<Aula> listarAulasPorAeronave();
+    // Collection<Aula> listarAulasPorAeronave();
 }
