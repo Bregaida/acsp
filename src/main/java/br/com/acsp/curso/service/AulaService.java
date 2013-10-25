@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author eduardobregaida
@@ -27,14 +26,5 @@ public class AulaService extends AbstractService<Aula, Long> {
     public Collection<Aula> listarOrdenado() {
         return ((AulaRepository) repository).listarOrdenadoPorMateria();
     }
-    
-    public Aula getByIdDetached(Long id) {
-    	Aula aula = repository.findOne(id);
 
-        //FIXME just to load the list for now
-        aula.getAeronaves();
-        return aula;
-    }
-    
-    
 }

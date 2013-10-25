@@ -17,6 +17,6 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
     @Query("select a from Aluno a order by a.nome")
     Collection<Aluno> listarOrdenadoPorNome();
 
-    @Query("select a from Aluno a where a.ativo <>" + "'N'"+ " order by a.nome ")
+    @Query("select a from Aluno a where a.ativo = 'Y'  order by a.nome ")
     Collection<Aluno> listarAtivos();
 }

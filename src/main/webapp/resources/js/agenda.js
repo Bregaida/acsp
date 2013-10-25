@@ -9,7 +9,7 @@ $(document).ready(function() {
 		.empty()
 		.prop('options');
 
-		$.getJSON(appContextRoot + "/horario/disponiveis/" + $(this).val(),	null,
+		$.getJSON(appContextRoot + "/horario/disponiveis/" + $(this).val(),	{dataReserva : $('#dataReservaId').val()},
 				function(data) {
 					$.each(data, function(val, text) {
 						//noinspection JSUnresolvedVariable

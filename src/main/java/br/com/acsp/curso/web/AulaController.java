@@ -58,7 +58,7 @@ public class AulaController extends AbstractController {
 	@RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Aula buscaPorId(@PathVariable("id") Long id) {
-		return aulaService.getByIdDetached(id);
+		return aulaService.obtemPorId(id);
 	}
 
 	@RequestMapping(value = "/aula", method = RequestMethod.POST)
