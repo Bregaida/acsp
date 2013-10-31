@@ -5,11 +5,13 @@ package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Aluno;
 import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AlunoService;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +35,9 @@ public class AlunosController extends AbstractController {
     @Autowired
     private AlunoService alunoService;
 
+    @Autowired
+    private AeronaveService aeronaveService;
+
     /**
      * Este metodo adiciona o aluno ao (form) request, basta usar o form com o
      * nome de "aluno"
@@ -49,6 +54,7 @@ public class AlunosController extends AbstractController {
         map.put("alunosMenu", "active");
         map.put("listaDeAlunos", alunoService.listarOrdenado());
         map.put("escolaridades", EscolaridadeType.values());
+        map.put("listaDeAeronaves", aeronaveService.listarAtivas());
         return "aluno/lista";
     }
 
@@ -84,6 +90,16 @@ public class AlunosController extends AbstractController {
         final String msgOperacao = getMensagemOperacao(aluno.getId());
         alunoService.salvar(aluno);
         map.put("msgSucesso", "Aluno " + aluno.getNome() + " " + msgOperacao + " com exito.");
+        return "success";
+    }
+
+    @RequestMapping(value = "/aluno/aeronave", method = RequestMethod.POST)
+    public String editarAeronaves(@ModelAttribute("aluno") Aluno aluno, ModelMap map) {
+        Aluno alunoDB = alunoService.obtemPorId(aluno.getId());
+        BeanUtils.copyProperties(alunoDB, aluno, new String[]{"aeronaves"});
+        alunoService.alterar(aluno);
+        final String msgOperacao = getMensagemOperacao(alunoDB.getId());
+        map.put("msgSucesso", "Aluno " + alunoDB.getNome() + " " + msgOperacao + " com exito.");
         return "success";
     }
 }

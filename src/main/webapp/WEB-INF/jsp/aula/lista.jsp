@@ -12,13 +12,13 @@
         </thead>
 
         <tbody>
-        <c:forEach var="aula" items="${listaDeAulas}" varStatus="status">
+        <c:forEach var="aula" items="${listaDeAulas}">
             <tr id="<c:out value="${aula.id}"/>">
-                <td>${aula.materia }</td>
-                <td>${aula.quantidadeHorasNecessarias }</td>
+                <td>${aula.materia}</td>
+                <td>${aula.quantidadeHorasNecessarias}</td>
                 <td>
-                    <c:forEach var="aeronave" items="${aula.aeronaves}">
-                        ${aeronave.modelo}&nbsp;
+                    <c:forEach var="aeronave" items="${aula.aeronaves}" varStatus="status">
+                        ${aeronave}${status.last?'':',&nbsp;'}
                     </c:forEach>
                 </td>
                 <td>

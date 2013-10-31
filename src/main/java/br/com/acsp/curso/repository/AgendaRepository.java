@@ -13,7 +13,4 @@ public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 	public Collection<Agenda> findByDataReservaBetween(Date inicio, Date fim);
 
     public Collection<Agenda> findByDataReservaAndAeronave(Date dataReserva, Aeronave aeronave);
-
-	// @Query("select ag.horario.horarioAgenda from Agenda ag")
-	// Collection<Horario> listarHorasDisponiveis(Long aeronaveId);
 }

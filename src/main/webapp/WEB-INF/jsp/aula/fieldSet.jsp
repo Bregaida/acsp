@@ -20,5 +20,7 @@
 
 <div class="form-group">
     <label for="aeronave"><spring:message code="aula.aeronaves"/></label>
-    <form:select path="aeronaves" id="aeronave" items="${listaDeAeronaves}" itemValue="id" itemLabel="modelo" cssClass="form-control" />
+    <ul class="form-inline">
+        <form:checkboxes path="aeronaves" id="aeronave" items="${listaDeAeronaves}" itemValue="id" element="li class='checkbox-inline'" />
+    </ul>
 </div>

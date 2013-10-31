@@ -13,7 +13,10 @@
 
     <div class="form-group">
     	<label for="aluno"><spring:message code="agenda.aluno"/></label>
-    	<form:select path="aluno.id" id="aluno" items="${listaDeAlunos}" itemValue="id" itemLabel="nome" cssClass="form-control" />
+    	<form:select path="aluno.id" id="aluno" cssClass="form-control">
+            <form:option value="" label="--- Selecione ---" />
+            <form:options items="${listaDeAlunos}" itemValue="id" itemLabel="nome" />
+    	</form:select>
     	<form:errors path="aluno" cssClass="help-block alert-danger"/>
     </div>
 

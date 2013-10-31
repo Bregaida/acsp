@@ -3,6 +3,9 @@
  */
 package br.com.acsp.curso.domain;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.MappedSuperclass;
@@ -27,6 +30,7 @@ public abstract class Piloto extends Pessoa {
 	@Column
 	private Long codigoANAC;
 	@OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
 	private List<Aeronave> aeronaves;
 
 	public String getNomePista() {

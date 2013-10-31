@@ -3,6 +3,7 @@
  */
 package br.com.acsp.curso.web;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -13,11 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.domain.Instrutor;
@@ -82,11 +79,12 @@ public class InstrutorController extends AbstractController {
 		return "success";
 	}
 
-	// TODO Combo aninhada agenda
 	@RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Instrutor> listarInstrutoresDisponiveisPorHoraAeronaveAula(@PathVariable("idHora") Long idHora,@PathVariable("idAeronave") Long idAeronave,@PathVariable("idAula") Long idAula) {
-		//System.out.println("idHora" + idHora + " idAeronave" + idAeronave + " idAula" + idAula);
+	public List<Instrutor> listarInstrutoresDisponiveisPorHoraAeronaveAula(@PathVariable("idHora") Long idHora,
+                                                                           @PathVariable("idAeronave") Long idAeronave,
+                                                                           @PathVariable("idAula") Long idAula,
+                                                                           @RequestParam Date dataReserva) {
 		//TODO chamar o metodo certo
 		return (List<Instrutor>) instrutorService.listarOrdenado();
 	}

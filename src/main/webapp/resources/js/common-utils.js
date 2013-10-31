@@ -17,7 +17,15 @@ function aplicarObjetoNoFormulario(obj, formId){
             $(selector).val(valueSelected);
         } else if (obj[attrName] != undefined && obj[attrName] != null) {
             if (attrType === 'checkbox') { //TODO - implementar casos de radio button!
-                input.prop('checked', obj[attrName]);
+                if (obj[attrName] instanceof Array) {
+                    $.each(obj[attrName], function(key, value) {
+                        if (input.val() == value.id) {
+                            input.prop('checked', true);
+                        }
+                    });
+                } else {
+                    input.prop('checked', obj[attrName]);
+                }
             } else {
                 input.val(obj[attrName]);
             }
@@ -39,11 +47,11 @@ $('.modal').on('click', 'button[type="reset"]', function (e) {
 });
 
 $('.modal').on('click', '.insereAction', function(e) {
-    var formRef = $('#myModal form');
+    var formRef = $(this).closest('form');
     var actionVal = formRef.attr('action');
 
     $.post(actionVal, formRef.serialize(), function(result) {
-        $('.modal').html($(result).filter('.modal').html());
+        $('.modal:visible').html($(result).filter('.modal').html());
     });
 });
 
@@ -53,14 +61,21 @@ $('.editaAction').click(function(e) {
     editAction(id, $form);
 });
 
-function editAction(id, form) {
+$('.aeronaveAction').click(function(e) {
+    var id = $(this).closest('tr').attr('id');
+    var $form = $('#aeronaveModal form');
+    var urlAction = $form.attr('action');
+    editAction(id, $form, urlAction.substring(0, urlAction.lastIndexOf('/')) + '/' + id);
+});
+
+function editAction(id, form, urlAction) {
     form[0].reset();
-    var action = form.attr('action') + '/' + id;
+    var action = urlAction || form.attr('action') + '/' + id;
     $.ajax({
         url: action
     }).done(function(returnObject) {
             aplicarObjetoNoFormulario(returnObject, "#" + form.attr('id'));
-            $('#myModal').modal('show');
+            form.closest('.modal').modal('show');
         });
 };
 
@@ -105,7 +120,8 @@ $( ".datepicker-input" ).datepicker({
     format: "dd/mm/yyyy",
     todayBtn: "linked",
     language: "pt-BR",
-    todayHighlight: true
+    todayHighlight: true,
+    autoclose: true
 });
 
 /**

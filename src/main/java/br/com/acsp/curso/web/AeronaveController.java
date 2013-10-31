@@ -8,17 +8,15 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import br.com.acsp.curso.domain.Aluno;
+import br.com.acsp.curso.service.AlunoService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.acsp.curso.domain.Aeronave;
 import br.com.acsp.curso.service.AeronaveService;
@@ -34,6 +32,9 @@ public class AeronaveController extends AbstractController {
 
 	@Autowired
 	private AeronaveService aeronaveService;
+
+    @Autowired
+    private AlunoService alunoService;
 
 	@ModelAttribute("aeronave")
 	public Aeronave getAeronave() {
@@ -75,11 +76,12 @@ public class AeronaveController extends AbstractController {
         return "success";
     }
 	
-	//TODO Combo aninhada agenda
-	@RequestMapping(value = "/aeronavesDisponiveis/{dataReserva}", method = RequestMethod.GET)
+	@RequestMapping(value = "/aeronave/disponiveis/{idAluno}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Aeronave> listarAeronavesDisponiveis(@PathVariable("dataReserva") Date dataReserva){
-		return null;
+	public List<Aeronave> listarAeronavesDisponiveis(@PathVariable("idAluno") Long idAluno, @RequestParam Date dataReserva){
+        //TODO - Usar a data para excluir aeronaves sem horarios disponiveis
+        Aluno aluno = alunoService.obtemPorId(idAluno);
+        return aluno.getAeronaves();
 	}
 
 	

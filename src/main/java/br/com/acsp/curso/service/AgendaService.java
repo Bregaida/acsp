@@ -18,6 +18,7 @@ import java.util.*;
 @Service
 public class AgendaService extends AbstractService<Agenda, Long> {
 
+    public static final int INTERVALO_DEFAULT = 2;
     @Autowired private HorarioRepository horarioRepository;
     @Autowired private AeronaveRepository aeronaveRepository;
 
@@ -37,11 +38,23 @@ public class AgendaService extends AbstractService<Agenda, Long> {
         Aeronave aeronave = aeronaveRepository.findOne(idAeronave);
         Collection<Agenda> agendas = ((AgendaRepository) repository).findByDataReservaAndAeronave(dataReserva, aeronave);
 
-        //TODO - Precisa melhorar esta logica. Se um agendamento possui duração de 3h não exclui o proximo horario
         //Esses horarios serão sempre pre-determinados?
+        //O intervalo será sempre 2h?
         for (Agenda agenda : agendas) {
-            if (horarios.contains(agenda.getHorario())) {
-                horarios.remove(agenda.getHorario());
+            Horario agendaHorario = agenda.getHorario();
+            if (horarios.contains(agendaHorario)) {
+                int horas_a_remover = agenda.getQtdeHoras() / INTERVALO_DEFAULT + agenda.getQtdeHoras() % INTERVALO_DEFAULT;
+                int horas_ja_removidas = 0;
+                boolean encontrou = false;
+
+                for (Iterator<Horario> horarioIterator = horarios.iterator(); horarioIterator.hasNext(); ) {
+                    Horario horario = horarioIterator.next();
+                    if ((horario.equals(agendaHorario) || encontrou) && horas_ja_removidas < horas_a_remover) {
+                        encontrou = true;
+                        horas_ja_removidas++;
+                        horarioIterator.remove();
+                    }
+                }
             }
         }
 

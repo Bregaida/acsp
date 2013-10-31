@@ -29,6 +29,7 @@
                     <div class="btn-group btn-custom-block">
                         <span class="icon-edit icon-2x editaAction"></span>
                         <span class="icon-remove-circle icon-2x apagaAction"></span>
+                        <span class="icon-plane icon-2x aeronaveAction"></span>
                     </div>
                 </td>
             </tr>
@@ -41,5 +42,6 @@
 <a id="alunoModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Aluno</a>
 
 <jsp:include page="formulario.jsp"/>
+<jsp:include page="formularioAeronavesHabilitadas.jsp"/>
 
 <jsp:include page="../../includes/footer.jsp"/>

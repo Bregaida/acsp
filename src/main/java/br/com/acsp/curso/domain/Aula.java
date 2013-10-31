@@ -40,8 +40,7 @@ public class Aula implements Serializable {
     @Column
     private String materia;
 
-    //TODO ideal eh pegar do properties para i18n
-    @NotNull( message = "Quantidade de horas não pode ser vazio" )
+    @NotNull
     @Column
     private Long quantidadeHorasNecessarias;
 
