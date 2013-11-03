@@ -11,26 +11,5 @@
     </div>
 </div>
 
-<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-<script type="text/javascript" src="<c:url value="/resources/js/LAB.js"/>"></script>
-<script type="text/javascript">
-$LAB
-    .script("<c:url value="/resources/js/respond.min.js"/>")
-    .script("<c:url value="/resources/js/jquery-1.10.2.min.js"/>").wait()
-    .script("<c:url value="/resources/js/jquery-ui-1.10.3.custom.min.js"/>")
-    .script("<c:url value="/resources/js/jquery.dataTables.min.js"/>")
-    .script("<c:url value="/resources/js/fullcalendar.min.js"/>")
-    .script("<c:url value="/resources/js/jquery.mask.min.js"/>")
-    .script("<c:url value="/resources/js/bootstrap.min.js"/>").wait()
-    .script("<c:url value="/resources/js/bootbox.min.js"/>")
-    .script("<c:url value="/resources/js/modal.js"/>")
-    .script("<c:url value="/resources/js/tooltip.js"/>")
-    .script("<c:url value="/resources/js/bootstrap-datepicker.js"/>")
-    .script("<c:url value="/resources/js/locales/bootstrap-datepicker.pt-BR.js"/>")
-    .script("<c:url value="/resources/js/DT-bootstrap.js"/>").wait()
-    .script("<c:url value="/resources/js/common-utils.js"/>")
-    .script("<c:url value="/resources/js/agenda.js"/>");
-</script>
-
 </body>
 </html>

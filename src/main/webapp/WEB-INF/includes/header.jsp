@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
     <title><spring:message code="title"/></title>
     <meta charset="utf-8">
@@ -15,19 +15,17 @@
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
-    <!-- Bootstrap -->
-    <!--
-       Tema: http://bootswatch.com/spacelab/
-    -->
-    <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet" media="screen">
-    <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/font-awesome.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/datatables/css/jquery.dataTables.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/navbar.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/acsp-custom.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/DT-bootstrap.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/fullcalendar.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/datepicker.css"/>" rel="stylesheet">
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootswatch/3.0.0/cerulean/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="/resources/css/acsp.css"/>" rel="stylesheet">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.10/webfont.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="<c:url value="/resources/js/app.js"/>"></script>
 </head>
 <body>
 
@@ -47,7 +45,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
             <li class="${aeronaveMenu}">
-                <a href="/acsp/aeronaves">Aeronaves</a>
+                <a href="/acsp/aeronaves/spa">Aeronaves</a>
             </li>
             <li class="${instrutoresMenu}">
                 <a href="/acsp/instrutores">Instrutores</a>
@@ -99,5 +97,7 @@
     </div><!-- /.navbar-collapse -->
 </nav>
 <!-- fim do menu -->
-
+<br>
+<br>
+<br>
 <div class="container">

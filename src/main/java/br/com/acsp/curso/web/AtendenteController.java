@@ -1,12 +1,11 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Atendente;
 import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.service.AtendenteService;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,54 +18,53 @@ import javax.validation.Valid;
 
 /**
  * @author eduardobregaida
- * 
  */
 @Controller
 public class AtendenteController extends AbstractController {
 
-	private static final Log logger = LogFactory.getLog(AtendenteController.class);
+    private static final Log logger = LogFactory.getLog(AtendenteController.class);
 
-	@Autowired
-	private AtendenteService atendenteService;
+    @Autowired
+    private AtendenteService atendenteService;
 
-	/**
-	 * Este metodo adiciona o atendente ao (form) request, basta usar o form com
-	 * o nome de "atendente"
-	 * 
-	 * @return
-	 */
-	@ModelAttribute("atendente")
-	public Atendente getAtendente() {
-		return new Atendente();
-	}
+    /**
+     * Este metodo adiciona o atendente ao (form) request, basta usar o form com
+     * o nome de "atendente"
+     *
+     * @return
+     */
+    @ModelAttribute("atendente")
+    public Atendente getAtendente() {
+        return new Atendente();
+    }
 
-	@RequestMapping("/atendentes")
-	public String lista(ModelMap map) {
-		logger.info("AtendenteController: lista");
-		map.put("atendentesMenu", "active");
-		map.put("listaDeAtendentes", atendenteService.listarOrdenado());
-		map.put("escolaridades", EscolaridadeType.values());
-		return "atendente/lista";
-	}
+    @RequestMapping("/atendentes")
+    public String lista(ModelMap map) {
+        logger.info("AtendenteController: lista");
+        map.put("atendentesMenu", "active");
+        map.put("listaDeAtendentes", atendenteService.listarOrdenado());
+        map.put("escolaridades", EscolaridadeType.values());
+        return "atendente/lista";
+    }
 
-	// Nem todos os browser suportam DELETE
-	@RequestMapping(value = "/atendente/{id}/apaga", method = RequestMethod.GET)
+    // Nem todos os browser suportam DELETE
+    @RequestMapping(value = "/atendente/{id}/apaga", method = RequestMethod.GET)
     @ResponseBody
-	public String exclui(@PathVariable("id") Long id) {
-		logger.info("AtendenteController: exclui");
-		atendenteService.excluirPorId(id);
-		return "SUCCESS";
-	}
+    public String exclui(@PathVariable("id") Long id) {
+        logger.info("AtendenteController: exclui");
+        atendenteService.excluirPorId(id);
+        return "SUCCESS";
+    }
 
-	@RequestMapping(value = "/atendente/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public Atendente buscaPorId(@PathVariable("id") Long id) {
-		logger.info("AtendenteController: buscaPorId");
-		return atendenteService.obtemPorId(id);
-	}
+    @RequestMapping(value = "/atendente/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Atendente buscaPorId(@PathVariable("id") Long id) {
+        logger.info("AtendenteController: buscaPorId");
+        return atendenteService.obtemPorId(id);
+    }
 
-	@RequestMapping(value = "/atendente", method = RequestMethod.POST)
-	public String salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
+    @RequestMapping(value = "/atendente", method = RequestMethod.POST)
+    public String salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
             map.put("atendente", atendente);
             map.put("escolaridades", EscolaridadeType.values());
@@ -76,7 +74,7 @@ public class AtendenteController extends AbstractController {
         logger.info("AtendenteController: salva");
         final String msgOperacao = getMensagemOperacao(atendente.getId());
         atendenteService.salvar(atendente);
-        map.put("msgSucesso", "Atendente " + atendente.getNome() + " " + msgOperacao +  " com exito.");
+        map.put("msgSucesso", "Atendente " + atendente.getNome() + " " + msgOperacao + " com exito.");
         return "success";
     }
 }

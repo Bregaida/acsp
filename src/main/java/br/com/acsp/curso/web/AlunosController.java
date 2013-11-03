@@ -61,7 +61,7 @@ public class AlunosController extends AbstractController {
     @RequestMapping(value = "/alunos", method = RequestMethod.POST)
     @ResponseBody
     public Collection<Aluno> listaPorAjax(Pageable pageable) {
-        final Page<Aluno> alunos =  alunoService.pesquisarTodos(pageable);
+        final Page<Aluno> alunos = alunoService.pesquisarTodos(pageable);
         logger.info(ToStringBuilder.reflectionToString(alunos, ToStringStyle.MULTI_LINE_STYLE));
         return alunos.getContent();
     }

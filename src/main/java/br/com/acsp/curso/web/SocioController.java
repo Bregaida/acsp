@@ -7,7 +7,6 @@ import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.domain.Socio;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.SocioService;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,49 +24,49 @@ import javax.validation.Valid;
 @Controller
 public class SocioController extends AbstractController {
 
-	private static final Log logger = LogFactory.getLog(SocioController.class);
+    private static final Log logger = LogFactory.getLog(SocioController.class);
 
-	@Autowired
-	private SocioService socioService;
+    @Autowired
+    private SocioService socioService;
 
-	@Autowired
-	private AeronaveService aeronaveService;
+    @Autowired
+    private AeronaveService aeronaveService;
 
-	/**
-	 * Este metodo adiciona o socio ao (form) request, basta usar o form com o
-	 * nome de "socio"
-	 * 
-	 * @return
-	 */
-	@ModelAttribute("socio")
-	public Socio getSocio() {
-		return new Socio();
-	}
+    /**
+     * Este metodo adiciona o socio ao (form) request, basta usar o form com o
+     * nome de "socio"
+     *
+     * @return
+     */
+    @ModelAttribute("socio")
+    public Socio getSocio() {
+        return new Socio();
+    }
 
-	@RequestMapping("/socios")
-	public String lista(ModelMap map) {
-		map.put("sociosMenu", "active");
-		map.put("listaDeSocios", socioService.listarOrdenado());
-		map.put("escolaridades", EscolaridadeType.values());
-		return "socio/lista";
-	}
+    @RequestMapping("/socios")
+    public String lista(ModelMap map) {
+        map.put("sociosMenu", "active");
+        map.put("listaDeSocios", socioService.listarOrdenado());
+        map.put("escolaridades", EscolaridadeType.values());
+        return "socio/lista";
+    }
 
-	// Nem todos os browser suportam DELETE
-	@RequestMapping(value = "/socio/{id}/apaga", method = RequestMethod.GET)
+    // Nem todos os browser suportam DELETE
+    @RequestMapping(value = "/socio/{id}/apaga", method = RequestMethod.GET)
     @ResponseBody
-	public String exclui(@PathVariable("id") Long id) {
-		socioService.excluirPorId(id);
-		return "SUCCESS";
-	}
+    public String exclui(@PathVariable("id") Long id) {
+        socioService.excluirPorId(id);
+        return "SUCCESS";
+    }
 
-	@RequestMapping(value = "/socio/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public Socio buscaPorId(@PathVariable("id") Long id) {
-		return socioService.obtemPorId(id);
-	}
+    @RequestMapping(value = "/socio/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Socio buscaPorId(@PathVariable("id") Long id) {
+        return socioService.obtemPorId(id);
+    }
 
-	@RequestMapping(value = "/socio", method = RequestMethod.POST)
-	public String salvarOuAtualizar(@Valid Socio socio, BindingResult result, ModelMap map) {
+    @RequestMapping(value = "/socio", method = RequestMethod.POST)
+    public String salvarOuAtualizar(@Valid Socio socio, BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
             map.put("socio", socio);
             map.put("escolaridades", EscolaridadeType.values());
@@ -75,7 +74,7 @@ public class SocioController extends AbstractController {
         }
         final String msgOperacao = getMensagemOperacao(socio.getId());
         socioService.salvar(socio);
-        map.put("msgSucesso", "Socio " + socio.getNome() + " " + msgOperacao +  " com exito.");
+        map.put("msgSucesso", "Socio " + socio.getNome() + " " + msgOperacao + " com exito.");
         return "success";
     }
 }

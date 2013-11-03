@@ -1,5 +1,0 @@
-/* Para deixar a barra de navegação fixa tem que aumentar o padding do body */
-body {
-    /*min-height: 2000px;*/
-    padding-top: 70px;
-}

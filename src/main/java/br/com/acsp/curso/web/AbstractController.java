@@ -24,7 +24,7 @@ public abstract class AbstractController {
         SimpleDateFormat dateFormat = new SimpleDateFormat(FRM_DATE_FMT);
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-        binder.registerCustomEditor(List.class, "aeronaves",new CustomCollectionEditor(List.class){
+        binder.registerCustomEditor(List.class, "aeronaves", new CustomCollectionEditor(List.class) {
             @Override
             protected Object convertElement(Object element) {
                 Aeronave aeronave = new Aeronave();
@@ -37,9 +37,9 @@ public abstract class AbstractController {
         });
         binder.registerCustomEditor(EscolaridadeType.class, new CustomEnumEscolaridadeEditor());
     }
-    
-    public String getMensagemOperacao(Long id){
-    	return id == null ? "inserido(a)" : "alterado(a)"; 
+
+    public String getMensagemOperacao(Long id) {
+        return id == null ? "inserido(a)" : "alterado(a)";
     }
 
 }
