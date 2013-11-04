@@ -11,7 +11,7 @@ Thumbs.db
 # Eclipse trash #
 #################
 *.iml
-#.settings
+.settings
 target/
 .classpath
 .project
