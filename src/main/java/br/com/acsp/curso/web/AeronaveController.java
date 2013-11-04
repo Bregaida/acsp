@@ -62,12 +62,10 @@ public class AeronaveController extends AbstractController {
         return aeronaveService.listarOrdenadoPorModelo();
     }
 
-    @RequestMapping(value = "/aeronave/{id}/apaga", method = RequestMethod.GET)
-    @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
+    @RequestMapping(value = "/aeronave/{id}", method = RequestMethod.DELETE)
+    public void exclui(@PathVariable("id") Long id) {
         logger.info("AeronaveController: exclui");
         aeronaveService.excluirPorId(id);
-        return "SUCCESS";
     }
 
     @RequestMapping(value = "/aeronave/{id}", method = RequestMethod.GET)

@@ -34,6 +34,7 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
 
     $scope.disable = function(id){
         console.log("Disabling " + id);
+        Restangular.one("aeronave", id).remove();
     };
 
     $scope.load = function(id){
