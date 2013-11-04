@@ -22,6 +22,12 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
         else {
             console.log("atualizando ")
         }
+
+        Restangular.all('aeronave').post("aeronave", $scope.aeronave).then(function(){
+            console.log("Object saved OK");
+        }, function(){
+            console.log("There was an error saving");
+        });
         console.log("Saving " + $scope.aeronave.modelo);
     };
 

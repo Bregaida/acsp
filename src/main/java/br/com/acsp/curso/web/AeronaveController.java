@@ -10,6 +10,7 @@ import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AlunoService;
 import br.com.acsp.curso.service.AulaService;
 import br.com.acsp.curso.service.InstrutorService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.Date;
@@ -75,18 +77,17 @@ public class AeronaveController extends AbstractController {
     }
 
     @RequestMapping(value = "/aeronave", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Aeronave aeronave,
+    @ResponseBody
+    public Aeronave salvarOuAtualizar(@Valid Aeronave aeronave,
                                     BindingResult result, ModelMap map) {
         if (result.hasErrors()) {
-            map.put("aeronave", aeronave);
-            return "aeronave/formulario";
+            throw new RuntimeException("nao passou na validacao, depois a gente ve o que faz");
         }
         logger.info("AeronaveController: salva");
-        final String msgOperacao = getMensagemOperacao(aeronave.getId());
         aeronaveService.salvar(aeronave);
-        map.put("msgSucesso", "Aeronave " + aeronave.getCertificadoMatricula()
-                + " " + msgOperacao + " com exito.");
-        return "success";
+        final String msgOperacao = getMensagemOperacao(aeronave.getId());
+        logger.info("msgOperacao: " + msgOperacao);
+        return aeronave;
     }
 
     @RequestMapping(value = "/aeronave/disponiveis/{idAluno}", method = RequestMethod.GET)
