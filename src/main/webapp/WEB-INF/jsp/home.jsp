@@ -48,5 +48,4 @@
     </div>
 </div>
 
-<c:import url="/agendamento"/>
 <jsp:include page="../includes/footer.jsp"/>
