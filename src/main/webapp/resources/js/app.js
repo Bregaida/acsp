@@ -16,6 +16,12 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
     }
 
     $scope.save = function(){
+        if($scope.aeronave.id === undefined){
+            console.log("adicionando ")
+        }
+        else {
+            console.log("atualizando ")
+        }
         console.log("Saving " + $scope.aeronave.modelo);
     };
 
