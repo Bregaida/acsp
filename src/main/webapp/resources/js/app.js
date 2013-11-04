@@ -29,6 +29,7 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
             console.log("There was an error saving");
         });
         console.log("Saving " + $scope.aeronave.modelo);
+        $scope.list();
     };
 
     $scope.disable = function(id){
