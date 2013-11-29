@@ -38,9 +38,6 @@ public class InstrutorController extends AbstractController {
     @Autowired
     private InstrutorService instrutorService;
 
-    @Autowired
-    private AeronaveService aeronaveService;
-
     /**
      * Este metodo adiciona o Instrutor ao (form) request, basta usar o form com
      * o nome de "Instrutor"
@@ -52,13 +49,15 @@ public class InstrutorController extends AbstractController {
         return new Instrutor();
     }
 
-    @RequestMapping("/instrutores")
-    public String lista(ModelMap map) {
-        map.put("instrutoresMenu", "active");
-        map.put("listaDeInstrutores", instrutorService.listarOrdenado());
-        map.put("escolaridades", EscolaridadeType.values());
-        map.put("listaDeAeronaves", aeronaveService.listarAtivas());
+    @RequestMapping("/instrutores/spa")
+    public String singlePageApp() {
         return "instrutor/lista";
+    }
+
+    @RequestMapping("/instrutores")
+    @ResponseBody
+    public Collection<Instrutor> listar(ModelMap map) {
+        return instrutorService.listarOrdenado();
     }
 
     @RequestMapping(value = "/instrutores", method = RequestMethod.POST)

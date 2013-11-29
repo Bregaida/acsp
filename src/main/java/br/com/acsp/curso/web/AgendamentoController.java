@@ -51,13 +51,19 @@ public class AgendamentoController extends AbstractController {
         return new Agenda();
     }
 
-    @RequestMapping(value = "/agendamento", method = RequestMethod.GET)
-    public String formulario(ModelMap map) {
+    @RequestMapping(value = "/agendamento/spa", method = RequestMethod.GET)
+    public String spa(ModelMap map) {
         formularioMap(map);
         return "agenda/formulario";
     }
 
-    @RequestMapping(value = "/agenda/ajax", method = RequestMethod.GET)
+    @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
+    public Collection<Agenda> listar(ModelMap map) {
+        formularioMap(map);
+        return agendaService.obterAgendamentosDoMes(new Date());
+    }
+
+    @RequestMapping(value = "/agenda", method = RequestMethod.GET)
     @ResponseBody
     public Collection<EventDTO> obtemAgendamentosAjax() {
         final Date dataRef = new Date();
@@ -110,11 +116,4 @@ public class AgendamentoController extends AbstractController {
         return agendaService.obtemPorId(id);
     }
 
-    @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
-    public String lista(ModelMap map) {
-        map.put("agendasMenu", "active");
-        map.put("listaDeAgendas", agendaService.pesquisarTodos());
-        formularioMap(map);
-        return "agenda/lista";
-    }
 }

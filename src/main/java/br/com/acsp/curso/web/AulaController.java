@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 /**
  * @author pedrosa
@@ -41,6 +42,13 @@ public class AulaController extends AbstractController {
         return new Aula();
     }
 
+    @RequestMapping("/aulas/spa")
+    public Collection<Aula> spa(ModelMap map) {
+        map.put("aulasMenu", "active");
+        map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+        return aulaService.listarOrdenado();
+    }
+
     @RequestMapping("/aulas")
     public String lista(ModelMap map) {
         map.put("aulasMenu", "active");
@@ -49,7 +57,7 @@ public class AulaController extends AbstractController {
         return "aula/lista";
     }
 
-    @RequestMapping(value = "/aula/{id}/apaga", method = RequestMethod.GET)
+    @RequestMapping(value = "/aula/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String exclui(@PathVariable("id") Long id) {
         aulaService.excluirPorId(id);

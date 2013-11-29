@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 /**
  * @author eduardobregaida
@@ -38,20 +39,20 @@ public class AtendenteController extends AbstractController {
         return new Atendente();
     }
 
-    @RequestMapping("/atendentes")
-    public String lista(ModelMap map) {
-        logger.info("AtendenteController: lista");
-        map.put("atendentesMenu", "active");
-        map.put("listaDeAtendentes", atendenteService.listarOrdenado());
-        map.put("escolaridades", EscolaridadeType.values());
+    @RequestMapping("/atendentes/spa")
+    public String spa(ModelMap map) {
         return "atendente/lista";
     }
 
+    @RequestMapping("/atendentes")
+    public Collection<Atendente> lista(ModelMap map) {
+        return atendenteService.listarOrdenado();
+    }
+
     // Nem todos os browser suportam DELETE
-    @RequestMapping(value = "/atendente/{id}/apaga", method = RequestMethod.GET)
+    @RequestMapping(value = "/atendente/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String exclui(@PathVariable("id") Long id) {
-        logger.info("AtendenteController: exclui");
         atendenteService.excluirPorId(id);
         return "SUCCESS";
     }

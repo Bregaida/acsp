@@ -49,13 +49,15 @@ public class AlunosController extends AbstractController {
         return new Aluno();
     }
 
-    @RequestMapping(value = "/alunos", method = RequestMethod.GET)
-    public String lista(ModelMap map) {
-        map.put("alunosMenu", "active");
-        map.put("listaDeAlunos", alunoService.listarOrdenado());
-        map.put("escolaridades", EscolaridadeType.values());
-        map.put("listaDeAeronaves", aeronaveService.listarAtivas());
+    @RequestMapping(value = "/alunos/spa", method = RequestMethod.GET)
+    public String spa(ModelMap map) {
         return "aluno/lista";
+    }
+
+    @RequestMapping(value = "/alunos", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Aluno> lista(ModelMap map) {
+        return alunoService.listarOrdenado();
     }
 
     @RequestMapping(value = "/alunos", method = RequestMethod.POST)
@@ -67,7 +69,7 @@ public class AlunosController extends AbstractController {
     }
 
     // Nem todos os browser suportam DELETE
-    @RequestMapping(value = "/aluno/{id}/apaga", method = RequestMethod.GET)
+    @RequestMapping(value = "/aluno/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String exclui(@PathVariable("id") Long id) {
         alunoService.excluirPorId(id);
@@ -81,25 +83,14 @@ public class AlunosController extends AbstractController {
     }
 
     @RequestMapping(value = "/aluno", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Aluno aluno, BindingResult result, ModelMap map) {
-        if (result.hasErrors()) {
-            map.put("aluno", aluno);
-            map.put("escolaridades", EscolaridadeType.values());
-            return "aluno/formulario";
-        }
-        final String msgOperacao = getMensagemOperacao(aluno.getId());
+    public void salvarOuAtualizar(@Valid Aluno aluno, BindingResult result, ModelMap map) {
         alunoService.salvar(aluno);
-        map.put("msgSucesso", "Aluno " + aluno.getNome() + " " + msgOperacao + " com exito.");
-        return "success";
     }
 
     @RequestMapping(value = "/aluno/aeronave", method = RequestMethod.POST)
-    public String editarAeronaves(@ModelAttribute("aluno") Aluno aluno, ModelMap map) {
+    public void editarAeronaves(@ModelAttribute("aluno") Aluno aluno, ModelMap map) {
         Aluno alunoDB = alunoService.obtemPorId(aluno.getId());
         BeanUtils.copyProperties(alunoDB, aluno, new String[]{"aeronaves"});
         alunoService.alterar(aluno);
-        final String msgOperacao = getMensagemOperacao(alunoDB.getId());
-        map.put("msgSucesso", "Aluno " + alunoDB.getNome() + " " + msgOperacao + " com exito.");
-        return "success";
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 /**
  * @author pedrosa
@@ -43,16 +44,18 @@ public class SocioController extends AbstractController {
         return new Socio();
     }
 
-    @RequestMapping("/socios")
-    public String lista(ModelMap map) {
-        map.put("sociosMenu", "active");
-        map.put("listaDeSocios", socioService.listarOrdenado());
-        map.put("escolaridades", EscolaridadeType.values());
+    @RequestMapping("/socios/spa")
+    public String spa(ModelMap map) {
         return "socio/lista";
     }
 
+    @RequestMapping("/socios")
+    public Collection<Socio> lista(ModelMap map) {
+        return socioService.listarOrdenado();
+    }
+
     // Nem todos os browser suportam DELETE
-    @RequestMapping(value = "/socio/{id}/apaga", method = RequestMethod.GET)
+    @RequestMapping(value = "/socio/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String exclui(@PathVariable("id") Long id) {
         socioService.excluirPorId(id);
@@ -66,15 +69,7 @@ public class SocioController extends AbstractController {
     }
 
     @RequestMapping(value = "/socio", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Socio socio, BindingResult result, ModelMap map) {
-        if (result.hasErrors()) {
-            map.put("socio", socio);
-            map.put("escolaridades", EscolaridadeType.values());
-            return "socio/formulario";
-        }
-        final String msgOperacao = getMensagemOperacao(socio.getId());
+    public void salvarOuAtualizar(@Valid Socio socio, BindingResult result, ModelMap map) {
         socioService.salvar(socio);
-        map.put("msgSucesso", "Socio " + socio.getNome() + " " + msgOperacao + " com exito.");
-        return "success";
     }
 }

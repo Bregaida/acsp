@@ -52,10 +52,10 @@
                 <a href="/acsp/aeronaves/spa">Aeronaves</a>
             </li>
             <li class="${instrutoresMenu}">
-                <a href="/acsp/instrutores">Instrutores</a>
+                <a href="/acsp/instrutores/spa">Instrutores</a>
             </li>
             <li class="${alunosMenu}">
-                <a href="/acsp/alunos">Alunos</a>
+                <a href="/acsp/alunos/spa">Alunos</a>
             </li>
             <li class="${sociosMenu}">
                 <a href="/acsp/socios">Sócios</a>
