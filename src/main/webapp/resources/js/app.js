@@ -154,5 +154,59 @@ app.controller('AlunosController', function($scope, $http, $modal, Restangular){
         $scope.aluno = null;
     };
 
+});
 
+app.controller('SociosController', function($scope, $http, $modal, Restangular){
+
+    $scope.orderProp = 'nome';
+
+
+    $scope.list = function(){
+        $http.get('/acsp/socios').success(function(data) {
+            $scope.socios = data;
+        });
+    }
+
+    $scope.save = function(){
+        if($scope.socio.id === undefined){
+            console.log("adicionando ")
+        }
+        else {
+            console.log("atualizando ")
+        }
+
+        Restangular.all('socio').post("socio", $scope.socio).then(function(){
+            console.log("Object saved OK");
+        }, function(){
+            console.log("There was an error saving");
+        });
+        console.log("Saving " + $scope.socio.nome);
+        $scope.list();
+    };
+
+    $scope.disable = function(id){
+        console.log("Disabling " + id);
+        Restangular.one("socio", id).remove();
+    };
+
+    $scope.load = function(id){
+        console.log("Loading " + id);
+        Restangular.one("socio", id).get().then(function(aeronave) {
+            $scope.socio = socio;
+            console.log("carregada " + socio.nome);
+        });
+
+    };
+
+    $scope.style = function(stat){
+        if(stat) {
+            return "fa fa-check-circle-o fa-lg";
+        }{
+            return "fa fa-circle-o fa-lg";
+        }
+    };
+
+    $scope.novoSocio = function () {
+        $scope.socio = null;
+    };
 });

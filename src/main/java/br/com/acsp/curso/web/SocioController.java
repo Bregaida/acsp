@@ -7,6 +7,7 @@ import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.domain.Socio;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.SocioService;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,9 +59,8 @@ public class SocioController extends AbstractController {
     // Nem todos os browser suportam DELETE
     @RequestMapping(value = "/socio/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") Long id) {
         socioService.excluirPorId(id);
-        return "SUCCESS";
     }
 
     @RequestMapping(value = "/socio/{id}", method = RequestMethod.GET)
@@ -70,7 +70,10 @@ public class SocioController extends AbstractController {
     }
 
     @RequestMapping(value = "/socio", method = RequestMethod.POST)
-    public void salvarOuAtualizar(@Valid Socio socio, BindingResult result, ModelMap map) {
+    @ResponseBody
+    public Socio salvarOuAtualizar(@Valid Socio socio) {
+        logger.debug("Salvando ou alterando socio: " + ToStringBuilder.reflectionToString(socio));
         socioService.salvar(socio);
+        return socio;
     }
 }

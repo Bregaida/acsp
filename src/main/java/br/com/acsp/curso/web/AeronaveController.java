@@ -63,6 +63,7 @@ public class AeronaveController extends AbstractController {
     }
 
     @RequestMapping(value = "/aeronave/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
     public void exclui(@PathVariable("id") Long id) {
         logger.info("AeronaveController: exclui");
         aeronaveService.excluirPorId(id);
@@ -75,9 +76,10 @@ public class AeronaveController extends AbstractController {
     }
 
     @RequestMapping(value = "/aeronave", method = RequestMethod.POST)
-    public void salvarOuAtualizar(@Valid Aeronave aeronave,
-                                    BindingResult result, ModelMap map) {
+    @ResponseBody
+    public Aeronave salvarOuAtualizar(@Valid Aeronave aeronave) {
         aeronaveService.salvar(aeronave);
+        return aeronave;
     }
 
     @RequestMapping(value = "/aeronaves/disponiveis/{idAluno}", method = RequestMethod.GET)
