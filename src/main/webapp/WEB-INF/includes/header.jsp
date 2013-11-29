@@ -58,13 +58,13 @@
                 <a href="/acsp/alunos/spa">Alunos</a>
             </li>
             <li class="${sociosMenu}">
-                <a href="/acsp/socios">Sócios</a>
+                <a href="/acsp/socios/spa">Sócios</a>
             </li>
              <li class="${aulasMenu}">
-                <a href="/acsp/aulas">Aulas</a>
+                <a href="/acsp/aulas/spa">Aulas</a>
             </li>
             <li class="${atendenteMenu}">
-                <a href="/acsp/atendentes">Atendentes</a>
+                <a href="/acsp/atendentes/spa">Atendentes</a>
             </li>
             <!--  li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios<b class="caret"></b></a>
