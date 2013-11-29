@@ -13,19 +13,11 @@ app.controller('InstrutoresController', function($scope, $http, $modal, Restangu
     }
 
     $scope.save = function(){
-        if($scope.instrutor.id === undefined){
-            console.log("adicionando ")
-        }
-        else {
-            console.log("atualizando ")
-        }
-
         Restangular.all('instrutor').post("instrutor", $scope.instrutor).then(function(){
             console.log("Object saved OK");
         }, function(){
             console.log("There was an error saving");
         });
-        console.log("Saving " + $scope.instrutor.nome);
         $scope.list();
     };
 
@@ -47,7 +39,6 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
 
     $scope.orderProp = 'certificadoMatricula';
 
-
     $scope.list = function(){
         $http.get('/acsp/aeronaves').success(function(data) {
             $scope.aeronaves = data;
@@ -55,32 +46,21 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
     }
 
     $scope.save = function(){
-        if($scope.aeronave.id === undefined){
-            console.log("adicionando ")
-        }
-        else {
-            console.log("atualizando ")
-        }
-
         Restangular.all('aeronave').post("aeronave", $scope.aeronave).then(function(){
             console.log("Object saved OK");
         }, function(){
             console.log("There was an error saving");
         });
-        console.log("Saving " + $scope.aeronave.modelo);
         $scope.list();
     };
 
     $scope.disable = function(id){
-        console.log("Disabling " + id);
         Restangular.one("aeronave", id).remove();
     };
 
     $scope.load = function(id){
-        console.log("Loading " + id);
         Restangular.one("aeronave", id).get().then(function(aeronave) {
             $scope.aeronave = aeronave;
-            console.log("carregada " + aeronave.certificadoMatricula);
         });
 
     };
@@ -112,19 +92,11 @@ app.controller('AlunosController', function($scope, $http, $modal, Restangular){
     }
 
     $scope.save = function(){
-        if($scope.aluno.id === undefined){
-            console.log("adicionando ")
-        }
-        else {
-            console.log("atualizando ")
-        }
-
         Restangular.all('aluno').post("aluno", $scope.aluno).then(function(){
             console.log("Object saved OK");
         }, function(){
             console.log("There was an error saving");
         });
-        console.log("Saving " + $scope.aluno.nome);
         $scope.list();
     };
 
@@ -134,10 +106,8 @@ app.controller('AlunosController', function($scope, $http, $modal, Restangular){
     };
 
     $scope.load = function(id){
-        console.log("Loading " + id);
         Restangular.one("aluno", id).get().then(function(aeronave) {
             $scope.aluno = aluno;
-            console.log("carregada " + aluno.nome);
         });
 
     };
@@ -168,19 +138,11 @@ app.controller('SociosController', function($scope, $http, $modal, Restangular){
     }
 
     $scope.save = function(){
-        if($scope.socio.id === undefined){
-            console.log("adicionando ")
-        }
-        else {
-            console.log("atualizando ")
-        }
-
         Restangular.all('socio').post("socio", $scope.socio).then(function(){
             console.log("Object saved OK");
         }, function(){
             console.log("There was an error saving");
         });
-        console.log("Saving " + $scope.socio.nome);
         $scope.list();
     };
 
@@ -190,10 +152,8 @@ app.controller('SociosController', function($scope, $http, $modal, Restangular){
     };
 
     $scope.load = function(id){
-        console.log("Loading " + id);
         Restangular.one("socio", id).get().then(function(aeronave) {
             $scope.socio = socio;
-            console.log("carregada " + socio.nome);
         });
 
     };
