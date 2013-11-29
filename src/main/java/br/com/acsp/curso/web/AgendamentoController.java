@@ -58,6 +58,7 @@ public class AgendamentoController extends AbstractController {
     }
 
     @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
+    @ResponseBody
     public Collection<Agenda> listar(ModelMap map) {
         formularioMap(map);
         return agendaService.obterAgendamentosDoMes(new Date());

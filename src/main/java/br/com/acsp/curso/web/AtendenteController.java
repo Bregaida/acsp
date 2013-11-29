@@ -45,16 +45,15 @@ public class AtendenteController extends AbstractController {
     }
 
     @RequestMapping("/atendentes")
+    @ResponseBody
     public Collection<Atendente> lista(ModelMap map) {
         return atendenteService.listarOrdenado();
     }
 
     // Nem todos os browser suportam DELETE
     @RequestMapping(value = "/atendente/{id}", method = RequestMethod.DELETE)
-    @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") Long id) {
         atendenteService.excluirPorId(id);
-        return "SUCCESS";
     }
 
     @RequestMapping(value = "/atendente/{id}", method = RequestMethod.GET)
@@ -65,17 +64,7 @@ public class AtendenteController extends AbstractController {
     }
 
     @RequestMapping(value = "/atendente", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
-        if (result.hasErrors()) {
-            map.put("atendente", atendente);
-            map.put("escolaridades", EscolaridadeType.values());
-            return "atendente/formulario";
-        }
-
-        logger.info("AtendenteController: salva");
-        final String msgOperacao = getMensagemOperacao(atendente.getId());
+    public void salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
         atendenteService.salvar(atendente);
-        map.put("msgSucesso", "Atendente " + atendente.getNome() + " " + msgOperacao + " com exito.");
-        return "success";
     }
 }

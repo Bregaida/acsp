@@ -50,6 +50,7 @@ public class SocioController extends AbstractController {
     }
 
     @RequestMapping("/socios")
+    @ResponseBody
     public Collection<Socio> lista(ModelMap map) {
         return socioService.listarOrdenado();
     }

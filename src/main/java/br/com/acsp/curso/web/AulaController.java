@@ -42,14 +42,15 @@ public class AulaController extends AbstractController {
         return new Aula();
     }
 
-    @RequestMapping("/aulas/spa")
+    @RequestMapping("/aulas")
+    @ResponseBody
     public Collection<Aula> spa(ModelMap map) {
         map.put("aulasMenu", "active");
         map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
         return aulaService.listarOrdenado();
     }
 
-    @RequestMapping("/aulas")
+    @RequestMapping("/aulas/spa")
     public String lista(ModelMap map) {
         map.put("aulasMenu", "active");
         map.put("listaDeAulas", aulaService.listarOrdenado());
@@ -71,15 +72,7 @@ public class AulaController extends AbstractController {
     }
 
     @RequestMapping(value = "/aula", method = RequestMethod.POST)
-    public String salvarAula(@Valid Aula aula, BindingResult result, ModelMap map) {
-        if (result.hasErrors()) {
-            map.put("aula", aula);
-            map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-            return "aula/formulario";
-        }
-        final String msgOperacao = getMensagemOperacao(aula.getId());
+    public void salvarAula(@Valid Aula aula) {
         aulaService.salvar(aula);
-        map.put("msgSucesso", "Aula " + aula.getMateria() + " " + msgOperacao + " com exito.");
-        return "success";
     }
 }

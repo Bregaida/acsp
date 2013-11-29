@@ -71,10 +71,8 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor/{id}/apaga", method = RequestMethod.GET)
-    @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") Long id) {
         instrutorService.excluirPorId(id);
-        return "SUCCESS";
     }
 
     @RequestMapping(value = "/instrutor/{id}", method = RequestMethod.GET)
@@ -84,18 +82,8 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Instrutor instrutor,
-                                    BindingResult bindingResult, ModelMap map) {
-        if (bindingResult.hasErrors()) {
-            map.put("instrutor", instrutor);
-            map.put("escolaridades", EscolaridadeType.values());
-            return "instrutor/formulario";
-        }
-        final String msgOperacao = getMensagemOperacao(instrutor.getId());
+    public void salvarOuAtualizar(@Valid Instrutor instrutor) {
         instrutorService.salvar(instrutor);
-        map.put("msgSucesso", "Instrutor " + instrutor.getNome() + " "
-                + msgOperacao + " com exito.");
-        return "success";
     }
 
     @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
