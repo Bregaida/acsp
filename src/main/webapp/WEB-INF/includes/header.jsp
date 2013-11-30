@@ -93,7 +93,7 @@
                 <c:if test="${pageContext.request.remoteUser != null}">
                     <c:url var="logoutUrl" value="/logout"/>
                     <form:form class="navbar-form pull-right" action="${logoutUrl}" method="post">
-                        <input type="submit" value="Log out" class="btn btn-warning"/>
+                        <input type="submit" value="Log out" class="btn btn-primary"/>
                     </form:form>
                 </c:if>
             </li>
