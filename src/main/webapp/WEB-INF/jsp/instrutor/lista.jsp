@@ -134,7 +134,7 @@
                             <button type="reset" class="btn btn-default" ng-click="cancel()" data-dismiss="modal">
                                 <spring:message code="formulario.botaoLimpar"/>
                             </button>
-                            <button ng-click="save()" data-dismiss="modal" aria-hidden="true" type="button" class="btn btn-primary insereAction">
+                            <button ng-click="save()" data-dismiss="modal" aria-hidden="true" type="button" class="btn btn-primary">
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
                         </div>

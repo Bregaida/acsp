@@ -60,57 +60,57 @@
 
                             <div class="form-group">
                                 <label for="numeroInscricao"><spring:message code="socio.numeroInscricao"/></label>
-                                <input ng-model="socio.numeroInscricao" id="numeroInscricao" cssClass="form-control"/>
+                                <input ng-model="socio.numeroInscricao" id="numeroInscricao" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="nome"><spring:message code="socio.nome"/></label>
-                                <input ng-model="socio.nome" id="nome" cssClass="form-control"/>
+                                <input ng-model="socio.nome" id="nome" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="rg"><spring:message code="socio.rg"/></label>
-                                <input ng-model="socio.rg" id="rg" cssClass="form-control"/>
+                                <input ng-model="socio.rg" id="rg" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="cpf"><spring:message code="socio.cpf"/></label>
-                                <input ng-model="socio.cpf" id="cpf" cssClass="form-control cpf" size="14" maxlength="14"/>
+                                <input ng-model="socio.cpf" id="cpf" class="form-control cpf" size="14" maxlength="14"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="alistamentoMilitar"><spring:message code="socio.alistamentoMilitar"/></label>
-                                <input ng-model="socio.alistamentoMilitar" id="alistamentoMilitar" cssClass="form-control"/>
+                                <input ng-model="socio.alistamentoMilitar" id="alistamentoMilitar" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="escolaridade"><spring:message code="socio.escolaridade"/></label>
-                                <select items="${escolaridades}" ng-model="socio.escolaridade" id="escolaridade" itemValue="id" itemLabel="descricao" cssClass="form-control"/>
+                                <select items="${escolaridades}" ng-model="socio.escolaridade" id="escolaridade" itemValue="id" itemLabel="descricao" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="tituloEleitor"><spring:message code="socio.tituloEleitor"/></label>
-                                <input ng-model="socio.tituloEleitor" id="tituloEleitor" cssClass="form-control"/>
+                                <input ng-model="socio.tituloEleitor" id="tituloEleitor" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="codigoANAC"><spring:message code="socio.codigoANAC"/></label>
-                                <input ng-model="socio.codigoANAC" id="codigoANAC" cssClass="form-control"/>
+                                <input ng-model="socio.codigoANAC" id="codigoANAC" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="nomePista"><spring:message code="socio.nomePista"/></label>
-                                <input ng-model="socio.nomePista" id="nomePista" cssClass="form-control"/>
+                                <input ng-model="socio.nomePista" id="nomePista" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="cht"><spring:message code="socio.CHT"/></label>
-                                <input ng-model="socio.cht" id="cht" cssClass="form-control"/>
+                                <input ng-model="socio.cht" id="cht" class="form-control"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="cma"><spring:message code="socio.CMA"/></label>
-                                <input ng-model="socio.cma" id="cma" cssClass="form-control"/>
+                                <input ng-model="socio.cma" id="cma" class="form-control"/>
                             </div>
 
                             <div class="checkbox">
@@ -128,7 +128,7 @@
                                 <button type="reset" class="btn btn-default" ng-click="cancel()">
                                     <spring:message code="formulario.botaoLimpar"/>
                                 </button>
-                                <button type="button" class="btn btn-primary insereAction" ng-click="save()">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save()">
                                     <spring:message code="formulario.botaoSalvar"/>
                                 </button>
                             </div>

@@ -21,8 +21,8 @@
                 <td>${agenda.aeronave.modelo }</td>
                 <td>
                     <div class="btn-group btn-custom-block">
-                        <span class="icon-edit icon-2x editaAction"></span>
-                        <span class="icon-remove-circle icon-2x apagaAction"></span>
+                        <span class="icon-edit icon-2x"></span>
+                        <span class="icon-remove-circle icon-2x"></span>
                     </div>
                 </td>
             </tr>

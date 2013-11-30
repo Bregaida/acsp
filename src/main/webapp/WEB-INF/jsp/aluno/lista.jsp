@@ -30,9 +30,9 @@
                     <td><i ng-class="style(aluno.ativo)"></i> </td>
                     <td>
                         <div class="btn-group btn-custom-block">
-                            <span class="icon-edit icon-2x editaAction"></span>
-                            <span class="icon-remove-circle icon-2x apagaAction"></span>
-                            <span class="icon-plane icon-2x aeronaveAction"></span>
+                            <span class="icon-edit icon-2x"></span>
+                            <span class="icon-remove-circle icon-2x"></span>
+                            <span class="icon-plane icon-2x"></span>
                         </div>
                     </td>
                 </tr>
@@ -59,52 +59,52 @@
 
                         <div class="form-group">
                             <label for="nome"><spring:message code="aluno.nome"/></label>
-                            <input type="text" ng-model="aluno.nome" id="nome" cssClass="form-control"/>
+                            <input type="text" ng-model="aluno.nome" id="nome" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="rg"><spring:message code="aluno.rg"/></label>
-                            <input type="text" ng-model="aluno.rg" id="rg" cssClass="form-control"/>
+                            <input type="text" ng-model="aluno.rg" id="rg" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="cpf"><spring:message code="aluno.cpf"/></label>
-                            <input type="text" ng-model="aluno.cpf" id="cpf" cssClass="form-control cpf" size="14" maxlength="14"/>
+                            <input type="text" ng-model="aluno.cpf" id="cpf" class="form-control cpf" size="14" maxlength="14"/>
                         </div>
 
                         <div class="form-group">
                             <label for="alistamentoMilitar"><spring:message code="aluno.alistamentoMilitar"/></label>
-                            <input type="text" ng-model="aluno.alistamentoMilitar" id="alistamentoMilitar" cssClass="form-control"/>
+                            <input type="text" ng-model="aluno.alistamentoMilitar" id="alistamentoMilitar" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="escolaridade"><spring:message code="aluno.Escolaridade"/></label>
-                            <select items="${escolaridades}" ng-model="aluno.escolaridade" id="escolaridade" itemValue="id" itemLabel="descricao" cssClass="form-control"/>
+                            <select items="${escolaridades}" ng-model="aluno.escolaridade" id="escolaridade" itemValue="id" itemLabel="descricao" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="tituloEleitor"><spring:message code="aluno.tituloEleitor"/></label>
-                            <input type="text" ng-model="aluno.tituloEleitor" id="tituloEleitor" cssClass="form-control"/>
+                            <input type="text" ng-model="aluno.tituloEleitor" id="tituloEleitor" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="codigoANAC"><spring:message code="aluno.codigoANAC"/></label>
-                            <input type="text" ng-model="aluno.codigoANAC" id="codigoANAC" cssClass="form-control"/>
+                            <input type="text" ng-model="aluno.codigoANAC" id="codigoANAC" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="nomePista"><spring:message code="aluno.nomePista"/></label>
-                            <input type="text" ng-model="aluno.nomePista" id="nomePista" cssClass="form-control"/>
+                            <input type="text" ng-model="aluno.nomePista" id="nomePista" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="cht"><spring:message code="aluno.CHT"/></label>
-                            <input type="text" ng-model="aluno.cht" id="cht" cssClass="form-control"/>
+                            <input type="text" ng-model="aluno.cht" id="cht" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="cma"><spring:message code="aluno.CMA"/></label>
-                            <input type="text" ng-model="aluno.cma" id="cma" cssClass="form-control"/>
+                            <input type="text" ng-model="aluno.cma" id="cma" class="form-control"/>
                         </div>
 
                         <div class="checkbox">
@@ -161,7 +161,7 @@
                             <button type="reset" class="btn btn-default" ng-click="cancel()">
                                 <spring:message code="formulario.botaoLimpar"/>
                             </button>
-                            <button type="button" class="btn btn-primary insereAction" ng-click="save()">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save()">
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
                         </div>

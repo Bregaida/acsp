@@ -11,20 +11,24 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title"><spring:message code="agenda.titulo"/></h4>
             </div>
-            <c:url value="/agendamento" var="urlAction"/>
-            <form:form action="${urlAction}" method="POST" commandName="agenda" role="form">
+            <form>
                 <div class="modal-body">
                     <jsp:include page="fieldSet.jsp"/>
                 </div>
                 <div class="modal-footer">
                     <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="formulario.botaoFechar"/></button>
-                        <button type="reset" class="btn btn-default"><spring:message code="formulario.botaoLimpar"/></button>
-                        <button type="button" class="btn btn-primary insereAction"><spring:message code="formulario.botaoSalvar"/></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <spring:message code="formulario.botaoFechar"/></button>
+                        <button type="reset" class="btn btn-default">
+                            <spring:message code="formulario.botaoLimpar"/>
+                        </button>
+                        <button type="button" class="btn btn-primary insereAction" data-dismiss="modal">
+                            <spring:message code="formulario.botaoSalvar"/>
+                        </button>
              
                     </div>
                 </div>
-            </form:form>
+            </form>
 
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

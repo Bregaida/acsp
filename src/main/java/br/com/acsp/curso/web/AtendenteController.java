@@ -52,6 +52,7 @@ public class AtendenteController extends AbstractController {
 
     // Nem todos os browser suportam DELETE
     @RequestMapping(value = "/atendente/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
     public void exclui(@PathVariable("id") Long id) {
         atendenteService.excluirPorId(id);
     }
@@ -64,7 +65,8 @@ public class AtendenteController extends AbstractController {
     }
 
     @RequestMapping(value = "/atendente", method = RequestMethod.POST)
-    public void salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
+    @ResponseBody
+    public void salvarOuAtualizar(@Valid Atendente atendente) {
         atendenteService.salvar(atendente);
     }
 }

@@ -21,6 +21,7 @@ app.controller('InstrutoresController', function($scope, $http, $modal, Restangu
         $scope.list();
     };
 
+    //TODO: create directive
     $scope.style = function(stat){
         if(stat) {
             return "fa fa-check-circle-o fa-lg";
@@ -65,6 +66,7 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
 
     };
 
+    //TODO: create directive
     $scope.style = function(stat){
         if(stat) {
             return "fa fa-check-circle-o fa-lg";
@@ -112,6 +114,7 @@ app.controller('AlunosController', function($scope, $http, $modal, Restangular){
 
     };
 
+    //TODO: create directive
     $scope.style = function(stat){
         if(stat) {
             return "fa fa-check-circle-o fa-lg";
@@ -158,6 +161,7 @@ app.controller('SociosController', function($scope, $http, $modal, Restangular){
 
     };
 
+    //TODO: create directive
     $scope.style = function(stat){
         if(stat) {
             return "fa fa-check-circle-o fa-lg";
@@ -168,5 +172,50 @@ app.controller('SociosController', function($scope, $http, $modal, Restangular){
 
     $scope.novoSocio = function () {
         $scope.socio = null;
+    };
+});
+
+app.controller('AtendentesController', function($scope, $http, $modal, Restangular){
+
+    $scope.orderProp = 'nome';
+
+    $scope.list = function(){
+        $http.get('/acsp/atendentes').success(function(data) {
+            $scope.atendentes = data;
+        });
+    }
+
+    $scope.save = function(){
+        Restangular.all('atendente').post("atendente", $scope.atendente).then(function(){
+            console.log("Object saved OK");
+        }, function(){
+            console.log("There was an error saving");
+        });
+        $scope.list();
+    };
+
+    $scope.disable = function(id){
+        console.log("Disabling " + id);
+        Restangular.one("atendente", id).remove();
+    };
+
+    $scope.load = function(id){
+        Restangular.one("atendente", id).get().then(function(aeronave) {
+            $scope.atendente = socio;
+        });
+
+    };
+
+    //TODO: create directive
+    $scope.style = function(stat){
+        if(stat) {
+            return "fa fa-check-circle-o fa-lg";
+        }{
+            return "fa fa-circle-o fa-lg";
+        }
+    };
+
+    $scope.novoAtendente = function () {
+        $scope.atendente = null;
     };
 });
