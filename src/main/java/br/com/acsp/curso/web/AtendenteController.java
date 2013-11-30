@@ -10,6 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -64,7 +65,8 @@ public class AtendenteController extends AbstractController {
 
     @RequestMapping(value = "/atendente", method = RequestMethod.POST)
     @ResponseBody
-    public void salvarOuAtualizar(@Valid Atendente atendente) {
+    public void salvarOuAtualizar(@Valid Atendente atendente, BindingResult result) {
+        validateBindingResult(result);
         atendenteService.salvar(atendente);
     }
 }

@@ -12,7 +12,6 @@ import java.io.Serializable;
  */
 @Entity
 @DiscriminatorValue("ATENDENTE")
-public class Atendente extends Pessoa implements Serializable {
+public class Atendente extends Pessoa{
 
-    private static final long serialVersionUID = 6091875744638425844L;
 }

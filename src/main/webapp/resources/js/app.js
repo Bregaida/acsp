@@ -195,8 +195,8 @@ app.controller('AtendentesController', function($scope, $http, $modal, Restangul
     $scope.save = function(){
         Restangular.all('atendente').post("atendente", $scope.atendente).then(function(){
             console.log("Object saved OK");
-        }, function(){
-            console.log("There was an error saving");
+        }, function(resp){
+            console.log("There was an error saving" + resp);
         });
         $scope.list();
     };

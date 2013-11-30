@@ -14,7 +14,7 @@ import java.util.List;
  * @author eduardobregaida
  */
 @Entity
-public class Aeronave implements Serializable {
+public class Aeronave {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @Entity
-public class Aula implements Serializable {
+public class Aula {
 
     /**
 	 * 

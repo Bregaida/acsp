@@ -13,9 +13,7 @@ import java.io.Serializable;
  */
 @Entity
 @DiscriminatorValue("INSTRUTOR_PILOTO")
-public class Instrutor extends Piloto implements Serializable {
-
-	private static final long serialVersionUID = -7104927923365640143L;
+public class Instrutor extends Piloto{
 
 	@Column
 	private Long quantidadeHorasMinistrada;

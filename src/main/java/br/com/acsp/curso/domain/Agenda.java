@@ -18,7 +18,7 @@ import java.util.Date;
  */
 
 @Entity
-public class Agenda implements Serializable {
+public class Agenda {
 
 	/**
 	 * 

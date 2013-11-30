@@ -18,9 +18,7 @@ import java.io.Serializable;
 @Entity
 @Inheritance
 @DiscriminatorColumn(name = "PESSOA_TYPE")
-public class Pessoa implements Serializable {
-
-	private static final long serialVersionUID = -5261337447506230696L;
+public class Pessoa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,8 +15,6 @@ import javax.validation.constraints.NotNull;
 @DiscriminatorValue("SOCIO_PILOTO")
 public class Socio extends Piloto {
 
-	private static final long serialVersionUID = -4735921766760735482L;
-
 	@NotNull( message = "Número de inscrição não pode ser vazio" )
 	@Column
 	private Long numeroInscricao;
