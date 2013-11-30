@@ -15,6 +15,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -74,7 +75,8 @@ public class AeronaveController extends AbstractController {
 
     @RequestMapping(value = "/aeronave", method = RequestMethod.POST)
     @ResponseBody
-    public Aeronave salvarOuAtualizar(@Valid Aeronave aeronave) {
+    public Aeronave salvarOuAtualizar(@Valid Aeronave aeronave, BindingResult result) {
+        validateBindingResult(result);
         aeronaveService.salvar(aeronave);
         return aeronave;
     }

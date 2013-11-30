@@ -10,6 +10,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -66,7 +67,8 @@ public class AulaController extends AbstractController {
 
     @RequestMapping(value = "/aula", method = RequestMethod.POST)
     @ResponseBody
-    public void salvarAula(@Valid Aula aula) {
+    public void salvarAula(@Valid Aula aula, BindingResult result) {
+        validateBindingResult(result);
         aulaService.salvar(aula);
     }
 }

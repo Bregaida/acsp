@@ -78,20 +78,9 @@ public class AgendamentoController extends AbstractController {
     }
 
     @RequestMapping(value = "/agendamento", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Agenda agenda, BindingResult result,
-                                    ModelMap map) {
-        if (result.hasErrors()) {
-            map.put("agenda", agenda);
-            formularioMap(map);
-            return "agenda/formulario";
-        }
+    public void salvarOuAtualizar(@Valid Agenda agenda, BindingResult result) {
+        validateBindingResult(result);
         agendaService.salvar(agenda);
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        map.put("msgSucesso",
-                "Agendamento para data "
-                        + format.format(agenda.getDataReserva())
-                        + " realizado com exito.");
-        return "success";
     }
 
     private void formularioMap(ModelMap map) {

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -79,7 +80,8 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-    public void salvarOuAtualizar(@Valid Instrutor instrutor) {
+    public void salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult result) {
+        validateBindingResult(result);
         instrutorService.salvar(instrutor);
     }
 

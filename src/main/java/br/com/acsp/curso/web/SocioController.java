@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -69,9 +70,8 @@ public class SocioController extends AbstractController {
 
     @RequestMapping(value = "/socio", method = RequestMethod.POST)
     @ResponseBody
-    public Socio salvarOuAtualizar(@Valid Socio socio) {
-        logger.debug("Salvando ou alterando socio: " + ToStringBuilder.reflectionToString(socio));
+    public void salvarOuAtualizar(@Valid Socio socio, BindingResult result) {
+        validateBindingResult(result);
         socioService.salvar(socio);
-        return socio;
     }
 }
