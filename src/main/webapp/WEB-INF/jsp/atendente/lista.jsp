@@ -16,7 +16,7 @@
                 <th></th>
             </thead>
             <tbody>
-                <tr ng-repeat="atendente in atendentes">
+                <tr ng-repeat="atendente in atendentes" ng-click="load(atendente.id)" data-toggle="modal" data-target="#myModal">
                     <td>{{atendente.nome}}</td>
                     <td>{{atendente.cpf}}</td>
                     <td><i ng-class="style(atendente.ativo)"></i></td>

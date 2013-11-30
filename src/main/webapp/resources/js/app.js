@@ -30,6 +30,12 @@ app.controller('InstrutoresController', function($scope, $http, $modal, Restangu
         }
     };
 
+    $scope.load = function(id){
+        Restangular.one("instrutor", id).get().then(function(instrutor){
+            $scope.instrutor = instrutor;
+        });
+    };
+
     $scope.novoInstrutor = function () {
         $scope.instrutor = null;
     };
@@ -63,7 +69,6 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
         Restangular.one("aeronave", id).get().then(function(aeronave) {
             $scope.aeronave = aeronave;
         });
-
     };
 
     //TODO: create directive
@@ -108,7 +113,7 @@ app.controller('AlunosController', function($scope, $http, $modal, Restangular){
     };
 
     $scope.load = function(id){
-        Restangular.one("aluno", id).get().then(function(aeronave) {
+        Restangular.one("aluno", id).get().then(function(aluno) {
             $scope.aluno = aluno;
         });
 
@@ -155,7 +160,7 @@ app.controller('SociosController', function($scope, $http, $modal, Restangular){
     };
 
     $scope.load = function(id){
-        Restangular.one("socio", id).get().then(function(aeronave) {
+        Restangular.one("socio", id).get().then(function(socio) {
             $scope.socio = socio;
         });
 
@@ -200,8 +205,8 @@ app.controller('AtendentesController', function($scope, $http, $modal, Restangul
     };
 
     $scope.load = function(id){
-        Restangular.one("atendente", id).get().then(function(aeronave) {
-            $scope.atendente = socio;
+        Restangular.one("atendente", id).get().then(function(atendente) {
+            $scope.atendente = atendente;
         });
 
     };

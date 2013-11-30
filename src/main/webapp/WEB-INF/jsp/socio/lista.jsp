@@ -21,7 +21,7 @@
             <th></th>
             </thead>
             <tbody>
-                <tr ng-repeat="socio in socios">
+                <tr ng-repeat="socio in socios" ng-click="load(socio.id)" data-toggle="modal" data-target="#myModal">
                     <td>{{socio.nome}}</td>
                     <td>{{socio.numeroInscricao}}</td>
                     <td>{{socio.codigoANAC}}</td>

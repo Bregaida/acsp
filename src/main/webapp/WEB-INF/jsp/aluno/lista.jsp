@@ -20,7 +20,7 @@
             <th></th>
             </thead>
             <tbody>
-                <tr ng-repeat="aluno in alunos">
+                <tr ng-repeat="aluno in alunos" ng-click="load(aluno.id)" data-toggle="modal" data-target="#myModal">
                     <td>{{aluno.nome}}</td>
                     <td>{{aluno.codigoANAC}}</td>
                     <td>{{aluno.cpf}}</td>

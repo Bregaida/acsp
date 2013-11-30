@@ -23,7 +23,7 @@
                 <th></th>
             </thead>
             <tbody>
-                 <tr ng-repeat="instrutor in instrutores">
+                 <tr ng-repeat="instrutor in instrutores" ng-click="load(instrutor.id)" data-toggle="modal" data-target="#myModal">
                     <td class="hidden">{{instrutor.id}}</td>
                     <td id="instrutorNome{{instrutor.id}}">{{instrutor.nome}}</td>
                     <td>{{instrutor.nomePista}}</td>

@@ -22,7 +22,7 @@
                 <th></th>
             </thead>
             <tbody>
-                <tr ng-repeat="aeronave in aeronaves">
+                <tr ng-repeat="aeronave in aeronaves" ng-click="load(aeronave.id)" data-toggle="modal" data-target="#myModal">
                     <td class="hidden">{{aeronave.id}}</td>
                     <td>{{aeronave.certificadoMatricula}}</td>
                     <td>{{aeronave.marca}}</td>

@@ -17,7 +17,7 @@
             </thead>
 
             <tbody>
-                <tr ng-repeat="aula in aulas">
+                <tr ng-repeat="aula in aulas" ng-click="load(aula.id)" data-toggle="modal" data-target="#myModal">
                     <td>{{aula.materia}}</td>
                     <td>{{aula.quantidadeHorasNecessarias}}</td>
                     <td>
