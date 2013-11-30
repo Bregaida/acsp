@@ -10,8 +10,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -42,19 +40,14 @@ public class AulaController extends AbstractController {
         return new Aula();
     }
 
-    @RequestMapping("/aulas")
+    @RequestMapping(value = "/aulas", method = RequestMethod.GET)
     @ResponseBody
-    public Collection<Aula> spa(ModelMap map) {
-        map.put("aulasMenu", "active");
-        map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+    public Collection<Aula> lista() {
         return aulaService.listarOrdenado();
     }
 
     @RequestMapping("/aulas/spa")
-    public String lista(ModelMap map) {
-        map.put("aulasMenu", "active");
-        map.put("listaDeAulas", aulaService.listarOrdenado());
-        map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+    public String spa() {
         return "aula/lista";
     }
 
@@ -72,6 +65,7 @@ public class AulaController extends AbstractController {
     }
 
     @RequestMapping(value = "/aula", method = RequestMethod.POST)
+    @ResponseBody
     public void salvarAula(@Valid Aula aula) {
         aulaService.salvar(aula);
     }

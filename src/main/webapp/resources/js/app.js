@@ -219,3 +219,49 @@ app.controller('AtendentesController', function($scope, $http, $modal, Restangul
         $scope.atendente = null;
     };
 });
+
+app.controller('AulasController', function($scope, $http, $modal, Restangular){
+
+    $scope.orderProp = 'materia';
+
+    $scope.list = function(){
+        $http.get('/acsp/aulas').success(function(data) {
+            $scope.aulas = data;
+        });
+    }
+
+    $scope.save = function(){
+        Restangular.all('aula').post("aula", $scope.aula).then(function(){
+            console.log("Object saved OK");
+        }, function(){
+            console.log("There was an error saving");
+        });
+        $scope.list();
+    };
+
+    $scope.disable = function(id){
+        console.log("Disabling " + id);
+        Restangular.one("aula", id).remove();
+    };
+
+    $scope.load = function(id){
+        Restangular.one("aula", id).get().then(function(aula) {
+            $scope.aula = aula;
+        });
+
+    };
+
+    //TODO: create directive
+    $scope.style = function(stat){
+        if(stat) {
+            return "fa fa-check-circle-o fa-lg";
+        }{
+            return "fa fa-circle-o fa-lg";
+        }
+    };
+
+    $scope.novaAula = function () {
+        $scope.aula = null;
+    };
+
+});
