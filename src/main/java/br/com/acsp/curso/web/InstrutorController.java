@@ -3,9 +3,7 @@
  */
 package br.com.acsp.curso.web;
 
-import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.domain.Instrutor;
-import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.InstrutorService;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -17,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -103,9 +100,6 @@ public class InstrutorController extends AbstractController {
         BeanUtils.copyProperties(instrutorDB, instrutor,
                 new String[]{"aeronaves"});
         instrutorService.alterar(instrutor);
-        final String msgOperacao = getMensagemOperacao(instrutorDB.getId());
-        map.put("msgSucesso", "Instrutor " + instrutorDB.getNome() + " "
-                + msgOperacao + " com exito.");
         return "success";
     }
 }

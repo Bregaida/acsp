@@ -1,14 +1,12 @@
 package br.com.acsp.curso.validation;
 
-import java.util.Date;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
+import br.com.acsp.curso.anotation.Reserva;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
-import br.com.acsp.curso.anotation.Reserva;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import java.util.Date;
 
 /*
  * @author pedrosa

@@ -4,7 +4,6 @@
 package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Aluno;
-import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AlunoService;
 import org.apache.commons.lang.builder.ToStringBuilder;

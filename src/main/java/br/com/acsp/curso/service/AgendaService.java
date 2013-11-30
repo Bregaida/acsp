@@ -3,13 +3,17 @@ package br.com.acsp.curso.service;
 import br.com.acsp.curso.domain.Aeronave;
 import br.com.acsp.curso.domain.Agenda;
 import br.com.acsp.curso.domain.Horario;
-import br.com.acsp.curso.repository.*;
+import br.com.acsp.curso.repository.AeronaveRepository;
+import br.com.acsp.curso.repository.AgendaRepository;
+import br.com.acsp.curso.repository.HorarioRepository;
 import org.apache.commons.lang.time.DateUtils;
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Iterator;
 
 /**
  * @author pedrosa
