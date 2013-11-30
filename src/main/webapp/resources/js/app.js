@@ -1,4 +1,6 @@
-var app = angular.module("app", ['restangular', 'ui.bootstrap']);
+'use strict';
+
+var app = angular.module("app", ['ngRoute', 'restangular', 'ui.bootstrap']);
 
 app.config( function($routeProvider, RestangularProvider){
     RestangularProvider.setBaseUrl('/acsp/');
