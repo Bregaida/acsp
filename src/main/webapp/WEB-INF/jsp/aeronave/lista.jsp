@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <jsp:include page="../../includes/header.jsp"/>
 
@@ -23,7 +22,7 @@
                 <th></th>
             </thead>
             <tbody>
-                <tr ng-repeat="aeronave in aeronaves">
+                <tr ng-repeat="aeronave in aeronaves" ng-click="load(aeronave.id)" data-toggle="modal" data-target="#myModal">
                     <td class="hidden">{{aeronave.id}}</td>
                     <td>{{aeronave.certificadoMatricula}}</td>
                     <td>{{aeronave.marca}}</td>
@@ -33,10 +32,13 @@
                     <td><i ng-class="style(aeronave.diarioBordo)"></i></td>
                     <td><i ng-class="style(aeronave.ativo)"></i></td>
                     <td>
+                    <td>
                         <div class="btn-group btn-custom-block">
-                            <span data-toggle="modal" data-target="#myModal" data-toggle="modal" ng-click="load(aeronave.id)" class="glyphicon glyphicon-edit btn-lg"></span>
-                            <span ng-click="disable(aeronave.id)" class="glyphicon glyphicon-remove-circle btn-lg"></span>
+                            <span class="icon-edit icon-2x"></span>
+                            <span class="icon-remove-circle icon-2x"></span>
+                            <span class="icon-plane icon-2x"></span>
                         </div>
+                    </td>
                     </td>
                 </tr>
             </tbody>

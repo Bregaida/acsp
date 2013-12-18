@@ -20,7 +20,6 @@ import java.util.List;
 @DiscriminatorValue("PILOTO")
 public abstract class Piloto extends Pessoa {
 
-	private static final long serialVersionUID = -6447976014511027605L;
 	@Column
 	private String nomePista;
 	@Column

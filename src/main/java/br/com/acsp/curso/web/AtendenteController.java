@@ -4,7 +4,6 @@
 package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Atendente;
-import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.service.AtendenteService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 /**
  * @author eduardobregaida
@@ -38,22 +38,22 @@ public class AtendenteController extends AbstractController {
         return new Atendente();
     }
 
-    @RequestMapping("/atendentes")
-    public String lista(ModelMap map) {
-        logger.info("AtendenteController: lista");
-        map.put("atendentesMenu", "active");
-        map.put("listaDeAtendentes", atendenteService.listarOrdenado());
-        map.put("escolaridades", EscolaridadeType.values());
+    @RequestMapping("/atendentes/spa")
+    public String spa(ModelMap map) {
         return "atendente/lista";
     }
 
-    // Nem todos os browser suportam DELETE
-    @RequestMapping(value = "/atendente/{id}/apaga", method = RequestMethod.GET)
+    @RequestMapping("/atendentes")
     @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
-        logger.info("AtendenteController: exclui");
+    public Collection<Atendente> lista(ModelMap map) {
+        return atendenteService.listarOrdenado();
+    }
+
+    // Nem todos os browser suportam DELETE
+    @RequestMapping(value = "/atendente/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void exclui(@PathVariable("id") Long id) {
         atendenteService.excluirPorId(id);
-        return "SUCCESS";
     }
 
     @RequestMapping(value = "/atendente/{id}", method = RequestMethod.GET)
@@ -64,17 +64,9 @@ public class AtendenteController extends AbstractController {
     }
 
     @RequestMapping(value = "/atendente", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Atendente atendente, BindingResult result, ModelMap map) {
-        if (result.hasErrors()) {
-            map.put("atendente", atendente);
-            map.put("escolaridades", EscolaridadeType.values());
-            return "atendente/formulario";
-        }
-
-        logger.info("AtendenteController: salva");
-        final String msgOperacao = getMensagemOperacao(atendente.getId());
+    @ResponseBody
+    public void salvarOuAtualizar(@Valid Atendente atendente, BindingResult result) {
+        validateBindingResult(result);
         atendenteService.salvar(atendente);
-        map.put("msgSucesso", "Atendente " + atendente.getNome() + " " + msgOperacao + " com exito.");
-        return "success";
     }
 }

@@ -10,11 +10,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 /**
  * @author pedrosa
@@ -41,15 +41,18 @@ public class AulaController extends AbstractController {
         return new Aula();
     }
 
-    @RequestMapping("/aulas")
-    public String lista(ModelMap map) {
-        map.put("aulasMenu", "active");
-        map.put("listaDeAulas", aulaService.listarOrdenado());
-        map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
+    @RequestMapping(value = "/aulas", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Aula> lista() {
+        return aulaService.listarOrdenado();
+    }
+
+    @RequestMapping("/aulas/spa")
+    public String spa() {
         return "aula/lista";
     }
 
-    @RequestMapping(value = "/aula/{id}/apaga", method = RequestMethod.GET)
+    @RequestMapping(value = "/aula/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String exclui(@PathVariable("id") Long id) {
         aulaService.excluirPorId(id);
@@ -63,15 +66,9 @@ public class AulaController extends AbstractController {
     }
 
     @RequestMapping(value = "/aula", method = RequestMethod.POST)
-    public String salvarAula(@Valid Aula aula, BindingResult result, ModelMap map) {
-        if (result.hasErrors()) {
-            map.put("aula", aula);
-            map.put("listaDeAeronaves", aeronaveService.listarOrdenadoPorModelo());
-            return "aula/formulario";
-        }
-        final String msgOperacao = getMensagemOperacao(aula.getId());
+    @ResponseBody
+    public void salvarAula(@Valid Aula aula, BindingResult result) {
+        validateBindingResult(result);
         aulaService.salvar(aula);
-        map.put("msgSucesso", "Aula " + aula.getMateria() + " " + msgOperacao + " com exito.");
-        return "success";
     }
 }

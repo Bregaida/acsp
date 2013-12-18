@@ -51,13 +51,20 @@ public class AgendamentoController extends AbstractController {
         return new Agenda();
     }
 
-    @RequestMapping(value = "/agendamento", method = RequestMethod.GET)
-    public String formulario(ModelMap map) {
+    @RequestMapping(value = "/agendamento/spa", method = RequestMethod.GET)
+    public String spa(ModelMap map) {
         formularioMap(map);
         return "agenda/formulario";
     }
 
-    @RequestMapping(value = "/agenda/ajax", method = RequestMethod.GET)
+    @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Agenda> listar(ModelMap map) {
+        formularioMap(map);
+        return agendaService.obterAgendamentosDoMes(new Date());
+    }
+
+    @RequestMapping(value = "/agenda", method = RequestMethod.GET)
     @ResponseBody
     public Collection<EventDTO> obtemAgendamentosAjax() {
         final Date dataRef = new Date();
@@ -71,20 +78,9 @@ public class AgendamentoController extends AbstractController {
     }
 
     @RequestMapping(value = "/agendamento", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Agenda agenda, BindingResult result,
-                                    ModelMap map) {
-        if (result.hasErrors()) {
-            map.put("agenda", agenda);
-            formularioMap(map);
-            return "agenda/formulario";
-        }
+    public void salvarOuAtualizar(@Valid Agenda agenda, BindingResult result) {
+        validateBindingResult(result);
         agendaService.salvar(agenda);
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        map.put("msgSucesso",
-                "Agendamento para data "
-                        + format.format(agenda.getDataReserva())
-                        + " realizado com exito.");
-        return "success";
     }
 
     private void formularioMap(ModelMap map) {
@@ -110,11 +106,4 @@ public class AgendamentoController extends AbstractController {
         return agendaService.obtemPorId(id);
     }
 
-    @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
-    public String lista(ModelMap map) {
-        map.put("agendasMenu", "active");
-        map.put("listaDeAgendas", agendaService.pesquisarTodos());
-        formularioMap(map);
-        return "agenda/lista";
-    }
 }

@@ -3,33 +3,22 @@
  */
 package br.com.acsp.curso.domain;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import br.com.acsp.curso.anotation.Reserva;
 import br.com.acsp.curso.util.CustomDateSerializer;
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author pedrosa
  */
 
 @Entity
-public class Agenda implements Serializable {
+public class Agenda {
 
 	/**
 	 * 

@@ -10,7 +10,6 @@ import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.AlunoService;
 import br.com.acsp.curso.service.AulaService;
 import br.com.acsp.curso.service.InstrutorService;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletException;
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.Date;
@@ -63,6 +61,7 @@ public class AeronaveController extends AbstractController {
     }
 
     @RequestMapping(value = "/aeronave/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
     public void exclui(@PathVariable("id") Long id) {
         logger.info("AeronaveController: exclui");
         aeronaveService.excluirPorId(id);
@@ -76,19 +75,13 @@ public class AeronaveController extends AbstractController {
 
     @RequestMapping(value = "/aeronave", method = RequestMethod.POST)
     @ResponseBody
-    public Aeronave salvarOuAtualizar(@Valid Aeronave aeronave,
-                                    BindingResult result, ModelMap map) {
-        if (result.hasErrors()) {
-            throw new RuntimeException("nao passou na validacao, depois a gente ve o que faz");
-        }
-        logger.info("AeronaveController: salva");
+    public Aeronave salvarOuAtualizar(@Valid Aeronave aeronave, BindingResult result) {
+        validateBindingResult(result);
         aeronaveService.salvar(aeronave);
-        final String msgOperacao = getMensagemOperacao(aeronave.getId());
-        logger.info("msgOperacao: " + msgOperacao);
         return aeronave;
     }
 
-    @RequestMapping(value = "/aeronave/disponiveis/{idAluno}", method = RequestMethod.GET)
+    @RequestMapping(value = "/aeronaves/disponiveis/{idAluno}", method = RequestMethod.GET)
     @ResponseBody
     public List<Aeronave> listarAeronavesDisponiveis(
             @PathVariable("idAluno") Long idAluno,
@@ -98,7 +91,7 @@ public class AeronaveController extends AbstractController {
         return aluno.getAeronaves();
     }
 
-    @RequestMapping(value = "/aeronave/disponiveis/{idInstrutor}", method = RequestMethod.GET)
+    @RequestMapping(value = "/aeronaves/disponiveis/{idInstrutor}", method = RequestMethod.GET)
     @ResponseBody
     public List<Aeronave> listarAeronavesDisponiveisPorInstrutor(
             @PathVariable("idInstrutor") Long idInstrutor,
@@ -106,6 +99,12 @@ public class AeronaveController extends AbstractController {
         // TODO - Usar a data para excluir aeronaves sem horarios disponiveis
         Instrutor instrutor = instrutorService.obtemPorId(idInstrutor);
         return instrutor.getAeronaves();
+    }
+
+    @RequestMapping(value = "/aeronaves/ativas", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Aeronave> listarAeronavesAtivas() {
+        return aeronaveService.listarAtivas();
     }
 
 }

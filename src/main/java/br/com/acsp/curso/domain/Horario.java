@@ -3,33 +3,19 @@
  */
 package br.com.acsp.curso.domain;
 
+import org.joda.time.LocalTime;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-
-import org.joda.time.LocalTime;
 
 /**
  * @author eduardobregaida
  * 
  */
 @Entity
-public class Horario implements Serializable {
-
-    /**
-	 * 
-	 */
-    private static final long serialVersionUID = 2775523320331807282L;
+public class Horario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

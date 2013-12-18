@@ -2,9 +2,11 @@ package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Aeronave;
 import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.exception.InvalidRequestException;
 import br.com.acsp.curso.util.CustomEnumEscolaridadeEditor;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
@@ -38,8 +40,11 @@ public abstract class AbstractController {
         binder.registerCustomEditor(EscolaridadeType.class, new CustomEnumEscolaridadeEditor());
     }
 
-    public String getMensagemOperacao(Long id) {
-        return id == null ? "inserido(a)" : "alterado(a)";
+    public void validateBindingResult(BindingResult result){
+        if (result.hasErrors()) {
+            throw new InvalidRequestException("Bean not valid", result);
+        }
+
     }
 
 }

@@ -16,15 +16,17 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
 
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/bootswatch/3.0.0/cerulean/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootswatch/3.0.2/cerulean/bootstrap.min.css" rel="stylesheet">
     <link href="<c:url value="/resources/css/acsp.css"/>" rel="stylesheet">
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/webfont/1.4.10/webfont.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-resource.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/restangular/1.1.3/restangular.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap.min.js"></script>
@@ -52,19 +54,19 @@
                 <a href="/acsp/aeronaves/spa">Aeronaves</a>
             </li>
             <li class="${instrutoresMenu}">
-                <a href="/acsp/instrutores">Instrutores</a>
+                <a href="/acsp/instrutores/spa">Instrutores</a>
             </li>
             <li class="${alunosMenu}">
-                <a href="/acsp/alunos">Alunos</a>
+                <a href="/acsp/alunos/spa">Alunos</a>
             </li>
             <li class="${sociosMenu}">
-                <a href="/acsp/socios">Sócios</a>
+                <a href="/acsp/socios/spa">Sócios</a>
             </li>
              <li class="${aulasMenu}">
-                <a href="/acsp/aulas">Aulas</a>
+                <a href="/acsp/aulas/spa">Aulas</a>
             </li>
             <li class="${atendenteMenu}">
-                <a href="/acsp/atendentes">Atendentes</a>
+                <a href="/acsp/atendentes/spa">Atendentes</a>
             </li>
             <!--  li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios<b class="caret"></b></a>
@@ -80,12 +82,12 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/acsp/alunos">Manutenção de Alunos</a></li>
-                    <li><a href="/acsp/instrutores">Manutenção de Instrutores</a></li>
-                    <li><a href="/acsp/atendentes">Manutenção de Atendentes</a></li>
-                    <li><a href="/acsp/aeronaves">Manutenção de Aeronaves</a></li>
-                    <li><a href="/acsp/aulas">Manutenção de Aulas</a></li>
-                    <li><a href="/acsp/agendamentos">Manutenção de Agendamentos</a></li>
+                    <li><a href="/acsp/alunos/spa">Manutenção de Alunos</a></li>
+                    <li><a href="/acsp/instrutores/spa">Manutenção de Instrutores</a></li>
+                    <li><a href="/acsp/atendentes/spa">Manutenção de Atendentes</a></li>
+                    <li><a href="/acsp/aeronaves/spa">Manutenção de Aeronaves</a></li>
+                    <li><a href="/acsp/aulas/spa">Manutenção de Aulas</a></li>
+                    <li><a href="/acsp/agendamentos/spa">Manutenção de Agendamentos</a></li>
                     <li><a href="#">Informações do Sistema</a></li>
                 </ul>
             </li>
@@ -93,7 +95,7 @@
                 <c:if test="${pageContext.request.remoteUser != null}">
                     <c:url var="logoutUrl" value="/logout"/>
                     <form:form class="navbar-form pull-right" action="${logoutUrl}" method="post">
-                        <input type="submit" value="Log out" class="btn btn-warning"/>
+                        <input type="submit" value="Log out" class="btn btn-primary"/>
                     </form:form>
                 </c:if>
             </li>

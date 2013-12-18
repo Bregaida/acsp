@@ -1,12 +1,11 @@
 package br.com.acsp.curso.repository;
 
-import java.util.Collection;
-import java.util.Date;
-
 import br.com.acsp.curso.domain.Aeronave;
+import br.com.acsp.curso.domain.Agenda;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.acsp.curso.domain.Agenda;
+import java.util.Collection;
+import java.util.Date;
 
 public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 

@@ -3,9 +3,7 @@
  */
 package br.com.acsp.curso.web;
 
-import br.com.acsp.curso.domain.EscolaridadeType;
 import br.com.acsp.curso.domain.Instrutor;
-import br.com.acsp.curso.service.AeronaveService;
 import br.com.acsp.curso.service.InstrutorService;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -38,9 +36,6 @@ public class InstrutorController extends AbstractController {
     @Autowired
     private InstrutorService instrutorService;
 
-    @Autowired
-    private AeronaveService aeronaveService;
-
     /**
      * Este metodo adiciona o Instrutor ao (form) request, basta usar o form com
      * o nome de "Instrutor"
@@ -52,13 +47,15 @@ public class InstrutorController extends AbstractController {
         return new Instrutor();
     }
 
-    @RequestMapping("/instrutores")
-    public String lista(ModelMap map) {
-        map.put("instrutoresMenu", "active");
-        map.put("listaDeInstrutores", instrutorService.listarOrdenado());
-        map.put("escolaridades", EscolaridadeType.values());
-        map.put("listaDeAeronaves", aeronaveService.listarAtivas());
+    @RequestMapping("/instrutores/spa")
+    public String singlePageApp() {
         return "instrutor/lista";
+    }
+
+    @RequestMapping("/instrutores")
+    @ResponseBody
+    public Collection<Instrutor> listar(ModelMap map) {
+        return instrutorService.listarOrdenado();
     }
 
     @RequestMapping(value = "/instrutores", method = RequestMethod.POST)
@@ -72,10 +69,8 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor/{id}/apaga", method = RequestMethod.GET)
-    @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") Long id) {
         instrutorService.excluirPorId(id);
-        return "SUCCESS";
     }
 
     @RequestMapping(value = "/instrutor/{id}", method = RequestMethod.GET)
@@ -85,18 +80,9 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Instrutor instrutor,
-                                    BindingResult bindingResult, ModelMap map) {
-        if (bindingResult.hasErrors()) {
-            map.put("instrutor", instrutor);
-            map.put("escolaridades", EscolaridadeType.values());
-            return "instrutor/formulario";
-        }
-        final String msgOperacao = getMensagemOperacao(instrutor.getId());
+    public void salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult result) {
+        validateBindingResult(result);
         instrutorService.salvar(instrutor);
-        map.put("msgSucesso", "Instrutor " + instrutor.getNome() + " "
-                + msgOperacao + " com exito.");
-        return "success";
     }
 
     @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
@@ -116,9 +102,6 @@ public class InstrutorController extends AbstractController {
         BeanUtils.copyProperties(instrutorDB, instrutor,
                 new String[]{"aeronaves"});
         instrutorService.alterar(instrutor);
-        final String msgOperacao = getMensagemOperacao(instrutorDB.getId());
-        map.put("msgSucesso", "Instrutor " + instrutorDB.getNome() + " "
-                + msgOperacao + " com exito.");
         return "success";
     }
 }

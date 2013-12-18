@@ -13,8 +13,10 @@
 
     <title>Login</title>
 
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <!-- Bootstrap core CSS -->
-    <link href="/acsp/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/acsp/resources/css/login.css" rel="stylesheet">
 
 </head>
@@ -53,6 +55,6 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/acsp/resources/js/respond.min.js"></script>
+
 </body>
 </html>

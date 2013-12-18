@@ -3,13 +3,12 @@
  */
 package br.com.acsp.curso.repository;
 
-import java.util.Collection;
-
 import br.com.acsp.curso.domain.Aeronave;
+import br.com.acsp.curso.domain.Aula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import br.com.acsp.curso.domain.Aula;
+import java.util.Collection;
 
 /**
  * @author eduardobregaida
