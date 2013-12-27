@@ -69,7 +69,7 @@
                             <br/>
                         </div>
                         <form name="aeronaveForm" >
-                            <input type="hidden" name="id" ng-model="aeronave.id"/>
+                            <input type="hidden" name="id" ng-model="entity.id"/>
 
                             <div class="form-group">
                                 <label for="certificadoMatricula"><spring:message code="aeronave.certificadoMatricula"/></label>

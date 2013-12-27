@@ -151,54 +151,6 @@ app.controller('InstrutoresController', function($scope, $http, $modal, Restangu
 
 });
 
-
-app.controller('AlunosController', function($scope, $http, $modal, Restangular){
-
-    $scope.orderProp = 'nome';
-
-
-    $scope.list = function(){
-        $http.get('/acsp/alunos').success(function(data) {
-            $scope.alunos = data;
-        });
-    }
-
-    $scope.save = function(){
-        Restangular.all('aluno').post("aluno", $scope.aluno).then(function(){
-            console.log("Object saved OK");
-        }, function(){
-            console.log("There was an error saving");
-        });
-        $scope.list();
-    };
-
-    $scope.disable = function(id){
-        console.log("Disabling " + id);
-        Restangular.one("aluno", id).remove();
-    };
-
-    $scope.load = function(id){
-        Restangular.one("aluno", id).get().then(function(aluno) {
-            $scope.aluno = aluno;
-        });
-
-    };
-
-    //TODO: create directive
-    $scope.style = function(stat){
-        if(stat) {
-            return "fa fa-check-circle-o fa-lg";
-        }{
-            return "fa fa-circle-o fa-lg";
-        }
-    };
-
-    $scope.novoAluno = function () {
-        $scope.aluno = null;
-    };
-
-});
-
 app.controller('SociosController', function($scope, $http, $modal, Restangular){
 
     $scope.orderProp = 'nome';
