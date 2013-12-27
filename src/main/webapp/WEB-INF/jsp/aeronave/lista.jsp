@@ -3,7 +3,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <jsp:include page="../../includes/header.jsp"/>
 
-<div ng-controller="AeronavesController">
+<div ng-controller="GenericController">
+
+    <div ng-init="setEntitiesType('aeronaves')"></div>
+    <div ng-init="setEntityType('aeronave')"></div>
 
     <div class="clearfix" >
 
@@ -22,7 +25,7 @@
                 <th></th>
             </thead>
             <tbody>
-                <tr ng-repeat="aeronave in aeronaves" ng-click="load(aeronave.id)" data-toggle="modal" data-target="#myModal">
+                <tr ng-repeat="aeronave in entities" ng-click="load(aeronave.id)" data-toggle="modal" data-target="#myModal">
                     <td class="hidden">{{aeronave.id}}</td>
                     <td>{{aeronave.certificadoMatricula}}</td>
                     <td>{{aeronave.marca}}</td>
@@ -46,10 +49,13 @@
     </div>
 
     <!-- Button trigger modal -->
-    <a ng-click="novaAeronave()" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg">Nova Aeronave</a>
+    <a ng-click="newEntity()" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg">Nova Aeronave</a>
 
     <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-dialog" ng-controller="AeronavesController">
+        <div class="modal-dialog" ng-controller="GenericController">
+            <div ng-init="setEntitiesType('aeronaves')"></div>
+            <div ng-init="setEntityType('aeronave')"></div>
+
             <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title"><spring:message code="aeronave.titulo"/></h4>
@@ -67,86 +73,86 @@
 
                             <div class="form-group">
                                 <label for="certificadoMatricula"><spring:message code="aeronave.certificadoMatricula"/></label>
-                                <input type="text" name="certificadoMatricula" id="certificadoMatricula" class="form-control" ng-model="aeronave.certificadoMatricula"/>
+                                <input type="text" name="certificadoMatricula" id="certificadoMatricula" class="form-control" ng-model="entity.certificadoMatricula"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="marca"><spring:message code="aeronave.marca"/></label>
-                                <input type="text" name="marca" id="marca" class="form-control" ng-model="aeronave.marca"/>
+                                <input type="text" name="marca" id="marca" class="form-control" ng-model="entity.marca"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="modelo"><spring:message code="aeronave.modelo"/></label>
-                                <input type="text" name="modelo" id="modelo" class="form-control" ng-model="aeronave.modelo"/>
+                                <input type="text" name="modelo" id="modelo" class="form-control" ng-model="entity.modelo"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="dentel"><spring:message code="aeronave.dentel"/></label>
-                                <input type="text" name="dentel" id="dentel" class="form-control" ng-model="aeronave.dentel"/>
+                                <input type="text" name="dentel" id="dentel" class="form-control" ng-model="entity.dentel"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="fiam"><spring:message code="aeronave.fiam"/></label>
-                                <input type="text" name="fiam" id="fiam" class="form-control" ng-model="aeronave.fiam"/>
+                                <input type="text" name="fiam" id="fiam" class="form-control" ng-model="entity.fiam"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="apoliceSeguro"><spring:message code="aeronave.apoliceSeguro"/></label>
-                                <input type="text" type="text" name="apoliceSeguro" id="apoliceSeguro" class="form-control" ng-model="aeronave.apoliceSeguro"/>
+                                <input type="text" type="text" name="apoliceSeguro" id="apoliceSeguro" class="form-control" ng-model="entity.apoliceSeguro"/>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="fichaPesoBalanceamento" value="true" id="fichaPesoBalanceamento" ng-model="aeronave.fichaPesoBalanceamento"/>
+                                    <input type="checkbox" name="fichaPesoBalanceamento" value="true" id="fichaPesoBalanceamento" ng-model="entity.fichaPesoBalanceamento"/>
                                     <spring:message code="aeronave.fichaPesoBalanceamento"/>
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="manualVoo" value="true" id="manualVoo" ng-model="aeronave.manualVoo"/>
+                                    <input type="checkbox" name="manualVoo" value="true" id="manualVoo" ng-model="entity.manualVoo"/>
                                     <spring:message code="aeronave.manualVoo"/>
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="checkList" value="true" id="checkList" ng-model="aeronave.checkList" />
+                                    <input type="checkbox" name="checkList" value="true" id="checkList" ng-model="entity.checkList" />
                                     <spring:message code="aeronave.checkList"/>
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="nsca3_5" value="true" id="nsca3_5" ng-model="aeronave.nsca3_5"/>
+                                    <input type="checkbox" name="nsca3_5" value="true" id="nsca3_5" ng-model="entity.nsca3_5"/>
                                     <spring:message code="aeronave.nsca3_5"/>
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="nsca3_7" value="true" id="nsca3_7" ng-model="aeronave.nsca3_7"/>
+                                    <input type="checkbox" name="nsca3_7" value="true" id="nsca3_7" ng-model="entity.nsca3_7"/>
                                     <spring:message code="aeronave.nsca3_7"/>
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="diarioBordo" value="true" id="diarioBordo" ng-model="aeronave.diarioBordo"/>
+                                    <input type="checkbox" name="diarioBordo" value="true" id="diarioBordo" ng-model="entity.diarioBordo"/>
                                     <spring:message code="aeronave.diarioBordo"/>
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="ativo" value="true" id="ativo" ng-model="aeronave.ativo"/>
+                                    <input type="checkbox" name="ativo" value="true" id="ativo" ng-model="entity.ativo"/>
                                     <spring:message code="aeronave.ativo"/>
                                 </label>
                             </div>
 
                             <div class="form-group">
                                 <label for="motivoInatividade"><spring:message code="aeronave.motivoInatividade"/></label>
-                                <input type="text" name="motivoInatividade" id="motivoInatividade" class="form-control" ng-model="aeronave.motivoInatividade"/>
+                                <input type="text" name="motivoInatividade" id="motivoInatividade" class="form-control" ng-model="entity.motivoInatividade"/>
                             </div>
                         </form>
                     </div>
@@ -156,7 +162,7 @@
                             <button class="btn btn-default" ng-click="cancel()" data-dismiss="modal">
                                 <spring:message code="formulario.botaoFechar"/>
                             </button>
-                            <button ng-click="saveAndClose(aeronave)" class="btn btn-primary" aria-hidden="true">
+                            <button ng-click="saveAndClose(entity)" class="btn btn-primary" aria-hidden="true">
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
                         </div>
