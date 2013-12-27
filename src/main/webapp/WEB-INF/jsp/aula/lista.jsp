@@ -48,6 +48,12 @@
                 </div>
                 <form>
                     <div class="modal-body">
+                        <div class="validation_error">
+                            <div class="alert alert-danger" ng-repeat="error in validation.data.fieldErrors">
+                                {{error.message}}
+                            </div>
+                            <br/>
+                        </div>
 
                         <hidden ng-model="aula.id"/>
 
@@ -79,7 +85,7 @@
                             <button type="reset" class="btn btn-default" ng-click="cancel()">
                                 <spring:message code="formulario.botaoLimpar"/>
                             </button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save()">
+                            <button type="button" class="btn btn-primary" ng-click="save()">
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
                         </div>

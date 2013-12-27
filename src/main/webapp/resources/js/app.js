@@ -54,23 +54,8 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
         });
     }
 
-    $scope.save = function(){
-        Restangular.all('aeronave').post("aeronave", $scope.aeronave).then(function(){
-            console.log("Object saved OK");
-        }, function(){
-            console.log("There was an error saving");
-        });
-        $scope.list();
-    };
-
     $scope.disable = function(id){
         Restangular.one("aeronave", id).remove();
-    };
-
-    $scope.load = function(id){
-        Restangular.one("aeronave", id).get().then(function(aeronave) {
-            $scope.aeronave = aeronave;
-        });
     };
 
     //TODO: create directive
@@ -84,8 +69,66 @@ app.controller('AeronavesController', function($scope, $http, $modal, Restangula
 
     $scope.novaAeronave = function () {
         $scope.aeronave = null;
+        var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: ModalInstanceCtrl,
+            resolve: {
+                aeronave: function () {
+                    return $scope.aeronave;
+                },
+                save: function(){
+                    return $scope.save;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (aeronave) {
+            $scope.list();
+        }, function () {
+            $scope.aeronave = null;
+        });
     };
 
+    $scope.load = function (id) {
+
+        Restangular.one("aeronave", id).get().then(function(aeronave) {
+            $scope.aeronave = aeronave;
+
+            var modalInstance = $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: ModalInstanceCtrl,
+                resolve: {
+                    aeronave: function () {
+                        return aeronave;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (aeronave) {//When the modal closes with SAVE
+                $scope.list();
+            }, function () {//on dismiss
+                $scope.aeronave = null;
+            });
+        });
+    };
+
+    var ModalInstanceCtrl = function ($scope, $modalInstance, aeronave) {
+
+        $scope.aeronave = aeronave;
+
+        $scope.saveAndClose = function (anAeronave) {
+            $scope.aeronave = anAeronave;
+            Restangular.all('aeronave').post("aeronave", anAeronave).then(function(){
+                $modalInstance.close(anAeronave);
+            }, function(){
+                console.log("There was an error saving " + anAeronave);
+            });
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    };
 
 });
 
@@ -195,8 +238,12 @@ app.controller('AtendentesController', function($scope, $http, $modal, Restangul
     $scope.save = function(){
         Restangular.all('atendente').post("atendente", $scope.atendente).then(function(){
             console.log("Object saved OK");
+            angular.element("body").clearAttributes();
+            $scope.validation = null;
         }, function(resp){
             console.log("There was an error saving" + resp);
+            $scope.$broadcast('click.dismiss.modal');
+            $scope.validation = resp;
         });
         $scope.list();
     };
@@ -204,11 +251,13 @@ app.controller('AtendentesController', function($scope, $http, $modal, Restangul
     $scope.disable = function(id){
         console.log("Disabling " + id);
         Restangular.one("atendente", id).remove();
+        $scope.validation = null;
     };
 
     $scope.load = function(id){
         Restangular.one("atendente", id).get().then(function(atendente) {
             $scope.atendente = atendente;
+            $scope.validation = null;
         });
 
     };

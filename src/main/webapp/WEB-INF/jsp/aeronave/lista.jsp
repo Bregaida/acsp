@@ -5,7 +5,7 @@
 
 <div ng-controller="AeronavesController">
 
-    <div class="clearfix">
+    <div class="clearfix" >
 
         <div ng-init="list()"></div>
 
@@ -48,16 +48,20 @@
     <!-- Button trigger modal -->
     <a ng-click="novaAeronave()" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg">Nova Aeronave</a>
 
-    <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-dialog" ng-controller="AeronavesController">
+            <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title"><spring:message code="aeronave.titulo"/></h4>
                     </div>
 
                     <div class="modal-body">
+                        <div class="validation_error">
+                            <div class="alert alert-danger" ng-repeat="error in validation.data.fieldErrors">
+                                {{error.message}}
+                            </div>
+                            <br/>
+                        </div>
                         <form name="aeronaveForm" >
                             <input type="hidden" name="id" ng-model="aeronave.id"/>
 
@@ -152,18 +156,14 @@
                             <button class="btn btn-default" ng-click="cancel()" data-dismiss="modal">
                                 <spring:message code="formulario.botaoFechar"/>
                             </button>
-                            <button type="reset" class="btn btn-default" ng-click="cancel()" data-dismiss="modal">
-                                <spring:message code="formulario.botaoLimpar"/>
-                            </button>
-                            <button ng-click="save()" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
+                            <button ng-click="saveAndClose(aeronave)" class="btn btn-primary" aria-hidden="true">
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
                         </div>
                     </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
+                </div>
+        </div>
+    </script>
 </div>
 
 <jsp:include page="../../includes/footer.jsp"/>

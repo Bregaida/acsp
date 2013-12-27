@@ -43,8 +43,16 @@
                     <h4 class="modal-title"><spring:message code="atendente.titulo"/></h4>
                 </div>
 
-                <form>
+                <form name="atendente_form">
                     <div class="modal-body">
+
+                        <div class="validation_error">
+                            <div class="alert alert-danger" ng-repeat="error in validation.data.fieldErrors">
+                                {{error.message}}
+                            </div>
+                            <br/>
+                        </div>
+
                         <input type="hidden" ng-model="atendente.id" />
 
                         <div class="form-group">
@@ -90,10 +98,10 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">
                                 <spring:message code="formulario.botaoFechar"/>
                             </button>
-                            <button type="reset" class="btn btn-default" ng-click="cancel()">
+                            <button type="reset" class="btn btn-default" ng-click="novoAtendente()">
                                 <spring:message code="formulario.botaoLimpar"/>
                             </button>
-                            <button type="button" class="btn btn-primary" ng-click="save()" data-dismiss="modal">
+                            <button type="button" class="btn btn-primary" ng-click="save()">
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
 
