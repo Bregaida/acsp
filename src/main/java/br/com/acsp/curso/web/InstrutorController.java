@@ -80,9 +80,11 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-    public void salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult result) {
+    @ResponseBody
+    public Instrutor salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult result) {
         validateBindingResult(result);
         instrutorService.salvar(instrutor);
+        return instrutor;
     }
 
     @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
@@ -93,15 +95,5 @@ public class InstrutorController extends AbstractController {
             @PathVariable("idAula") Long idAula, @RequestParam Date dataReserva) {
         // TODO chamar o metodo certo
         return (List<Instrutor>) instrutorService.listarOrdenado();
-    }
-
-    @RequestMapping(value = "/instrutor/aeronave", method = RequestMethod.POST)
-    public String editarAeronaves(
-            @ModelAttribute("instrutor") Instrutor instrutor, ModelMap map) {
-        Instrutor instrutorDB = instrutorService.obtemPorId(instrutor.getId());
-        BeanUtils.copyProperties(instrutorDB, instrutor,
-                new String[]{"aeronaves"});
-        instrutorService.alterar(instrutor);
-        return "success";
     }
 }

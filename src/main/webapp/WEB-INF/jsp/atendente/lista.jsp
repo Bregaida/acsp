@@ -3,8 +3,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <jsp:include page="../../includes/header.jsp"/>
 
-<div ng-controller="AtendentesController">
-
+<div ng-controller="GenericController">
+    <div ng-init="setEntitiesType('atendentes')"></div>
+    <div ng-init="setEntityType('atendente')"></div>
     <div ng-init="list()"></div>
 
     <div class="clearfix">
@@ -16,7 +17,7 @@
                 <th></th>
             </thead>
             <tbody>
-                <tr ng-repeat="atendente in atendentes" ng-click="load(atendente.id)" data-toggle="modal" data-target="#myModal">
+                <tr ng-repeat="atendente in entities" ng-click="load(atendente.id)" data-toggle="modal" data-target="#myModal">
                     <td>{{atendente.nome}}</td>
                     <td>{{atendente.cpf}}</td>
                     <td><i ng-class="style(atendente.ativo)"></i></td>
@@ -32,11 +33,14 @@
     </div>
 
     <!-- Button trigger modal -->
-    <a ng-click="novoAtendente()" id="atendenteModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Atendente</a>
+    <a ng-click="newEntity()" id="atendenteModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Atendente</a>
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-dialog" ng-controller="GenericController">
+            <div ng-init="setEntitiesType('atendentes')"></div>
+            <div ng-init="setEntityType('atendente')"></div>
+
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -57,37 +61,37 @@
 
                         <div class="form-group">
                             <label><spring:message code="atendente.nome"/></label>
-                            <input id="nome" ng-model="atendente.nome" class="form-control"/>
+                            <input id="nome" ng-model="entity.nome" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label><spring:message code="atendente.rg"/></label>
-                            <input id="rg" ng-model="atendente.rg" class="form-control"/>
+                            <input id="rg" ng-model="entity.rg" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label><spring:message code="atendente.cpf"/></label>
-                            <input id="cpf" ng-model="atendente.cpf" class="form-control cpf" size="14" maxlength="14"/>
+                            <input id="cpf" ng-model="entity.cpf" class="form-control cpf" size="14" maxlength="14"/>
                         </div>
 
                         <div class="form-group">
                             <label><spring:message code="atendente.alistamentoMilitar"/></label>
-                            <input id="alistamento" ng-model="atendente.alistamentoMilitar" class="form-control"/>
+                            <input id="alistamento" ng-model="entity.alistamentoMilitar" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label><spring:message code="atendente.escolaridade"/></label>
-                            <select items="${escolaridades}" ng-model="atendente.escolaridade" itemValue="id" itemLabel="descricao" class="form-control"/>
+                            <select items="${escolaridades}" ng-model="entity.escolaridade" itemValue="id" itemLabel="descricao" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label><spring:message code="atendente.tituloEleitor"/></label>
-                            <input id="tituloeleitor" ng-model="atendente.tituloEleitor" class="form-control"/>
+                            <input id="tituloeleitor" ng-model="entity.tituloEleitor" class="form-control"/>
                         </div>
 
                         <div class="checkbox">
                             <label for="ativo">
-                                <checkbox id="status" ng-model="atendente.ativo" id="ativo"/>
+                                <input type="checkbox" id="status" ng-model="entity.ativo" id="ativo"/>
                                 <spring:message code="atendente.ativo"/>
                             </label>
                         </div>
@@ -95,23 +99,19 @@
                     </div>
                     <div class="modal-footer">
                         <div class="btn-group pull-right">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">
+                            <button type="button" class="btn btn-default" ng-click="cancel()" >
                                 <spring:message code="formulario.botaoFechar"/>
                             </button>
-                            <button type="reset" class="btn btn-default" ng-click="novoAtendente()">
-                                <spring:message code="formulario.botaoLimpar"/>
-                            </button>
-                            <button type="button" class="btn btn-primary" ng-click="save()">
+                            <button type="button" class="btn btn-primary insereAction" ng-click="saveAndClose(entity)" >
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
-
                         </div>
                     </div>
                 </form>
 
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </script>
 
 </div>
 
