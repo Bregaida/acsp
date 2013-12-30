@@ -26,6 +26,12 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
         });
     }
 
+    $scope.loadEducationLevels = function(){
+        $http.get('/acsp/escolaridades').success(function(data) {
+            $scope.educationLevels = data;
+        });
+    }
+
     $scope.disable = function(id){
         Restangular.one($scope.entityType, id).remove();
     }

@@ -51,6 +51,7 @@
         <div class="modal-dialog" ng-controller="GenericController">
             <div ng-init="setEntitiesType('socios')"></div>
             <div ng-init="setEntityType('socio')"></div>
+            <div ng-init="loadEducationLevels()"></div>
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -93,7 +94,7 @@
 
                             <div class="form-group">
                                 <label for="escolaridade"><spring:message code="socio.escolaridade"/></label>
-                                <select items="${escolaridades}" ng-model="entity.escolaridade" id="escolaridade" itemValue="id" itemLabel="descricao" class="form-control"/>
+                                <select ng-model="entity.escolaridade" id="escolaridade" class="form-control" ng-options="k as v for (k,v) in educationLevels"/>
                             </div>
 
                             <div class="form-group">
