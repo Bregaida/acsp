@@ -8,9 +8,8 @@ app.config( function($routeProvider, RestangularProvider){
 
 app.controller('GenericController', function($scope, $http, $modal, Restangular){
 
-    $scope.orderProp = 'certificadoMatricula';
-    $scope.entityType =  null;//type will be aeronave, for example
-    $scope.entitiesType = null;//type will be aeronaves, for example
+    $scope.entityType =  null;  //type will be aeronave, for example
+    $scope.entitiesType = null; //type will be aeronaves, for example
 
     $scope.setEntitiesType = function(entitiesType){
         $scope.entitiesType = entitiesType;
@@ -104,11 +103,12 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
         $scope.entity = entity;
 
         $scope.saveAndClose = function (anEntity) {
+            $scope.validation = null;
             $scope.entity = anEntity;
             Restangular.all(entityType).post(entityType, anEntity).then(function(){
                 $modalInstance.close(anEntity);
-            }, function(){
-                console.log("There was an error saving " + anEntity);
+            }, function(error){
+                $scope.validation = error.data;
             });
         };
 
