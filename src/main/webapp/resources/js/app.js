@@ -165,6 +165,15 @@ app.controller('AulasController', function($scope, $http, $modal, Restangular){
         });
     };
 
+    $scope.estaSelecionado = function(id){
+        for(var i = 0; i < $scope.aula.aeronaves.length; i++){
+            var aeronaveDaAula = $scope.aula.aeronaves[i];
+            if(aeronaveDaAula.id == id){
+                return true;
+            }
+        }
+        return false;
+    };
 
     $scope.newEntity = function () {
         $scope.entity = null;

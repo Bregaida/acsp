@@ -73,7 +73,14 @@
                             <label for="aeronave">
                                 <spring:message code="aula.aeronaves"/>
                             </label>
-                            <select multiple="multiple" ng-model="aula.aeronaves" id="aeronaves" class="form-control" ng-options="i.id as i.displayName for i in aeronaves" required="true"/>
+
+                            <select multiple="multiple" ng-model="aula.aeronaves" id="aeronaves" class="form-control">
+                                <option ng-selected="{{estaSelecionado(i.id)}}"
+                                        ng-repeat="i in aeronaves"
+                                        value="{{i.id}}">
+                                    {{i.displayName}}
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
