@@ -126,6 +126,13 @@ app.controller('AulasController', function($scope, $http, $modal, Restangular){
     $scope.list = function(){
         $http.get('/acsp/aulas').success(function(data) {
             $scope.aulas = data;
+            for(var i=0; i < $scope.aulas.length; i++){
+                var aula = $scope.aulas[i];
+                aula.planes = "";
+                for(var p=0; p < aula.aeronaves.length; p++){
+                    aula.planes = aula.planes + aula.aeronaves[p].certificadoMatricula + ", ";
+                }
+            }
         });
     }
 

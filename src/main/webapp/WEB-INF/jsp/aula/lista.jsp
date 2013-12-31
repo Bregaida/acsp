@@ -21,7 +21,9 @@
                     <td>{{aula.materia}}</td>
                     <td>{{aula.quantidadeHorasNecessarias}}</td>
                     <td>
-                        //mostrar as aeronaves, aeronaves, aeronaves
+                        <i>
+                        {{aula.planes}}
+                        </i>
                     </td>
                     <td>
                         <div class="btn-group btn-custom-block">
