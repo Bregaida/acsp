@@ -13,7 +13,6 @@
             <th>Matéria</th>
             <th>Quantidade de Horas necessárias para instrutor</th>
             <th>Aeronaves Homologadas</th>
-            <th></th>
             </thead>
 
             <tbody>
@@ -24,12 +23,6 @@
                         <i>
                         {{aula.planes}}
                         </i>
-                    </td>
-                    <td>
-                        <div class="btn-group btn-custom-block">
-                            <span class="icon-edit icon-2x"></span>
-                            <span class="icon-remove-circle icon-2x"></span>
-                        </div>
                     </td>
                 </tr>
             </tbody>

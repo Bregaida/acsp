@@ -61,18 +61,13 @@ $(document).ready(function(){
         dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
 
         dayClick: function(date) {
-            $('#agendaModalBtn').click();
-            $('#dataReservaId').val(date.toLocaleDateString());
-            var timeString = date.toLocaleTimeString().split(':')[0];
-            $('#horario option').filter(function() {
-                return ($(this).text().indexOf(timeString)!=-1);
-            }).prop('selected', true);
+
         },
 
         events: '/acsp/agenda',
 
         eventClick: function(calEvent, jsEvent, view) {
-            editAction(calEvent.id, $('#agenda'));
+            alert("Event: " + calEvent.id);
         },
         eventMouseover: function(calEvent, jsEvent, view) {
             //console.log("-> " + calEvent.id);

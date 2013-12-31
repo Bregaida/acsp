@@ -22,7 +22,6 @@
                 <th><spring:message code="aeronave.checkList"/></th>
                 <th><spring:message code="aeronave.diarioBordo"/></th>
                 <th><spring:message code="aeronave.ativo"/></th>
-                <th></th>
             </thead>
             <tbody>
                 <tr ng-repeat="aeronave in entities" ng-click="load(aeronave.id)" data-toggle="modal" data-target="#myModal">
@@ -34,15 +33,6 @@
                     <td><i ng-class="style(aeronave.checkList)"></i></td>
                     <td><i ng-class="style(aeronave.diarioBordo)"></i></td>
                     <td><i ng-class="style(aeronave.ativo)"></i></td>
-                    <td>
-                    <td>
-                        <div class="btn-group btn-custom-block">
-                            <span class="icon-edit icon-2x"></span>
-                            <span class="icon-remove-circle icon-2x"></span>
-                            <span class="icon-plane icon-2x"></span>
-                        </div>
-                    </td>
-                    </td>
                 </tr>
             </tbody>
         </table>

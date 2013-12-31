@@ -12,14 +12,13 @@
     <div class="clearfix">
         <table class="table table-striped table-hover table-condensed datatabled">
             <thead>
-            <th>Nome do aluno</th>
-            <th>Código anac</th>
-            <th>CPF</th>
-            <th>Nome de Pista</th>
-            <th>CHT</th>
-            <th>CMA</th>
-            <th>Ativo</th>
-            <th></th>
+                <th>Nome do aluno</th>
+                <th>Código anac</th>
+                <th>CPF</th>
+                <th>Nome de Pista</th>
+                <th>CHT</th>
+                <th>CMA</th>
+                <th>Ativo</th>
             </thead>
             <tbody>
                 <tr ng-repeat="aluno in entities" ng-click="load(aluno.id)" data-toggle="modal" data-target="#myModal">
@@ -29,13 +28,8 @@
                     <td>{{aluno.nomePista}}</td>
                     <td>{{aluno.cht}}</td>
                     <td>{{aluno.cma}}</td>
-                    <td><i ng-class="style(aluno.ativo)"></i> </td>
                     <td>
-                        <div class="btn-group btn-custom-block">
-                            <span class="icon-edit icon-2x"></span>
-                            <span class="icon-remove-circle icon-2x"></span>
-                            <span class="icon-plane icon-2x"></span>
-                        </div>
+                        <i ng-class="style(aluno.ativo)"></i>
                     </td>
                 </tr>
             </tbody>

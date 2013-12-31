@@ -22,7 +22,6 @@
                 <th>CMA</th>
                 <th>Ativo</th>
                 <th>Qth. Hr/Aula</th>
-                <th></th>
             </thead>
             <tbody>
                  <tr ng-repeat="instrutor in entities" ng-click="load(instrutor.id)" data-toggle="modal" data-target="#myModal">
@@ -33,15 +32,10 @@
                     <td>{{instrutor.cpf}}</td>
                     <td>{{instrutor.cht}}</td>
                     <td>{{instrutor.cma}}</td>
-                    <td><i ng-class="style(instrutor.ativo)"></i> </td>
-                    <td>{{instrutor.quantidadeHorasMinistrada}}</td>
                     <td>
-                        <div class="btn-group btn-custom-block">
-                            <span class="icon-edit icon-2x"></span>
-                            <span class="icon-remove-circle icon-2x"></span>
-                            <span class="icon-plane icon-2x"></span>
-                        </div>
+                        <i ng-class="style(instrutor.ativo)"></i>
                     </td>
+                    <td>{{instrutor.quantidadeHorasMinistrada}}</td>
                 </tr>
             </tbody>
         </table>
