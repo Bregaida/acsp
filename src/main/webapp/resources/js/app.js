@@ -132,6 +132,10 @@ app.controller('AulasController', function($scope, $http, $modal, Restangular){
     $scope.loadAeronaves = function(){
         $http.get('/acsp/aeronaves').success(function(data){
             $scope.aeronaves = data;
+            for(var i=0; i< $scope.aeronaves.length; i++){
+                var plane = $scope.aeronaves[i];
+                $scope.aeronaves[i].displayName = plane.certificadoMatricula + " - " +  plane.marca + " " + plane.modelo;
+            }
         });
     }
 

@@ -54,9 +54,8 @@ public class AulaController extends AbstractController {
 
     @RequestMapping(value = "/aula/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") Long id) {
         aulaService.excluirPorId(id);
-        return "SUCCESS";
     }
 
     @RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)

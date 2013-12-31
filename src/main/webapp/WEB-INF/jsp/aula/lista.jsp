@@ -73,13 +73,7 @@
                             <label for="aeronave">
                                 <spring:message code="aula.aeronaves"/>
                             </label>
-                            <div ng-repeat="aeronave in aeronaves" class="form-horizontal">
-                                <label>
-                                <input type="checkbox" class="checkbox-inline"
-                                       id="aeronave_{{aeronave.id}}" ng-model="aula.aeronaves" ng-true-value="{{aeronave.id}}"/>
-                                {{aeronave.marca}} {{aeronave.modelo}} - {{aeronave.certificadoMatricula}}
-                                </label>
-                            </div>
+                            <select multiple="multiple" ng-model="aula.aeronaves" id="aeronaves" class="form-control" ng-options="i.id as i.displayName for i in aeronaves" required="true"/>
                         </div>
                     </div>
                     <div class="modal-footer">
