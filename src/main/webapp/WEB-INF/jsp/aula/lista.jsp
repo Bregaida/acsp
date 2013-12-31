@@ -35,12 +35,13 @@
     </div>
 
     <!-- Button trigger modal -->
-    <a ng-click="novaAula()" id="aulaModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Adicionar Aula</a>
+    <a ng-click="newEntity()" id="aulaModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Adicionar Aula</a>
 
     <%-- Formulario para inserir nova aeronave --%>
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-dialog" ng-controller="AulasController">
+            <div ng-init="loadAeronaves()"></div>
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -49,13 +50,13 @@
                 <form>
                     <div class="modal-body">
                         <div class="validation_error">
-                            <div class="alert alert-danger" ng-repeat="error in validation.data.fieldErrors">
+                            <div class="alert alert-danger" ng-repeat="error in validation.fieldErrors">
                                 {{error.message}}
                             </div>
                             <br/>
                         </div>
 
-                        <hidden ng-model="aula.id"/>
+                        <input type="hidden" ng-model="aula.id"/>
 
 
                         <div class="form-group">
@@ -72,20 +73,21 @@
                             <label for="aeronave">
                                 <spring:message code="aula.aeronaves"/>
                             </label>
-                            <ul class="form-inline">
-                                <checkboxes ng-model="aula.aeronaves" id="aeronave" items="${listaDeAeronaves}" itemValue="id" element="li class='checkbox-inline'" />
-                            </ul>
+                            <div ng-repeat="aeronave in aeronaves" class="form-horizontal">
+                                <label>
+                                <input type="checkbox" class="checkbox-inline"
+                                       id="aeronave_{{aeronave.id}}" ng-model="aula.aeronaves" ng-true-value="{{aeronave.id}}"/>
+                                {{aeronave.marca}} {{aeronave.modelo}} - {{aeronave.certificadoMatricula}}
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="btn-group pull-right">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">
                                 <spring:message code="formulario.botaoFechar"/>
                             </button>
-                            <button type="reset" class="btn btn-default" ng-click="cancel()">
-                                <spring:message code="formulario.botaoLimpar"/>
-                            </button>
-                            <button type="button" class="btn btn-primary" ng-click="save()">
+                            <button ng-click="saveAndClose(aula)" aria-hidden="true" type="button" class="btn btn-primary">
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
                         </div>
@@ -94,7 +96,7 @@
 
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </script>
 
     </div>
 

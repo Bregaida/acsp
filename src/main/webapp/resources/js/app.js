@@ -81,9 +81,6 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
                     entity: function () {
                         return entity;
                     },
-                    save: function(){
-                        return $scope.save;
-                    },
                     entityType: function(){
                         return $scope.entityType;
                     }
@@ -122,7 +119,9 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
 
 app.controller('AulasController', function($scope, $http, $modal, Restangular){
 
-    $scope.orderProp = 'materia';
+    $scope.disable = function(id){
+        Restangular.one("aula", id).remove();
+    };
 
     $scope.list = function(){
         $http.get('/acsp/aulas').success(function(data) {
@@ -130,38 +129,76 @@ app.controller('AulasController', function($scope, $http, $modal, Restangular){
         });
     }
 
-    $scope.save = function(){
-        Restangular.all('aula').post("aula", $scope.aula).then(function(){
-            console.log("Object saved OK");
-        }, function(){
-            console.log("There was an error saving");
+    $scope.loadAeronaves = function(){
+        $http.get('/acsp/aeronaves').success(function(data){
+            $scope.aeronaves = data;
         });
-        $scope.list();
+    }
+
+    $scope.load = function (id) {
+
+        Restangular.one("aula", id).get().then(function(entity) {
+            $scope.aula = entity;
+
+            var modalInstance = $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: ModalInstanceCtrl,
+                resolve: {
+                    aula: function () {
+                        return $scope.aula;
+                    },
+                    aeronaves: function(){
+                        return $scope.aeronaves;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (entity) {//When the modal closes with SAVE
+                $scope.list();
+            }, function () {//on dismiss
+                $scope.entity = null;
+            });
+        });
     };
 
-    $scope.disable = function(id){
-        console.log("Disabling " + id);
-        Restangular.one("aula", id).remove();
-    };
 
-    $scope.load = function(id){
-        Restangular.one("aula", id).get().then(function(aula) {
-            $scope.aula = aula;
+    $scope.newEntity = function () {
+        $scope.entity = null;
+        var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: ModalInstanceCtrl,
+            resolve: {
+                aula: function () {
+                    return $scope.aula;
+                },
+                aeronaves: function(){
+                    return $scope.aeronaves;
+                }
+            }
         });
 
+        modalInstance.result.then(function (entity) {
+            $scope.list();
+        }, function () {
+            $scope.entity = null;
+        });
     };
 
-    //TODO: create directive
-    $scope.style = function(stat){
-        if(stat) {
-            return "fa fa-check-circle-o fa-lg";
-        }{
-            return "fa fa-circle-o fa-lg";
-        }
-    };
+    var ModalInstanceCtrl = function ($scope, $modalInstance, aula, aeronaves) {
 
-    $scope.novaAula = function () {
-        $scope.aula = null;
-    };
+        $scope.aula = aula;
 
+        $scope.saveAndClose = function (anEntity) {
+            $scope.validation = null;
+            Restangular.all("aula").post("aula", anEntity).then(function(){
+                $modalInstance.close(anEntity);
+            }, function(error){
+                $scope.validation = error.data;
+            });
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    };
 });

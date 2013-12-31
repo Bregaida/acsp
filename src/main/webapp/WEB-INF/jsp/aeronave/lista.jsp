@@ -102,52 +102,38 @@
                             </div>
 
                             <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="fichaPesoBalanceamento" value="true" id="fichaPesoBalanceamento" ng-model="entity.fichaPesoBalanceamento"/>
-                                    <spring:message code="aeronave.fichaPesoBalanceamento"/>
-                                </label>
+                                <label for="fichaPesoBalanceamento"><spring:message code="aeronave.fichaPesoBalanceamento"/></label>
+                                <input type="checkbox" name="fichaPesoBalanceamento" value="true" id="fichaPesoBalanceamento" ng-model="entity.fichaPesoBalanceamento"/>
                             </div>
 
                             <div class="checkbox">
-                                <label>
+                                <label for="manualVoo"><spring:message code="aeronave.manualVoo"/></label>
                                     <input type="checkbox" name="manualVoo" value="true" id="manualVoo" ng-model="entity.manualVoo"/>
-                                    <spring:message code="aeronave.manualVoo"/>
-                                </label>
                             </div>
 
                             <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="checkList" value="true" id="checkList" ng-model="entity.checkList" />
-                                    <spring:message code="aeronave.checkList"/>
-                                </label>
+                                <label for="checkList"><spring:message code="aeronave.checkList"/></label>
+                                <input type="checkbox" name="checkList" value="true" id="checkList" ng-model="entity.checkList" />
                             </div>
 
                             <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="nsca3_5" value="true" id="nsca3_5" ng-model="entity.nsca3_5"/>
-                                    <spring:message code="aeronave.nsca3_5"/>
-                                </label>
+                                <label for="nsca3_5"><spring:message code="aeronave.nsca3_5"/></label>
+                                <input type="checkbox" name="nsca3_5" value="true" id="nsca3_5" ng-model="entity.nsca3_5"/>
                             </div>
 
                             <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="nsca3_7" value="true" id="nsca3_7" ng-model="entity.nsca3_7"/>
-                                    <spring:message code="aeronave.nsca3_7"/>
-                                </label>
+                                <label for="nsca3_7"><spring:message code="aeronave.nsca3_7"/></label>
+                                <input type="checkbox" name="nsca3_7" value="true" id="nsca3_7" ng-model="entity.nsca3_7"/>
                             </div>
 
                             <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="diarioBordo" value="true" id="diarioBordo" ng-model="entity.diarioBordo"/>
-                                    <spring:message code="aeronave.diarioBordo"/>
-                                </label>
+                                <label for="diarioBordo"><spring:message code="aeronave.diarioBordo"/></label>
+                                <input type="checkbox" name="diarioBordo" value="true" id="diarioBordo" ng-model="entity.diarioBordo"/>
                             </div>
 
                             <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="ativo" value="true" id="ativo" ng-model="entity.ativo"/>
-                                    <spring:message code="aeronave.ativo"/>
-                                </label>
+                                <label for="ativo"><spring:message code="aeronave.ativo"/></label>
+                                <input type="checkbox" name="ativo" value="true" id="ativo" ng-model="entity.ativo"/>
                             </div>
 
                             <div class="form-group">
