@@ -21,7 +21,6 @@
             <th>CHT</th>
             <th>CMA</th>
             <th>Ativo</th>
-            <th></th>
             </thead>
             <tbody>
                 <tr ng-repeat="socio in entities" ng-click="load(socio.id)" data-toggle="modal" data-target="#myModal">
@@ -32,12 +31,8 @@
                     <td>{{socio.nomePista}}</td>
                     <td>{{socio.cht}}</td>
                     <td>{{socio.cma}}</td>
-                    <td><i ng-class="style(socio.ativo)"></i></td>
                     <td>
-                        <div class="btn-group btn-custom-block">
-                            <span class="icon-edit icon-2x editaAction"></span>
-                            <span class="icon-remove-circle icon-2x apagaAction"></span>
-                        </div>
+                        <i ng-class="style(socio.ativo)"></i>
                     </td>
                 </tr>
             </tbody>

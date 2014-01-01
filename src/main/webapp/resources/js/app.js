@@ -1,9 +1,147 @@
 'use strict';
 
-var app = angular.module("app", ['ngRoute', 'restangular', 'ui.bootstrap']);
+var app = angular.module("app", ['ngRoute', 'restangular', 'ui.bootstrap', 'ui.calendar']);
 
 app.config( function($routeProvider, RestangularProvider){
     RestangularProvider.setBaseUrl('/acsp/');
+});
+
+app.controller('AgendamentosController', function($scope, $http, $modal, Restangular){
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+    /* event source that pulls from google.com */
+    $scope.eventSource = {
+        url: "/acsp/agenda"
+    };
+    /* event source that contains custom events on the scope */
+    $scope.events = [];
+
+    /* event source that calls a function on every view switch */
+    $scope.eventsF = [];
+
+    $scope.calEventsExt = {
+        color: '#f00',
+        textColor: 'yellow',
+        events: [
+            {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
+            {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
+            {type:'party',title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
+        ]
+    };
+
+    $scope.eventClick = function(event, jsEvent, view){
+        $scope.$apply(function(){
+            console.log('Event Clicked ' + event.id + " ["+ event.title + "]");
+        });
+    }
+
+    /* alert on eventClick */
+    $scope.alertDayOnClick = function( date, allDay, jsEvent, view ){
+        $scope.$apply(function(){
+            console.log('Day Clicked ' + date);
+        });
+    };
+    /* alert on Drop */
+    $scope.alertOnDrop = function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view){
+        $scope.$apply(function(){
+            console.log('Event Droped to make dayDelta ' + dayDelta);
+        });
+    };
+    /* alert on Resize */
+    $scope.alertOnResize = function(event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ){
+        $scope.$apply(function(){
+            console.log('Event Resized to make dayDelta ' + minuteDelta);
+        });
+    };
+    /* add and removes an event source of choice */
+    $scope.addRemoveEventSource = function(sources,source) {
+        var canAdd = 0;
+        angular.forEach(sources,function(value, key){
+            if(sources[key] === source){
+                sources.splice(key,1);
+                canAdd = 1;
+            }
+        });
+        if(canAdd === 0){
+            sources.push(source);
+        }
+    };
+    /* add custom event*/
+    $scope.addEvent = function() {
+        $scope.events.push({
+            title: 'Open Sesame',
+            start: new Date(y, m, 28),
+            end: new Date(y, m, 29),
+            className: ['openSesame']
+        });
+    };
+    /* remove event */
+    $scope.remove = function(index) {
+        $scope.events.splice(index,1);
+    };
+    /* Change View */
+    $scope.changeView = function(view,calendar) {
+        calendar.fullCalendar('changeView',view);
+    };
+    /* Change View */
+    $scope.renderCalender = function(calendar) {
+        calendar.fullCalendar('render');
+    };
+
+    //$scope.calAgendamentos.fullCalendar
+    $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
+
+    $scope.uiConfig = {
+        calendar:{
+            defaultView: 'agendaDay',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            allDaySlot :false,
+            allDayText: 'dia-todo',
+            buttonText: {
+                prev:     '&lsaquo;', // <
+                next:     '&rsaquo;', // >
+                prevYear: '&laquo;',  // <<
+                nextYear: '&raquo;',  // >>
+                today:    'hoje',
+                month:    'mês',
+                week:     'semana',
+                day:      'dia'
+            },
+            editable: false,
+            columnFormat:{
+                month: 'ddd',    // Mon
+                week: 'ddd d/M', // Mon 9/7
+                day: 'dddd d/M'  // Monday 9/7
+            },
+
+            agenda: 'HH:mm{ - HH:mm}',
+            timeFormat: 'HH:mm',
+            axisFormat : 'HH:mm',
+
+            height: 450,
+            minTime: 0,
+            maxTime: 22,
+
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+                'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta','Quinta', 'Sexta', 'Sábado'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+
+            dayClick: $scope.alertDayOnClick,
+            eventDrop: $scope.alertOnDrop,
+            eventResize: $scope.alertOnResize,
+            eventClick: $scope.eventClick
+        }
+    };
 });
 
 app.controller('GenericController', function($scope, $http, $modal, Restangular){

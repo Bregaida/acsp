@@ -14,18 +14,13 @@
                 <th>Nome do Atendente</th>
                 <th>CPF</th>
                 <th>Ativo</th>
-                <th></th>
             </thead>
             <tbody>
                 <tr ng-repeat="atendente in entities" ng-click="load(atendente.id)" data-toggle="modal" data-target="#myModal">
                     <td>{{atendente.nome}}</td>
                     <td>{{atendente.cpf}}</td>
-                    <td><i ng-class="style(atendente.ativo)"></i></td>
                     <td>
-                        <div class="btn-group btn-custom-block">
-                            <span class="icon-edit icon-2x editaAction"></span>
-                            <span class="icon-remove-circle icon-2x apagaAction"></span>
-                        </div>
+                        <i ng-class="style(atendente.ativo)"></i>
                     </td>
                 </tr>
             </tbody>

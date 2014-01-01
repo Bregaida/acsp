@@ -34,8 +34,8 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.7.0/ui-bootstrap.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.7.0/ui-bootstrap-tpls.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/calendar.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/app.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/configs.js"/>"></script>
 </head>
 <body>
 
@@ -91,7 +91,7 @@
                     <li><a href="/acsp/atendentes/spa">Manutenção de Atendentes</a></li>
                     <li><a href="/acsp/aeronaves/spa">Manutenção de Aeronaves</a></li>
                     <li><a href="/acsp/aulas/spa">Manutenção de Aulas</a></li>
-                    <li><a href="/acsp/agendamentos/spa">Manutenção de Agendamentos</a></li>
+                    <li><a href="/acsp/agendamento/spa">Manutenção de Agendamentos</a></li>
                     <li><a href="#">Informações do Sistema</a></li>
                 </ul>
             </li>

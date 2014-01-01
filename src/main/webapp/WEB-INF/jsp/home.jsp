@@ -3,9 +3,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="../includes/header.jsp"/>
 
-<div class="row">
+<div class="row" ng-controller="AgendamentosController">
+
     <div class="col-md-8">
-        <div id='calendar'></div>
+        <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>
     </div>
     <div class="col-xs-6 col-md-4">
         <h5>Aeronaves disponíveis - hoje</h5>
