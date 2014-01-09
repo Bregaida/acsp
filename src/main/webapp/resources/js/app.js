@@ -254,7 +254,8 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
 
 });
 
-
+//Tem um controller a parte por causa do select.
+// O select eh ligado usando entidades, então é um pouco mais complexo... por enquanto está bom assim.
 app.controller('AulasController', function($scope, $http, $modal, Restangular){
 
     $scope.disable = function(id){
