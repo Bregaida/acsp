@@ -44,14 +44,12 @@
 
                 <form name="atendente_form">
                     <div class="modal-body">
-
                         <div class="validation_error">
-                            <div class="alert alert-danger" ng-repeat="error in validation.data.fieldErrors">
+                            <div class="alert alert-danger" ng-repeat="error in validation.fieldErrors">
                                 {{error.message}}
                             </div>
                             <br/>
                         </div>
-
                         <input type="hidden" ng-model="atendente.id" />
 
                         <div class="form-group">

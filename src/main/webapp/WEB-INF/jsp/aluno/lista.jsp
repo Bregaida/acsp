@@ -54,7 +54,7 @@
                 <form>
                     <div class="modal-body">
                         <div class="validation_error">
-                            <div class="alert alert-danger" ng-repeat="error in validation.data.fieldErrors">
+                            <div class="alert alert-danger" ng-repeat="error in validation.fieldErrors">
                                 {{error.message}}
                             </div>
                             <br/>
