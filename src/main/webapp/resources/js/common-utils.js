@@ -116,12 +116,15 @@ $('.cpf').focusout(function() {
     }
 });
 
+//sandbox com exemplos: http://eternicode.github.io/bootstrap-datepicker/
 $( ".datepicker-input" ).datepicker({
     format: "dd/mm/yyyy",
     todayBtn: "linked",
     language: "pt-BR",
     todayHighlight: true,
-    autoclose: true
+    autoclose: true,
+    startDate: "0d",
+    endDate: "+15d"
 });
 
 /**
