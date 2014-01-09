@@ -86,13 +86,13 @@ public class InstrutorController extends AbstractController {
         return instrutor;
     }
 
-    @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
+    @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}", method = RequestMethod.GET)
     @ResponseBody
     public List<Instrutor> listarInstrutoresDisponiveisPorHoraAeronaveAula(
             @PathVariable("idHora") Long idHora,
-            @PathVariable("idAeronave") Long idAeronave,
-            @PathVariable("idAula") Long idAula, @RequestParam Date dataReserva) {
-        // TODO chamar o metodo certo
-        return (List<Instrutor>) instrutorService.listarOrdenado();
+            @PathVariable("idAeronave") Long idAeronave, @RequestParam Date dataReserva) {
+
+        return (List<Instrutor>) instrutorService.listarDisponiveis(idHora, idAeronave, dataReserva);
     }
+
 }
