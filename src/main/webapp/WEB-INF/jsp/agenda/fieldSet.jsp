@@ -43,12 +43,18 @@
 
     <div class="form-group">
         <label for="aula"><spring:message code="agenda.aula"/></label>
-        <form:select path="aula.id" id="aula" items="${listaDeAulas}" itemValue="id" itemLabel="materia" cssClass="form-control" />
+        <form:select path="aula.id" id="aula" cssClass="form-control">
+            <form:option value="" label="--- Selecione ---" />
+            <form:options items="${listaDeAulas}" itemValue="id" itemLabel="materia"/>
+        </form:select>
     </div>
 
     <div class="form-group">
         <label for="instrutor"><spring:message code="agenda.instrutor"/></label>
-        <form:select path="instrutor.id" id="instrutor" items="${listaDeInstrutores}" itemValue="id" itemLabel="nome" cssClass="form-control" />
+        <form:select path="instrutor.id" id="instrutor" cssClass="form-control">
+            <form:option value="" label="--- Selecione ---" />
+            <form:options items="${listaDeInstrutores}" itemValue="id" itemLabel="nome"/>
+        </form:select>
     </div>
    
     <div class="checkbox">

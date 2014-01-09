@@ -92,40 +92,35 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-    public String salvarOuAtualizar(@Valid Instrutor instrutor,
-	    BindingResult bindingResult, ModelMap map) {
-	if (bindingResult.hasErrors()) {
-	    map.put("instrutor", instrutor);
-	    map.put("escolaridades", EscolaridadeType.values());
-	    return "instrutor/formulario";
-	}
-	final String msgOperacao = getMensagemOperacao(instrutor.getId());
-	instrutorService.salvar(instrutor);
-	map.put("msgSucesso", "Instrutor " + instrutor.getNome() + " "
-		+ msgOperacao + " com exito.");
-	return "success";
+    public String salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult bindingResult, ModelMap map) {
+        if (bindingResult.hasErrors()) {
+            map.put("instrutor", instrutor);
+            map.put("escolaridades", EscolaridadeType.values());
+            return "instrutor/formulario";
+        }
+        final String msgOperacao = getMensagemOperacao(instrutor.getId());
+        instrutorService.salvar(instrutor);
+        map.put("msgSucesso", "Instrutor " + instrutor.getNome() + " " + msgOperacao + " com exito.");
+        return "success";
     }
 
-    @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
+    @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}", method = RequestMethod.GET)
     @ResponseBody
     public List<Instrutor> listarInstrutoresDisponiveisPorHoraAeronaveAula(
 	    @PathVariable("idHora") Long idHora,
 	    @PathVariable("idAeronave") Long idAeronave,
-	    @PathVariable("idAula") Long idAula, @RequestParam Date dataReserva) {
-	// TODO chamar o metodo certo
-	return (List<Instrutor>) instrutorService.listarOrdenado();
+        @RequestParam Date dataReserva) {
+
+        return (List<Instrutor>) instrutorService.listarDisponiveis(idHora, idAeronave, dataReserva);
     }
 
     @RequestMapping(value = "/instrutor/aeronave", method = RequestMethod.POST)
-    public String editarAeronaves(
-	    @ModelAttribute("instrutor") Instrutor instrutor, ModelMap map) {
-	Instrutor instrutorDB = instrutorService.obtemPorId(instrutor.getId());
-	BeanUtils.copyProperties(instrutorDB, instrutor,
-		new String[] { "aeronaves" });
-	instrutorService.alterar(instrutor);
-	final String msgOperacao = getMensagemOperacao(instrutorDB.getId());
-	map.put("msgSucesso", "Instrutor " + instrutorDB.getNome() + " "
-		+ msgOperacao + " com exito.");
-	return "success";
+    public String editarAeronaves(@ModelAttribute("instrutor") Instrutor instrutor, ModelMap map) {
+        Instrutor instrutorDB = instrutorService.obtemPorId(instrutor.getId());
+        BeanUtils.copyProperties(instrutorDB, instrutor, new String[] { "aeronaves" });
+        instrutorService.alterar(instrutor);
+        final String msgOperacao = getMensagemOperacao(instrutorDB.getId());
+        map.put("msgSucesso", "Instrutor " + instrutorDB.getNome() + " " + msgOperacao + " com exito.");
+        return "success";
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author pedrosa
@@ -72,5 +73,11 @@ public class AulaController extends AbstractController {
         aulaService.salvar(aula);
         map.put("msgSucesso", "Aula " + aula.getMateria() + " " + msgOperacao + " com exito.");
         return "success";
+    }
+
+    @RequestMapping(value = "/aula/disponiveis/{idAeronave}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Aula> listarAulasPorAeronave(@PathVariable("idAeronave") Long idAeronave) {
+        return (List<Aula>) aulaService.listarAulasPorAeronave(idAeronave);
     }
 }

@@ -28,8 +28,9 @@ $(document).ready(function() {
 		.prop("disabled", false)
 		.empty()
 		.prop('options');
+        var idAeronave = $(this).val();
 
-		$.getJSON(appContextRoot + "/horario/disponiveis/" + $(this).val(), {dataReserva : $('#dataReservaId').val()},
+        $.getJSON(appContextRoot + "/horario/disponiveis/" + idAeronave, {dataReserva : $('#dataReservaId').val()},
             function(data) {
                 options[options.length] = new Option('--- Selecione ---', '');
                 if (data.length === 0) {
@@ -39,10 +40,27 @@ $(document).ready(function() {
                         //noinspection JSUnresolvedVariable
                         options[options.length] = new Option($.trim(text.horarioAgenda), text.id);
                     });
+
+                    //Se existe horario, busca Aulas
+                    options = $('#aula').filter(':visible')
+                        .prop("disabled", false)
+                        .empty()
+                        .prop('options');
+
+                    $.getJSON(appContextRoot + "/aula/disponiveis/" + idAeronave,
+                        function(data) {
+                            options[options.length] = new Option('--- Selecione ---', '');
+                            if (data.length === 0) {
+                                bootbox.alert('Nenhuma aula cadastrada para esta aeronave.');
+                            } else {
+                                $.each(data, function(val, text) {
+                                    //noinspection JSUnresolvedVariable
+                                    options[options.length] = new Option($.trim(text.materia), text.id);
+                                });
+                            }
+                        });
                 }
 		});
-
-        //TODO - filtrar aulas que esta aeronave pode fazer
     });
 	
 	$("#aula").change(function() {
@@ -51,16 +69,18 @@ $(document).ready(function() {
 		.empty()
 		.prop('options');
 
-		$.getJSON(appContextRoot + "/instrutor/disponiveis/" + $('#horario').val() + "/" + $('#aeronave').val() + "/" + $(this).val(), {dataReserva : $('#dataReservaId').val()},
+		$.getJSON(appContextRoot + "/instrutor/disponiveis/" + $('#horario').val() + "/" + $('#aeronave').val(), {dataReserva : $('#dataReservaId').val()},
             function(data) {
-                $.each(data, function(val, text) {
-                    //noinspection JSUnresolvedVariable
-                    options[options.length] = new Option($.trim(text.nome), text.id);
-                });
+                options[options.length] = new Option('--- Selecione ---', '');
+                if (data.length === 0) {
+                    bootbox.alert('Nenhum instrutor disponivel para este horario e/ou aula.');
+                } else {
+                    $.each(data, function(val, text) {
+                        //noinspection JSUnresolvedVariable
+                        options[options.length] = new Option($.trim(text.nome), text.id);
+                    });
+                }
+
 		});
     });
-
-	
-	
-
 });

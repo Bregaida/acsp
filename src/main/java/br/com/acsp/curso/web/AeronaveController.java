@@ -103,14 +103,14 @@ public class AeronaveController extends AbstractController {
 	return aluno.getAeronaves();
     }
 
-    @RequestMapping(value = "/aeronave/disponiveis/{idInstrutor}", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Aeronave> listarAeronavesDisponiveisPorInstrutor(
-	    @PathVariable("idInstrutor") Long idInstrutor,
-	    @RequestParam Date dataReserva) {
-	// TODO - Usar a data para excluir aeronaves sem horarios disponiveis
-	Instrutor instrutor = instrutorService.obtemPorId(idInstrutor);
-	return instrutor.getAeronaves();
-    }
+//    @RequestMapping(value = "/aeronave/disponiveis/instrutor/{idInstrutor}", method = RequestMethod.GET)
+//    @ResponseBody
+//    public List<Aeronave> listarAeronavesDisponiveisPorInstrutor(
+//	    @PathVariable("idInstrutor") Long idInstrutor,
+//	    @RequestParam Date dataReserva) {
+//	// TODO - Usar a data para excluir aeronaves sem horarios disponiveis
+//	Instrutor instrutor = instrutorService.obtemPorId(idInstrutor);
+//	return instrutor.getAeronaves();
+//    }
 
 }
