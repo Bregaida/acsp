@@ -9,7 +9,6 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * @author eduardobregaida

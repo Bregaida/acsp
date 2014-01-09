@@ -7,7 +7,6 @@ import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 /**
