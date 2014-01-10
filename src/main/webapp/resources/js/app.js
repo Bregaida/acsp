@@ -25,11 +25,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
     $scope.calEventsExt = {
         color: '#f00',
         textColor: 'yellow',
-        events: [
-            {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-            {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
-            {type:'party',title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-        ]
+        events: []
     };
 
     $scope.eventClick = function(event, jsEvent, view){
@@ -141,6 +137,76 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
             eventResize: $scope.alertOnResize,
             eventClick: $scope.eventClick
         }
+    };
+
+    $scope.newEntity = function () {
+        $scope.agendamento = null;
+        var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: ModalInstanceCtrl,
+            resolve: {
+                agendamento: function () {
+                    return $scope.agendamento;
+                },
+                save: function(){
+                    return $scope.save;
+                },
+                entityType: function(){
+                    return $scope.entityType;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (entity) {
+            $scope.list();
+        }, function () {
+            $scope.agendamento = null;
+        });
+    };
+
+    $scope.load = function (id) {
+
+        Restangular.one($scope.entityType, id).get().then(function(entity) {
+            $scope.agendamento = entity;
+
+            var modalInstance = $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: ModalInstanceCtrl,
+                resolve: {
+                    agendamento: function () {
+                        return agendamento;
+                    },
+                    entityType: function(){
+                        return $scope.entityType;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (entity) {//When the modal closes with SAVE
+                $scope.list();
+            }, function () {//on dismiss
+                $scope.entity = null;
+            });
+        });
+    };
+
+    var ModalInstanceCtrl = function ($scope, $modalInstance, agendamento, entityType) {
+
+        $scope.agendamento = agendamento;
+
+        $scope.saveAndClose = function (anEntity) {
+            $scope.validation = null;
+            $scope.agendamento = anEntity;
+            Restangular.all(entityType).post(entityType, anEntity).then(function(){
+                $modalInstance.close(anEntity);
+            }, function(error){
+                $scope.validation = error.data;
+            });
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
     };
 });
 
