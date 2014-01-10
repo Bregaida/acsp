@@ -6,10 +6,7 @@ package br.com.acsp.curso.domain;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -28,8 +25,9 @@ public abstract class Piloto extends Pessoa {
 	private Long cht;
 	@Column
 	private Long codigoANAC;
-	@OneToMany
+    @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(name = "aeronave_piloto", joinColumns = { @JoinColumn(name = "piloto_id") }, inverseJoinColumns = { @JoinColumn(name = "aeronave_id") })
 	private List<Aeronave> aeronaves;
 
 	public String getNomePista() {

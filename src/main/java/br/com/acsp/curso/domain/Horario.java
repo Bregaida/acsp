@@ -6,7 +6,6 @@ package br.com.acsp.curso.domain;
 import org.joda.time.LocalTime;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 

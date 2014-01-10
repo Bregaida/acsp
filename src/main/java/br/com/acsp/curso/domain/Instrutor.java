@@ -6,7 +6,6 @@ package br.com.acsp.curso.domain;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.io.Serializable;
 
 /**
  * @author eduardobregaida

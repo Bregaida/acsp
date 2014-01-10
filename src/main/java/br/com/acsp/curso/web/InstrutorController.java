@@ -9,7 +9,6 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -80,28 +79,20 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor", method = RequestMethod.POST)
-    public void salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult result) {
+    @ResponseBody
+    public Instrutor salvarOuAtualizar(@Valid Instrutor instrutor, BindingResult result) {
         validateBindingResult(result);
         instrutorService.salvar(instrutor);
+        return instrutor;
     }
 
-    @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}/{idAula}", method = RequestMethod.GET)
+    @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}", method = RequestMethod.GET)
     @ResponseBody
     public List<Instrutor> listarInstrutoresDisponiveisPorHoraAeronaveAula(
             @PathVariable("idHora") Long idHora,
-            @PathVariable("idAeronave") Long idAeronave,
-            @PathVariable("idAula") Long idAula, @RequestParam Date dataReserva) {
-        // TODO chamar o metodo certo
-        return (List<Instrutor>) instrutorService.listarOrdenado();
+            @PathVariable("idAeronave") Long idAeronave, @RequestParam Date dataReserva) {
+
+        return (List<Instrutor>) instrutorService.listarDisponiveis(idHora, idAeronave, dataReserva);
     }
 
-    @RequestMapping(value = "/instrutor/aeronave", method = RequestMethod.POST)
-    public String editarAeronaves(
-            @ModelAttribute("instrutor") Instrutor instrutor, ModelMap map) {
-        Instrutor instrutorDB = instrutorService.obtemPorId(instrutor.getId());
-        BeanUtils.copyProperties(instrutorDB, instrutor,
-                new String[]{"aeronaves"});
-        instrutorService.alterar(instrutor);
-        return "success";
-    }
 }

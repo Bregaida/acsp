@@ -1,0 +1,23 @@
+/*
+When AngularJS is handling a form,  it adds specific classes to the form based upon their state.
+These classes are named similar to the properties that we can check as well.
+
+These classes are:
+
+.ng-pristine {}
+.ng-dirty {}
+.ng-valid {}
+.ng-invalid {}
+
+
+input.ng-invalid {
+    border: 1px solid red;
+}
+input.ng-valid {
+    border: 1px solid green;
+}
+*/
+
+div.modal.fade.in {
+    display: block;
+}

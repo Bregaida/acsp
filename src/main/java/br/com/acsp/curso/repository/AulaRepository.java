@@ -18,5 +18,5 @@ public interface AulaRepository extends JpaRepository<Aula, Long> {
     @Query("select a from Aula a order by a.materia")
     Collection<Aula> listarOrdenadoPorMateria();
 
-    Collection<Aula> findByAeronaves(Aeronave aeronave);
+    Collection<Aula> findByAeronavesOrderByMateriaAsc(Aeronave aeronave);
 }

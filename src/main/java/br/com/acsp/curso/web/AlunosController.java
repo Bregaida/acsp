@@ -82,9 +82,11 @@ public class AlunosController extends AbstractController {
     }
 
     @RequestMapping(value = "/aluno", method = RequestMethod.POST)
-    public void salvarOuAtualizar(@Valid Aluno aluno, BindingResult result) {
+    @ResponseBody
+    public Aluno salvarOuAtualizar(@Valid Aluno aluno, BindingResult result) {
         validateBindingResult(result);
         alunoService.salvar(aluno);
+        return aluno;
     }
 
     @RequestMapping(value = "/aluno/aeronave", method = RequestMethod.POST)
