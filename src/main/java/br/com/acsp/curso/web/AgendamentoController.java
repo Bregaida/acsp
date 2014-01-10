@@ -26,18 +26,6 @@ public class AgendamentoController extends AbstractController {
 
     @Autowired
     private AgendaService agendaService;
-    @Autowired
-    private AlunoService alunoService;
-    @Autowired
-    private SocioService socioService;
-    @Autowired
-    private AeronaveService aeronaveService;
-    @Autowired
-    private InstrutorService instrutorService;
-    @Autowired
-    private AulaService aulaService;
-    @Autowired
-    private HorarioService horarioService;
 
     /**
      * Este metodo adiciona a agenda ao (form) request, basta usar o form com o
@@ -52,14 +40,12 @@ public class AgendamentoController extends AbstractController {
 
     @RequestMapping(value = "/agendamento/spa", method = RequestMethod.GET)
     public String spa(ModelMap map) {
-        formularioMap(map);
         return "agenda/formulario";
     }
 
     @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
     @ResponseBody
     public Collection<Agenda> listar(ModelMap map) {
-        formularioMap(map);
         return agendaService.obterAgendamentosDoMes(new Date());
     }
 
@@ -80,16 +66,6 @@ public class AgendamentoController extends AbstractController {
     public void salvarOuAtualizar(@Valid Agenda agenda, BindingResult result) {
         validateBindingResult(result);
         agendaService.salvar(agenda);
-    }
-
-    private void formularioMap(ModelMap map) {
-        map.put("listaDeAlunos", alunoService.listarAtivos());
-        map.put("listaDeSocios", socioService.listarAtivos());
-        map.put("listaDeAeronaves", aeronaveService.listarAtivas());
-        map.put("listaDeInstrutores", instrutorService.listarAtivos());
-        map.put("listaDeAulas", aulaService.listarOrdenado());
-        map.put("listaDeHorarios", horarioService.listarOrdenado());
-
     }
 
     @RequestMapping(value = "/agendamento/{id}/apaga", method = RequestMethod.GET)

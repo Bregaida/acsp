@@ -63,7 +63,7 @@
 
                     <div class="form-group">
                         <label><spring:message code="agenda.dataReserva"/></label>
-                        {{agendamento.dataReserva}}
+                        {{agendamento.dataReserva}} @ {{agendamento.horario.horarioAgenda}}
                     </div>
 
                     <div class="form-group">

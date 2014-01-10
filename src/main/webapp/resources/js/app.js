@@ -143,7 +143,9 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
 
     $scope.newAgendamento = function (dateRef) {
         $scope.agendamento = {};
-        $scope.agendamento.dataReserva = dateRef;
+        $scope.agendamento.dataReserva = dateRef.toString('d/M/yyyy');
+        $scope.agendamento.horario = {};
+        $scope.agendamento.horario.horarioAgenda = dateRef.toString('HH:mm');
         var modalInstance = $modal.open({
             templateUrl: 'myModalContent.html',
             controller: ModalInstanceCtrl,
