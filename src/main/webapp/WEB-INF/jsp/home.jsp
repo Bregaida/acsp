@@ -40,12 +40,6 @@
                 <td>13-14, 16-17</td>
             </tr>
         </table>
-        <div class="row">
-            <div class="col-md-6 pull-left">
-            	<!-- Button trigger modal -->
-				<a id="agendaModalBtn" ng-click="newEntity()" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Agendamento</a>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -69,7 +63,7 @@
 
                     <div class="form-group">
                         <label><spring:message code="agenda.dataReserva"/></label>
-                        <input ng-model="agendamento.dataReserva" id="dataReservaId" cssClass="form-control datepicker-input" maxlength="10"/>
+                        {{agendamento.dataReserva}}
                     </div>
 
                     <div class="form-group">

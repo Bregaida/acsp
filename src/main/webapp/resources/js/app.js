@@ -40,6 +40,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
         $scope.$apply(function(){
             console.log('Day Clicked ' + date);
         });
+        $scope.newAgendamento(date);
     };
     /* alert on Drop */
     $scope.alertOnDrop = function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view){
@@ -140,8 +141,9 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
         }
     };
 
-    $scope.newEntity = function () {
-        $scope.agendamento = null;
+    $scope.newAgendamento = function (dateRef) {
+        $scope.agendamento = {};
+        $scope.agendamento.dataReserva = dateRef;
         var modalInstance = $modal.open({
             templateUrl: 'myModalContent.html',
             controller: ModalInstanceCtrl,
@@ -151,9 +153,6 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
                 },
                 save: function(){
                     return $scope.save;
-                },
-                entityType: function(){
-                    return $scope.entityType;
                 }
             }
         });
@@ -164,6 +163,30 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
             $scope.agendamento = null;
         });
     };
+
+    $scope.loadAlunos = function(){
+        $http.get('/acsp/escolaridades').success(function(data) {
+            $scope.educationLevels = data;
+        });
+    };
+
+    $scope.loadAeronaves = function(){
+        $http.get('/acsp/escolaridades').success(function(data) {
+            $scope.educationLevels = data;
+        });
+    };
+
+    $scope.loadAulas = function(){
+        $http.get('/acsp/escolaridades').success(function(data) {
+            $scope.educationLevels = data;
+        });
+    };
+
+    $scope.loadHorariosDisponiveis = function(){
+        $http.get('/acsp/escolaridades').success(function(data) {
+            $scope.educationLevels = data;
+        });
+    }
 
     $scope.load = function (id) {
 
@@ -176,9 +199,6 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
                 resolve: {
                     agendamento: function () {
                         return $scope.agendamento;
-                    },
-                    entityType: function(){
-                        return $scope.entityType;
                     }
                 }
             });
@@ -191,14 +211,14 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
         });
     };
 
-    var ModalInstanceCtrl = function ($scope, $modalInstance, agendamento, entityType) {
+    var ModalInstanceCtrl = function ($scope, $modalInstance, agendamento) {
 
         $scope.agendamento = agendamento;
 
         $scope.saveAndClose = function (anEntity) {
             $scope.validation = null;
             $scope.agendamento = anEntity;
-            Restangular.all(entityType).post(entityType, anEntity).then(function(){
+            Restangular.all('agendamento').post(entityType, anEntity).then(function(){
                 $modalInstance.close(anEntity);
             }, function(error){
                 $scope.validation = error.data;
