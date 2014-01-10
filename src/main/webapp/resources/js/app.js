@@ -31,6 +31,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
     $scope.eventClick = function(event, jsEvent, view){
         $scope.$apply(function(){
             console.log('Event Clicked ' + event.id + " ["+ event.title + "]");
+            $scope.load(event.id);
         });
     }
 
@@ -166,7 +167,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
 
     $scope.load = function (id) {
 
-        Restangular.one($scope.entityType, id).get().then(function(entity) {
+        Restangular.one('agendamento', id).get().then(function(entity) {
             $scope.agendamento = entity;
 
             var modalInstance = $modal.open({
@@ -174,7 +175,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
                 controller: ModalInstanceCtrl,
                 resolve: {
                     agendamento: function () {
-                        return agendamento;
+                        return $scope.agendamento;
                     },
                     entityType: function(){
                         return $scope.entityType;
@@ -183,9 +184,9 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
             });
 
             modalInstance.result.then(function (entity) {//When the modal closes with SAVE
-                $scope.list();
+
             }, function () {//on dismiss
-                $scope.entity = null;
+                $scope.agendamento = null;
             });
         });
     };

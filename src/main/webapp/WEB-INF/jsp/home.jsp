@@ -50,9 +50,7 @@
 </div>
 
 <script type="text/ng-template" id="myModalContent.html">
-    <div class="modal-dialog" ng-controller="GenericController">
-        <div ng-init="setEntitiesType('agendamentos')"></div>
-        <div ng-init="setEntityType('agendamento')"></div>
+    <div class="modal-dialog" ng-controller="AgendamentosController">
 
         <div class="modal-content">
             <div class="modal-header">
@@ -101,6 +99,13 @@
                     </div>
                     <div class="form-group">
                         <label for="aula"><spring:message code="agenda.aula"/></label>
+                        <select multiple="multiple" ng-model="agendamento.aula.id" id="agendamento.aula.id" class="form-control">
+                            <option ng-selected="{{estaSelecionado(i.id)}}"
+                                    ng-repeat="i in aulas"
+                                    value="{{i.id}}">
+                                {{i.displayName}}
+                            </option>
+                        </select>
                         <select ng-model="agendamento.aula.id" id="aula" cssClass="form-control">
                             <option value="" label="--- Selecione ---" />
                             <options items="${listaDeAulas}" itemValue="id" itemLabel="materia"/>
