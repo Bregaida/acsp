@@ -22,6 +22,7 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css" rel="stylesheet">
     <link href="<c:url value="/resources/css/acsp.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/autocomplete.css"/>" rel="stylesheet">
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -34,6 +35,7 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.7.0/ui-bootstrap.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.7.0/ui-bootstrap-tpls.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/autocomplete.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/calendar.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/app.js"/>"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>

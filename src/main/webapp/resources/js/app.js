@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("app", ['ngRoute', 'restangular', 'ui.bootstrap', 'ui.calendar']);
+var app = angular.module("app", ['ngRoute', 'restangular', 'ui.bootstrap', 'ui.calendar', 'autocomplete']);
 
 app.config( function($routeProvider, RestangularProvider){
     RestangularProvider.setBaseUrl('/acsp/');
@@ -166,34 +166,84 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
         });
     };
 
-    $scope.loadAlunos = function(){
-        $http.get('/acsp/escolaridades').success(function(data) {
-            $scope.educationLevels = data;
+    $scope.formataCPF = function(v){
+        v=v.replace(/\D/g,"");
+        v=v.replace(/(\d{3})(\d)/,"$1.$2");
+        v=v.replace(/(\d{3})(\d)/,"$1.$2");
+        v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+        return v
+    }
+
+    $scope.aeronaveSelecionada = function(aeronaveId){
+        return ($scope.agendamento != undefined && $scope.agendamento.aeronave != undefined && aeronaveId === $scope.agendamento.aeronave.id);
+    }
+
+    $scope.aulaSelecionada = function(aulaId){
+        return ($scope.agendamento != undefined && $scope.agendamento.aula != undefined && aulaId === $scope.agendamento.aula.id);
+    }
+
+    $scope.instrutorSelecionado = function(instrutorId){
+        return ($scope.agendamento != undefined && $scope.agendamento.instrutor != undefined && instrutorId === $scope.agendamento.instrutor.id);
+    }
+
+    $scope.generateAlunoLabel = function(item){
+        return item.nome + " - " + item.nomePista + " [" + $scope.formataCPF(item.cpf) + "]";
+    }
+
+    $scope.generateAeronaveLabel = function(item){
+        return item.marca + " - " + item.modelo + " [" + item.certificadoMatricula + "]";
+    }
+
+    $scope.getAlunos = function(val){
+        return $http.get('/acsp/alunos', {
+            params: {
+                q: val
+            }
+        }).then(function(resp) {
+                angular.forEach(resp.data, function(item){
+                    item.label = $scope.generateAlunoLabel(item);
+                });
+                return resp.data;
         });
     };
 
     $scope.loadAeronaves = function(){
-        $http.get('/acsp/escolaridades').success(function(data) {
-            $scope.educationLevels = data;
+        $http.get('/acsp/aeronaves').then(function(resp) {
+            angular.forEach(resp.data, function(item){
+                item.label = $scope.generateAeronaveLabel(item);
+            });
+            $scope.aeronaves = resp.data;
         });
     };
 
     $scope.loadAulas = function(){
-        $http.get('/acsp/escolaridades').success(function(data) {
-            $scope.educationLevels = data;
+        $http.get('/acsp/aulas').success(function(data) {
+            $scope.aulas = data;
         });
     };
 
     $scope.loadHorariosDisponiveis = function(){
-        $http.get('/acsp/escolaridades').success(function(data) {
-            $scope.educationLevels = data;
+        $http.get('/acsp/horarios').success(function(data) {
+            $scope.horarios = data;
         });
     }
+
+    $scope.loadInstrutores = function(){
+        $http.get('/acsp/instrutores').success(function(data) {
+            $scope.instrutores = data;
+        });
+    }
+
+    $scope.estaSelecionado = function(idEntidade, idOpcao){
+        return (idEntidade === idOpcao);
+    };
 
     $scope.load = function (id) {
 
         Restangular.one('agendamento', id).get().then(function(entity) {
             $scope.agendamento = entity;
+            $scope.agendamento.aluno.label = $scope.generateAlunoLabel($scope.agendamento.aluno);
+            //$scope.agendamento.aeronave.label = $scope.generateAeronaveLabel($scope.agendamento.aeronave);
 
             var modalInstance = $modal.open({
                 templateUrl: 'myModalContent.html',
@@ -201,6 +251,9 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
                 resolve: {
                     agendamento: function () {
                         return $scope.agendamento;
+                    },
+                    aeronaves: function(){
+                        return $scope.aeronaves;
                     }
                 }
             });

@@ -45,7 +45,9 @@
 
 <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-dialog" ng-controller="AgendamentosController">
-
+        <div ng-init="loadAeronaves()"></div>
+        <div ng-init="loadAulas()"></div>
+        <div ng-init="loadInstrutores()"></div>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -68,49 +70,61 @@
 
                     <div class="form-group">
                         <label for="aluno"><spring:message code="agenda.aluno"/></label>
-                        <select ng-model="agendamento.aluno.id" id="aluno" cssClass="form-control">
+                        <div ng-hide="agendamento.aluno.nome">
+                            <input type="text" ng-model="agendamento.aluno" placeholder="Digite o nome"
+                                   typeahead-editable="false"
+                                   typeahead="aluno as aluno.label for aluno in getAlunos($viewValue) | filter:{nome: $viewValue}"
+                                   typeahead-loading="loadingLocations" id="aluno" class="form-control" typeahead-min-length="3" typeahead-wait-ms="500">
+                            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                        </div>
+                        <div ng-show="agendamento.aluno.nome">
+                            {{agendamento.aluno.label}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="aula"><spring:message code="agenda.aula"/></label>
+                        <select ng-model="agendamento.aula" id="aula" class="form-control">
                             <option value="" label="--- Selecione ---" />
-                            <options items="${listaDeAlunos}" itemValue="id" itemLabel="nome" />
+                            <option ng-selected="{{aulaSelecionada(i.id)}}"
+                                    ng-repeat="i in aulas"
+                                    value="{{i.id}}">
+                                {{i.materia}}
+                            </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="aeronave"><spring:message code="agenda.aeronave"/></label>
-                        <select id="aeronave" ng-model="agendamento.aeronaveId" ng-model="agendamento.aeronave.id" cssClass="form-control">
-                            <option value="" label="--- Selecione ---"/>
-                            <options items="${listaDeAeronaves}" itemValue="id"/>
+                        <select id="aeronave" ng-model="agendamento.aeronave" class="form-control">
+                            <option value="" label="--- Selecione ---" />
+                            <option ng-selected="{{aeronaveSelecionada(i.id)}}"
+                                    ng-repeat="i in aeronaves"
+                                    value="{{i.id}}">
+                                {{i.label}}
+                            </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="horario"><spring:message code="agenda.horario"/></label>
-                        <select ng-model="agendamento.horario.id" id="horario" items="${listaDeHorarios}" itemValue="id" itemLabel="horarioAgenda" cssClass="form-control" />
+                        <select ng-model="agendamento.horario.id" id="horario" class="form-control" />
                     </div>
 
                     <div class="form-group">
                         <label for="qtdeHoras"><spring:message code="agenda.qtdeHoras"/></label>
                         <input ng-model="agendamento.qtdeHoras" id="qtdeHoras" cssClass="form-control"/>
                     </div>
-                    <div class="form-group">
-                        <label for="aula"><spring:message code="agenda.aula"/></label>
-                        <select multiple="multiple" ng-model="agendamento.aula.id" id="agendamento.aula.id" class="form-control">
-                            <option ng-selected="{{estaSelecionado(i.id)}}"
-                                    ng-repeat="i in aulas"
-                                    value="{{i.id}}">
-                                {{i.displayName}}
-                            </option>
-                        </select>
-                        <select ng-model="agendamento.aula.id" id="aula" cssClass="form-control">
-                            <option value="" label="--- Selecione ---" />
-                            <options items="${listaDeAulas}" itemValue="id" itemLabel="materia"/>
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <label for="instrutor"><spring:message code="agenda.instrutor"/></label>
-                        <select ng-model="agendamento.instrutor.id" id="instrutor" cssClass="form-control">
+                        <select ng-model="agendamento.instrutor.id" id="instrutor" class="form-control">
                             <option value="" label="--- Selecione ---" />
-                            <options items="${listaDeInstrutores}" itemValue="id" itemLabel="nome"/>
+                            <option ng-selected="{{instrutorSelecionado(i.id)}}"
+                                    ng-repeat="i in instrutores"
+                                    value="{{i.id}}">
+                                {{i.nome}}
+                            </option>
                         </select>
                     </div>
 
