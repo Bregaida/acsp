@@ -7,108 +7,87 @@ import br.com.acsp.curso.util.CustomEnumEscolaridadeSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
-
-import javax.persistence.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author eduardobregaida
  *         http://en.wikibooks.org/wiki/Java_Persistence/Inheritance
  */
-@Entity
-@Inheritance
-@DiscriminatorColumn(name = "PESSOA_TYPE")
-public class Pessoa {
+@Document
+public class Pessoa extends AbstractDocument {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @NotBlank
+    private String nome;
 
-	@NotBlank
-	@Column
-	private String nome;
-	
-	@NotBlank
-	@Column
-	private String rg;
-	
-	@CPF
-	@Column
-	private String cpf;
-	
-	@Column
-	private Long tituloEleitor;
-	
-	@Column
-	private Long alistamentoMilitar;
-	
-	@Column
-	private boolean ativo;
+    @NotBlank
+    private String rg;
 
-	@JsonSerialize(using = CustomEnumEscolaridadeSerializer.class)
-	@Enumerated(EnumType.ORDINAL)
-	private EscolaridadeType escolaridade;
+    @CPF
+    private String cpf;
 
-	public String getNome() {
-		return nome;
-	}
+    private Long tituloEleitor;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    private Long alistamentoMilitar;
 
-	public String getRg() {
-		return rg;
-	}
+    private boolean ativo;
 
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
+    @JsonSerialize(using = CustomEnumEscolaridadeSerializer.class)
+    private EscolaridadeType escolaridade;
 
-	public String getCpf() {
-		return cpf;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public Long getTituloEleitor() {
-		return tituloEleitor;
-	}
+    public String getRg() {
+        return rg;
+    }
 
-	public void setTituloEleitor(Long tituloEleitor) {
-		this.tituloEleitor = tituloEleitor;
-	}
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
 
-	public Long getAlistamentoMilitar() {
-		return alistamentoMilitar;
-	}
+    public String getCpf() {
+        return cpf;
+    }
 
-	public void setAlistamentoMilitar(Long alistamentoMilitar) {
-		this.alistamentoMilitar = alistamentoMilitar;
-	}
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-	public EscolaridadeType getEscolaridade() {
-		return escolaridade;
-	}
+    public Long getTituloEleitor() {
+        return tituloEleitor;
+    }
 
-	public void setEscolaridade(EscolaridadeType escolaridade) {
-		this.escolaridade = escolaridade;
-	}
+    public void setTituloEleitor(Long tituloEleitor) {
+        this.tituloEleitor = tituloEleitor;
+    }
 
-	public boolean isAtivo() {
-		return ativo;
-	}
+    public Long getAlistamentoMilitar() {
+        return alistamentoMilitar;
+    }
 
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
+    public void setAlistamentoMilitar(Long alistamentoMilitar) {
+        this.alistamentoMilitar = alistamentoMilitar;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public EscolaridadeType getEscolaridade() {
+        return escolaridade;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setEscolaridade(EscolaridadeType escolaridade) {
+        this.escolaridade = escolaridade;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
 }

@@ -31,8 +31,7 @@ public abstract class AbstractController {
             protected Object convertElement(Object element) {
                 Aeronave aeronave = new Aeronave();
                 if (element != null) {
-                    Long id = Long.valueOf(element.toString());
-                    aeronave.setId(id);
+                    aeronave.setId(element.toString());
                 }
                 return aeronave;
             }
@@ -40,7 +39,7 @@ public abstract class AbstractController {
         binder.registerCustomEditor(EscolaridadeType.class, new CustomEnumEscolaridadeEditor());
     }
 
-    public void validateBindingResult(BindingResult result){
+    public void validateBindingResult(BindingResult result) {
         if (result.hasErrors()) {
             throw new InvalidRequestException("Bean not valid", result);
         }

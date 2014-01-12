@@ -50,7 +50,7 @@ public class ErrorControllerHandler extends ResponseEntityExceptionHandler {
         return errorModelAndView(ex, request);
     }
 
-    @ExceptionHandler({ InvalidRequestException.class })
+    @ExceptionHandler({InvalidRequestException.class})
     protected ResponseEntity<Object> handleInvalidRequest(RuntimeException e, WebRequest request) {
         final InvalidRequestException ire = (InvalidRequestException) e;
         final List<FieldErrorResource> fieldErrorResources = new ArrayList<>();

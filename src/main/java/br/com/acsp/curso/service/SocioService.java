@@ -15,18 +15,19 @@ import java.util.Collection;
  */
 
 @Service
-public class SocioService extends AbstractService<Socio, Long> {
+public class SocioService extends AbstractService<Socio, String> {
 
     @Autowired
     public void setRepository(SocioRepository repository) {
         super.repository = repository;
     }
 
-    public Collection<Socio> listarOrdenado() {
-        return ((SocioRepository) repository).listarOrdenadoPorNome();
+    public Collection<Socio> listarAtivos() {
+        return ((SocioRepository) repository).findByAtivo(true);
     }
 
-    public Collection<Socio> listarAtivos() {
-        return ((SocioRepository) repository).listarAtivos();
+    @Override
+    protected String getSortAttribute() {
+        return "nome";
     }
 }

@@ -57,19 +57,19 @@ public class AeronaveController extends AbstractController {
     @RequestMapping("/aeronaves")
     @ResponseBody
     public Collection<Aeronave> lista(ModelMap map) {
-        return aeronaveService.listarOrdenadoPorModelo();
+        return aeronaveService.listarOrdenado();
     }
 
     @RequestMapping(value = "/aeronave/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") String id) {
         logger.info("AeronaveController: exclui");
         aeronaveService.excluirPorId(id);
     }
 
     @RequestMapping(value = "/aeronave/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Aeronave buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+    public Aeronave buscaPorId(@PathVariable("id") String id, ModelMap modelMap) {
         return aeronaveService.obtemPorId(id);
     }
 
@@ -84,7 +84,7 @@ public class AeronaveController extends AbstractController {
     @RequestMapping(value = "/aeronaves/disponiveis/{idAluno}", method = RequestMethod.GET)
     @ResponseBody
     public List<Aeronave> listarAeronavesDisponiveis(
-            @PathVariable("idAluno") Long idAluno,
+            @PathVariable("idAluno") String idAluno,
             @RequestParam Date dataReserva) {
         // TODO - Usar a data para excluir aeronaves sem horarios disponiveis
         Aluno aluno = alunoService.obtemPorId(idAluno);
@@ -94,7 +94,7 @@ public class AeronaveController extends AbstractController {
     @RequestMapping(value = "/aeronaves/disponiveis/{idInstrutor}", method = RequestMethod.GET)
     @ResponseBody
     public List<Aeronave> listarAeronavesDisponiveisPorInstrutor(
-            @PathVariable("idInstrutor") Long idInstrutor,
+            @PathVariable("idInstrutor") String idInstrutor,
             @RequestParam Date dataReserva) {
         // TODO - Usar a data para excluir aeronaves sem horarios disponiveis
         Instrutor instrutor = instrutorService.obtemPorId(idInstrutor);

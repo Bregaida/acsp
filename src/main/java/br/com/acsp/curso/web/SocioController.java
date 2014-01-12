@@ -57,13 +57,13 @@ public class SocioController extends AbstractController {
     // Nem todos os browser suportam DELETE
     @RequestMapping(value = "/socio/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") String id) {
         socioService.excluirPorId(id);
     }
 
     @RequestMapping(value = "/socio/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Socio buscaPorId(@PathVariable("id") Long id) {
+    public Socio buscaPorId(@PathVariable("id") String id) {
         return socioService.obtemPorId(id);
     }
 

@@ -11,14 +11,19 @@ import org.springframework.stereotype.Service;
  * Time: 9:25 PM
  */
 @Service
-public class PessoaService extends AbstractService<Pessoa, Long> {
+public class PessoaService extends AbstractService<Pessoa, String> {
 
     @Autowired
     public void setRepository(PessoaRepository repository) {
         super.repository = repository;
     }
 
-    public Pessoa obtemPorCPF(Long cpf) {
+    public Pessoa obtemPorCPF(String cpf) {
         return ((PessoaRepository) repository).findByCpf(cpf);
+    }
+
+    @Override
+    protected String getSortAttribute() {
+        return "nome";
     }
 }

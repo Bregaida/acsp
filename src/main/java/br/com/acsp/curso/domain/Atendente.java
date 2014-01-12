@@ -3,14 +3,11 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author eduardobregaida
  */
-@Entity
-@DiscriminatorValue("ATENDENTE")
-public class Atendente extends Pessoa{
-
+@Document
+public class Atendente extends Pessoa {
 }

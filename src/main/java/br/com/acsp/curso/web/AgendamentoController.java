@@ -5,7 +5,7 @@ package br.com.acsp.curso.web;
 
 import br.com.acsp.curso.domain.Agenda;
 import br.com.acsp.curso.domain.EventDTO;
-import br.com.acsp.curso.service.*;
+import br.com.acsp.curso.service.AgendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -70,14 +70,14 @@ public class AgendamentoController extends AbstractController {
 
     @RequestMapping(value = "/agendamento/{id}/apaga", method = RequestMethod.GET)
     @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
+    public String exclui(@PathVariable("id") String id) {
         agendaService.excluirPorId(id);
         return "SUCCESS";
     }
 
     @RequestMapping(value = "/agendamento/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Agenda buscaPorId(@PathVariable("id") Long id) {
+    public Agenda buscaPorId(@PathVariable("id") String id) {
         return agendaService.obtemPorId(id);
     }
 

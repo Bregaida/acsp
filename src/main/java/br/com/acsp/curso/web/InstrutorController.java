@@ -68,13 +68,13 @@ public class InstrutorController extends AbstractController {
     }
 
     @RequestMapping(value = "/instrutor/{id}/apaga", method = RequestMethod.GET)
-    public void exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") String id) {
         instrutorService.excluirPorId(id);
     }
 
     @RequestMapping(value = "/instrutor/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Instrutor buscaPorId(@PathVariable("id") Long id, ModelMap modelMap) {
+    public Instrutor buscaPorId(@PathVariable("id") String id, ModelMap modelMap) {
         return instrutorService.obtemPorId(id);
     }
 
@@ -89,8 +89,8 @@ public class InstrutorController extends AbstractController {
     @RequestMapping(value = "/instrutor/disponiveis/{idHora}/{idAeronave}", method = RequestMethod.GET)
     @ResponseBody
     public List<Instrutor> listarInstrutoresDisponiveisPorHoraAeronaveAula(
-            @PathVariable("idHora") Long idHora,
-            @PathVariable("idAeronave") Long idAeronave, @RequestParam Date dataReserva) {
+            @PathVariable("idHora") String idHora,
+            @PathVariable("idAeronave") String idAeronave, @RequestParam Date dataReserva) {
 
         return (List<Instrutor>) instrutorService.listarDisponiveis(idHora, idAeronave, dataReserva);
     }

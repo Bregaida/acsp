@@ -12,8 +12,8 @@
         <h5>Aeronaves disponíveis - hoje</h5>
         <table class="table">
             <thead>
-                <td>Aeronave</td>
-                <td>Horários</td>
+            <td>Aeronave</td>
+            <td>Horários</td>
             </thead>
             <tr>
                 <td>PT-IZQ - Cherokee</td>
@@ -70,11 +70,13 @@
 
                     <div class="form-group">
                         <label for="aluno"><spring:message code="agenda.aluno"/></label>
+
                         <div ng-hide="agendamento.aluno.nome">
                             <input type="text" ng-model="agendamento.aluno" placeholder="Digite o nome"
                                    typeahead-editable="false"
                                    typeahead="aluno as aluno.label for aluno in getAlunos($viewValue) | filter:{nome: $viewValue}"
-                                   typeahead-loading="loadingLocations" id="aluno" class="form-control" typeahead-min-length="3" typeahead-wait-ms="500">
+                                   typeahead-loading="loadingLocations" id="aluno" class="form-control"
+                                   typeahead-min-length="3" typeahead-wait-ms="500">
                             <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                         </div>
                         <div ng-show="agendamento.aluno.nome">
@@ -85,7 +87,7 @@
                     <div class="form-group">
                         <label for="aula"><spring:message code="agenda.aula"/></label>
                         <select ng-model="agendamento.aula" id="aula" class="form-control">
-                            <option value="" label="--- Selecione ---" />
+                            <option value="" label="--- Selecione ---"/>
                             <option ng-selected="{{aulaSelecionada(i.id)}}"
                                     ng-repeat="i in aulas"
                                     value="{{i.id}}">
@@ -97,7 +99,7 @@
                     <div class="form-group">
                         <label for="aeronave"><spring:message code="agenda.aeronave"/></label>
                         <select id="aeronave" ng-model="agendamento.aeronave" class="form-control">
-                            <option value="" label="--- Selecione ---" />
+                            <option value="" label="--- Selecione ---"/>
                             <option ng-selected="{{aeronaveSelecionada(i.id)}}"
                                     ng-repeat="i in aeronaves"
                                     value="{{i.id}}">
@@ -108,18 +110,19 @@
 
                     <div class="form-group">
                         <label for="horario"><spring:message code="agenda.horario"/></label>
-                        <select ng-model="agendamento.horario.id" id="horario" class="form-control" />
+                        <select ng-model="agendamento.horario.id" id="horario" class="form-control"
+                                ng-options="time as time.horarioAgenda for horario in horarios"/>
                     </div>
 
                     <div class="form-group">
                         <label for="qtdeHoras"><spring:message code="agenda.qtdeHoras"/></label>
-                        <input ng-model="agendamento.qtdeHoras" id="qtdeHoras" cssClass="form-control"/>
+                        <input ng-model="agendamento.qtdeHoras" id="qtdeHoras" class="form-control"/>
                     </div>
 
                     <div class="form-group">
                         <label for="instrutor"><spring:message code="agenda.instrutor"/></label>
                         <select ng-model="agendamento.instrutor.id" id="instrutor" class="form-control">
-                            <option value="" label="--- Selecione ---" />
+                            <option value="" label="--- Selecione ---"/>
                             <option ng-selected="{{instrutorSelecionado(i.id)}}"
                                     ng-repeat="i in instrutores"
                                     value="{{i.id}}">

@@ -1,5 +1,7 @@
 package br.com.acsp.curso.domain;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  * Date: 8/30/13
  * Time: 8:24 PM
  */
+@Document
 public enum ClassificacaoPessoaType implements Serializable {
 
     ALUNO("ALUNO_PILOTO"),
@@ -17,7 +20,7 @@ public enum ClassificacaoPessoaType implements Serializable {
 
     private final String tipo;
 
-    private ClassificacaoPessoaType(String type){
+    private ClassificacaoPessoaType(String type) {
         tipo = type;
     }
 

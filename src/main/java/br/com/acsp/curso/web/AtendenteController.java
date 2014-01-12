@@ -52,14 +52,13 @@ public class AtendenteController extends AbstractController {
     // Nem todos os browser suportam DELETE
     @RequestMapping(value = "/atendente/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") String id) {
         atendenteService.excluirPorId(id);
     }
 
     @RequestMapping(value = "/atendente/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Atendente buscaPorId(@PathVariable("id") Long id) {
-        logger.info("AtendenteController: buscaPorId");
+    public Atendente buscaPorId(@PathVariable("id") String id) {
         return atendenteService.obtemPorId(id);
     }
 

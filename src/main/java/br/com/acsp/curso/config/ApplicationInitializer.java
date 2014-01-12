@@ -12,36 +12,36 @@ import javax.servlet.ServletRegistration;
  */
 @Order(1)
 public class ApplicationInitializer extends
-		AbstractAnnotationConfigDispatcherServletInitializer {
+        AbstractAnnotationConfigDispatcherServletInitializer {
 
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { RootConfiguration.class };
-	}
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{RootConfiguration.class};
+    }
 
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[] { WebMVCConfiguration.class };
-	}
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[]{WebMVCConfiguration.class};
+    }
 
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/" };
-	}
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
 
-	@Override
-	protected void customizeRegistration(
-			ServletRegistration.Dynamic registration) {
-		registration.setInitParameter("dispatchOptionsRequest", "true");
-	}
+    @Override
+    protected void customizeRegistration(
+            ServletRegistration.Dynamic registration) {
+        registration.setInitParameter("dispatchOptionsRequest", "true");
+    }
 
-	@Override
-	public void onStartup(ServletContext servletContext)
-			throws ServletException {
-		servletContext
-				.setInitParameter("spring.profiles.active", "persist-emb");
-		// servletContext.setInitParameter("spring.profiles.active",
-		// "persist-pg");
-		super.onStartup(servletContext);
-	}
+    @Override
+    public void onStartup(ServletContext servletContext)
+            throws ServletException {
+        servletContext
+                .setInitParameter("spring.profiles.active", "persist-emb");
+        // servletContext.setInitParameter("spring.profiles.active",
+        // "persist-pg");
+        super.onStartup(servletContext);
+    }
 }

@@ -26,7 +26,7 @@ public class PessoaController {
 
     @RequestMapping(value = "/pessoa/{cpf}", method = RequestMethod.GET)
     @ResponseBody
-    public Pessoa buscaPorCPF(@PathVariable("cpf") Long cpf) {
+    public Pessoa buscaPorCPF(@PathVariable("cpf") String cpf) {
         logger.info("PessoaController: buscaPorCPF");
         return pessoaService.obtemPorCPF(cpf);
     }

@@ -1,12 +1,12 @@
 'use strict';
 
-var app = angular.module("app", ['ngRoute', 'restangular', 'ui.bootstrap', 'ui.calendar', 'autocomplete']);
+var app = angular.module("app", ['ngRoute', 'restangular', 'ui.bootstrap', 'ui.calendar']);
 
-app.config( function($routeProvider, RestangularProvider){
+app.config(function ($routeProvider, RestangularProvider) {
     RestangularProvider.setBaseUrl('/acsp/');
 });
 
-app.controller('AgendamentosController', function($scope, $http, $modal, Restangular){
+app.controller('AgendamentosController', function ($scope, $http, $modal, Restangular) {
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -28,47 +28,47 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
         events: []
     };
 
-    $scope.eventClick = function(event, jsEvent, view){
-        $scope.$apply(function(){
-            console.log('Event Clicked ' + event.id + " ["+ event.title + "]");
+    $scope.eventClick = function (event, jsEvent, view) {
+        $scope.$apply(function () {
+            console.log('Event Clicked ' + event.id + " [" + event.title + "]");
             $scope.load(event.id);
         });
     }
 
     /* alert on eventClick */
-    $scope.alertDayOnClick = function( date, allDay, jsEvent, view ){
-        $scope.$apply(function(){
+    $scope.alertDayOnClick = function (date, allDay, jsEvent, view) {
+        $scope.$apply(function () {
             console.log('Day Clicked ' + date);
         });
         $scope.newAgendamento(date);
     };
     /* alert on Drop */
-    $scope.alertOnDrop = function(event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view){
-        $scope.$apply(function(){
+    $scope.alertOnDrop = function (event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view) {
+        $scope.$apply(function () {
             console.log('Event Droped to make dayDelta ' + dayDelta);
         });
     };
     /* alert on Resize */
-    $scope.alertOnResize = function(event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ){
-        $scope.$apply(function(){
+    $scope.alertOnResize = function (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
+        $scope.$apply(function () {
             console.log('Event Resized to make dayDelta ' + minuteDelta);
         });
     };
     /* add and removes an event source of choice */
-    $scope.addRemoveEventSource = function(sources,source) {
+    $scope.addRemoveEventSource = function (sources, source) {
         var canAdd = 0;
-        angular.forEach(sources,function(value, key){
-            if(sources[key] === source){
-                sources.splice(key,1);
+        angular.forEach(sources, function (value, key) {
+            if (sources[key] === source) {
+                sources.splice(key, 1);
                 canAdd = 1;
             }
         });
-        if(canAdd === 0){
+        if (canAdd === 0) {
             sources.push(source);
         }
     };
     /* add custom event*/
-    $scope.addEvent = function() {
+    $scope.addEvent = function () {
         $scope.events.push({
             title: 'Open Sesame',
             start: new Date(y, m, 28),
@@ -77,15 +77,15 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
         });
     };
     /* remove event */
-    $scope.remove = function(index) {
-        $scope.events.splice(index,1);
+    $scope.remove = function (index) {
+        $scope.events.splice(index, 1);
     };
     /* Change View */
-    $scope.changeView = function(view,calendar) {
-        calendar.fullCalendar('changeView',view);
+    $scope.changeView = function (view, calendar) {
+        calendar.fullCalendar('changeView', view);
     };
     /* Change View */
-    $scope.renderCalender = function(calendar) {
+    $scope.renderCalender = function (calendar) {
         calendar.fullCalendar('render');
     };
 
@@ -93,27 +93,27 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
     $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
 
     $scope.uiConfig = {
-        calendar:{
+        calendar: {
             defaultView: 'agendaDay',
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            allDaySlot :false,
+            allDaySlot: false,
             allDayText: 'dia-todo',
             buttonText: {
-                prev:     '&lsaquo;', // <
-                next:     '&rsaquo;', // >
+                prev: '&lsaquo;', // <
+                next: '&rsaquo;', // >
                 prevYear: '&laquo;',  // <<
                 nextYear: '&raquo;',  // >>
-                today:    'hoje',
-                month:    'mês',
-                week:     'semana',
-                day:      'dia'
+                today: 'hoje',
+                month: 'mês',
+                week: 'semana',
+                day: 'dia'
             },
             editable: false,
-            columnFormat:{
+            columnFormat: {
                 month: 'ddd',    // Mon
                 week: 'ddd d/M', // Mon 9/7
                 day: 'dddd d/M'  // Monday 9/7
@@ -121,7 +121,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
 
             agenda: 'HH:mm{ - HH:mm}',
             timeFormat: 'HH:mm',
-            axisFormat : 'HH:mm',
+            axisFormat: 'HH:mm',
 
             height: 450,
             minTime: 0,
@@ -131,7 +131,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
                 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
             monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
 
-            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta','Quinta', 'Sexta', 'Sábado'],
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
             dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
 
             dayClick: $scope.alertDayOnClick,
@@ -153,7 +153,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
                 agendamento: function () {
                     return $scope.agendamento;
                 },
-                save: function(){
+                save: function () {
                     return $scope.save;
                 }
             }
@@ -166,81 +166,87 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
         });
     };
 
-    $scope.formataCPF = function(v){
-        v=v.replace(/\D/g,"");
-        v=v.replace(/(\d{3})(\d)/,"$1.$2");
-        v=v.replace(/(\d{3})(\d)/,"$1.$2");
-        v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+    $scope.formataCPF = function (v) {
+        v = v.replace(/\D/g, "");
+        v = v.replace(/(\d{3})(\d)/, "$1.$2");
+        v = v.replace(/(\d{3})(\d)/, "$1.$2");
+        v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
         return v
     }
 
-    $scope.aeronaveSelecionada = function(aeronaveId){
+    $scope.aeronaveSelecionada = function (aeronaveId) {
         return ($scope.agendamento != undefined && $scope.agendamento.aeronave != undefined && aeronaveId === $scope.agendamento.aeronave.id);
     }
 
-    $scope.aulaSelecionada = function(aulaId){
+    $scope.aulaSelecionada = function (aulaId) {
         return ($scope.agendamento != undefined && $scope.agendamento.aula != undefined && aulaId === $scope.agendamento.aula.id);
     }
 
-    $scope.instrutorSelecionado = function(instrutorId){
+    $scope.instrutorSelecionado = function (instrutorId) {
         return ($scope.agendamento != undefined && $scope.agendamento.instrutor != undefined && instrutorId === $scope.agendamento.instrutor.id);
     }
 
-    $scope.generateAlunoLabel = function(item){
+    $scope.generateAlunoLabel = function (item) {
         return item.nome + " - " + item.nomePista + " [" + $scope.formataCPF(item.cpf) + "]";
     }
 
-    $scope.generateAeronaveLabel = function(item){
+    $scope.generateAeronaveLabel = function (item) {
         return item.marca + " - " + item.modelo + " [" + item.certificadoMatricula + "]";
     }
 
-    $scope.getAlunos = function(val){
+    $scope.getAlunos = function (val) {
         return $http.get('/acsp/alunos', {
             params: {
                 q: val
             }
-        }).then(function(resp) {
-                angular.forEach(resp.data, function(item){
+        }).then(function (resp) {
+                angular.forEach(resp.data, function (item) {
                     item.label = $scope.generateAlunoLabel(item);
                 });
                 return resp.data;
-        });
+            });
     };
 
-    $scope.loadAeronaves = function(){
-        $http.get('/acsp/aeronaves').then(function(resp) {
-            angular.forEach(resp.data, function(item){
+    $scope.loadAeronaves = function () {
+        $http.get('/acsp/aeronaves').then(function (resp) {
+            angular.forEach(resp.data, function (item) {
                 item.label = $scope.generateAeronaveLabel(item);
             });
             $scope.aeronaves = resp.data;
         });
     };
 
-    $scope.loadAulas = function(){
-        $http.get('/acsp/aulas').success(function(data) {
+    $scope.loadAulas = function () {
+        $http.get('/acsp/aulas').success(function (data) {
             $scope.aulas = data;
         });
     };
 
-    $scope.loadHorariosDisponiveis = function(){
-        $http.get('/acsp/horarios').success(function(data) {
+    $scope.loadHorariosDisponiveis = function () {
+        $http.get('/acsp/horarios').success(function (data) {
             $scope.horarios = data;
         });
     }
 
-    $scope.loadInstrutores = function(){
-        $http.get('/acsp/instrutores').success(function(data) {
+    $scope.loadInstrutores = function () {
+        $http.get('/acsp/instrutores').success(function (data) {
             $scope.instrutores = data;
         });
     }
 
-    $scope.estaSelecionado = function(idEntidade, idOpcao){
+    $scope.loadHorarios = function () {
+        $http.get('/acsp/horarios').success(function (data) {
+            $scope.horarios = data;
+        });
+    }
+
+    $scope.estaSelecionado = function (idEntidade, idOpcao) {
         return (idEntidade === idOpcao);
     };
 
     $scope.load = function (id) {
 
-        Restangular.one('agendamento', id).get().then(function(entity) {
+        Restangular.one('agendamento', id).get().then(function (entity) {
             $scope.agendamento = entity;
             $scope.agendamento.aluno.label = $scope.generateAlunoLabel($scope.agendamento.aluno);
             //$scope.agendamento.aeronave.label = $scope.generateAeronaveLabel($scope.agendamento.aeronave);
@@ -252,7 +258,7 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
                     agendamento: function () {
                         return $scope.agendamento;
                     },
-                    aeronaves: function(){
+                    aeronaves: function () {
                         return $scope.aeronaves;
                     }
                 }
@@ -273,9 +279,9 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
         $scope.saveAndClose = function (anEntity) {
             $scope.validation = null;
             $scope.agendamento = anEntity;
-            Restangular.all('agendamento').post(entityType, anEntity).then(function(){
+            Restangular.all('agendamento').post(entityType, anEntity).then(function () {
                 $modalInstance.close(anEntity);
-            }, function(error){
+            }, function (error) {
                 $scope.validation = error.data;
             });
         };
@@ -286,40 +292,41 @@ app.controller('AgendamentosController', function($scope, $http, $modal, Restang
     };
 });
 
-app.controller('GenericController', function($scope, $http, $modal, Restangular){
+app.controller('GenericController', function ($scope, $http, $modal, Restangular) {
 
-    $scope.entityType =  null;  //type will be aeronave, for example
+    $scope.entityType = null;  //type will be aeronave, for example
     $scope.entitiesType = null; //type will be aeronaves, for example
 
-    $scope.setEntitiesType = function(entitiesType){
+    $scope.setEntitiesType = function (entitiesType) {
         $scope.entitiesType = entitiesType;
     }
 
-    $scope.setEntityType = function(entityType){
+    $scope.setEntityType = function (entityType) {
         $scope.entityType = entityType;
     }
 
-    $scope.list = function(){
-        $http.get('/acsp/' + $scope.entitiesType).success(function(data) {
+    $scope.list = function () {
+        $http.get('/acsp/' + $scope.entitiesType).success(function (data) {
             $scope.entities = data;
         });
     }
 
-    $scope.loadEducationLevels = function(){
-        $http.get('/acsp/escolaridades').success(function(data) {
+    $scope.loadEducationLevels = function () {
+        $http.get('/acsp/escolaridades').success(function (data) {
             $scope.educationLevels = data;
         });
     }
 
-    $scope.disable = function(id){
+    $scope.disable = function (id) {
         Restangular.one($scope.entityType, id).remove();
     }
 
     //TODO: create directive
-    $scope.style = function(stat){
-        if(stat) {
+    $scope.style = function (stat) {
+        if (stat) {
             return "fa fa-check-circle-o fa-lg";
-        }{
+        }
+        {
             return "fa fa-circle-o fa-lg";
         }
     };
@@ -333,10 +340,10 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
                 entity: function () {
                     return $scope.entity;
                 },
-                save: function(){
+                save: function () {
                     return $scope.save;
                 },
-                entityType: function(){
+                entityType: function () {
                     return $scope.entityType;
                 }
             }
@@ -351,7 +358,7 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
 
     $scope.load = function (id) {
 
-        Restangular.one($scope.entityType, id).get().then(function(entity) {
+        Restangular.one($scope.entityType, id).get().then(function (entity) {
             $scope.entity = entity;
 
             var modalInstance = $modal.open({
@@ -361,7 +368,7 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
                     entity: function () {
                         return entity;
                     },
-                    entityType: function(){
+                    entityType: function () {
                         return $scope.entityType;
                     }
                 }
@@ -382,9 +389,9 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
         $scope.saveAndClose = function (anEntity) {
             $scope.validation = null;
             $scope.entity = anEntity;
-            Restangular.all(entityType).post(entityType, anEntity).then(function(){
+            Restangular.all(entityType).post(entityType, anEntity).then(function () {
                 $modalInstance.close(anEntity);
-            }, function(error){
+            }, function (error) {
                 $scope.validation = error.data;
             });
         };
@@ -398,38 +405,38 @@ app.controller('GenericController', function($scope, $http, $modal, Restangular)
 
 //Tem um controller a parte por causa do select.
 // O select eh ligado usando entidades, então é um pouco mais complexo... por enquanto está bom assim.
-app.controller('AulasController', function($scope, $http, $modal, Restangular){
+app.controller('AulasController', function ($scope, $http, $modal, Restangular) {
 
-    $scope.disable = function(id){
+    $scope.disable = function (id) {
         Restangular.one("aula", id).remove();
     };
 
-    $scope.list = function(){
-        $http.get('/acsp/aulas').success(function(data) {
+    $scope.list = function () {
+        $http.get('/acsp/aulas').success(function (data) {
             $scope.aulas = data;
-            for(var i=0; i < $scope.aulas.length; i++){
+            for (var i = 0; i < $scope.aulas.length; i++) {
                 var aula = $scope.aulas[i];
                 aula.planes = "";
-                for(var p=0; p < aula.aeronaves.length; p++){
+                for (var p = 0; p < aula.aeronaves.length; p++) {
                     aula.planes = aula.planes + aula.aeronaves[p].certificadoMatricula + ", ";
                 }
             }
         });
     }
 
-    $scope.loadAeronaves = function(){
-        $http.get('/acsp/aeronaves').success(function(data){
+    $scope.loadAeronaves = function () {
+        $http.get('/acsp/aeronaves').success(function (data) {
             $scope.aeronaves = data;
-            for(var i=0; i< $scope.aeronaves.length; i++){
+            for (var i = 0; i < $scope.aeronaves.length; i++) {
                 var plane = $scope.aeronaves[i];
-                $scope.aeronaves[i].displayName = plane.certificadoMatricula + " - " +  plane.marca + " " + plane.modelo;
+                $scope.aeronaves[i].displayName = plane.certificadoMatricula + " - " + plane.marca + " " + plane.modelo;
             }
         });
     }
 
     $scope.load = function (id) {
 
-        Restangular.one("aula", id).get().then(function(entity) {
+        Restangular.one("aula", id).get().then(function (entity) {
             $scope.aula = entity;
 
             var modalInstance = $modal.open({
@@ -439,7 +446,7 @@ app.controller('AulasController', function($scope, $http, $modal, Restangular){
                     aula: function () {
                         return $scope.aula;
                     },
-                    aeronaves: function(){
+                    aeronaves: function () {
                         return $scope.aeronaves;
                     }
                 }
@@ -453,10 +460,10 @@ app.controller('AulasController', function($scope, $http, $modal, Restangular){
         });
     };
 
-    $scope.estaSelecionado = function(id){
-        for(var i = 0; i < $scope.aula.aeronaves.length; i++){
+    $scope.estaSelecionado = function (id) {
+        for (var i = 0; i < $scope.aula.aeronaves.length; i++) {
             var aeronaveDaAula = $scope.aula.aeronaves[i];
-            if(aeronaveDaAula.id == id){
+            if (aeronaveDaAula.id == id) {
                 return true;
             }
         }
@@ -472,7 +479,7 @@ app.controller('AulasController', function($scope, $http, $modal, Restangular){
                 aula: function () {
                     return $scope.aula;
                 },
-                aeronaves: function(){
+                aeronaves: function () {
                     return $scope.aeronaves;
                 }
             }
@@ -491,9 +498,9 @@ app.controller('AulasController', function($scope, $http, $modal, Restangular){
 
         $scope.saveAndClose = function (anEntity) {
             $scope.validation = null;
-            Restangular.all("aula").post("aula", anEntity).then(function(){
+            Restangular.all("aula").post("aula", anEntity).then(function () {
                 $modalInstance.close(anEntity);
-            }, function(error){
+            }, function (error) {
                 $scope.validation = error.data;
             });
         };

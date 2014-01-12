@@ -1,17 +1,16 @@
 /**
- * 
+ *
  */
 package br.com.acsp.curso.repository;
-
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * @author eduardobregaida
- * 
  */
 public class AeronaveRepositoryTest extends AbstractRepositoryTestSupport {
 
@@ -20,16 +19,11 @@ public class AeronaveRepositoryTest extends AbstractRepositoryTestSupport {
 
     @Test
     public void deveHaverAeronavesCarregadosPorDefault() throws Exception {
-	assertNotEquals(0, repository.findAll().size());
+        assertNotEquals(0, repository.findAll().size());
     }
 
     @Test
     public void deveHaverCincoAeronavesCarregadosAtivo() throws Exception {
-	assertTrue(!repository.listarAtivas().isEmpty());
+        assertTrue(!repository.findByAtivo(true).isEmpty());
     }
-
-    // @Test
-    // public void deveListarAeronavesAtivasPorAluno() throws Exception {
-    // assertTrue(!repository.listarAeronavesAtivasPorAluno().isEmpty());
-    // }
 }

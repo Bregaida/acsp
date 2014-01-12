@@ -20,7 +20,7 @@ public class EventDTO {
     private String start;
     private String end;
     private boolean allDay = false;
-    private long id;
+    private String id;
     private final SimpleDateFormat sdf = new SimpleDateFormat(DATETIME_FORMAT);
 
     public EventDTO() {
@@ -85,11 +85,11 @@ public class EventDTO {
         this.allDay = allDay;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

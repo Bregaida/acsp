@@ -15,19 +15,19 @@ import java.util.Collection;
  */
 
 @Service
-public class AeronaveService extends AbstractService<Aeronave, Long> {
+public class AeronaveService extends AbstractService<Aeronave, String> {
 
-	@Autowired
-	public void setRepository(AeronaveRepository repository) {
-		super.repository = repository;
-	}
+    @Autowired
+    public void setRepository(AeronaveRepository aeronaveRepository) {
+        super.repository = aeronaveRepository;
+    }
 
-	public Collection<Aeronave> listarOrdenadoPorModelo() {
-		return ((AeronaveRepository) repository).listarOrdenadoPorModelo();
-	}
+    public Collection<Aeronave> listarAtivas() {
+        return ((AeronaveRepository) repository).findByAtivo(true);
+    }
 
-	public Collection<Aeronave> listarAtivas() {
-		return ((AeronaveRepository) repository).listarAtivas();
-	}
-
+    @Override
+    protected String getSortAttribute() {
+        return "modelo";
+    }
 }

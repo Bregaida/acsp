@@ -3,207 +3,172 @@
  */
 package br.com.acsp.curso.domain;
 
-import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.util.List;
 
 /**
  * @author eduardobregaida
  */
-@Entity
-public class Aeronave {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Document
+public class Aeronave extends AbstractDocument {
 
     @NotBlank
-    @Column
     private String certificadoMatricula;
+
     @NotBlank
-    @Column
     private String marca;
+
     @NotBlank
-    @Column
     private String modelo;
-    @Column
+
     private String dentel;
-    @Column
     private String fiam;
-    @Column
     private String apoliceSeguro;
-    @Column
-    @Type(type = "yes_no")
     private boolean fichaPesoBalanceamento;
-    @Column
-    @Type(type = "yes_no")
     private boolean manualVoo;
-    @Column
-    @Type(type = "yes_no")
     private boolean checkList;
-    @Column
-    @Type(type = "yes_no")
     private boolean nsca3_5;
-    @Column
-    @Type(type = "yes_no")
     private boolean nsca3_7;
-    @Column
-    @Type(type = "yes_no")
     private boolean diarioBordo;
-    @Column
-    @Type(type = "yes_no")
     private boolean ativo;
-    @Column
     private String motivoInatividade;
 
-    @ManyToMany
-    @JoinTable(name = "aula_aeronave", joinColumns = { @JoinColumn(name = "aeronave_id") }, inverseJoinColumns = { @JoinColumn(name = "aula_id") })
     private List<Aula> aulas;
 
-    @ManyToMany
-    @JoinTable(name = "horario_aeronave", joinColumns = { @JoinColumn(name = "aeronave_id") }, inverseJoinColumns = { @JoinColumn(name = "horario_id") })
     private List<Horario> horarios;
 
-    public Long getId() {
-	return id;
-    }
-
-    public void setId(Long id) {
-	this.id = id;
-    }
-
     public String getCertificadoMatricula() {
-	return certificadoMatricula;
+        return certificadoMatricula;
     }
 
     public void setCertificadoMatricula(String certificadoMatricula) {
-	this.certificadoMatricula = certificadoMatricula;
+        this.certificadoMatricula = certificadoMatricula;
     }
 
     public String getMarca() {
-	return marca;
+        return marca;
     }
 
     public void setMarca(String marca) {
-	this.marca = marca;
+        this.marca = marca;
     }
 
     public String getModelo() {
-	return modelo;
+        return modelo;
     }
 
     public void setModelo(String modelo) {
-	this.modelo = modelo;
+        this.modelo = modelo;
     }
 
     public String getDentel() {
-	return dentel;
+        return dentel;
     }
 
     public void setDentel(String dentel) {
-	this.dentel = dentel;
+        this.dentel = dentel;
     }
 
     public String getFiam() {
-	return fiam;
+        return fiam;
     }
 
     public void setFiam(String fiam) {
-	this.fiam = fiam;
+        this.fiam = fiam;
     }
 
     public String getApoliceSeguro() {
-	return apoliceSeguro;
+        return apoliceSeguro;
     }
 
     public void setApoliceSeguro(String apoliceSeguro) {
-	this.apoliceSeguro = apoliceSeguro;
+        this.apoliceSeguro = apoliceSeguro;
     }
 
     public boolean isFichaPesoBalanceamento() {
-	return fichaPesoBalanceamento;
+        return fichaPesoBalanceamento;
     }
 
     public void setFichaPesoBalanceamento(boolean fichaPesoBalanceamento) {
-	this.fichaPesoBalanceamento = fichaPesoBalanceamento;
+        this.fichaPesoBalanceamento = fichaPesoBalanceamento;
     }
 
     public boolean isManualVoo() {
-	return manualVoo;
+        return manualVoo;
     }
 
     public void setManualVoo(boolean manualVoo) {
-	this.manualVoo = manualVoo;
+        this.manualVoo = manualVoo;
     }
 
     public boolean isCheckList() {
-	return checkList;
+        return checkList;
     }
 
     public void setCheckList(boolean checkList) {
-	this.checkList = checkList;
+        this.checkList = checkList;
     }
 
     public boolean isNsca3_5() {
-	return nsca3_5;
+        return nsca3_5;
     }
 
     public void setNsca3_5(boolean nsca3_5) {
-	this.nsca3_5 = nsca3_5;
+        this.nsca3_5 = nsca3_5;
     }
 
     public boolean isNsca3_7() {
-	return nsca3_7;
+        return nsca3_7;
     }
 
     public void setNsca3_7(boolean nsca3_7) {
-	this.nsca3_7 = nsca3_7;
+        this.nsca3_7 = nsca3_7;
     }
 
     public boolean isDiarioBordo() {
-	return diarioBordo;
+        return diarioBordo;
     }
 
     public void setDiarioBordo(boolean diarioBordo) {
-	this.diarioBordo = diarioBordo;
+        this.diarioBordo = diarioBordo;
     }
 
     public boolean isAtivo() {
-	return ativo;
+        return ativo;
     }
 
     public void setAtivo(boolean ativo) {
-	this.ativo = ativo;
+        this.ativo = ativo;
     }
 
     public String getMotivoInatividade() {
-	return motivoInatividade;
+        return motivoInatividade;
     }
 
     public void setMotivoInatividade(String motivoInatividade) {
-	this.motivoInatividade = motivoInatividade;
+        this.motivoInatividade = motivoInatividade;
     }
 
     public List<Aula> getAulas() {
-	return aulas;
+        return aulas;
     }
 
     public void setAulas(List<Aula> aulas) {
-	this.aulas = aulas;
+        this.aulas = aulas;
     }
 
     public List<Horario> getHorarios() {
-	return horarios;
+        return horarios;
     }
 
     public void setHorarios(List<Horario> horarios) {
-	this.horarios = horarios;
+        this.horarios = horarios;
     }
 
     @Override
     public String toString() {
-	return certificadoMatricula + ' ' + modelo;
+        return certificadoMatricula + ' ' + modelo;
     }
 }

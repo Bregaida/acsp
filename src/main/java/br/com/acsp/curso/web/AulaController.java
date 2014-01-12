@@ -54,13 +54,13 @@ public class AulaController extends AbstractController {
 
     @RequestMapping(value = "/aula/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void exclui(@PathVariable("id") Long id) {
+    public void exclui(@PathVariable("id") String id) {
         aulaService.excluirPorId(id);
     }
 
     @RequestMapping(value = "/aula/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Aula buscaPorId(@PathVariable("id") Long id) {
+    public Aula buscaPorId(@PathVariable("id") String id) {
         return aulaService.obtemPorId(id);
     }
 

@@ -9,22 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-
 /**
  * @author eduardobregaida
  */
 
 @Service
 @Transactional
-public class AtendenteService extends AbstractService<Atendente, Long> {
+public class AtendenteService extends AbstractService<Atendente, String> {
 
-	@Autowired
-	public void setRepository(AtendenteRepository repository) {
-		super.repository = repository;
-	}
+    @Autowired
+    public void setRepository(AtendenteRepository repository) {
+        super.repository = repository;
+    }
 
-	public Collection<Atendente> listarOrdenado() {
-		return ((AtendenteRepository) repository).listarOrdenadoPorNome();
-	}
+    @Override
+    protected String getSortAttribute() {
+        return "nome";
+    }
 }

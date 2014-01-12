@@ -5,7 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,18 +23,18 @@ abstract class AbstractService<E, PK extends Serializable> {
 
     private final Logger LOGGER = LoggerFactory.getLogger(AbstractService.class);
 
-    protected JpaRepository<E, PK> repository;
+    protected MongoRepository<E, PK> repository;
 
-    protected JpaRepository<E, PK> getRepository() {
+    protected MongoRepository<E, PK> getRepository() {
         return repository;
     }
 
     public void salvar(E entity) {
-        getRepository().saveAndFlush(entity);
+        getRepository().save(entity);
     }
 
     public E alterar(E entity) {
-        return getRepository().saveAndFlush(entity);
+        return getRepository().save(entity);
     }
 
     public E obtemPorId(PK primaryKey) {
@@ -42,7 +43,7 @@ abstract class AbstractService<E, PK extends Serializable> {
 
     public void excluirPorId(PK primaryKey) {
         E entity = getRepository().findOne(primaryKey);
-        if(entity == null){
+        if (entity == null) {
             throw new EntityNotFoundException();
         }
         getRepository().delete(primaryKey);
@@ -55,4 +56,11 @@ abstract class AbstractService<E, PK extends Serializable> {
     public Page<E> pesquisarTodos(Pageable pageable) {
         return getRepository().findAll(pageable);
     }
+
+    public Collection<E> listarOrdenado() {
+        final Sort sort = new Sort(Sort.Direction.ASC, getSortAttribute());
+        return getRepository().findAll(sort);
+    }
+
+    protected abstract String getSortAttribute();
 }

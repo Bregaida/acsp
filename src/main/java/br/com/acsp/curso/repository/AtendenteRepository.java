@@ -4,16 +4,14 @@
 package br.com.acsp.curso.repository;
 
 import br.com.acsp.curso.domain.Atendente;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Collection;
 
 /**
  * @author eduardobregaida
  */
-public interface AtendenteRepository extends JpaRepository<Atendente, Long> {
+public interface AtendenteRepository extends MongoRepository<Atendente, String> {
 
-	@Query("select a from Atendente a order by a.nome")
-	Collection<Atendente> listarOrdenadoPorNome();
+    Collection<Atendente> findByAtivo(boolean status);
 }

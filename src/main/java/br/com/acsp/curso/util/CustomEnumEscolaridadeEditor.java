@@ -14,21 +14,21 @@ public class CustomEnumEscolaridadeEditor extends PropertyEditorSupport {
 
     private static final Log LOGGER = LogFactory.getLog(CustomEnumEscolaridadeEditor.class);
 
-	@Override
-	public String getAsText() {
+    @Override
+    public String getAsText() {
         EscolaridadeType escolaridade = (EscolaridadeType) getValue();
         return (escolaridade != null ? String.valueOf(escolaridade.getId()) : "");
     }
 
-	@Override
-	public void setAsText(String text) throws IllegalArgumentException {
+    @Override
+    public void setAsText(String text) throws IllegalArgumentException {
 
-		int c = 0;
-		try {
-			c = Integer.parseInt(text);
-			this.setValue(EscolaridadeType.getInstance(c));
-		} catch (NumberFormatException e) {
-			this.setValue(EscolaridadeType.FUNDAMENTAL);
-		}
-	}
+        int c = 0;
+        try {
+            c = Integer.parseInt(text);
+            this.setValue(EscolaridadeType.getInstance(c));
+        } catch (NumberFormatException e) {
+            this.setValue(EscolaridadeType.FUNDAMENTAL);
+        }
+    }
 }

@@ -17,19 +17,19 @@ import java.util.Collection;
 
 @Service
 @Transactional
-public class AlunoService extends AbstractService<Aluno, Long> {
+public class AlunoService extends AbstractService<Aluno, String> {
 
     @Autowired
     public void setRepository(AlunoRepository repository) {
         super.repository = repository;
     }
 
-    public Collection<Aluno> listarOrdenado() {
-        return ((AlunoRepository) repository).listarOrdenadoPorNome();
-    }
-
     public Collection<Aluno> listarAtivos() {
-        return ((AlunoRepository) repository).listarAtivos();
+        return ((AlunoRepository) repository).findByAtivo(true);
     }
 
+    @Override
+    protected String getSortAttribute() {
+        return "nome";
+    }
 }

@@ -12,8 +12,10 @@ import br.com.acsp.curso.repository.AgendaRepository;
 import br.com.acsp.curso.repository.HorarioRepository;
 import br.com.acsp.curso.repository.InstrutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,7 +24,7 @@ import java.util.Date;
  */
 
 @Service
-public class InstrutorService extends AbstractService<Instrutor, Long> {
+public class InstrutorService extends AbstractService<Instrutor, String> {
 
     @Autowired
     private AeronaveRepository aeronaveRepository;
@@ -33,25 +35,33 @@ public class InstrutorService extends AbstractService<Instrutor, Long> {
     @Autowired
     private HorarioRepository horarioRepository;
 
-	@Autowired
-	public void setRepository(InstrutorRepository repository) {
-		super.repository = repository;
-	}
-
-	public Collection<Instrutor> listarOrdenado() {
-		return ((InstrutorRepository) repository).listarOrdenadoPorNome();
-	}
-
-    public Collection<Instrutor> listarAtivos() {
-        return ((InstrutorRepository) repository).listarAtivos();
+    @Autowired
+    public void setRepository(InstrutorRepository repository) {
+        super.repository = repository;
     }
 
-    public Collection<Instrutor> listarDisponiveis(Long idHora, Long idAeronave, Date dataReserva) {
+    public Collection<Instrutor> listarOrdenado() {
+        final Sort sort = new Sort("nome");
+        return ((InstrutorRepository) repository).findAll(sort);
+    }
+
+    @Override
+    protected String getSortAttribute() {
+        return "nome";
+    }
+
+    public Collection<Instrutor> listarAtivos() {
+        return ((InstrutorRepository) repository).findByAtivo(true);
+    }
+
+    public Collection<Instrutor> listarDisponiveis(String idHora, String idAeronave, Date dataReserva) {
         Horario horario = horarioRepository.findOne(idHora);
         Collection<Agenda> agendaCollection = agendaRepository.findByDataReservaAndHorario(dataReserva, horario);
 
         Aeronave aeronave = aeronaveRepository.findOne(idAeronave);
-        Collection<Instrutor> instrutors = ((InstrutorRepository) repository).listarPorAeronave(aeronave);
+        Collection<Aeronave> aeronaves = new ArrayList<>();
+        aeronaves.add(aeronave);
+        Collection<Instrutor> instrutors = ((InstrutorRepository) repository).findByAeronaves(aeronaves);
 
         for (Agenda agenda : agendaCollection) {
             instrutors.remove(agenda.getInstrutor());

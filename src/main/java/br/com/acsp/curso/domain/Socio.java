@@ -3,28 +3,25 @@
  */
 package br.com.acsp.curso.domain;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.validation.constraints.NotNull;
 
 /**
  * @author eduardobregaida
  */
-@Entity
-@DiscriminatorValue("SOCIO_PILOTO")
+@Document
 public class Socio extends Piloto {
 
-	@NotNull( message = "Número de inscrição não pode ser vazio" )
-	@Column
-	private Long numeroInscricao;
+    @NotNull(message = "Número de inscrição não pode ser vazio")
+    private Long numeroInscricao;
 
-	public Long getNumeroInscricao() {
-		return numeroInscricao;
-	}
+    public Long getNumeroInscricao() {
+        return numeroInscricao;
+    }
 
-	public void setNumeroInscricao(Long numeroInscricao) {
-		this.numeroInscricao = numeroInscricao;
-	}
+    public void setNumeroInscricao(Long numeroInscricao) {
+        this.numeroInscricao = numeroInscricao;
+    }
 
 }

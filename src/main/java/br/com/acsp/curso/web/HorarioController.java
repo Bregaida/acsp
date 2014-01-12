@@ -24,7 +24,7 @@ public class HorarioController extends AbstractController {
 
     @RequestMapping(value = "/horario/disponiveis/{idAeronave}", method = RequestMethod.GET)
     @ResponseBody
-    public List<Horario> listarHorasPorDisponibilidadeAeronave(@PathVariable("idAeronave") Long idAeronave, @RequestParam Date dataReserva) {
+    public List<Horario> listarHorasPorDisponibilidadeAeronave(@PathVariable("idAeronave") String idAeronave, @RequestParam Date dataReserva) {
         return (List<Horario>) agendaService.obterHorariosLivresPorAeronave(dataReserva, idAeronave);
     }
 

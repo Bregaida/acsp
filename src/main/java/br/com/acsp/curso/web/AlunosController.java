@@ -70,14 +70,14 @@ public class AlunosController extends AbstractController {
     // Nem todos os browser suportam DELETE
     @RequestMapping(value = "/aluno/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public String exclui(@PathVariable("id") Long id) {
+    public String exclui(@PathVariable("id") String id) {
         alunoService.excluirPorId(id);
         return "SUCCESS";
     }
 
     @RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Aluno buscaPorId(@PathVariable("id") Long id) {
+    public Aluno buscaPorId(@PathVariable("id") String id) {
         return alunoService.obtemPorId(id);
     }
 
