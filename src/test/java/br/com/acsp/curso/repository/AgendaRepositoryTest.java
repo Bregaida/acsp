@@ -1,12 +1,11 @@
 package br.com.acsp.curso.repository;
 
-import br.com.acsp.curso.domain.Agenda;
+import br.com.acsp.curso.domain.agenda.AgendaRepository;
 import org.apache.commons.lang.time.DateUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 
 import static junit.framework.TestCase.assertEquals;

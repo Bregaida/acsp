@@ -14,17 +14,17 @@ import java.util.Date;
 public class ReservaValidator implements ConstraintValidator<Reserva, Date> {
 
 
-	@Override
-	public void initialize(Reserva constraintAnnotation) {
+    @Override
+    public void initialize(Reserva constraintAnnotation) {
 
-	}
+    }
 
-	@Override
-	public boolean isValid(Date dataReserva, ConstraintValidatorContext context) {
-		DateTime dataHoje = new DateTime();
-		DateTime dataFinal = new DateTime(dataReserva);
-		int dias = Days.daysBetween(dataHoje, dataFinal).getDays();
-		return dias >=0 && dias <= 15;
-	}
+    @Override
+    public boolean isValid(Date dataReserva, ConstraintValidatorContext context) {
+        DateTime dataHoje = new DateTime();
+        DateTime dataFinal = new DateTime(dataReserva);
+        int dias = Days.daysBetween(dataHoje, dataFinal).getDays();
+        return dias >= 0 && dias <= 15;
+    }
 
 }

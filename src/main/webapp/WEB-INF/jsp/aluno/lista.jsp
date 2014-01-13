@@ -12,32 +12,33 @@
     <div class="clearfix">
         <table class="table table-striped table-hover table-condensed datatabled">
             <thead>
-                <th>Nome do aluno</th>
-                <th>Código anac</th>
-                <th>CPF</th>
-                <th>Nome de Pista</th>
-                <th>CHT</th>
-                <th>CMA</th>
-                <th>Ativo</th>
+            <th>Nome do aluno</th>
+            <th>Código anac</th>
+            <th>CPF</th>
+            <th>Nome de Pista</th>
+            <th>CHT</th>
+            <th>CMA</th>
+            <th>Ativo</th>
             </thead>
             <tbody>
-                <tr ng-repeat="aluno in entities" ng-click="load(aluno.id)" data-toggle="modal" data-target="#myModal">
-                    <td>{{aluno.nome}}</td>
-                    <td>{{aluno.codigoANAC}}</td>
-                    <td>{{aluno.cpf}}</td>
-                    <td>{{aluno.nomePista}}</td>
-                    <td>{{aluno.cht}}</td>
-                    <td>{{aluno.cma}}</td>
-                    <td>
-                        <i ng-class="style(aluno.ativo)"></i>
-                    </td>
-                </tr>
+            <tr ng-repeat="aluno in entities" ng-click="load(aluno.id)" data-toggle="modal" data-target="#myModal">
+                <td>{{aluno.nome}}</td>
+                <td>{{aluno.codigoANAC}}</td>
+                <td>{{aluno.cpf}}</td>
+                <td>{{aluno.nomePista}}</td>
+                <td>{{aluno.cht}}</td>
+                <td>{{aluno.cma}}</td>
+                <td>
+                    <i ng-class="style(aluno.ativo)"></i>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
 
     <!-- Button trigger modal -->
-    <a ng-click="newEntity()" id="alunoModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo Aluno</a>
+    <a ng-click="newEntity()" id="alunoModalBtn" data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Novo
+        Aluno</a>
 
     <!-- Modal -->
     <script type="text/ng-template" id="myModalContent.html">
@@ -74,17 +75,20 @@
 
                         <div class="form-group">
                             <label for="cpf"><spring:message code="aluno.cpf"/></label>
-                            <input type="text" ng-model="entity.cpf" id="cpf" class="form-control cpf" size="14" maxlength="14"/>
+                            <input type="text" ng-model="entity.cpf" id="cpf" class="form-control cpf" size="14"
+                                   maxlength="14"/>
                         </div>
 
                         <div class="form-group">
                             <label for="alistamentoMilitar"><spring:message code="aluno.alistamentoMilitar"/></label>
-                            <input type="text" ng-model="entity.alistamentoMilitar" id="alistamentoMilitar" class="form-control"/>
+                            <input type="text" ng-model="entity.alistamentoMilitar" id="alistamentoMilitar"
+                                   class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="escolaridade"><spring:message code="aluno.Escolaridade"/></label>
-                            <select ng-model="entity.escolaridade" id="escolaridade" class="form-control" ng-options="k as v for (k,v) in educationLevels"/>
+                            <select ng-model="entity.escolaridade" id="escolaridade" class="form-control"
+                                    ng-options="k as v for (k,v) in educationLevels"/>
                         </div>
 
                         <div class="form-group">
@@ -114,7 +118,7 @@
 
                         <div class="checkbox">
                             <label for="ativo">
-                                <checkbox ng-model="entity.ativo" id="ativo"/>
+                                <input type="checkbox" ng-model="entity.ativo" id="ativo" value="true"/>
                                 <spring:message code="aluno.ativo"/>
                             </label>
                         </div>
@@ -122,18 +126,20 @@
                     </div>
                     <div class="modal-footer">
                         <div class="btn-group pull-right">
-                            <button type="button" class="btn btn-default" ng-click="cancel()" >
+                            <button type="button" class="btn btn-default" ng-click="cancel()">
                                 <spring:message code="formulario.botaoFechar"/>
                             </button>
-                            <button type="button" class="btn btn-primary insereAction" ng-click="saveAndClose(entity)" >
+                            <button type="button" class="btn btn-primary insereAction" ng-click="saveAndClose(entity)">
                                 <spring:message code="formulario.botaoSalvar"/>
                             </button>
                         </div>
                     </div>
                 </form>
 
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </script>
 
 </div>

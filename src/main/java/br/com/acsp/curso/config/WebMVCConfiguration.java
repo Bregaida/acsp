@@ -11,8 +11,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableArgumentResolver;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jmx.export.annotation.AnnotationMBeanExporter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -29,7 +27,7 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages="br.com.acsp.curso")
+@ComponentScan(basePackages = "br.com.acsp.curso")
 public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
@@ -37,16 +35,8 @@ public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
         return new AnnotationMBeanExporter();
     }
 
-    @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        final MappingJackson2HttpMessageConverter jackson5 = new MappingJackson2HttpMessageConverter();//joking
-        jackson5.setObjectMapper(new HibernateAwareObjectMapper());
-        converters.add(jackson5);
-        super.configureMessageConverters(converters);
-    }
-
     @Bean
-    public InternalResourceViewResolver getViewResolver(){
+    public InternalResourceViewResolver getViewResolver() {
         final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/jsp/");
@@ -67,7 +57,7 @@ public class WebMVCConfiguration extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public PropertyPlaceholderConfigurer getPropertyPlaceholderConfigurer(){
+    public PropertyPlaceholderConfigurer getPropertyPlaceholderConfigurer() {
         final PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
         ppc.setLocation(new ClassPathResource("application.properties"));
         ppc.setIgnoreUnresolvablePlaceholders(false);

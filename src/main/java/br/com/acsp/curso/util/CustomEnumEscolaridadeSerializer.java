@@ -1,6 +1,6 @@
 package br.com.acsp.curso.util;
 
-import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.domain.enums.EscolaridadeType;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;

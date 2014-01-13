@@ -1,9 +1,6 @@
 package br.com.acsp.curso.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.*;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 /**
@@ -16,7 +13,12 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 public class RootConfiguration {
 
     @Bean
-    public LocalValidatorFactoryBean localValidatorFactoryBean(){
+    public LocalValidatorFactoryBean localValidatorFactoryBean() {
         return new LocalValidatorFactoryBean();
+    }
+
+    @Bean
+    public CommonAnnotationBeanPostProcessor commonAnnotationBeanPostProcessor(){
+        return new CommonAnnotationBeanPostProcessor();
     }
 }
