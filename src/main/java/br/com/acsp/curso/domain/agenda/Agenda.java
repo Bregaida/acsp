@@ -5,13 +5,13 @@ package br.com.acsp.curso.domain.agenda;
 
 import br.com.acsp.curso.anotation.Reserva;
 import br.com.acsp.curso.common.AbstractDocument;
-import br.com.acsp.curso.domain.socio.Socio;
 import br.com.acsp.curso.domain.aeronave.Aeronave;
 import br.com.acsp.curso.domain.aluno.Aluno;
 import br.com.acsp.curso.domain.aula.Aula;
 import br.com.acsp.curso.domain.enums.StatusType;
 import br.com.acsp.curso.domain.horario.Horario;
 import br.com.acsp.curso.domain.instrutor.Instrutor;
+import br.com.acsp.curso.domain.socio.Socio;
 import br.com.acsp.curso.util.CustomDateSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.mongodb.core.mapping.DBRef;

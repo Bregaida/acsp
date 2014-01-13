@@ -8,8 +8,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static org.springframework.data.mongodb.core.query.Criteria.*;
-import static org.springframework.data.mongodb.core.query.Query.*;
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.query;
 
 /**
  * User: chrisreichel
@@ -30,7 +30,7 @@ public abstract class PessoaQueryRespositoryImpl<E, PK extends Serializable> imp
     }
 
     @Override
-    public Collection<E> findAllAtivos(){
+    public Collection<E> findAllAtivos() {
         final Query query = query(where("ativo").is(true));
         return new ArrayList<>(operations.find(query, type));
     }

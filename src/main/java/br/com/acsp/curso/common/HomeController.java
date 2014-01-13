@@ -1,6 +1,5 @@
 package br.com.acsp.curso.common;
 
-import br.com.acsp.curso.common.AbstractController;
 import br.com.acsp.curso.domain.agenda.Agenda;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

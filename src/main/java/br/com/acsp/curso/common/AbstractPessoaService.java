@@ -1,7 +1,5 @@
 package br.com.acsp.curso.common;
 
-import br.com.acsp.curso.common.AbstractService;
-import br.com.acsp.curso.common.PessoaQueryRespository;
 import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
@@ -21,7 +19,7 @@ public abstract class AbstractPessoaService<E, PK extends Serializable> extends 
         return getRepository().findAll(sort);
     }
 
-    public E obtemPorCPF(String cpf){
+    public E obtemPorCPF(String cpf) {
         return queryRespository.findByCpf(cpf);
     }
 
@@ -34,7 +32,7 @@ public abstract class AbstractPessoaService<E, PK extends Serializable> extends 
         this.queryRespository = pessoaQueryRespository;
     }
 
-    public void setType(Class<E> type){
+    public void setType(Class<E> type) {
         queryRespository.setType(type);
     }
 }

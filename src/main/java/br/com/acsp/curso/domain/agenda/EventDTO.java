@@ -1,6 +1,5 @@
 package br.com.acsp.curso.domain.agenda;
 
-import br.com.acsp.curso.domain.agenda.Agenda;
 import org.apache.commons.lang.time.DateUtils;
 
 import java.text.SimpleDateFormat;

@@ -5,8 +5,6 @@ package br.com.acsp.curso.domain.socio;
 
 import br.com.acsp.curso.common.AbstractPessoaService;
 import br.com.acsp.curso.common.PessoaQueryRespository;
-import br.com.acsp.curso.domain.socio.Socio;
-import br.com.acsp.curso.domain.socio.SocioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

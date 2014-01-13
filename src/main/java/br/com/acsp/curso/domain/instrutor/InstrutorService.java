@@ -6,13 +6,11 @@ package br.com.acsp.curso.domain.instrutor;
 import br.com.acsp.curso.common.AbstractPessoaService;
 import br.com.acsp.curso.common.PessoaQueryRespository;
 import br.com.acsp.curso.domain.aeronave.Aeronave;
-import br.com.acsp.curso.domain.agenda.Agenda;
-import br.com.acsp.curso.domain.horario.Horario;
-import br.com.acsp.curso.domain.instrutor.Instrutor;
 import br.com.acsp.curso.domain.aeronave.AeronaveRepository;
+import br.com.acsp.curso.domain.agenda.Agenda;
 import br.com.acsp.curso.domain.agenda.AgendaRepository;
+import br.com.acsp.curso.domain.horario.Horario;
 import br.com.acsp.curso.domain.horario.HorarioRepository;
-import br.com.acsp.curso.domain.instrutor.InstrutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

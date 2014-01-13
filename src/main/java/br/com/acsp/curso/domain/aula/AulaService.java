@@ -4,9 +4,7 @@
 package br.com.acsp.curso.domain.aula;
 
 import br.com.acsp.curso.common.AbstractService;
-import br.com.acsp.curso.domain.aula.Aula;
 import br.com.acsp.curso.domain.aeronave.AeronaveRepository;
-import br.com.acsp.curso.domain.aula.AulaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

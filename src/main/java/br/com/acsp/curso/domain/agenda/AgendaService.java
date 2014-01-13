@@ -2,10 +2,8 @@ package br.com.acsp.curso.domain.agenda;
 
 import br.com.acsp.curso.common.AbstractService;
 import br.com.acsp.curso.domain.aeronave.Aeronave;
-import br.com.acsp.curso.domain.agenda.Agenda;
-import br.com.acsp.curso.domain.horario.Horario;
 import br.com.acsp.curso.domain.aeronave.AeronaveRepository;
-import br.com.acsp.curso.domain.agenda.AgendaRepository;
+import br.com.acsp.curso.domain.horario.Horario;
 import br.com.acsp.curso.domain.horario.HorarioRepository;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;

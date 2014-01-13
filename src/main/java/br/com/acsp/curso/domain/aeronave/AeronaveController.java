@@ -5,9 +5,9 @@ package br.com.acsp.curso.domain.aeronave;
 
 import br.com.acsp.curso.common.AbstractController;
 import br.com.acsp.curso.domain.aluno.Aluno;
-import br.com.acsp.curso.domain.instrutor.Instrutor;
 import br.com.acsp.curso.domain.aluno.AlunoService;
 import br.com.acsp.curso.domain.aula.AulaService;
+import br.com.acsp.curso.domain.instrutor.Instrutor;
 import br.com.acsp.curso.domain.instrutor.InstrutorService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

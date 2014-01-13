@@ -1,9 +1,5 @@
 package br.com.acsp.curso.common;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -16,6 +12,7 @@ public interface PessoaQueryRespository<E, PK extends Serializable> {
 
     /**
      * Retrieves an entity by the CPF
+     *
      * @param cpf
      * @return
      */

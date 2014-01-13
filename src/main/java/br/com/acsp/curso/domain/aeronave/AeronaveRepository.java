@@ -3,7 +3,6 @@
  */
 package br.com.acsp.curso.domain.aeronave;
 
-import br.com.acsp.curso.domain.aeronave.Aeronave;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Collection;

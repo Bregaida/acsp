@@ -1,7 +1,6 @@
 package br.com.acsp.curso.domain.agenda;
 
 import br.com.acsp.curso.domain.aeronave.Aeronave;
-import br.com.acsp.curso.domain.agenda.Agenda;
 import br.com.acsp.curso.domain.horario.Horario;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;

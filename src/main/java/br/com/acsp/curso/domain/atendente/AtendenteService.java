@@ -5,8 +5,6 @@ package br.com.acsp.curso.domain.atendente;
 
 import br.com.acsp.curso.common.AbstractPessoaService;
 import br.com.acsp.curso.common.PessoaQueryRespository;
-import br.com.acsp.curso.domain.atendente.Atendente;
-import br.com.acsp.curso.domain.atendente.AtendenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

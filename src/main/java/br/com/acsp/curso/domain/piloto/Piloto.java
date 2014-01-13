@@ -3,8 +3,8 @@
  */
 package br.com.acsp.curso.domain.piloto;
 
-import br.com.acsp.curso.domain.pessoa.Pessoa;
 import br.com.acsp.curso.domain.aeronave.Aeronave;
+import br.com.acsp.curso.domain.pessoa.Pessoa;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 

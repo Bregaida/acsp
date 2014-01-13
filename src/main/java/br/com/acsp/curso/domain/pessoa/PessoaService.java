@@ -2,7 +2,6 @@ package br.com.acsp.curso.domain.pessoa;
 
 import br.com.acsp.curso.common.AbstractPessoaService;
 import br.com.acsp.curso.common.PessoaQueryRespository;
-import br.com.acsp.curso.domain.pessoa.Pessoa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
