@@ -143,7 +143,7 @@
                         <button class="btn btn-default" ng-click="cancel()" data-dismiss="modal">
                             <spring:message code="formulario.botaoFechar"/>
                         </button>
-                        <button ng-click="saveAndClose(entity)" class="btn btn-primary" aria-hidden="true">
+                        <button ng-click="saveAndClose(agendamento)" class="btn btn-primary" aria-hidden="true">
                             <spring:message code="formulario.botaoSalvar"/>
                         </button>
                     </div>
