@@ -279,7 +279,7 @@ app.controller('AgendamentosController', function ($scope, $http, $modal, Restan
         $scope.saveAndClose = function (anEntity) {
             $scope.validation = null;
             $scope.agendamento = anEntity;
-            Restangular.all('agendamento').post(entityType, anEntity).then(function () {
+            Restangular.all('agendamento').post("agenda", anEntity).then(function () {
                 $modalInstance.close(anEntity);
             }, function (error) {
                 $scope.validation = error.data;

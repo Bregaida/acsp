@@ -6,6 +6,7 @@ package br.com.acsp.curso.domain.aula;
 import br.com.acsp.curso.common.AbstractDocument;
 import br.com.acsp.curso.domain.aeronave.Aeronave;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
@@ -24,6 +25,7 @@ public class Aula extends AbstractDocument {
     @NotNull
     private Long quantidadeHorasNecessarias;
 
+    @DBRef
     private List<Aeronave> aeronaves = new ArrayList<Aeronave>();
 
     public String getMateria() {

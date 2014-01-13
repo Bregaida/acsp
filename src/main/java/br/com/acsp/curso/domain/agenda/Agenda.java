@@ -49,7 +49,6 @@ public class Agenda extends AbstractDocument {
     @DBRef
     private Socio socio;
 
-    @NotNull
     private Horario horario;
 
     @NotNull
