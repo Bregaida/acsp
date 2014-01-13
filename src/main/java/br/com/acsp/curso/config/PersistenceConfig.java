@@ -2,9 +2,12 @@ package br.com.acsp.curso.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.WriteConcern;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.mapping.event.LoggingEventListener;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 
@@ -14,7 +17,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * Time: 1:31 AM
  */
 @Configuration
-@EnableMongoRepositories(basePackages = "br.com.acsp.curso.repository")
+@EnableMongoRepositories(basePackages = "br.com.acsp.curso.domain")
 public class PersistenceConfig extends AbstractMongoConfiguration {
 
     //TODO: put outside
@@ -42,6 +45,16 @@ public class PersistenceConfig extends AbstractMongoConfiguration {
     @Override
     protected String getMappingBasePackage() {
         return "br.com.acsp.curso.domain";
+    }
+
+    @Bean
+    public LoggingEventListener loggingEventListener(){
+        return new LoggingEventListener();
+    }
+
+    @Bean
+    public MongoTemplate mongoTemplate() throws Exception{
+        return new MongoTemplate(mongo(), getDatabaseName(), getUserCredentials());
     }
 
 }

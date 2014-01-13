@@ -1,6 +1,6 @@
 package br.com.acsp.curso.util;
 
-import br.com.acsp.curso.domain.EscolaridadeType;
+import br.com.acsp.curso.domain.enums.EscolaridadeType;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

@@ -3,6 +3,7 @@
  */
 package br.com.acsp.curso.repository;
 
+import br.com.acsp.curso.domain.aeronave.AeronaveRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

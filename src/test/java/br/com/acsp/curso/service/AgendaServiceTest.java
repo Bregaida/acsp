@@ -1,12 +1,6 @@
 package br.com.acsp.curso.service;
 
-import br.com.acsp.curso.domain.Agenda;
-import br.com.acsp.curso.domain.Horario;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
