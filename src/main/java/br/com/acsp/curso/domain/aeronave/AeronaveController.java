@@ -56,7 +56,7 @@ public class AeronaveController extends AbstractController {
     @RequestMapping("/aeronaves")
     @ResponseBody
     public Collection<Aeronave> lista(ModelMap map) {
-        return aeronaveService.listarOrdenado();
+        return aeronaveService.listarTodos();
     }
 
     @RequestMapping(value = "/aeronave/{id}", method = RequestMethod.DELETE)

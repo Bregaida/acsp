@@ -45,7 +45,7 @@ public class AtendenteController extends AbstractController {
     @RequestMapping("/atendentes")
     @ResponseBody
     public Collection<Atendente> lista(ModelMap map) {
-        return atendenteService.listarOrdenado();
+        return atendenteService.listarTodos();
     }
 
     // Nem todos os browser suportam DELETE

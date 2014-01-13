@@ -5,7 +5,6 @@ package br.com.acsp.curso.domain.piloto;
 
 import br.com.acsp.curso.domain.aeronave.Aeronave;
 import br.com.acsp.curso.domain.pessoa.Pessoa;
-import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -14,7 +13,6 @@ import java.util.List;
  * @author eduardobregaida
  */
 @Document(collection = "pessoas")
-@TypeAlias("PILOTO")
 public abstract class Piloto extends Pessoa {
 
     private String nomePista;

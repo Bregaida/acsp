@@ -55,7 +55,7 @@ public class AlunosController extends AbstractController {
     @RequestMapping(value = "/alunos", method = RequestMethod.GET)
     @ResponseBody
     public Collection<Aluno> lista(ModelMap map) {
-        return alunoService.listarOrdenado();
+        return alunoService.listarTodos();
     }
 
     @RequestMapping(value = "/alunos", method = RequestMethod.POST)

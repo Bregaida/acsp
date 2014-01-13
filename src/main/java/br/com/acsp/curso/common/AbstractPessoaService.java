@@ -1,7 +1,5 @@
 package br.com.acsp.curso.common;
 
-import org.springframework.data.domain.Sort;
-
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -14,9 +12,8 @@ public abstract class AbstractPessoaService<E, PK extends Serializable> extends 
 
     PessoaQueryRespository<E, PK> queryRespository;
 
-    public Collection<E> listarOrdenado() {
-        final Sort sort = new Sort(getSortAttribute());
-        return getRepository().findAll(sort);
+    public Collection<E> listarTodos() {
+        return queryRespository.findAll();
     }
 
     public E obtemPorCPF(String cpf) {

@@ -58,7 +58,7 @@ public abstract class AbstractService<E, PK extends Serializable> {
         return getRepository().findAll(pageable);
     }
 
-    public Collection<E> listarOrdenado() {
+    public Collection<E> listarTodos() {
         final Sort sort = new Sort(Sort.Direction.ASC, getSortAttribute());
         return getRepository().findAll(sort);
     }

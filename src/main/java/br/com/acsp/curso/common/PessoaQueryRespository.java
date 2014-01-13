@@ -20,6 +20,8 @@ public interface PessoaQueryRespository<E, PK extends Serializable> {
 
     Collection<E> findAllAtivos();
 
+    Collection<E> findAll();
+
     void setType(Class<E> type);
 
 }

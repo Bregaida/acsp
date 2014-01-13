@@ -43,7 +43,7 @@ public class AulaController extends AbstractController {
     @RequestMapping(value = "/aulas", method = RequestMethod.GET)
     @ResponseBody
     public Collection<Aula> lista() {
-        return aulaService.listarOrdenado();
+        return aulaService.listarTodos();
     }
 
     @RequestMapping("/aulas/spa")

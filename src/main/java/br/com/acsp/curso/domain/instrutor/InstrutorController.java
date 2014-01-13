@@ -53,7 +53,7 @@ public class InstrutorController extends AbstractController {
     @RequestMapping("/instrutores")
     @ResponseBody
     public Collection<Instrutor> listar(ModelMap map) {
-        return instrutorService.listarOrdenado();
+        return instrutorService.listarTodos();
     }
 
     @RequestMapping(value = "/instrutores", method = RequestMethod.POST)
