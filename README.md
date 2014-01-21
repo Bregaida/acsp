@@ -7,7 +7,7 @@ Requisitos do Programa:
 Módulos CRUD:
 -------------
 Perfil - regras
-* (Aluno e Sócio - Agendam horas de vôo e consultam apenas suas horas marcadas, podendo cancelar até 1 dia antes)
+* (Aluno e Sócio - Agendam horas de vôo e consultam apenas suas horas marcadas, marcam de 15 em 15 dias, podendo cancelar até 1 dia antes)
 * (Intrutores - Visualizam seu cadastro, consultam horas de vôo no qual eles foram marcados)
 * (Atendentes - Cadastram Alunos, Instrutores e outros Atendentes, aprovam ou reprovam horas marcadas, cancelam horas agendadas, ativam ou desativam aeronaves, instrutores, sócios e alunos, atualizam quantidades de horas de instrução dos instrutores)
 	
@@ -19,6 +19,7 @@ Agenda Regras para Agendar Horas de Vôo:
 - [ ] Aluno poderá agendar no máximo 3 horas de vôo em um dia, podendo ser horas seguidas (ex: 09:00 até 12:00) ou não (ex: 08:00 até 09:00 / 12:00 - 14:00)
   - [ ] Deverá haver a opção 360 milhas, se o aluno marcar, poderá ser agendado mais de 3 horas, porém ficará com status de pendente até o atendente aprovar
 - [x] PARCIAL Os alunos só poderão agendar se a aeronave está disponível, caso contrário a aeronave não será nem listada na combo
+- [ ] Após o Vôo é removida as horas do avião para manutenção (Avião vai para manutenção a cada 50 horas)
 
 - [ ] Combo opicional, deverá exibir um combo para o aluno marcar o tipo de instrução que ele irá receber (Manobras Altas, TGL, Navegação, INVA)
 - [ ] Opcional agendar com um instrutor, porém se o instrutor estiver agendado com alguém naquela hora ele não poderá ser agendado para o mesmo horário com mais ninguém
@@ -37,6 +38,10 @@ Regras aula e instrutor
 - [ ] Perfil de aluno somente vê dias e horas disponiveis, ou seja, se a hora ou dia estiverem cheios ele não poderá agendar.
 - [ ] Perfil de aluno somente verá suas horas de vôo, apenas atendentes e instrutores poderão visualizar todos os alunos nos dias e horas.
 
+Regras Aulas realizadas
+-----------------------
+- [ ] Após o término da aula será lançado o tempo que o aluno vôo, qual aeronave (prefixo), qual instrutor que deu a aula
+
 Atendentes
 ---------
 - [ ] Poderão agendar horas para os alunos ou desmarcar horas para os mesmos
@@ -45,6 +50,11 @@ Atendentes
 - [ ] Poderão alterar disponibilidade das Aeronaves (obrigatório neste caso comentar o motivo: Manutenção, perda do equipamento, documentação)
 - [ ] Atualiza quantidade de horas de instrução de um determinado instrutor
   - [ ] Marcam a presença do aluno na aula (aparecerá para ele um check de presença nas horas do dia dos alunos que marcaram hora)
+- [ ] Cadastra um dia antes a escala dos instrutores que voarão no próximo dia
+
+CRUD de Escala
+---------
+- [ ] Deverá conter na escala, o dia, nome do instrutor e ordem de saída.
 
 Instrutores
 -----------
