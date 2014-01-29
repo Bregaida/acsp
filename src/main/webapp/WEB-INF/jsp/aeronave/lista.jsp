@@ -16,6 +16,7 @@
             <thead>
                 <th class="hidden">Código</th>
                 <th><spring:message code="aeronave.certificadoMatricula"/></th>
+                <th><spring:message code="aeronave.valorHora"/></th>
                 <th><spring:message code="aeronave.marca"/></th>
                 <th><spring:message code="aeronave.modelo"/></th>
                 <th><spring:message code="aeronave.manualVoo"/></th>
@@ -27,6 +28,7 @@
                 <tr ng-repeat="aeronave in entities" ng-click="load(aeronave.id)" data-toggle="modal" data-target="#myModal">
                     <td class="hidden">{{aeronave.id}}</td>
                     <td>{{aeronave.certificadoMatricula}}</td>
+                	<td>{{aeronave.valorHora}}</td>
                     <td>{{aeronave.marca}}</td>
                     <td>{{aeronave.modelo}}</td>
                     <td><i ng-class="style(aeronave.manualVoo)"></i></td>
@@ -64,6 +66,11 @@
                             <div class="form-group">
                                 <label for="certificadoMatricula"><spring:message code="aeronave.certificadoMatricula"/></label>
                                 <input type="text" name="certificadoMatricula" id="certificadoMatricula" class="form-control" ng-model="entity.certificadoMatricula"/>
+                            </div>
+							
+							 <div class="form-group">
+                                <label for="valorHora"><spring:message code="aeronave.valorHora"/></label>
+                                <input type="text" name="valorHora" id="valorHora" class="form-control" ng-model="entity.valorHora"/>
                             </div>
 
                             <div class="form-group">
