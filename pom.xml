@@ -22,7 +22,12 @@
     </properties>
 
     <dependencies>
-
+		<dependency>
+			<groupId>net.bull.javamelody</groupId>
+			<artifactId>javamelody-core</artifactId>
+			<version>1.48.0</version>
+		</dependency>
+					
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
