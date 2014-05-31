@@ -15,7 +15,7 @@
     <!--
        Configures Spring Data JPA and sets the base package of my DAOs.
    -->
-    <mongo:repositories base-package="br.com.acsp.curso.repository"/>
+    <mongo:repositories base-package="br.com.acsp.curso.domain"/>
 
     <mongo:db-factory id="mongo-factory"
                       dbname="acsp-db"
