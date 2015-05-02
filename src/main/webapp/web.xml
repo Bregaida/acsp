@@ -20,4 +20,8 @@
     <listener>
         <listener-class>net.bull.javamelody.SessionListener</listener-class>
     </listener>
+
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
 </web-app>

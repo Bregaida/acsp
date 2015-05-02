@@ -37,13 +37,13 @@ public class PessoaQueryRespositoryImpl<E, PK extends Serializable> implements P
     @Override
     public Collection<E> findAllAtivos() {
         final Query query = query(where("ativo").is(true)).addCriteria(getTypeCriteria());
-        return new ArrayList<>(operations.find(query, type));
+        return new ArrayList(operations.find(query, type));
     }
 
     @Override
     public Collection<E> findAll() {
         final Query query = query(getTypeCriteria());
-        return new ArrayList<>(operations.find(query, type));
+        return new ArrayList(operations.find(query, type));
     }
 
     Criteria getTypeCriteria() {
