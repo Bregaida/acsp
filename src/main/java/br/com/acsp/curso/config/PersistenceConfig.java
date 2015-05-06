@@ -23,14 +23,14 @@ public class PersistenceConfig extends AbstractMongoConfiguration {
     //TODO: put outside
     @Override
     protected String getDatabaseName() {
-        return "acsp-db";
+        return "codechallenge-db";
     }
 
     //TODO: put outside
     @Override
     public Mongo mongo() throws Exception {
         //mongodb://acsp-dbuser:31337pass@ds039487.mongolab.com:39487/acsp-db
-        final Mongo mongo = new Mongo("ds039487.mongolab.com", 39487);
+        final Mongo mongo = new Mongo("ds041367.mongolab.com", 41367);
         mongo.setWriteConcern(WriteConcern.SAFE);
         return mongo;
     }
@@ -38,7 +38,7 @@ public class PersistenceConfig extends AbstractMongoConfiguration {
     //TODO: put outside
     @Override
     protected UserCredentials getUserCredentials() {
-        final UserCredentials credentials = new UserCredentials("acsp-dbuser", "31337pass");
+        final UserCredentials credentials = new UserCredentials("codechallenge-dbuser", "codechallenge12");
         return credentials;
     }
 
