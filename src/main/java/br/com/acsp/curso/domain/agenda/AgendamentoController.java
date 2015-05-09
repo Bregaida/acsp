@@ -71,17 +71,7 @@ public class AgendamentoController extends AbstractController {
     @RequestMapping(value = "/agendamento", method = RequestMethod.POST)
     @ResponseBody
     public void salvarOuAtualizar(@ModelAttribute Agenda agenda, BindingResult result) {
-    	//TODO: está inserindo, porém precisa criar os converters de cada tipo abaixo para salvar corretamente no MongoDB.
-    	agenda.setAeronave(new Aeronave());
-    	agenda.getAeronave().setId(result.getFieldValue("aeronave").toString());
-    	agenda.setAluno(new Aluno());
-    	agenda.getAluno().setId(result.getFieldValue("aluno").toString());
-    	agenda.setAula(new Aula());
-    	agenda.getAula().setId(result.getFieldValue("aula").toString());
-    	agenda.setHorario(null);
-    	agenda.setInstrutor(new Instrutor());
-    	agenda.getInstrutor().setId(result.getFieldValue("instrutor").toString());
-//        validateBindingResult(result);
+    	//TODO: está inserindo, precisa ver se está carregando
         agendaService.salvar(agenda);
     }
 
