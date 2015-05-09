@@ -3,17 +3,25 @@
  */
 package br.com.acsp.curso.domain.agenda;
 
-import br.com.acsp.curso.common.AbstractController;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+import br.com.acsp.curso.common.AbstractController;
+import br.com.acsp.curso.domain.aeronave.Aeronave;
+import br.com.acsp.curso.domain.aluno.Aluno;
+import br.com.acsp.curso.domain.aula.Aula;
+import br.com.acsp.curso.domain.instrutor.Instrutor;
 
 /**
  * @author pedrosa
@@ -61,8 +69,19 @@ public class AgendamentoController extends AbstractController {
     }
 
     @RequestMapping(value = "/agendamento", method = RequestMethod.POST)
-    public void salvarOuAtualizar(@Valid Agenda agenda, BindingResult result) {
-        validateBindingResult(result);
+    @ResponseBody
+    public void salvarOuAtualizar(@ModelAttribute Agenda agenda, BindingResult result) {
+    	//TODO: está inserindo, porém precisa criar os converters de cada tipo abaixo para salvar corretamente no MongoDB.
+    	agenda.setAeronave(new Aeronave());
+    	agenda.getAeronave().setId(result.getFieldValue("aeronave").toString());
+    	agenda.setAluno(new Aluno());
+    	agenda.getAluno().setId(result.getFieldValue("aluno").toString());
+    	agenda.setAula(new Aula());
+    	agenda.getAula().setId(result.getFieldValue("aula").toString());
+    	agenda.setHorario(null);
+    	agenda.setInstrutor(new Instrutor());
+    	agenda.getInstrutor().setId(result.getFieldValue("instrutor").toString());
+//        validateBindingResult(result);
         agendaService.salvar(agenda);
     }
 
