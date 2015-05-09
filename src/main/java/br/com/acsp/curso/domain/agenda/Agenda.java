@@ -33,25 +33,18 @@ public class Agenda extends AbstractDocument {
     @Reserva
     private Date dataReserva;
 
-    @NotNull
-    @DBRef
-    private Aeronave aeronave;
+    private String aeronave;
 
-    @DBRef
-    private Instrutor instrutor;
+    private String instrutor;
 
-    private Aula aula;
+    private String aula;
 
-    @NotNull
-    @DBRef
-    private Aluno aluno;
+    private String aluno;
 
-    @DBRef
-    private Socio socio;
+    private String socio;
 
-    private Horario horario;
+    private String horario;
 
-    @NotNull
     private Integer qtdeHoras;
 
     private boolean flag360milhas;
@@ -64,6 +57,7 @@ public class Agenda extends AbstractDocument {
 
     private StatusType status;
 
+
     public Date getDataReserva() {
         return dataReserva;
     }
@@ -72,51 +66,51 @@ public class Agenda extends AbstractDocument {
         this.dataReserva = dataReserva;
     }
 
-    public Aeronave getAeronave() {
+    public String getAeronave() {
         return aeronave;
     }
 
-    public void setAeronave(Aeronave aeronave) {
+    public void setAeronave(String aeronave) {
         this.aeronave = aeronave;
     }
 
-    public Instrutor getInstrutor() {
+    public String getInstrutor() {
         return instrutor;
     }
 
-    public void setInstrutor(Instrutor instrutor) {
+    public void setInstrutor(String instrutor) {
         this.instrutor = instrutor;
     }
 
-    public Aula getAula() {
+    public String getAula() {
         return aula;
     }
 
-    public void setAula(Aula aula) {
+    public void setAula(String aula) {
         this.aula = aula;
     }
 
-    public Aluno getAluno() {
+    public String getAluno() {
         return aluno;
     }
 
-    public void setAluno(Aluno aluno) {
+    public void setAluno(String aluno) {
         this.aluno = aluno;
     }
 
-    public Socio getSocio() {
+    public String getSocio() {
         return socio;
     }
 
-    public void setSocio(Socio socio) {
+    public void setSocio(String socio) {
         this.socio = socio;
     }
 
-    public Horario getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Horario horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
@@ -168,4 +162,22 @@ public class Agenda extends AbstractDocument {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return "Agenda{" +
+                "dataReserva=" + dataReserva +
+                ", aeronave='" + aeronave + '\'' +
+                ", instrutor='" + instrutor + '\'' +
+                ", aula='" + aula + '\'' +
+                ", aluno='" + aluno + '\'' +
+                ", socio='" + socio + '\'' +
+                ", horario='" + horario + '\'' +
+                ", qtdeHoras=" + qtdeHoras +
+                ", flag360milhas=" + flag360milhas +
+                ", flagVooNoturno=" + flagVooNoturno +
+                ", flagVooMatutinoEspecial=" + flagVooMatutinoEspecial +
+                ", flagPresenca=" + flagPresenca +
+                ", status=" + status +
+                '}';
+    }
 }
